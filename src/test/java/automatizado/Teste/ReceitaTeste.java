@@ -1,7 +1,5 @@
 package automatizado.Teste;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 import automatizado.Builder.ReceitaBuilder;
@@ -30,7 +28,7 @@ public class ReceitaTeste extends BaseTeste{
 
         receita.builder(driver);
 
-
+        //Teste Git
         
     }
 
