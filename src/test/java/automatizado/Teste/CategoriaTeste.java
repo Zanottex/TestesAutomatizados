@@ -27,8 +27,7 @@ public class CategoriaTeste extends BaseTeste{
         else{
             driver.get(URL_HOMOLOG);
         }
-        driver.get(URL_HOMOLOG);
-        driver.navigate().refresh();
+        
         RedirecionarPag(URL_Categorias);
         categoriaPO = new CategoriaPO(driver);
 
@@ -52,6 +51,7 @@ public class CategoriaTeste extends BaseTeste{
         else{
             driver.get(URL_HOMOLOG);
         }
+        
         RedirecionarPag(URL_Categorias);
         categoriaPO = new CategoriaPO(driver);
 

@@ -660,7 +660,7 @@ public class FundacaoBuilder {
         wait.until(d -> ECommercePO.ProximoMes.isDisplayed());
         ECommercePO.ProximoMes.click();
         
-        try {
+            try {
             Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -909,8 +909,8 @@ public class FundacaoBuilder {
             if(valorsomado == 10.0){
                 ECommercePO.tirarcategoria1.click();
                 ECommercePO.tirarcategoria1.click();
-                ECommercePO.adicionarCategoria2.click();
-                ECommercePO.adicionarCategoria2.click();
+                ECommercePO.adicionarCategoria2Desconto.click();
+                ECommercePO.adicionarCategoria2Desconto.click();
                 wait.until(d -> ECommercePO.valorDesconto.isDisplayed());
                 Result = new StringTokenizer(ECommercePO.valorDesconto.getText());
                 valortotal = Result.nextToken(" ");
@@ -1223,5 +1223,6 @@ public void quantidadeMinima(WebDriver driver){
         return this;
     }
 
+    
  
 }
