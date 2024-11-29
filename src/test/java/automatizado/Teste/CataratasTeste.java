@@ -28,6 +28,27 @@ public class CataratasTeste extends BaseTeste{
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Brasileiro_Mercosul(driver);
+        cataratas.Brasileiro_Mercosul(driver, false);
+    }
+
+    @Test
+    public void TC001_Bilhete_Estrangeiro(){
+        String aberto;
+        try {
+            aberto = driver.manage().window().getSize().toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if(aberto == null){
+        iniciar(URL_Ecommerce);
+        }
+        else{
+        RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePO = new EcommercePO(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+
+        cataratas.Brasileiro_Mercosul(driver, true);
     }
 }
