@@ -1,0 +1,1 @@
+Ao tulizar os geradores, utilize o padrão de nomes devariaves e functions
