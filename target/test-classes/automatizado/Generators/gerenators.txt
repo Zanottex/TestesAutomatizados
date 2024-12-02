@@ -1,0 +1,2 @@
+Ao tulizar os geradores, utilize o padrão de nomes devariaves e functions
+(Ajuste de repositório e início de padronização adicionados)

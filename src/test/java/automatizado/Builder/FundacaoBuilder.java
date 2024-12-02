@@ -12,10 +12,19 @@ import automatizado.Page.EcommercePO;
 
 public class FundacaoBuilder {
 
+    //private static final Random random = new Random();
+    
     private EcommercePO ECommercePO;
     private String email_usuario = "gustavozanotto119@gmail.com";
     private String senha_usuario = "1";
     private String Nome_Cartao = "Gustavin Zanottin";
+
+    //private String Nome_Cartao = Gera_Nome_Cartao () {
+    //    String[] firstNames = {"Lucas", "Gabriel", "Ana", "Maria", "João", "Fernanda", "Carlos"};
+    //    String[] lastNames = {"Silva", "Santos", "Oliveira", "Souza", "Pereira", "Costa"};
+    //    return firstNames[random.nextInt(firstNames.length)] + " " + lastNames[random.nextInt(lastNames.length)];
+    //}
+
     private String Numero_Cartao = "4000000000000010";
     private String mes_validade = "122500";
     private String codigo_segurança = "123";
@@ -1102,7 +1111,6 @@ public void quantidadeMinima(WebDriver driver){
         try {
             possivel = ECommercePO.adicionarAoCarrinho.isEnabled();
         } catch (Exception e) {
-         // TODO: handle exception
         }
 
     if(possivel == false){
