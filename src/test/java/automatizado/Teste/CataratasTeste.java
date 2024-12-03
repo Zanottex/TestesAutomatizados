@@ -72,4 +72,25 @@ public class CataratasTeste extends BaseTeste{
 
         cataratas.Ingresso(driver, 3 /*TIPO 3 = Expeiências*/);
     }
+
+    @Test
+    public void TC004_Bilhete_Bike_poço_preto(){
+        String aberto;
+        try {
+            aberto = driver.manage().window().getSize().toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if(aberto == null){
+        iniciar(URL_Ecommerce);
+        }
+        else{
+        RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePO = new EcommercePO(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+
+        cataratas.Ingresso(driver, 4 /*TIPO 3 = Expeiências*/);
+    }
 }

@@ -4,25 +4,27 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.StringTokenizer;
 
+import org.omg.CORBA.INTERNAL;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import automatizado.Page.EcommercePO;
+import automatizado.Generators.geradores;
 
 public class Cataratasbuilder {
 
     private EcommercePO ECommercePO;
     private String email_usuario = "gustavozanotto119@gmail.com";
     private String senha_usuario = "1";
-    private String Nome_Cartao = "Gustavin Zanottin";
-    private String Numero_Cartao = "4000000000000010";
-    private String mes_validade = "122500";
-    private String codigo_segurança = "123";
-    private String CEP = "85509432";
-    private String Numero_Casa = "1050";
-    private String CPF = "09285844960";
+    private String Nome_Cartao = geradores.geradorNome();
+    private String Numero_Cartao = geradores.geradorNumeroCartao();
+    private String mes_validade = geradores.geradorValidadeCartao();
+    private String codigo_segurança = geradores.geradorCodigoSeguranca();
+    private String CEP = geradores.geradorCEP();
+    private String Numero_Casa = geradores.geradorNumeroCasa(); 
+    private String cpf = geradores.geradorCPF(); 
 
     public void Ingresso(WebDriver driver, int tipo) {
         Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
@@ -34,8 +36,21 @@ public class Cataratasbuilder {
             ECommercePO.barraDePesquisa.sendKeys("Ingresso Estrangeiro");
         }else if(tipo == 3){
             ECommercePO.barraDePesquisa.sendKeys("Ingresso Experiências");
+        }else if(tipo == 4){
+            ECommercePO.barraDePesquisa.sendKeys("Ingresso Bike poço preto");
+        }else if(tipo == 5){
+            ECommercePO.barraDePesquisa.sendKeys("Ingresso 2 dias");
+        }else if(tipo == 6){
+            ECommercePO.barraDePesquisa.sendKeys("Ingresso 3 dias");
+        }else if(tipo == 7){
+            ECommercePO.barraDePesquisa.sendKeys("Serviços Especiais");
         }
-        wait.until(d -> ECommercePO.bilhete_a_venda_grupo1.isDisplayed());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ECommercePO.bilhete_a_venda_grupo1.click();
         wait.until(d -> ECommercePO.ProximoMes.isDisplayed());
         ECommercePO.ProximoMes.click();
@@ -48,9 +63,12 @@ public class Cataratasbuilder {
         wait.until(d -> ECommercePO.dia.isEnabled());
         ECommercePO.dia.click();
 
+        if(tipo != 3){
         wait.until(d -> ECommercePO.localEmbarque.isDisplayed());
         ECommercePO.localEmbarque.click();
         ECommercePO.localEmbarqueConfirmar.click();
+        }
+        
 
         try {
             Thread.sleep(1000);
@@ -70,25 +88,30 @@ public class Cataratasbuilder {
 
         wait.until(d -> ECommercePO.adicionarCategoria.isDisplayed());
         ECommercePO.adicionarCategoria.click();
-        ECommercePO.selecionarPaisOrigem.click();
-        if (tipo == 1) {
-            ECommercePO.paiserradoIntegrada.click();
-        } else if(tipo == 2){
-            ECommercePO.confirmaPaisOrigem.click();
-            ECommercePO.estado.click();
-            ECommercePO.acre.click();
+
+        if(tipo != 3 && tipo != 4){ 
+            ECommercePO.selecionarPaisOrigem.click();
+            if (tipo == 1) {
+                ECommercePO.paiserradoIntegrada.click();
+            } else if(tipo == 2){
+                ECommercePO.confirmaPaisOrigem.click();
+                ECommercePO.estado.click();
+                ECommercePO.acre.click();
         }
-
-        ECommercePO.adicionarAoCarrinho.click();
-
-        wait.until(d -> ECommercePO.pegarMensagemErro.isDisplayed());
-        String erro = null;
-        try {
-            erro = ECommercePO.pegarMensagemErro.getText();
-        } catch (Exception e) {
-
         }
-        int verdadeiro = erro.compareTo("Selecione ao menos uma categoria pagante");
+        
+            ECommercePO.adicionarAoCarrinho.click();
+            int verdadeiro = 0;
+            if(tipo != 4){
+            verdadeiro = 1;
+            wait.until(d -> ECommercePO.pegarMensagemErro.isDisplayed());
+            String erro = null;
+            try {
+                erro = ECommercePO.pegarMensagemErro.getText();
+            } catch (Exception e) {
+            }
+            verdadeiro = erro.compareTo("Selecione ao menos uma categoria pagante");
+            }
         if (verdadeiro == 0) {
 
             ECommercePO.adicionarCategoria2.click();
@@ -97,20 +120,22 @@ public class Cataratasbuilder {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            int verdadeiro2 = 0;
+            if(tipo != 3){
+            String erro2 = null;
             ECommercePO.adicionarAoCarrinho.click();
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            String erro2 = null;
             try {
                 erro2 = ECommercePO.pegarMensagemErro.getText();
             } catch (Exception e) {
 
             }
 
-            int verdadeiro2 = 1;
+            verdadeiro2 = 1;
             if (tipo == 1) {
                 wait.until(d -> ECommercePO.pegarMensagemErro.isDisplayed());
                 verdadeiro2 = erro2.compareTo("País: Estados Unidos não é válido");
@@ -120,7 +145,7 @@ public class Cataratasbuilder {
             }else if(tipo == 3){
                 verdadeiro2 = 0;
             }
-
+        }
             if (verdadeiro2 == 0) {
                 try {
                     Thread.sleep(5000);
