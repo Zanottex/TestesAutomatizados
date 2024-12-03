@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Testes Internos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 85%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .test-options,
+        .log-panel {
+            margin-bottom: 30px;
+        }
+
+        .test-card {
+            background-color: #ffffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .test-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .test-card label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .test-card select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            background-color: #ecf0f1;
+            color: #34495e;
+        }
+
+        .test-card select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .log-panel {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .log-panel h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+
+        .log-step p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        .log-step strong {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Testes Internos</h1>
+        </header>
+
+        <div class="test-options">
+            <h2>Escolha uma Opção de Teste</h2>
+
+            <!-- Teste Completo -->
+            <div class="test-card">
+                <h3>Teste Completo</h3>
+                <button id="start-test">Iniciar Teste Completo</button>
+            </div>
+
+            <!-- Testar Rotinas de Clientes -->
+            <div class="test-card">
+                <h3>Testar Rotinas de Clientes</h3>
+                <label for="routine-select">Selecione a rotina:</label>
+                <select id="routine-select">
+                    <option value="login">Rotina de Login</option>
+                    <option value="cadastro">Rotina de Cadastro</option>
+                    <option value="compra">Rotina de Compra</option>
+                </select>
+
+                <label for="step-select">Selecione a etapa:</label>
+                <select id="step-select">
+                    <option value="1">Etapa 1</option>
+                    <option value="2">Etapa 2</option>
+                    <option value="3">Etapa 3</option>
+                </select>
+            </div>
+
+            <!-- Testes Isolados de Componentes -->
+            <div class="test-card">
+                <h3>Testes Isolados de Componentes</h3>
+                <label for="component-select">Selecione os componentes:</label>
+                <select id="component-select" multiple>
+                    <option value="componente1">Componente 1</option>
+                    <option value="componente2">Componente 2</option>
+                    <option value="componente3">Componente 3</option>
+                </select>
+
+                <label for="client-select">Selecione os clientes:</label>
+                <select id="client-select" multiple>
+                    <option value="cliente1">Cliente 1</option>
+                    <option value="cliente2">Cliente 2</option>
+                    <option value="cliente3">Cliente 3</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Registro de Log -->
+        <div class="log-panel">
+            <h2>Registro de Log</h2>
+            <div class="log-step">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repudiandae nobis iusto dicta omnis
+                    voluptatum quis doloremque? Similique, commodi labore unde numquam, delectus enim fugit id libero
+                    voluptate vitae perferendis?</p>
+            </div>
+            <button id="download-log">Baixar Logs</button>
+        </div>
+    </div>
+
+    <script>
+        // Adicionar ações para os botões, se necessário
+        document.getElementById("start-test").addEventListener("click", function () {
+            alert("Teste completo iniciado!");
+        });
+        document.getElementById("download-log").addEventListener("click", function () {
+            alert("Baixando logs...");
+        });
+    </script>
+</body>
+
+</html>
