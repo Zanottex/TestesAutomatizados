@@ -8,7 +8,7 @@ public class geradores {
 
     // Gerador de Nome
     public static String geradorNome() {
-        String[] nomes = {"Ana", "João", "Carlos", "Maria", "Pedro", "Fernanda", "Lucas", "Juliana"};
+        String[] nomes = {"Ana", "João", "Carlos", "Maria", "Pedro", "Fernanda", "Lucas", "Juliana", "Tiny"};
         String[] sobrenomes = {"Silva", "Santos", "Oliveira", "Pereira", "Lima", "Gomes", "Almeida", "Costa"};
 
         StringBuilder nomeCompleto = new StringBuilder();
@@ -124,3 +124,37 @@ public class geradores {
         return String.format("%05d-%03d", cep / 1000, cep % 1000);
     }
 }
+
+    // Gerador de Número de Cartão
+    public static String geradorNumeroCartao() {
+        StringBuilder numeroCartao = new StringBuilder();
+        for (int i = 0; i < 16; i++) { // Cartão com 16 dígitos
+            numeroCartao.append(random.nextInt(10));
+            if (i % 4 == 3 && i < 15) numeroCartao.append(" "); // Formata em blocos de 4
+        }
+        return numeroCartao.toString();
+    }
+
+    // Gerador de Validade do Cartão
+    public static String geradorValidadeCartao() {
+        int mes = random.nextInt(12) + 1; // Mês de 1 a 12
+        int ano = random.nextInt(10) + 2024; // Ano atual até 10 anos no futuro
+        return String.format("%02d/%d", mes, ano);
+    }
+
+    // Gerador de Código de Segurança
+    public static String geradorCodigoSeguranca() {
+        int codigo = random.nextInt(900) + 100; // Código com 3 dígitos (100 a 999)
+        return String.valueOf(codigo);
+    }
+
+    // Gerador de Número de Casa
+    public static String geradorNumeroCasa() {
+        return String.valueOf(random.nextInt(9999) + 1); // Número de 1 a 9999
+    }
+
+    // Gerador de Complemento
+    public static String geradorComplemento() {
+        String[] complementos = {"Apto 101", "Bloco B", "Casa 2", "Térreo", "Cobertura", "Fundos", "Esquina", "Sala 302"};
+        return complementos[random.nextInt(complementos.length)];
+    }
