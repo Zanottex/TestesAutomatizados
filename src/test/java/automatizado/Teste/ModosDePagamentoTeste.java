@@ -2,7 +2,7 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.ModosDePagamentoBuilder;
+import automatizado.Builder.CARD.ModosDePagamentoBuilder;
 import automatizado.Page.ModosDePagamentoPO;
 
 

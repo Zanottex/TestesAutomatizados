@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.CARD;
 
 import static org.junit.Assert.assertEquals;
 

@@ -2,7 +2,7 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.CardEcommerceBuilder;
+import automatizado.Builder.CARD.CardEcommerceBuilder;
 import automatizado.Page.CardEcommercePO;
 
 

@@ -2,7 +2,7 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.PerfilDeVendaBuilder;
+import automatizado.Builder.CARD.PerfilDeVendaBuilder;
 import automatizado.Page.PerfilDeVendaPO;
 
 public class PerfilDeVenda extends BaseTeste{

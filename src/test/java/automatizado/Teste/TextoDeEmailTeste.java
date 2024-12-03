@@ -2,7 +2,7 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.TextoDeEmailBuilder;
+import automatizado.Builder.CARD.TextoDeEmailBuilder;
 import automatizado.Page.TextoDeEmailPO;
 
 public class TextoDeEmailTeste extends BaseTeste{

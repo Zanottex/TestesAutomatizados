@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import automatizado.Builder.CriaçãoDeBilhetesBuilder;
+import automatizado.Builder.CARD.CriaçãoDeBilhetesBuilder;
 import automatizado.Page.BilhetesPO;
 
 

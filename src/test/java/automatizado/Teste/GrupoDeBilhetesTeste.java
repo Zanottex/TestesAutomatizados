@@ -2,7 +2,7 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.GrupoDeBilhetesBuilder;
+import automatizado.Builder.CARD.GrupoDeBilhetesBuilder;
 import automatizado.Page.GrupoDeBilhetesPO;
 
 public class GrupoDeBilhetesTeste extends BaseTeste{

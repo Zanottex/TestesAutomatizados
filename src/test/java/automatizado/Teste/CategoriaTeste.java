@@ -2,7 +2,7 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.CategoriaBuilder;
+import automatizado.Builder.CARD.CategoriaBuilder;
 import automatizado.Page.CategoriaPO;
 
 

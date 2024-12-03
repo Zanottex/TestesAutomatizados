@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.CARD;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;

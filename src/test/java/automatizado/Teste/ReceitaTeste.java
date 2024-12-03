@@ -2,7 +2,7 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.ReceitaBuilder;
+import automatizado.Builder.CARD.ReceitaBuilder;
 import automatizado.Page.ReceitaPO;
 
 public class ReceitaTeste extends BaseTeste{

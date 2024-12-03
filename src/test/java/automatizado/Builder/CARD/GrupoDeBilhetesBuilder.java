@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.CARD;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;

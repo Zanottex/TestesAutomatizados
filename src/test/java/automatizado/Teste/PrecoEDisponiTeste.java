@@ -2,7 +2,7 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.PrecoEDisponiBuilder;
+import automatizado.Builder.CARD.PrecoEDisponiBuilder;
 import automatizado.Page.PrecoEDisponiPO;
 
 public class PrecoEDisponiTeste extends BaseTeste{

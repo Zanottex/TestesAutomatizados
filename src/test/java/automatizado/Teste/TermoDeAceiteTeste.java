@@ -2,7 +2,7 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.TermoDeAceiteBuilder;
+import automatizado.Builder.CARD.TermoDeAceiteBuilder;
 import automatizado.Page.TermoDeAceitePO;
 
 public class TermoDeAceiteTeste extends BaseTeste{
