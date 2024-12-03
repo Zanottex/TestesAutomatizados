@@ -22,7 +22,7 @@ public class Cataratasbuilder {
     private String codigo_segurança = "123";
     private String CEP = "85509432";
     private String Numero_Casa = "1050";
-    private String cpf = "09285844960";
+    private String CPF = "09285844960";
 
     public void Brasileiro_Mercosul(WebDriver driver, Boolean estrangeiro) {
         Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
