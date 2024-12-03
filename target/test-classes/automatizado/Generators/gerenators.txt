@@ -1,2 +1,43 @@
 Ao tulizar os geradores, utilize o padrão de nomes devariaves e functions
-(Ajuste de repositório e início de padronização adicionados)
+(Ajuste de repositório e início de padronização adicionados).
+
+
+Como usar o gerador de dados:
+
+1. importe a bivliote interna: automatizado.Generators.Geradores
+
+2. declare a class com todos os elemtos como string para nao haver erros:
+
+3. public static void main(String[] args) {
+
+4. cada gerador é uma function publica, use dentro do argumento como uma função isolada dentro da class:
+
+    System.out.println("Nome: " + Geradores.geradorNome());
+
+Exemplo de codigo:
+
+package automatizado;
+
+import automatizado.Generators.Geradores;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Nome: " + Geradores.geradorNome());
+        System.out.println("CPF: " + Geradores.geradorCPF());
+        System.out.println("CNPJ: " + Geradores.geradorCNPJ());
+        System.out.println("Passaporte: " + Geradores.geradorPassaporte());
+        System.out.println("Data de Nascimento: " + Geradores.geradorDataNascimento());
+        System.out.println("Telefone: " + Geradores.geradorTelefone());
+        System.out.println("CEP: " + Geradores.geradorCEP());
+    }
+}
+
+Exemplo de tetorno do print:
+
+Nome: João Silva Pereira Costa
+CPF: 123.456.789-09
+CNPJ: 12.345.678/0001-95
+Passaporte: AB123456
+Data de Nascimento: 15/07/1985
+Telefone: +55 (21) 987654321
+CEP: 12345-678
