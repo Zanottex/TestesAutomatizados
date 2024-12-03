@@ -8,7 +8,7 @@ public class geradores {
 
     // Gerador de Nome
     public static String geradorNome() {
-        String[] nomes = {"Ana", "João", "Carlos", "Maria", "Pedro", "Fernanda", "Lucas", "Juliana", "Tiny"};
+        String[] nomes = {"Ana", "João", "Carlos", "Maria", "Pedro", "Fernanda", "Lucas", "Juliana"};
         String[] sobrenomes = {"Silva", "Santos", "Oliveira", "Pereira", "Lima", "Gomes", "Almeida", "Costa"};
 
         StringBuilder nomeCompleto = new StringBuilder();
@@ -123,9 +123,8 @@ public class geradores {
         int cep = random.nextInt(90000000) + 10000000; // Gera um CEP válido (8 dígitos)
         return String.format("%05d-%03d", cep / 1000, cep % 1000);
     }
-}
 
-    // Gerador de Número de Cartão
+        // Gerador de Número de Cartão
     public static String geradorNumeroCartao() {
         StringBuilder numeroCartao = new StringBuilder();
         for (int i = 0; i < 16; i++) { // Cartão com 16 dígitos
@@ -158,3 +157,4 @@ public class geradores {
         String[] complementos = {"Apto 101", "Bloco B", "Casa 2", "Térreo", "Cobertura", "Fundos", "Esquina", "Sala 302"};
         return complementos[random.nextInt(complementos.length)];
     }
+}
