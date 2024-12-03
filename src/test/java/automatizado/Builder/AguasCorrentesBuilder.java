@@ -56,6 +56,9 @@ public class AguasCorrentesBuilder {
          ECommercePO.PaisDeOrigemPopUP.click();
          ECommercePO.BrasilPopUp.click();
 
+         ECommercePO.CEP.click();
+         ECommercePO.CEP.sendKeys(CEP);
+
          ECommercePO.EstadoPopUp.click();
          wait.until(d -> ECommercePO.AcrePopUp.isDisplayed());
          ECommercePO.AcrePopUp.click();
