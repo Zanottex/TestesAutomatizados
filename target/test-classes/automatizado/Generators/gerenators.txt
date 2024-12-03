@@ -1,2 +1,5 @@
+<<<<<<< HEAD
 Ao tulizar os geradores, utilize o padrão de nomes devariaves e functions
-(Ajuste de repositório e início de padronização adicionados)
+=======
+Ao tulizar os geradores, utilize o padrão de nomes devariaves e functions
+>>>>>>> 76077d7 (Ajuste de repositório e início de padronização adicionados)

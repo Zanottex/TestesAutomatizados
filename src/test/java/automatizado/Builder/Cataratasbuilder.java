@@ -24,15 +24,18 @@ public class Cataratasbuilder {
     private String Numero_Casa = "1050";
     private String cpf = "09285844960";
 
-    public void Brasileiro_Mercosul(WebDriver driver, Boolean estrangeiro) {
+    public void Ingresso(WebDriver driver, int tipo) {
         Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
         wait.until(d -> ECommercePO.barraDePesquisa.isDisplayed());
         ECommercePO.aceitarcookies.click();
-        if (!estrangeiro) {
+        if (tipo == 1) {
             ECommercePO.barraDePesquisa.sendKeys("Ingresso Brasileiro/Mercosul");
-        } else {
+        } else if(tipo == 2){
             ECommercePO.barraDePesquisa.sendKeys("Ingresso Estrangeiro");
+        }else if(tipo == 3){
+            ECommercePO.barraDePesquisa.sendKeys("Ingresso Experiências");
         }
+        wait.until(d -> ECommercePO.bilhete_a_venda_grupo1.isDisplayed());
         ECommercePO.bilhete_a_venda_grupo1.click();
         wait.until(d -> ECommercePO.ProximoMes.isDisplayed());
         ECommercePO.ProximoMes.click();
@@ -68,9 +71,9 @@ public class Cataratasbuilder {
         wait.until(d -> ECommercePO.adicionarCategoria.isDisplayed());
         ECommercePO.adicionarCategoria.click();
         ECommercePO.selecionarPaisOrigem.click();
-        if (!estrangeiro) {
+        if (tipo == 1) {
             ECommercePO.paiserrado.click();
-        } else {
+        } else if(tipo == 2){
             ECommercePO.confirmaPaisOrigem.click();
             ECommercePO.estado.click();
             ECommercePO.acre.click();
@@ -108,12 +111,14 @@ public class Cataratasbuilder {
             }
 
             int verdadeiro2 = 1;
-            if (estrangeiro == true) {
-                wait.until(d -> ECommercePO.pegarMensagemErro.isDisplayed());
-                verdadeiro2 = erro2.compareTo("País: Brasil não é válido");
-            } else {
+            if (tipo == 1) {
                 wait.until(d -> ECommercePO.pegarMensagemErro.isDisplayed());
                 verdadeiro2 = erro2.compareTo("País: Estados Unidos não é válido");
+            } else if(tipo == 2){
+                wait.until(d -> ECommercePO.pegarMensagemErro.isDisplayed());
+                verdadeiro2 = erro2.compareTo("País: Brasil não é válido");
+            }else if(tipo == 3){
+                verdadeiro2 = 0;
             }
 
             if (verdadeiro2 == 0) {
@@ -122,6 +127,7 @@ public class Cataratasbuilder {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                if(tipo != 3){
                 ECommercePO.selecionarPaisOrigem.click();
 
                 try {
@@ -129,7 +135,7 @@ public class Cataratasbuilder {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                if (!estrangeiro) {
+                if (tipo == 1) {
                     ECommercePO.confirmaPaisOrigem.click();
                     ECommercePO.estado.click();
                     ECommercePO.acre.click();
@@ -137,6 +143,7 @@ public class Cataratasbuilder {
                 } else {
                     ECommercePO.paiserrado.click();
                 }
+            }
                 ECommercePO.adicionarAoCarrinho.click();
                 
                 wait.until(d -> ECommercePO.valorBilhete1.isDisplayed());

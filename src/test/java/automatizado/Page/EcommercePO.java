@@ -92,7 +92,7 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/div/mat-option[1]/span/ngx-mat-select-search/div/div/input")
     public WebElement nomePaisOrigem;
 
-    @FindBy(id = "mat-option-4")
+    @FindBy(id = "mat-option-8")
     public WebElement confirmaPaisOrigem;
 
     @FindBy(id = "mat-option-8")
@@ -104,7 +104,7 @@ public class EcommercePO extends BasePO{
     @FindBy(id = "mat-option-6")
     public WebElement paiserradoIntegrada;
 
-    @FindBy(id = "mat-option-7")
+    @FindBy(id = "mat-option-11")
     public WebElement paiserrado;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]")
