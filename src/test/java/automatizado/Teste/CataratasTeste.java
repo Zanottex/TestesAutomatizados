@@ -91,6 +91,49 @@ public class CataratasTeste extends BaseTeste{
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Ingresso(driver, 4 /*TIPO 3 = Expeiências*/);
+        cataratas.Ingresso(driver, 4 /*TIPO 4 = Bike poço preto
+        */);
+    }
+
+    @Test
+    public void TC005_Ingresso_2_dias(){
+        String aberto;
+        try {
+            aberto = driver.manage().window().getSize().toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if(aberto == null){
+        iniciar(URL_Ecommerce);
+        }
+        else{
+        RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePO = new EcommercePO(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+
+        cataratas.Ingresso(driver, 5 /*TIPO 5 = Ingresso 2 dias*/);
+    }
+
+    @Test
+    public void TC006_Ingresso_3_dias(){
+        String aberto;
+        try {
+            aberto = driver.manage().window().getSize().toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if(aberto == null){
+        iniciar(URL_Ecommerce);
+        }
+        else{
+        RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePO = new EcommercePO(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+
+        cataratas.Ingresso(driver, 5 /*TIPO 5 = Ingresso 2 dias*/);
     }
 }
