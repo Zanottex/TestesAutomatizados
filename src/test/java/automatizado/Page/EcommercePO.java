@@ -95,13 +95,13 @@ public class EcommercePO extends BasePO{
     @FindBy(id = "mat-option-5")
     public WebElement confirmaPaisOrigem;
 
-    @FindBy(id = "mat-option-5")
+    @FindBy(id = "mat-option-7")
     public WebElement confirmaPaisOrigemIntegrada;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/div/div[2]/div[1]/span[1]/b")
     public WebElement Nomecategoria;
 
-    @FindBy(id = "mat-option-8")
+    @FindBy(id = "mat-option-10")
     public WebElement paiserradoIntegrada;
 
     @FindBy(id = "mat-option-11")
@@ -200,10 +200,10 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-credenciado/div/button[2]")
     public WebElement ConfirmarCredenciado;
 
-    @FindBy(xpath = "/html/body/div[3]/div[2]/div/mat-bottom-sheet-container/app-minha-conta/div/confirm-password/mat-card/mat-card-content/mat-form-field/div[1]/div/div[2]/input]")
+    @FindBy(id = "mat-input-8")
     public WebElement EscreverConfirmarSenha;
 
-    @FindBy(xpath = "/html/body/div[3]/div[2]/div/mat-bottom-sheet-container/app-minha-conta/div/confirm-password/mat-card/mat-card-actions/button")
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-bottom-sheet-container/app-minha-conta/div/confirm-password/mat-card/mat-card-actions/button")
     public WebElement botaoConfirmarSenha;
 
     //@FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-options-list/div/div/button")
