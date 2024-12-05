@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Testes Internos    </title>
+    <title>Sistema de Testes Internos</title>
     <style>
         * {
             margin: 0;
@@ -172,19 +172,30 @@
         <!-- Registro de Log -->
         <div class="log-panel">
             <h2>Registro de Log</h2>
-            <div class="log-step">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repudiandae nobis iusto dicta omnis
-                    voluptatum quis doloremque? Similique, commodi labore unde numquam, delectus enim fugit id libero
-                    voluptate vitae perferendis?</p>
+            <div class="log-step" id="log-container">
+                <!-- Logs serão adicionados aqui -->
             </div>
             <button id="download-log">Baixar Logs</button>
         </div>
     </div>
 
     <script>
+        // Função para adicionar logs dinamicamente
+        function addLog(message) {
+            const logContainer = document.getElementById("log-container");
+            const logMessage = document.createElement("p");
+            logMessage.textContent = message;
+            logContainer.appendChild(logMessage);
+        }
+
+        // Exemplo de logs sendo adicionados
+        addLog("Teste completo iniciado!");
+        addLog("Rotina de Login executada.");
+        addLog("Etapa 1 concluída.");
+
         // Adicionar ações para os botões, se necessário
         document.getElementById("start-test").addEventListener("click", function () {
-            alert("Teste completo iniciado!");
+            addLog("Teste completo iniciado!");
         });
         document.getElementById("download-log").addEventListener("click", function () {
             alert("Baixando logs...");
