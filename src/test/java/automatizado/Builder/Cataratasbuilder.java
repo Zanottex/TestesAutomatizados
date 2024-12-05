@@ -83,23 +83,59 @@ public class Cataratasbuilder {
         int i = 0;
         while (i != dias) {
 
-            if (dias == 0) {
+            if (i == 0) {
                 wait
                         .until(d -> ECommercePO.ProximoMes
                                 .isDisplayed());
                 ECommercePO.ProximoMes
                         .click();
-            } else if (dias == 1) {
+                wait
+                        .until(d -> ECommercePO.dia
+                                .isEnabled());
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
+                ECommercePO.dia
+                        .click();
+            } else if (i == 1) {
                 wait
                         .until(d -> ECommercePO.ProximoMes2Receitas
                                 .isDisplayed());
                 ECommercePO.ProximoMes2Receitas
                         .click();
-            } else if (dias == 2) {
+                wait
+                        .until(d -> ECommercePO.dia2Receitas
+                                .isEnabled());
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
+                ECommercePO.dia2Receitas
+                        .click();
+            } else if (i == 2) {
                 wait
                         .until(d -> ECommercePO.ProximoMes3Receitas
                                 .isDisplayed());
                 ECommercePO.ProximoMes3Receitas
+                        .click();
+                wait
+                        .until(d -> ECommercePO.dia3Receitas
+                                .isEnabled());
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
+                ECommercePO.dia3Receitas
                         .click();
             }
             try {
@@ -108,26 +144,6 @@ public class Cataratasbuilder {
             } catch (InterruptedException e) {
                 e
                         .printStackTrace();
-            }
-            if (dias == 0) {
-                wait
-                        .until(d -> ECommercePO.dia
-                                .isEnabled());
-                ECommercePO.dia
-                        .click();
-
-            } else if (dias == 1) {
-                wait
-                        .until(d -> ECommercePO.dia2Receitas
-                                .isEnabled());
-                ECommercePO.dia2Receitas
-                        .click();
-            } else if (dias == 2) {
-                wait
-                        .until(d -> ECommercePO.dia3Receitas
-                                .isEnabled());
-                ECommercePO.dia3Receitas
-                        .click();
             }
 
             if (tipo != 3 && tipo != 4 && tipo != 5 && tipo != 6) {
@@ -148,7 +164,7 @@ public class Cataratasbuilder {
                         .printStackTrace();
             }
 
-            if (dias == 0) {
+            if (i == 0) {
                 wait
                         .until(d -> ECommercePO.horario
                                 .isDisplayed());
@@ -156,15 +172,40 @@ public class Cataratasbuilder {
                         .click();
                 ECommercePO.confirmarHorario4opcoes
                         .click();
-            } else if (dias == 1) {
+                try {
+                    Thread
+                            .sleep(1500);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
+                ECommercePO.proximo
+                        .click();
+            } else if (i == 1) {
                 wait
                         .until(d -> ECommercePO.horario2Receitas
                                 .isDisplayed());
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
                 ECommercePO.horario2Receitas
                         .click();
                 ECommercePO.confirmarHorario4opcoes
                         .click();
-            } else if (dias == 2) {
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
+                ECommercePO.proximo2Receitas
+                        .click();
+            } else if (i == 2) {
                 wait
                         .until(d -> ECommercePO.horario3Receitas
                                 .isDisplayed());
@@ -172,35 +213,71 @@ public class Cataratasbuilder {
                         .click();
                 ECommercePO.confirmarHorario4opcoes
                         .click();
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
+                ECommercePO.proximo3Receitas
+                        .click();
             }
-            try {
-                Thread
-                        .sleep(1000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-            ECommercePO.proximo
-                    .click();
-            dias++;
+
+            i++;
         }
 
+        if(tipo == 5){
         wait
+                .until(d -> ECommercePO.adicionarCategoria_2Rec
+                        .isDisplayed());
+        ECommercePO.adicionarCategoria_2Rec
+                .click();
+        }else if(tipo == 6){
+            wait
+            .until(d -> ECommercePO.adicionarCategoria_3Rec
+                    .isDisplayed());
+    ECommercePO.adicionarCategoria_3Rec
+            .click();
+        }else{
+            wait
                 .until(d -> ECommercePO.adicionarCategoria
                         .isDisplayed());
         ECommercePO.adicionarCategoria
                 .click();
+        }
 
-        if (tipo == 1 || tipo == 2) {
-            ECommercePO.selecionarPaisOrigem
-                    .click();
+        if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6) {
+            
             if (tipo == 1) {
+                ECommercePO.selecionarPaisOrigem
+                    .click();
                 ECommercePO.paiserradoIntegrada
                         .click();
             } else if (tipo == 2) {
+                ECommercePO.selecionarPaisOrigem
+                    .click();
                 ECommercePO.confirmaPaisOrigemIntegrada
                         .click();
                 ECommercePO.estado
+                        .click();
+                ECommercePO.acre
+                        .click();
+            }else if(tipo == 5){
+                ECommercePO.selecionarPaisOrigem_2Rec
+                .click();
+                ECommercePO.confirmaPaisOrigemIntegrada
+                        .click();
+                ECommercePO.estado_2Rec
+                        .click();
+                ECommercePO.acre
+                        .click();
+            }else if(tipo == 6){
+                ECommercePO.selecionarPaisOrigem_3Rec
+                .click();
+                ECommercePO.confirmaPaisOrigemIntegrada
+                        .click();
+                ECommercePO.estado_3Rec
                         .click();
                 ECommercePO.acre
                         .click();
