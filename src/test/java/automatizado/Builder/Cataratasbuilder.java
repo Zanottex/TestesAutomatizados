@@ -107,9 +107,6 @@ public class Cataratasbuilder {
                                 .isDisplayed());
                 ECommercePO.ProximoMes2Receitas
                         .click();
-                wait
-                        .until(d -> ECommercePO.dia2Receitas
-                                .isEnabled());
                 try {
                     Thread
                             .sleep(1000);
