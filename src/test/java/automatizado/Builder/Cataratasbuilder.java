@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 public class Cataratasbuilder {
 
     private static final Logger logger = Logger
-    .getLogger(Cataratasbuilder.class
-            .getName());
+            .getLogger(Cataratasbuilder.class
+                    .getName());
 
     private EcommercePO ECommercePO;
     private String email_usuario = "gustavozanotto119@gmail.com";
@@ -41,14 +41,14 @@ public class Cataratasbuilder {
     private String cpf = geradores
             .geradorCPF();
 
-            static {
-                // Configuração do handler de log para exibir logs no console
-                ConsoleHandler consoleHandler = new ConsoleHandler();
-                consoleHandler
-                        .setLevel(Level.ALL);
-                logger
-                        .addHandler(consoleHandler);
-            }
+    static {
+        // Configuração do handler de log para exibir logs no console
+        ConsoleHandler consoleHandler = new ConsoleHandler();
+        consoleHandler
+                .setLevel(Level.ALL);
+        logger
+                .addHandler(consoleHandler);
+    }
 
     public void Ingresso(WebDriver driver, int tipo) {
         Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
@@ -60,7 +60,7 @@ public class Cataratasbuilder {
                         .isDisplayed());
         ECommercePO.aceitarcookies
                 .click();
-                logger
+        logger
                 .info("Aceitando cookies...");
 
         if (tipo == 1) {
@@ -70,7 +70,7 @@ public class Cataratasbuilder {
                     .sendKeys("Ingresso Brasileiro/Mercosul");
         } else if (tipo == 2) {
             logger
-            .info("Iniciando pesquisa: Ingresso Estrangeiro");
+                    .info("Iniciando pesquisa: Ingresso Estrangeiro");
             ECommercePO.barraDePesquisa
                     .sendKeys("Ingresso Estrangeiro");
         } else if (tipo == 3) {
@@ -83,25 +83,25 @@ public class Cataratasbuilder {
                     .info("Iniciando pesquisa: Ingresso Bike poço preto");
             ECommercePO.barraDePesquisa
                     .sendKeys("Ingresso Bike poço preto");
-                } else if (tipo == 5) {
-                    logger
-                            .info("Iniciando pesquisa: Ingresso 2 dias");
-                    ECommercePO.barraDePesquisa
-                            .sendKeys("Ingresso 2 dias");
-                } else if (tipo == 6) {
-                    logger
-                            .info("Iniciando pesquisa: Ingresso 3 dias");
-                    ECommercePO.barraDePesquisa
-                            .sendKeys("Ingresso 3 dias");
-                } else if (tipo == 7) {
-                    logger
-                            .info("Iniciando pesquisa: Serviços Especiais");
-                    ECommercePO.barraDePesquisa
-                            .sendKeys("Serviços Especiais");
-                } else {
-                    logger
-                            .warning("Tipo de pesquisa inválido: " + tipo);
-                }
+        } else if (tipo == 5) {
+            logger
+                    .info("Iniciando pesquisa: Ingresso 2 dias");
+            ECommercePO.barraDePesquisa
+                    .sendKeys("Ingresso 2 dias");
+        } else if (tipo == 6) {
+            logger
+                    .info("Iniciando pesquisa: Ingresso 3 dias");
+            ECommercePO.barraDePesquisa
+                    .sendKeys("Ingresso 3 dias");
+        } else if (tipo == 7) {
+            logger
+                    .info("Iniciando pesquisa: Serviços Especiais");
+            ECommercePO.barraDePesquisa
+                    .sendKeys("Serviços Especiais");
+        } else {
+            logger
+                    .warning("Tipo de pesquisa inválido: " + tipo);
+        }
 
         try {
             Thread
@@ -112,7 +112,7 @@ public class Cataratasbuilder {
         }
         ECommercePO.bilhete_a_venda_grupo1
                 .click();
-                logger
+        logger
                 .info("Selecionando bilhete...");
 
         int dias = 0;
@@ -136,9 +136,7 @@ public class Cataratasbuilder {
                                 .isDisplayed());
                 ECommercePO.ProximoMes
                         .click();
-                wait
-                        .until(d -> ECommercePO.dia
-                                .isEnabled());
+
                 try {
                     Thread
                             .sleep(1000);
@@ -192,7 +190,7 @@ public class Cataratasbuilder {
 
             if (tipo != 3 && tipo != 4 && tipo != 5 && tipo != 6) {
                 logger
-                .info("Selecionando local de embarque...");
+                        .info("Selecionando local de embarque...");
                 wait
                         .until(d -> ECommercePO.localEmbarque
                                 .isDisplayed());
@@ -274,7 +272,7 @@ public class Cataratasbuilder {
 
             i++;
         }
-logger
+        logger
                 .info("Adicionando categoria ao carrinho...");
         if (tipo == 5) {
             wait
@@ -356,15 +354,23 @@ logger
             }
             verdadeiro = erro
                     .compareTo("Selecione ao menos uma categoria pagante");
-                    logger
+            logger
                     .info("Trocando categoria...");
         }
 
         if (verdadeiro == 0) {
             int verdadeiro2 = 0;
             if (tipo != 4) { // SE FOR DIFERENTE DE 4 ENTRAR
-                ECommercePO.adicionarCategoria2
-                        .click();
+                if (tipo == 5) {
+                    ECommercePO.adicionarCategoria2_2Rec
+                            .click();
+                } else if (tipo == 6) {
+                    ECommercePO.adicionarCategoria2_3Rec
+                            .click();
+                } else {
+                    ECommercePO.adicionarCategoria2
+                            .click();
+                }
                 try {
                     Thread
                             .sleep(1000);
@@ -441,17 +447,57 @@ logger
                         ECommercePO.paiserradoIntegrada
                                 .click();
                     }
-                }else if(tipo == 5){
-                    ECommercePO.selecionarPaisOrigem_2Rec
-                    .click();
-                }else if(tipo == 6){
-                    ECommercePO.selecionarPaisOrigem_3Rec
-                    .click();
                 }
 
-                ECommercePO.adicionarAoCarrinho
-                        .click();
+                if (tipo == 5) {
+                    ECommercePO.adicionarAoCarrinho_2Rec
+                            .click();
+                } else if (tipo == 6) {
+                    ECommercePO.adicionarAoCarrinho_3Rec
+                            .click();
+                } else {
+                    ECommercePO.adicionarAoCarrinho
+                            .click();
+                }
 
+                if (tipo == 5 || tipo == 6) {
+                    wait
+                            .until(d -> ECommercePO.nomeUsuario
+                                    .isDisplayed());
+                    ECommercePO.nomeUsuario
+                            .sendKeys(Nome_Cartao);
+                    ECommercePO.tipodocumento
+                            .click();
+                    wait
+                            .until(d -> ECommercePO.outros
+                                    .isDisplayed());
+                    ECommercePO.outros
+                            .click();
+                    ECommercePO.documento
+                            .sendKeys(cpf);
+
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+
+                    ECommercePO.nomeUsuario2
+                            .sendKeys("Cleitin do grau");
+                    ECommercePO.tipodocumento2
+                            .click();
+                    wait
+                            .until(d -> ECommercePO.outros
+                                    .isDisplayed());
+                    ECommercePO.outros
+                            .click();
+                    ECommercePO.documento2
+                            .sendKeys("123456789");
+                    ECommercePO.confirmardadosusuario
+                            .click();
+                }
                 wait
                         .until(d -> ECommercePO.valorBilhete1
                                 .isDisplayed());
@@ -484,7 +530,7 @@ logger
                             .sendKeys(senha_usuario);
                     ECommercePO.Logar
                             .click();
-                            logger
+                    logger
                             .info("Fazendo Login...");
 
                     wait
@@ -492,7 +538,7 @@ logger
                                     .isDisplayed());
                     ECommercePO.finalizarPedido
                             .click();
-                            logger
+                    logger
                             .info("Finalizando pedido...");
                     // wait
                     // .until(d -> ECommercePO.EscreverConfirmarSenha
@@ -517,7 +563,7 @@ logger
 
                     ECommercePO.codigo_segurança
                             .sendKeys(codigo_segurança);
-                            logger
+                    logger
                             .info("Preenchendo informações de pagamento: " + "Nome Impresso no Cartão: " + Nome_Cartao
                                     + "Numero do cartão: " + Numero_Cartao + "Mes de validade: " + mes_validade
                                     + "Codifo de Segurança " + codigo_segurança + "...");
@@ -527,7 +573,12 @@ logger
 
                     ECommercePO.Numero_Casa
                             .sendKeys(Numero_Casa);
-                            logger
+
+                    ECommercePO.bandeiracartao
+                            .click();
+                    ECommercePO.visa
+                            .click();
+                    logger
                             .info("Preenchendo endereço: CEP: " + CEP + "Numero da Casa: " + Numero_Casa + "...");
                     try {
                         Thread
@@ -548,27 +599,27 @@ logger
                     assertEquals(
                             "Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
                             mensagem);
-                            logger
+                    logger
                             .info("Pedido finalizado com sucesso!");
                 } else {
                     JavascriptExecutor js = (JavascriptExecutor) driver;
                     js
                             .executeScript("alert('ERRO: VALOR DO BILHETE INVÁLIDO');");
-                            logger
+                    logger
                             .severe("ERRO: VALOR DO BILHETE INVÁLIDO.");
                 }
             } else {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js
                         .executeScript("alert('ERRO: PAIS INVALIDO');");
-                        logger
+                logger
                         .severe("ERRO: PAÍS INVALIDO.");
             }
         } else {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js
                     .executeScript("alert('ERRO: CATEGORIA PAGANTE NÃO SELECIONADA');");
-                    logger
+            logger
                     .severe("ERRO: CATEGORIA PAGANTE NÃO SELECIONADA.");
         }
 

@@ -352,6 +352,12 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/div[2]/div[3]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-actions/div/button[2]")
     public WebElement confirmardadosdoUsuarioPopUp;
 
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/page-pagamento/div/div[4]/div/div/div[2]/mat-form-field[3]/div[1]/div/div[2]")
+    public WebElement bandeiracartao;
+
+    @FindBy(id = "mat-option-535")
+    public WebElement visa;
+
     public EcommercePO(WebDriver driver) {
         super(driver);
     }
