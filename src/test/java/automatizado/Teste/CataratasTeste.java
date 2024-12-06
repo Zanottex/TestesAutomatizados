@@ -134,6 +134,27 @@ public class CataratasTeste extends BaseTeste{
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Ingresso(driver, 5 /*TIPO 5 = Ingresso 2 dias*/);
+        cataratas.Ingresso(driver, 6 /*TIPO 6 = Ingresso 3 dias*/);
+    }
+
+    @Test
+    public void TC007_Ingresso_guarda_volumes(){
+        String aberto;
+        try {
+            aberto = driver.manage().window().getSize().toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if(aberto == null){
+        iniciar(URL_Ecommerce);
+        }
+        else{
+        RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePO = new EcommercePO(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+
+        cataratas.Ingresso(driver, 7 /*TIPO 7 = Guarda-Volumes*/);
     }
 }

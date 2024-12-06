@@ -137,13 +137,13 @@ public class EcommercePO extends BasePO{
     @FindBy(id = "mat-option-5")
     public WebElement confirmaPaisOrigem;
 
-    @FindBy(id = "mat-option-7")
+    @FindBy(id = "mat-option-8")
     public WebElement confirmaPaisOrigemIntegrada;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/div/div[2]/div[1]/span[1]/b")
     public WebElement Nomecategoria;
 
-    @FindBy(id = "mat-option-10")
+    @FindBy(id = "mat-option-11")
     public WebElement paiserradoIntegrada;
 
     @FindBy(id = "mat-option-11")
@@ -164,7 +164,7 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/div[3]/escolha-sessao/div/section/div[2]/mat-icon")
     public WebElement esperaSessao;
 
-    @FindBy(id = "mat-option-252")
+    @FindBy(id = "mat-option-251")
     public WebElement acre;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/section/div/div[2]/div/div/span")
@@ -355,7 +355,7 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/page-pagamento/div/div[4]/div/div/div[2]/mat-form-field[3]/div[1]/div/div[2]")
     public WebElement bandeiracartao;
 
-    @FindBy(id = "mat-option-535")
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div/div/mat-option[1]")
     public WebElement visa;
 
     public EcommercePO(WebDriver driver) {
