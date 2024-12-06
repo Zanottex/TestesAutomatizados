@@ -5,116 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Testes Internos</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            width: 85%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            color: #3498db;
-            margin-bottom: 10px;
-        }
-
-        .test-options,
-        .log-panel {
-            margin-bottom: 30px;
-        }
-
-        .test-card {
-            background-color: #ffffff;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .test-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            color: #34495e;
-        }
-
-        .test-card label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
-            color: #2c3e50;
-        }
-
-        .test-card select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            background-color: #ecf0f1;
-            color: #34495e;
-        }
-
-        .test-card select:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-
-        button {
-            width: 100%;
-            background-color: #3498db;
-            color: white;
-            padding: 12px;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-
-        .log-panel {
-            background-color: #ffffff;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .log-panel h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #34495e;
-        }
-
-        .log-step p {
-            margin-bottom: 15px;
-            font-size: 1rem;
-            color: #7f8c8d;
-        }
-
-        .log-step strong {
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 <body>
@@ -170,26 +60,57 @@
         </div>
 
         <!-- Registro de Log -->
-        <div class="log-panel">
+        <div>
             <h2>Registro de Log</h2>
-            <div class="log-step">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi repudiandae nobis iusto dicta omnis
-                    voluptatum quis doloremque? Similique, commodi labore unde numquam, delectus enim fugit id libero
-                    voluptate vitae perferendis?</p>
-            </div>
+            <div id="log-panel" class="log-panel"></div>
             <button id="download-log">Baixar Logs</button>
+        </div>
         </div>
     </div>
 
     <script>
-        // Adicionar ações para os botões, se necessário
-        document.getElementById("start-test").addEventListener("click", function () {
-            alert("Teste completo iniciado!");
-        });
-        document.getElementById("download-log").addEventListener("click", function () {
-            alert("Baixando logs...");
+        const logPanel = document.getElementById('log-panel');
+
+        // Simular recepção de logs via WebSocket ou polling
+        function startLogStream() {
+            // Exemplo de WebSocket
+            const socket = new WebSocket('ws://localhost:8080/logs'); // Substituir pela URL do WebSocket
+            socket.onmessage = function (event) {
+                displayLog(event.data);
+            };
+
+            socket.onerror = function () {
+                displayLog('[ERRO] Falha na conexão com o WebSocket.');
+            };
+
+            socket.onclose = function () {
+                displayLog('[INFO] Conexão com o WebSocket encerrada.');
+            };
+        }
+
+        function displayLog(message) {
+            const logMessage = document.createElement('div');
+            logMessage.className = 'log-message';
+            logMessage.textContent = message;
+            logPanel.appendChild(logMessage);
+
+            // Scroll automático para a última mensagem
+            logPanel.scrollTop = logPanel.scrollHeight;
+        }
+
+        // Iniciar o stream de logs ao carregar a página
+        window.onload = startLogStream;
+
+        // Ação do botão de download de logs
+        document.getElementById('download-log').addEventListener('click', function () {
+            const blob = new Blob([logPanel.textContent], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'logs.txt';
+            link.click();
         });
     </script>
+    
 </body>
 
 </html>
