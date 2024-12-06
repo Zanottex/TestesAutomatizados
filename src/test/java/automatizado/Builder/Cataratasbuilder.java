@@ -23,6 +23,26 @@ public class Cataratasbuilder {
             .getLogger(Cataratasbuilder.class
                     .getName());
 
+                    static {
+                        // Configura o logger para usar o ConsoleHandler e transmitir logs.
+                        ConsoleHandler consoleHandler = new ConsoleHandler();
+                        consoleHandler.setLevel(Level.ALL);
+                        logger.addHandler(consoleHandler);
+                    }
+                
+                    public void executeTest() {
+                        logger.info("Iniciando teste completo...");
+                        LogWebSocket.sendLog("Iniciando teste completo...");
+                
+                        // Simulação de outras mensagens de log
+                        logger.info("Executando rotina de login...");
+                        LogWebSocket.sendLog("Executando rotina de login...");
+                
+                        logger.info("Teste concluído.");
+                        LogWebSocket.sendLog("Teste concluído.");
+                    }
+                }
+
     private EcommercePO ECommercePO;
     private String email_usuario = "gustavozanotto119@gmail.com";
     private String senha_usuario = "1";
@@ -371,7 +391,7 @@ public class Cataratasbuilder {
             verdadeiro = erro
                     .compareTo("Selecione ao menos uma categoria pagante");
             logger
-                    .info("Trocando categoria...");
+                    .info("Trocando Selecionando um pais válido");
         }
 
         if (verdadeiro == 0) {
@@ -531,7 +551,7 @@ public class Cataratasbuilder {
 
                 if (valor1 == 10.00) {
                     logger
-                            .info("Valor do bilhete válido. Finalizando pedido...");
+                            .info("Finalizando pedido...");
                     wait
                             .until(d -> ECommercePO.registrarEfinalizarPedido
                                     .isDisplayed());
@@ -581,9 +601,15 @@ public class Cataratasbuilder {
                     ECommercePO.codigo_segurança
                             .sendKeys(codigo_segurança);
                     logger
+<<<<<<< HEAD
                             .info("Preenchendo informações de pagamento: " + "Nome Impresso no Cartão: " + Nome_Cartao
                                     + "Numero do cartão: " + Numero_Cartao + "Mes de validade: " + mes_validade
                                     + "Codigo de Segurança " + codigo_segurança + "...");
+=======
+                            .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: " + Nome_Cartao
+                                    + ", Numero do cartão: " + Numero_Cartao + ", Mes de validade: " + mes_validade
+                                    + ", Codifo de Segurança " + codigo_segurança + "...");
+>>>>>>> cde6591898c8b5293b7870afa3e0fd6f111c3806
 
                     ECommercePO.CEP
                             .sendKeys(CEP);
@@ -603,7 +629,7 @@ public class Cataratasbuilder {
                     ECommercePO.visa
                             .click();
                     logger
-                            .info("Preenchendo endereço: CEP: " + CEP + "Numero da Casa: " + Numero_Casa + "...");
+                            .info("Preenchendo endereço: CEP: " + CEP + ", Numero da Casa: " + Numero_Casa + "...");
                     try {
                         Thread
                                 .sleep(1000);
