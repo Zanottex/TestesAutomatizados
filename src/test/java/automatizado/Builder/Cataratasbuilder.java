@@ -28,8 +28,7 @@ public class Cataratasbuilder {
     private String senha_usuario = "1";
     private String Nome_Cartao = geradores
             .geradorNome();
-    private String Numero_Cartao = geradores
-            .geradorNumeroCartao();
+    private String Numero_Cartao = "4000000000000010";
     private String mes_validade = geradores
             .geradorValidadeCartao();
     private String codigo_segurança = geradores
@@ -95,9 +94,14 @@ public class Cataratasbuilder {
                     .sendKeys("Ingresso 3 dias");
         } else if (tipo == 7) {
             logger
-                    .info("Iniciando pesquisa: Serviços Especiais");
+                    .info("Iniciando pesquisa: Guarda Volumes");
             ECommercePO.barraDePesquisa
-                    .sendKeys("Serviços Especiais");
+                    .sendKeys("Guarda Volumes");
+        } else if (tipo == 8) {
+            logger
+                    .info("Iniciando pesquisa: Bilhete VIP");
+            ECommercePO.barraDePesquisa
+                    .sendKeys("Bilhete VIP");
         } else {
             logger
                     .warning("Tipo de pesquisa inválido: " + tipo);
@@ -144,8 +148,11 @@ public class Cataratasbuilder {
                     e
                             .printStackTrace();
                 }
-                ECommercePO.dia
-                        .click();
+                
+                    ECommercePO.dia
+                            .click();
+
+                
             } else if (i == 1) {
                 wait
                         .until(d -> ECommercePO.ProximoMes2Receitas
@@ -188,7 +195,7 @@ public class Cataratasbuilder {
                         .printStackTrace();
             }
 
-            if (tipo != 3 && tipo != 4 && tipo != 5 && tipo != 6) {
+            if (tipo == 1 || tipo == 2) {
                 logger
                         .info("Selecionando local de embarque...");
                 wait
@@ -207,70 +214,76 @@ public class Cataratasbuilder {
                 e
                         .printStackTrace();
             }
+            if(tipo != 7 && tipo != 8){
+                logger
+                        .info("Selecionando Horario...");
+                if (i == 0) {
+                    wait
+                            .until(d -> ECommercePO.horario
+                                    .isDisplayed());
+                    ECommercePO.horario
+                            .click();
+                    ECommercePO.confirmarHorario4opcoes
+                            .click();
+                    try {
+                        Thread
+                                .sleep(2000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    wait
+                            .until(d -> ECommercePO.proximo
+                                    .isDisplayed());
+                    ECommercePO.proximo
+                            .click();
+                } else if (i == 1) {
+                    wait
+                            .until(d -> ECommercePO.horario2Receitas
+                                    .isDisplayed());
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    ECommercePO.horario2Receitas
+                            .click();
+                    ECommercePO.confirmarHorario4opcoes
+                            .click();
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    ECommercePO.proximo2Receitas
+                            .click();
+                } else if (i == 2) {
+                    wait
+                            .until(d -> ECommercePO.horario3Receitas
+                                    .isDisplayed());
+                    ECommercePO.horario3Receitas
+                            .click();
+                    ECommercePO.confirmarHorario4opcoes
+                            .click();
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    ECommercePO.proximo3Receitas
+                            .click();
+                }
 
-            logger
-                    .info("Selecionando Horario...");
-            if (i == 0) {
-                wait
-                        .until(d -> ECommercePO.horario
-                                .isDisplayed());
-                ECommercePO.horario
-                        .click();
-                ECommercePO.confirmarHorario4opcoes
-                        .click();
-                try {
-                    Thread
-                            .sleep(1500);
-                } catch (InterruptedException e) {
-                    e
-                            .printStackTrace();
-                }
-                ECommercePO.proximo
-                        .click();
-            } else if (i == 1) {
-                wait
-                        .until(d -> ECommercePO.horario2Receitas
-                                .isDisplayed());
-                try {
-                    Thread
-                            .sleep(1000);
-                } catch (InterruptedException e) {
-                    e
-                            .printStackTrace();
-                }
-                ECommercePO.horario2Receitas
-                        .click();
-                ECommercePO.confirmarHorario4opcoes
-                        .click();
-                try {
-                    Thread
-                            .sleep(1000);
-                } catch (InterruptedException e) {
-                    e
-                            .printStackTrace();
-                }
-                ECommercePO.proximo2Receitas
-                        .click();
-            } else if (i == 2) {
-                wait
-                        .until(d -> ECommercePO.horario3Receitas
-                                .isDisplayed());
-                ECommercePO.horario2Receitas
-                        .click();
-                ECommercePO.confirmarHorario4opcoes
-                        .click();
-                try {
-                    Thread
-                            .sleep(1000);
-                } catch (InterruptedException e) {
-                    e
-                            .printStackTrace();
-                }
-                ECommercePO.proximo3Receitas
-                        .click();
-            }
-
+                i++;
+            }else{
             i++;
+            }
         }
         logger
                 .info("Adicionando categoria ao carrinho...");
@@ -294,7 +307,7 @@ public class Cataratasbuilder {
                     .click();
         }
 
-        if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6) {
+        if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6 ) {
             logger
                     .info("Selecionando país de origem...");
 
@@ -334,12 +347,15 @@ public class Cataratasbuilder {
         }
 
         int verdadeiro = 0;
-        if (tipo != 4) { // SE FOR 1,2 OU 3 ELE ENTRA
+        if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR 1,2 OU 3 ELE ENTRA
             if (tipo == 5) {
                 ECommercePO.adicionarAoCarrinho_2Rec
                         .click();
             } else if (tipo == 6) {
                 ECommercePO.adicionarAoCarrinho_3Rec
+                        .click();
+            } else {
+                ECommercePO.adicionarAoCarrinho
                         .click();
             }
             verdadeiro = 1;
@@ -360,7 +376,8 @@ public class Cataratasbuilder {
 
         if (verdadeiro == 0) {
             int verdadeiro2 = 0;
-            if (tipo != 4) { // SE FOR DIFERENTE DE 4 ENTRAR
+            //Adicionar segunda categoria caso tenha
+            if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR DIFERENTE DE 4 ENTRAR
                 if (tipo == 5) {
                     ECommercePO.adicionarCategoria2_2Rec
                             .click();
@@ -379,7 +396,7 @@ public class Cataratasbuilder {
                             .printStackTrace();
                 }
 
-                if (tipo != 3 && tipo != 5 && tipo != 6) {
+                if (tipo == 1 || tipo == 2) {
                     String erro2 = null;
                     ECommercePO.adicionarAoCarrinho
                             .click();
@@ -410,7 +427,7 @@ public class Cataratasbuilder {
                                         .isDisplayed());
                         verdadeiro2 = erro2
                                 .compareTo("País: Brasil não é válido");
-                    } else if (tipo == 3 || tipo == 4 || tipo == 5 || tipo == 6) {
+                    } else{
                         verdadeiro2 = 0;
                     }
                 }
@@ -564,9 +581,15 @@ public class Cataratasbuilder {
                     ECommercePO.codigo_segurança
                             .sendKeys(codigo_segurança);
                     logger
+<<<<<<< HEAD
+                            .info("Preenchendo informações de pagamento: " + "Nome Impresso no Cartão: " + Nome_Cartao
+                                    + "Numero do cartão: " + Numero_Cartao + "Mes de validade: " + mes_validade
+                                    + "Codigo de Segurança " + codigo_segurança + "...");
+=======
                             .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: " + Nome_Cartao
                                     + ", Numero do cartão: " + Numero_Cartao + ", Mes de validade: " + mes_validade
                                     + ", Codifo de Segurança " + codigo_segurança + "...");
+>>>>>>> cde6591898c8b5293b7870afa3e0fd6f111c3806
 
                     ECommercePO.CEP
                             .sendKeys(CEP);
@@ -576,6 +599,13 @@ public class Cataratasbuilder {
 
                     ECommercePO.bandeiracartao
                             .click();
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
                     ECommercePO.visa
                             .click();
                     logger
