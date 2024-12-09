@@ -23,26 +23,6 @@ public class Cataratasbuilder {
             .getLogger(Cataratasbuilder.class
                     .getName());
 
-                    static {
-                        // Configura o logger para usar o ConsoleHandler e transmitir logs.
-                        ConsoleHandler consoleHandler = new ConsoleHandler();
-                        consoleHandler.setLevel(Level.ALL);
-                        logger.addHandler(consoleHandler);
-                    }
-                
-                    public void executeTest() {
-                        logger.info("Iniciando teste completo...");
-                        LogWebSocket.sendLog("Iniciando teste completo...");
-                
-                        // Simulação de outras mensagens de log
-                        logger.info("Executando rotina de login...");
-                        LogWebSocket.sendLog("Executando rotina de login...");
-                
-                        logger.info("Teste concluído.");
-                        LogWebSocket.sendLog("Teste concluído.");
-                    }
-                }
-
     private EcommercePO ECommercePO;
     private String email_usuario = "gustavozanotto119@gmail.com";
     private String senha_usuario = "1";
