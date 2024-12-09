@@ -148,11 +148,10 @@ public class Cataratasbuilder {
                     e
                             .printStackTrace();
                 }
-                
-                    ECommercePO.dia
-                            .click();
 
-                
+                ECommercePO.dia
+                        .click();
+
             } else if (i == 1) {
                 wait
                         .until(d -> ECommercePO.ProximoMes2Receitas
@@ -214,7 +213,7 @@ public class Cataratasbuilder {
                 e
                         .printStackTrace();
             }
-            if(tipo != 7 && tipo != 8){
+            if (tipo != 7 && tipo != 8) {
                 logger
                         .info("Selecionando Horario...");
                 if (i == 0) {
@@ -281,8 +280,8 @@ public class Cataratasbuilder {
                 }
 
                 i++;
-            }else{
-            i++;
+            } else {
+                i++;
             }
         }
         logger
@@ -307,7 +306,7 @@ public class Cataratasbuilder {
                     .click();
         }
 
-        if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6 ) {
+        if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6) {
             logger
                     .info("Selecionando país de origem...");
 
@@ -376,7 +375,7 @@ public class Cataratasbuilder {
 
         if (verdadeiro == 0) {
             int verdadeiro2 = 0;
-            //Adicionar segunda categoria caso tenha
+            // Adicionar segunda categoria caso tenha
             if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR DIFERENTE DE 4 ENTRAR
                 if (tipo == 5) {
                     ECommercePO.adicionarCategoria2_2Rec
@@ -427,7 +426,7 @@ public class Cataratasbuilder {
                                         .isDisplayed());
                         verdadeiro2 = erro2
                                 .compareTo("País: Brasil não é válido");
-                    } else{
+                    } else {
                         verdadeiro2 = 0;
                     }
                 }
@@ -581,16 +580,9 @@ public class Cataratasbuilder {
                     ECommercePO.codigo_segurança
                             .sendKeys(codigo_segurança);
                     logger
-<<<<<<< HEAD
-                            .info("Preenchendo informações de pagamento: " + "Nome Impresso no Cartão: " + Nome_Cartao
-                                    + "Numero do cartão: " + Numero_Cartao + "Mes de validade: " + mes_validade
-                                    + "Codigo de Segurança " + codigo_segurança + "...");
-=======
                             .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: " + Nome_Cartao
                                     + ", Numero do cartão: " + Numero_Cartao + ", Mes de validade: " + mes_validade
                                     + ", Codifo de Segurança " + codigo_segurança + "...");
->>>>>>> cde6591898c8b5293b7870afa3e0fd6f111c3806
-
                     ECommercePO.CEP
                             .sendKeys(CEP);
 
