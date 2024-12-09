@@ -1,7 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>br.com.limber</groupId>
   <artifactId>automatizado</artifactId>
   <packaging>jar</packaging>
@@ -9,27 +10,20 @@
   <name>automatizado</name>
   <url>http://maven.apache.org</url>
 
+  <!-- Configurações do compilador -->
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 
-  <repositories>
-    <!-- Repositório Glassfish para dependência Tyrus -->
-    <repository>
-      <id>glassfish-repo</id>
-      <url>https://maven.java.net/content/repositories/public/</url>
-    </repository>
-  </repositories>
-
+  <!-- Dependências -->
   <dependencies>
     <!-- JUnit para testes -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
 
@@ -56,18 +50,11 @@
       <version>1.0.2</version>
     </dependency>
 
-    <!-- WebSocket - Tyrus -->
+    <!-- Spring Framework (Core e Context) -->
     <dependency>
-       <groupId>org.glassfish.tyrus</groupId>
-       <artifactId>tyrus-standalone-client</artifactId>
-       <version>2.0.1</version>
-    </dependency>
-
-    <dependency>
-       <groupId>javax.websocket</groupId>
-       <artifactId>javax.websocket-api</artifactId>
-       <version>1.1</version> <!-- or the latest version -->
-       <scope>provided</scope>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>5.3.10</version>
     </dependency>
   </dependencies>
 </project>

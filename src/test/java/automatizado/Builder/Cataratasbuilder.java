@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.StringTokenizer;
 
-import org.omg.CORBA.INTERNAL;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;

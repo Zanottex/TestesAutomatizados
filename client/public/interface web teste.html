@@ -6,186 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Testes Internos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Corpo e Layout Principal */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9fafb;
-            color: #333;
-            line-height: 1.6;
-        }
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-
-        /* Cabeçalho */
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            color: #2c3e50;
-            animation: fadeIn 1s ease-in-out;
-            border-bottom: 2px solid #3498db;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        /* Cartões */
-        .test-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .test-card {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            width: 320px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .test-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .test-card h3 {
-            margin-top: 0;
-            color: #2c3e50;
-            font-size: 1.5rem;
-        }
-
-        .test-card button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #3498db;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s;
-        }
-
-        .test-card button:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-        }
-
-        /* Formulários e Checkboxes */
-        select,
-        input[type="checkbox"] {
-            margin-top: 10px;
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .form-check {
-            margin-bottom: 10px;
-        }
-
-        /* Painel de Logs */
-        .log-panel {
-            background: #f7f7f7;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            max-height: 200px;
-            overflow-y: auto;
-            padding: 10px;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-
-        .log-message {
-            padding: 5px;
-            margin-bottom: 5px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        /* Status */
-        .status {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .status-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .status-online {
-            background-color: #2ecc71;
-        }
-
-        .status-offline {
-            background-color: #e74c3c;
-        }
-
-        .status-text {
-            font-weight: bold;
-        }
-
-        /* Animações */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Sistema de Testes Internos</h1>
-        </header>
 
-        <div class="test-options">
-            <!-- Teste Completo -->
-            <div class="test-card">
-                <h3>Configurações de Teste</h3>
-                <div>
-                    <h4>Preencher Dados Automaticamente</h4>
-                    <div class="form-check">
-                        <label>
-                            <input type="checkbox" id="preencherDados_Pagamento" checked>
-                            Pagamento
-                        </label>
-                        <label>
-                            <input type="checkbox" id="preencherDados_Endereco" checked>
-                            Endereço
-                        </label>
-                        <label>
-                            <input type="checkbox" id="preencherDados_Titular" checked>
-                            Titular
-                        </label>
-                        <label>
-                            <input type="checkbox" id="preencherDados_Visitante" checked>
-                            Visitante
-                        </label>
+    <body>
+        <div class="container">
+            <div class="test-options">
+                <div class="test-card">
+                    <h3>Configurações de Teste</h3>
+
+                    <!-- Conteúdo rolável dentro do card -->
+                    <div class="scrollable-content">
+                        <!-- Primeira Seção -->
+                        <h4 class="section-title">Preencher Dados Automaticamente</h4>
+                        <div class="form-check">
+                            <label>
+                                <input type="checkbox" id="preencherDados_Pagamento" checked>
+                                Pagamento
+                            </label>
+                            <label>
+                                <input type="checkbox" id="preencherDados_Endereco" checked>
+                                Endereço
+                            </label>
+                            <label>
+                                <input type="checkbox" id="preencherDados_Titular" checked>
+                                Titular
+                            </label>
+                            <label>
+                                <input type="checkbox" id="preencherDados_Visitante" checked>
+                                Visitante
+                            </label>
+                        </div>
+
+                        <!-- Segunda Seção -->
+                        <h4 class="section-title">Outras Configurações</h4>
+                        <div class="form-check">
+                            <label>
+                                <input type="checkbox" id="opcao_1">
+                                Opção 1
+                            </label>
+                            <label>
+                                <input type="checkbox" id="opcao_2">
+                                Opção 2
+                            </label>
+                            <label>
+                                <input type="checkbox" id="opcao_3">
+                                Opção 3
+                            </label>
+                        </div>
                     </div>
-                </div>
+
+                    <!-- Botão para ações -->
+                    <div class="actions">
+                        <button class="btn">Salvar Configurações</button>
+                    </div>
             </div>
+
 
             <!-- Testar Rotinas -->
             <div class="test-card">
@@ -196,6 +76,7 @@
                 </div>
                 <p>
                     <button id="start-test">Iniciar Teste</button>
+                </p>
                 <div>
                     <label for="step-select">Selecione o Cliente:</label>
                     <select id="step-select">
@@ -208,7 +89,7 @@
                     </select>
                 </div>
 
-                <label for="routine-select">Selecione o Cliente:</label>
+                <label for="routine-select">Selecione os Passos:</label>
                 <select id="routine-select" multiple>
                     <option value="3">Aceitar Cookies</option>
                     <option value="1">Selecionar Ingresso > Selecionar Data (Home Antiga)</option>
@@ -216,8 +97,8 @@
                     <option value="1">Selecionar Local de Embarque (Caso tenha)</option>
                     <option value="2">Selecionar Sessao (Caso tenha)</option>
                     <option value="3">Selecionar Horario</option>
-                    <option value="3">Selecionar Cattegorias (validação padrão)</option>
-                    <option value="3">Selecionar Pais e Estado (validção padrão)</option>
+                    <option value="3">Selecionar Categorias (validação padrão)</option>
+                    <option value="3">Selecionar País e Estado (validação padrão)</option>
                     <option value="3">Adicionar ao Carrinho</option>
                     <option value="3">Fazer Login</option>
                     <option value="3">Cadastrar novo usuário</option>
@@ -237,125 +118,43 @@
                 </div>
                 <p>
                     <button id="start-test">Iniciar Teste</button>
+                </p>
                 <div>
-                    <div>
-                        <label for="step-select">Selecione o Cliente:</label>
-                        <select id="step-select">
-                            <option value="FF">Fundação Florestal</option>
-                            <option value="M3F">Marco das 3 Fronteiras</option>
-                            <option value="Cataratas">Cataratas</option>
-                            <option value="BioaparquedoRio">Bioparque do Rio</option>
-                            <option value="AquaRio">AquaRio</option>
-                            <option value="AguasCorrentes">Aguas Correntes</option>
-                        </select>
-                    </div>
-
-                    <label for="component-select">Selecione os componentes:</label>
-                    <select id="component-select" multiple>
-                        <option value="componente1">Comprar Ingresso</option>
-                        <option value="componente2">Remarcação</option>
-                        <option value="componente3">Login/Cadastro</option>
-                        <option value="componente4">Acessar Compra</option>
+                    <label for="step-select">Selecione o Cliente:</label>
+                    <select id="step-select">
+                        <option value="FF">Fundação Florestal</option>
+                        <option value="M3F">Marco das 3 Fronteiras</option>
+                        <option value="Cataratas">Cataratas</option>
+                        <option value="BioaparquedoRio">Bioparque do Rio</option>
+                        <option value="AquaRio">AquaRio</option>
+                        <option value="AguasCorrentes">Aguas Correntes</option>
                     </select>
-                    <button id="select-all-components">Selecionar Tudo</button>
-                    <button id="deselect-all-components">Desmarcar Tudo</button>
                 </div>
+
+                <label for="component-select">Selecione os componentes:</label>
+                <select id="component-select" multiple>
+                    <option value="componente1">Comprar Ingresso</option>
+                    <option value="componente2">Remarcação</option>
+                    <option value="componente3">Login/Cadastro</option>
+                    <option value="componente4">Acessar Compra</option>
+                </select>
+                <button id="select-all-components">Selecionar Tudo</button>
+                <button id="deselect-all-components">Desmarcar Tudo</button>
             </div>
         </div>
-
         <div>
-            <h2>Registro de Log</h2>
-            <div id="log-panel" class="log-panel"> aqui vai ficar aquele logzão brabo</div>
+            <h2>Passos: </h2>
+            <div id="steep-panel" class="steep-panel"> aqui vai ficar o registro de passos</div>
+            <br>
+            <button id="download-steeps">Baixar Logs</button>
+
+            <h2>Logs: </h2>
+            <div id="log-panel" class="log-panel"> E aqui vai ficar aquele logzão brabo</div>
+            <br>
             <button id="download-log">Baixar Logs</button>
         </div>
-    </div>
 
-    <script>
-        const preencherTodosCheckbox = document.getElementById('preencherDados_Todos');
-        const checkboxes = document.querySelectorAll('.form-check-input:not(#preencherDados_Todos)');
-
-        preencherTodosCheckbox.addEventListener('change', () => {
-            const isChecked = preencherTodosCheckbox.checked;
-            checkboxes.forEach(cb => cb.checked = isChecked);
-        });
-
-        checkboxes.forEach(cb => {
-            cb.addEventListener('change', () => {
-                if (!cb.checked) {
-                    preencherTodosCheckbox.checked = false;
-                }
-                if ([...checkboxes].every(c => c.checked)) {
-                    preencherTodosCheckbox.checked = true;
-                }
-            });
-        });
-
-        const addSelectAllLogic = (selectId, selectAllBtnId, deselectAllBtnId) => {
-            const selectElement = document.getElementById(selectId);
-            const selectAllBtn = document.getElementById(selectAllBtnId);
-            const deselectAllBtn = document.getElementById(deselectAllBtnId);
-
-            selectAllBtn.addEventListener('click', () => {
-                [...selectElement.options].forEach(option => option.selected = true);
-            });
-
-            deselectAllBtn.addEventListener('click', () => {
-                [...selectElement.options].forEach(option => option.selected = false);
-            });
-        };
-
-        addSelectAllLogic('routine-select', 'select-all-routines', 'deselect-all-routines');
-        addSelectAllLogic('component-select', 'select-all-components', 'deselect-all-components');
-        addSelectAllLogic('client-select', 'select-all-clients', 'deselect-all-clients');
-
-        // Logs
-        const logPanel = document.getElementById('log-panel');
-
-        function displayLog(message) {
-            const logMessage = document.createElement('div');
-            logMessage.className = 'log-message';
-            logMessage.textContent = message;
-            logPanel.appendChild(logMessage);
-            logPanel.scrollTop = logPanel.scrollHeight;
-        }
-
-        function startLogStream() {
-            const socket = new WebSocket('ws://localhost:8080/logs');
-
-            socket.onopen = function () {
-                statusIcon.className = 'status-icon status-online';
-                statusText.textContent = 'Conectado';
-            };
-
-            socket.onmessage = function (event) {
-                const logMessage = document.createElement('div');
-                logMessage.textContent = event.data;
-                logPanel.appendChild(logMessage);
-                logPanel.scrollTop = logPanel.scrollHeight;
-            };
-
-            socket.onerror = function () {
-                statusIcon.className = 'status-icon status-offline';
-                statusText.textContent = 'Erro na Conexão';
-            };
-
-            socket.onclose = function () {
-                statusIcon.className = 'status-icon status-offline';
-                statusText.textContent = 'Desconectado';
-            };
-        }
-
-        window.onload = startLogStream;
-
-        // Ação do botão de download de logs
-        document.getElementById('download-log').addEventListener('click', function () {
-            const blob = new Blob([logPanel.textContent], { type: 'text/plain' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'logs.txt';
-            link.click();
-        });
-    </script>
-</body>
+        </div>
+    </body>
 
 </html>

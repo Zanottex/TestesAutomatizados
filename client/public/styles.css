@@ -1,81 +1,210 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Corpo e Layout Principal */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    background-color: #f9fafb;
     color: #333;
+    line-height: 1.6;
 }
 
 .container {
-    width: 80%;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 20px auto;
     padding: 20px;
 }
 
+/* Cabeçalho */
 header {
     text-align: center;
-    margin-bottom: 30px;
-}
-
-h1 {
-    font-size: 2rem;
-    color: #2c3e50;
-}
-
-.test-options {
     margin-bottom: 40px;
 }
 
+header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    animation: fadeIn 1s ease-in-out;
+    border-bottom: 2px solid #320074;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+/* Cartões */
+.test-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Estilo do Card */
 .test-card {
-    background-color: white;
     padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Limita a largura do card */
+    margin-top: 20px;
+}
+
+.test-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .test-card h3 {
+    margin-top: 0;
+    color: #2c3e50;
     font-size: 1.5rem;
+}
+
+.test-card button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #300384;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.test-card button:hover {
+    background-color: #6529b9;
+    transform: translateY(-2px);
+}
+
+/* Formulários e Checkboxes */
+select,
+input[type="checkbox"] {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-check {
     margin-bottom: 10px;
 }
 
-.test-card label {
+.form-check label {
     display: block;
-    margin: 10px 0 5px;
+    margin-bottom: 10px;
 }
 
-.test-card select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
+/* Painel de Logs */
+.log-panel {
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 0.9rem;
 }
 
+.log-message {
+    padding: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Status */
+.status {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.status-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.status-online {
+    background-color: #2ecc71;
+}
+
+.status-offline {
+    background-color: #e74c3c;
+}
+
+.status-text {
+    font-weight: bold;
+}
+
+/* Títulos das Seções */
+.section-title {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+/* Botões Gerais */
 button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
     cursor: pointer;
-    font-size: 1rem;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s;
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #45a049;
+    transform: translateY(-2px);
 }
 
-.log-panel {
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+/* Botão de salvar */
+.actions {
+    margin-top: 20px;
 }
 
-.log-step p {
+/* Responsividade */
+/* Responsividade */
+@media (max-width: 768px) {
+    .test-card {
+        padding: 15px;
+        max-width: 100%;
+    }
+}
+
+.scrollable-content {
+    max-height: 300px; /* Limita a altura máxima */
+    overflow-y: auto; /* Habilita rolagem vertical */
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
-.log-step strong {
-    font-weight: bold;
+.log-panel {
+    width: 100%;             /* Largura total do container */
+    height: 300px;           /* Altura fixa para tornar rolável */
+    overflow-y: auto;        /* Permite rolar verticalmente */
+    border: 1px solid #ccc;  /* Borda para o painel */
+    padding: 10px;           /* Espaçamento interno */
+    background-color: #f9f9f9; /* Cor de fundo para o painel */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+/* Estilo para o botão de download */
+#download-log {
+    padding: 10px 15px;
+    background-color: #4CAF50; /* Cor de fundo verde */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#download-log:hover {
+    background-color: #45a049; /* Cor de fundo ao passar o mouse */
 }
