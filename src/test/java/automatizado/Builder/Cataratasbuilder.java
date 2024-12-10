@@ -23,25 +23,32 @@ public class Cataratasbuilder {
             .getLogger(Cataratasbuilder.class
                     .getName());
 
-                    static {
-                        // Configura o logger para usar o ConsoleHandler e transmitir logs.
-                        ConsoleHandler consoleHandler = new ConsoleHandler();
-                        consoleHandler.setLevel(Level.ALL);
-                        logger.addHandler(consoleHandler);
-                    }
-                
-                    public void executeTest() {
-                        logger.info("Iniciando teste completo...");
-                        LogWebSocket.sendLog("Iniciando teste completo...");
-                
-                        // Simulação de outras mensagens de log
-                        logger.info("Executando rotina de login...");
-                        LogWebSocket.sendLog("Executando rotina de login...");
-                
-                        logger.info("Teste concluído.");
-                        LogWebSocket.sendLog("Teste concluído.");
-                    }
-                }
+    static {
+        // Configura o logger para usar o ConsoleHandler e transmitir logs.
+        ConsoleHandler consoleHandler = new ConsoleHandler();
+        consoleHandler
+                .setLevel(Level.ALL);
+        logger
+                .addHandler(consoleHandler);
+    }
+
+    public void executeTest() {
+        logger
+                .info("Iniciando teste completo...");
+        LogWebSocket
+                .sendLog("Iniciando teste completo...");
+
+        // Simulação de outras mensagens de log
+        logger
+                .info("Executando rotina de login...");
+        LogWebSocket
+                .sendLog("Executando rotina de login...");
+
+        logger
+                .info("Teste concluído.");
+        LogWebSocket
+                .sendLog("Teste concluído.");
+    }
 
     private EcommercePO ECommercePO;
     private String email_usuario = "gustavozanotto119@gmail.com";
@@ -168,11 +175,10 @@ public class Cataratasbuilder {
                     e
                             .printStackTrace();
                 }
-                
-                    ECommercePO.dia
-                            .click();
 
-                
+                ECommercePO.dia
+                        .click();
+
             } else if (i == 1) {
                 wait
                         .until(d -> ECommercePO.ProximoMes2Receitas
@@ -234,7 +240,7 @@ public class Cataratasbuilder {
                 e
                         .printStackTrace();
             }
-            if(tipo != 7 && tipo != 8){
+            if (tipo != 7 && tipo != 8) {
                 logger
                         .info("Selecionando Horario...");
                 if (i == 0) {
@@ -301,8 +307,8 @@ public class Cataratasbuilder {
                 }
 
                 i++;
-            }else{
-            i++;
+            } else {
+                i++;
             }
         }
         logger
@@ -327,14 +333,14 @@ public class Cataratasbuilder {
                     .click();
         }
 
-        if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6 ) {
+        if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6) {
             logger
                     .info("Selecionando país de origem...");
 
             if (tipo == 1) {
                 ECommercePO.selecionarPaisOrigem
                         .click();
-                ECommercePO.paiserradoIntegrada
+                ECommercePO.paiserrado
                         .click();
             } else if (tipo == 2) {
                 ECommercePO.selecionarPaisOrigem
@@ -396,15 +402,17 @@ public class Cataratasbuilder {
 
         if (verdadeiro == 0) {
             int verdadeiro2 = 0;
-            //Adicionar segunda categoria caso tenha
-            if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR DIFERENTE DE 4 ENTRAR
+            // Adicionar segunda categoria caso tenha
+            if (tipo != 4 && tipo != 7) { // SE FOR DIFERENTE DE 4 ENTRAR
                 if (tipo == 5) {
                     ECommercePO.adicionarCategoria2_2Rec
                             .click();
                 } else if (tipo == 6) {
                     ECommercePO.adicionarCategoria2_3Rec
                             .click();
-                } else {
+                } else if(tipo == 8){
+                    
+                }else{
                     ECommercePO.adicionarCategoria2
                             .click();
                 }
@@ -447,7 +455,7 @@ public class Cataratasbuilder {
                                         .isDisplayed());
                         verdadeiro2 = erro2
                                 .compareTo("País: Brasil não é válido");
-                    } else{
+                    } else {
                         verdadeiro2 = 0;
                     }
                 }
@@ -460,7 +468,7 @@ public class Cataratasbuilder {
                     e
                             .printStackTrace();
                 }
-                if (tipo == 1 || tipo == 2) {
+                if (tipo == 1 || tipo == 2 || tipo == 8) {
                     ECommercePO.selecionarPaisOrigem
                             .click();
 
@@ -471,7 +479,7 @@ public class Cataratasbuilder {
                         e
                                 .printStackTrace();
                     }
-                    if (tipo == 1) {
+                    if (tipo == 1 || tipo == 8) {
 
                         ECommercePO.confirmaPaisOrigemIntegrada
                                 .click();
@@ -497,7 +505,7 @@ public class Cataratasbuilder {
                             .click();
                 }
 
-                if (tipo == 5 || tipo == 6) {
+                if (tipo == 5 || tipo == 6 || tipo == 8) {
                     wait
                             .until(d -> ECommercePO.nomeUsuario
                                     .isDisplayed());
@@ -520,7 +528,7 @@ public class Cataratasbuilder {
                         e
                                 .printStackTrace();
                     }
-
+                    if(tipo != 8){
                     ECommercePO.nomeUsuario2
                             .sendKeys("Cleitin do grau");
                     ECommercePO.tipodocumento2
@@ -532,6 +540,8 @@ public class Cataratasbuilder {
                             .click();
                     ECommercePO.documento2
                             .sendKeys("123456789");
+                    
+                    }
                     ECommercePO.confirmardadosusuario
                             .click();
                 }
@@ -600,16 +610,6 @@ public class Cataratasbuilder {
 
                     ECommercePO.codigo_segurança
                             .sendKeys(codigo_segurança);
-                    logger
-<<<<<<< HEAD
-                            .info("Preenchendo informações de pagamento: " + "Nome Impresso no Cartão: " + Nome_Cartao
-                                    + "Numero do cartão: " + Numero_Cartao + "Mes de validade: " + mes_validade
-                                    + "Codigo de Segurança " + codigo_segurança + "...");
-=======
-                            .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: " + Nome_Cartao
-                                    + ", Numero do cartão: " + Numero_Cartao + ", Mes de validade: " + mes_validade
-                                    + ", Codifo de Segurança " + codigo_segurança + "...");
->>>>>>> cde6591898c8b5293b7870afa3e0fd6f111c3806
 
                     ECommercePO.CEP
                             .sendKeys(CEP);

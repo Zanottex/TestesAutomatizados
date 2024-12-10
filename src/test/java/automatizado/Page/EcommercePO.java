@@ -134,19 +134,19 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/div/mat-option[1]/span/ngx-mat-select-search/div/div/input")
     public WebElement nomePaisOrigem;
 
-    @FindBy(id = "mat-option-5")
+    @FindBy(id = "mat-option-10")
     public WebElement confirmaPaisOrigem;
 
-    @FindBy(id = "mat-option-8")
+    @FindBy(id = "mat-option-10")
     public WebElement confirmaPaisOrigemIntegrada;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/div/div[2]/div[1]/span[1]/b")
     public WebElement Nomecategoria;
 
-    @FindBy(id = "mat-option-11")
+    @FindBy(id = "mat-option-13")
     public WebElement paiserradoIntegrada;
 
-    @FindBy(id = "mat-option-11")
+    @FindBy(id = "mat-option-13")
     public WebElement paiserrado;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]")
@@ -164,7 +164,7 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/div[3]/escolha-sessao/div/section/div[2]/mat-icon")
     public WebElement esperaSessao;
 
-    @FindBy(id = "mat-option-251")
+    @FindBy(id = "mat-option-254")
     public WebElement acre;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/section/div/div[2]/div/div/span")
