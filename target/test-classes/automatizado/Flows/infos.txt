@@ -1,3 +1,0 @@
-Aqui vai ser o repositios para os fluxos padrão.
-Vai servir para padronizar cada etapa do teste de forma isolada, 
-fazendo com que cada bilber seja uma etapa, assim pode ser usar para todos os fluxos e sendo montada junto a outras para um fluxo final.
