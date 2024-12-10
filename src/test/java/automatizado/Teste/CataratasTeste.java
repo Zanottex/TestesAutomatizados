@@ -186,4 +186,25 @@ public class CataratasTeste extends BaseTeste {
         cataratas
                 .Ingresso(driver, 7 /* TIPO 7 = Guarda-Volumes */);
     }
+
+    @Test
+    public void TC008_Ingresso_VIP(){
+        String aberto;
+        try {
+            aberto = driver.manage().window().getSize().toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if(aberto == null){
+        iniciar(URL_Ecommerce);
+        }
+        else{
+        RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePO = new EcommercePO(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+
+        cataratas.Ingresso(driver, 8 /*TIPO 8 = ingresso VIP*/);
+    }
 }

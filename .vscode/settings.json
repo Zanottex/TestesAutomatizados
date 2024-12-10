@@ -7,5 +7,6 @@
     "[java]": {
         "editor.insertSpaces": true,
         "editor.detectIndentation": false
-    }
+    },
+    "java.debug.settings.onBuildFailureProceed": true
 }

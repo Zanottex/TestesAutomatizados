@@ -312,7 +312,7 @@ public class Cataratasbuilder {
             if (tipo == 1) {
                 ECommercePO.selecionarPaisOrigem
                         .click();
-                ECommercePO.paiserradoIntegrada
+                ECommercePO.paiserrado
                         .click();
             } else if (tipo == 2) {
                 ECommercePO.selecionarPaisOrigem
@@ -375,14 +375,18 @@ public class Cataratasbuilder {
         if (verdadeiro == 0) {
             int verdadeiro2 = 0;
             // Adicionar segunda categoria caso tenha
+
             if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR DIFERENTE DE 4 ENTRAR
+
                 if (tipo == 5) {
                     ECommercePO.adicionarCategoria2_2Rec
                             .click();
                 } else if (tipo == 6) {
                     ECommercePO.adicionarCategoria2_3Rec
                             .click();
-                } else {
+                } else if(tipo == 8){
+                    
+                }else{
                     ECommercePO.adicionarCategoria2
                             .click();
                 }
@@ -438,7 +442,7 @@ public class Cataratasbuilder {
                     e
                             .printStackTrace();
                 }
-                if (tipo == 1 || tipo == 2) {
+                if (tipo == 1 || tipo == 2 || tipo == 8) {
                     ECommercePO.selecionarPaisOrigem
                             .click();
 
@@ -449,7 +453,7 @@ public class Cataratasbuilder {
                         e
                                 .printStackTrace();
                     }
-                    if (tipo == 1) {
+                    if (tipo == 1 || tipo == 8) {
 
                         ECommercePO.confirmaPaisOrigemIntegrada
                                 .click();
@@ -475,7 +479,7 @@ public class Cataratasbuilder {
                             .click();
                 }
 
-                if (tipo == 5 || tipo == 6) {
+                if (tipo == 5 || tipo == 6 || tipo == 8) {
                     wait
                             .until(d -> ECommercePO.nomeUsuario
                                     .isDisplayed());
@@ -498,7 +502,7 @@ public class Cataratasbuilder {
                         e
                                 .printStackTrace();
                     }
-
+                    if(tipo != 8){
                     ECommercePO.nomeUsuario2
                             .sendKeys("Cleitin do grau");
                     ECommercePO.tipodocumento2
@@ -510,6 +514,8 @@ public class Cataratasbuilder {
                             .click();
                     ECommercePO.documento2
                             .sendKeys("123456789");
+                    
+                    }
                     ECommercePO.confirmardadosusuario
                             .click();
                 }
@@ -578,10 +584,12 @@ public class Cataratasbuilder {
 
                     ECommercePO.codigo_segurança
                             .sendKeys(codigo_segurança);
+
                     logger
                             .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: " + Nome_Cartao
                                     + ", Numero do cartão: " + Numero_Cartao + ", Mes de validade: " + mes_validade
                                     + ", Codifo de Segurança " + codigo_segurança + "...");
+
                     ECommercePO.CEP
                             .sendKeys(CEP);
 
