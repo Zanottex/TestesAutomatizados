@@ -1,7 +1,7 @@
 # Arquitetura do Software
 
 ## Base do Código
-O código inicial é baseado em **Java** e **Selenium**, usando a estrutura padrão para softwares de teste com essa base.
+O código inicial é baseado em **[Java](Java.md)** e **[Selenium](Selenium.md)**, usando a estrutura padrão para softwares de teste com essa base.
 
 ## Estrutura do Projeto
 A arquitetura e disposição dos repositórios está baseada em:
