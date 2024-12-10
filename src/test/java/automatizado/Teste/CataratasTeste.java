@@ -5,157 +5,186 @@ import org.junit.Test;
 import automatizado.Builder.Cataratasbuilder;
 import automatizado.Page.EcommercePO;
 
-public class CataratasTeste extends BaseTeste{
-    
+public class CataratasTeste extends BaseTeste {
+
     private static EcommercePO EcommercePO;
     private static final String URL_Ecommerce = "https://testeauto_integrada.testescard.limber.net.br/";
 
     @Test
-    public void TC001_Bilhete_Brasileiro_Mercosul(){
+    public void TC001_Bilhete_Brasileiro_Mercosul() {
         String aberto;
         try {
-            aberto = driver.manage().window().getSize().toString();
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        iniciar(URL_Ecommerce);
-        }
-        else{
-        RedirecionarPag(URL_Ecommerce);
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
         }
 
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Ingresso(driver, 1 /*TIPO 1 = Brasileiro */);
+        cataratas
+                .Ingresso(driver, 1 /* TIPO 1 = Brasileiro */);
     }
 
     @Test
-    public void TC002_Bilhete_Estrangeiro(){
+    public void TC002_Bilhete_Estrangeiro() {
         String aberto;
         try {
-            aberto = driver.manage().window().getSize().toString();
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        iniciar(URL_Ecommerce);
-        }
-        else{
-        RedirecionarPag(URL_Ecommerce);
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
         }
 
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Ingresso(driver, 2 /*TIPO 2 = Estrangeiro*/);
+        cataratas
+                .Ingresso(driver, 2 /* TIPO 2 = Estrangeiro */);
     }
 
     @Test
-    public void TC003_Bilhete_Expêriencias(){
+    public void TC003_Bilhete_Expêriencias() {
         String aberto;
         try {
-            aberto = driver.manage().window().getSize().toString();
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        iniciar(URL_Ecommerce);
-        }
-        else{
-        RedirecionarPag(URL_Ecommerce);
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
         }
 
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Ingresso(driver, 3 /*TIPO 3 = Expeiências*/);
+        cataratas
+                .Ingresso(driver, 3 /* TIPO 3 = Expeiências */);
     }
 
     @Test
-    public void TC004_Bilhete_Bike_poço_preto(){
+    public void TC004_Bilhete_Bike_poço_preto() {
         String aberto;
         try {
-            aberto = driver.manage().window().getSize().toString();
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        iniciar(URL_Ecommerce);
-        }
-        else{
-        RedirecionarPag(URL_Ecommerce);
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
         }
 
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Ingresso(driver, 4 /*TIPO 4 = Bike poço preto
-        */);
+        cataratas
+                .Ingresso(driver, 4 /*
+                                     * TIPO 4 = Bike poço preto
+                                     */);
     }
 
     @Test
-    public void TC005_Ingresso_2_dias(){
+    public void TC005_Ingresso_2_dias() {
         String aberto;
         try {
-            aberto = driver.manage().window().getSize().toString();
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        iniciar(URL_Ecommerce);
-        }
-        else{
-        RedirecionarPag(URL_Ecommerce);
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
         }
 
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Ingresso(driver, 5 /*TIPO 5 = Ingresso 2 dias*/);
+        cataratas
+                .Ingresso(driver, 5 /* TIPO 5 = Ingresso 2 dias */);
     }
 
     @Test
-    public void TC006_Ingresso_3_dias(){
+    public void TC006_Ingresso_3_dias() {
         String aberto;
         try {
-            aberto = driver.manage().window().getSize().toString();
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        iniciar(URL_Ecommerce);
-        }
-        else{
-        RedirecionarPag(URL_Ecommerce);
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
         }
 
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Ingresso(driver, 6 /*TIPO 6 = Ingresso 3 dias*/);
+        cataratas
+                .Ingresso(driver, 6 /* TIPO 6 = Ingresso 3 dias */);
     }
 
     @Test
-    public void TC007_Ingresso_guarda_volumes(){
+    public void TC007_Ingresso_guarda_volumes() {
         String aberto;
         try {
-            aberto = driver.manage().window().getSize().toString();
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        iniciar(URL_Ecommerce);
-        }
-        else{
-        RedirecionarPag(URL_Ecommerce);
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
         }
 
         EcommercePO = new EcommercePO(driver);
         Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
 
-        cataratas.Ingresso(driver, 7 /*TIPO 7 = Guarda-Volumes*/);
+        cataratas
+                .Ingresso(driver, 7 /* TIPO 7 = Guarda-Volumes */);
     }
 
     @Test

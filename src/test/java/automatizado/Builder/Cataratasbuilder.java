@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.StringTokenizer;
 
-import org.omg.CORBA.INTERNAL;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
@@ -23,6 +22,7 @@ public class Cataratasbuilder {
             .getLogger(Cataratasbuilder.class
                     .getName());
 
+<<<<<<< HEAD
     static {
         // Configura o logger para usar o ConsoleHandler e transmitir logs.
         ConsoleHandler consoleHandler = new ConsoleHandler();
@@ -50,6 +50,8 @@ public class Cataratasbuilder {
                 .sendLog("Teste concluído.");
     }
 
+=======
+>>>>>>> ae4c8a3178cd2671d7c151bdc3a36ca64acbb797
     private EcommercePO ECommercePO;
     private String email_usuario = "gustavozanotto119@gmail.com";
     private String senha_usuario = "1";
@@ -403,7 +405,11 @@ public class Cataratasbuilder {
         if (verdadeiro == 0) {
             int verdadeiro2 = 0;
             // Adicionar segunda categoria caso tenha
+<<<<<<< HEAD
             if (tipo != 4 && tipo != 7) { // SE FOR DIFERENTE DE 4 ENTRAR
+=======
+            if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR DIFERENTE DE 4 ENTRAR
+>>>>>>> ae4c8a3178cd2671d7c151bdc3a36ca64acbb797
                 if (tipo == 5) {
                     ECommercePO.adicionarCategoria2_2Rec
                             .click();
@@ -610,7 +616,14 @@ public class Cataratasbuilder {
 
                     ECommercePO.codigo_segurança
                             .sendKeys(codigo_segurança);
+<<<<<<< HEAD
 
+=======
+                    logger
+                            .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: " + Nome_Cartao
+                                    + ", Numero do cartão: " + Numero_Cartao + ", Mes de validade: " + mes_validade
+                                    + ", Codifo de Segurança " + codigo_segurança + "...");
+>>>>>>> ae4c8a3178cd2671d7c151bdc3a36ca64acbb797
                     ECommercePO.CEP
                             .sendKeys(CEP);
 

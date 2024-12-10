@@ -1,0 +1,16 @@
+site_name: Automação de Testes
+theme:
+  name: material
+  features:
+    - dark-mode-toggle  # Habilita o botão de alternância de modo escuro/claro
+
+extra_css:
+  - css/extra.css  # Seu arquivo de personalização de estilo CSS
+
+nav:
+  - Home: index.md
+  - Introdução: introducao.md
+  - Arquitetura do Software: arquitetura.md
+  - Guia de Desenvolvimento: guia_desenvolvimento.md
+  - Manutenção e Atualizações: manutencao.md
+  - Feedback: feedback.md

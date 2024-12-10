@@ -5,112 +5,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Testes Internos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Sistema de Testes Internos</h1>
-        </header>
 
-        <div class="test-options">
-            <h2>Escolha uma Opção de Teste</h2>
+    <body>
+        <div class="container">
+            <div class="test-options">
+                <div class="test-card">
+                    <h3>Configurações de Teste</h3>
 
-            <!-- Teste Completo -->
-            <div class="test-card">
-                <h3>Teste Completo</h3>
-                <button id="start-test">Iniciar Teste Completo</button>
+                    <!-- Conteúdo rolável dentro do card -->
+                    <div class="scrollable-content">
+                        <!-- Primeira Seção -->
+                        <h4 class="section-title">Preencher Dados Automaticamente</h4>
+                        <div class="form-check">
+                            <label>
+                                <input type="checkbox" id="preencherDados_Pagamento" checked>
+                                Pagamento
+                            </label>
+                            <label>
+                                <input type="checkbox" id="preencherDados_Endereco" checked>
+                                Endereço
+                            </label>
+                            <label>
+                                <input type="checkbox" id="preencherDados_Titular" checked>
+                                Titular
+                            </label>
+                            <label>
+                                <input type="checkbox" id="preencherDados_Visitante" checked>
+                                Visitante
+                            </label>
+                        </div>
+
+                        <!-- Segunda Seção -->
+                        <h4 class="section-title">Outras Configurações</h4>
+                        <div class="form-check">
+                            <label>
+                                <input type="checkbox" id="opcao_1">
+                                Opção 1
+                            </label>
+                            <label>
+                                <input type="checkbox" id="opcao_2">
+                                Opção 2
+                            </label>
+                            <label>
+                                <input type="checkbox" id="opcao_3">
+                                Opção 3
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Botão para ações -->
+                    <div class="actions">
+                        <button class="btn">Salvar Configurações</button>
+                    </div>
             </div>
 
-            <!-- Testar Rotinas de Clientes -->
+
+            <!-- Testar Rotinas -->
             <div class="test-card">
                 <h3>Testar Rotinas de Clientes</h3>
-                <label for="routine-select">Selecione a rotina:</label>
-                <select id="routine-select">
-                    <option value="login">Rotina de Login</option>
-                    <option value="cadastro">Rotina de Cadastro</option>
-                    <option value="compra">Rotina de Compra</option>
-                </select>
+                <div class="status">
+                    <div id="status-icon" class="status-icon status-offline"></div>
+                    <div id="status-text" class="status-text">Desconectado</div>
+                </div>
+                <p>
+                    <button id="start-test">Iniciar Teste</button>
+                </p>
+                <div>
+                    <label for="step-select">Selecione o Cliente:</label>
+                    <select id="step-select">
+                        <option value="FF">Fundação Florestal</option>
+                        <option value="M3F">Marco das 3 Fronteiras</option>
+                        <option value="Cataratas">Cataratas</option>
+                        <option value="BioaparquedoRio">Bioparque do Rio</option>
+                        <option value="AquaRio">AquaRio</option>
+                        <option value="AguasCorrentes">Aguas Correntes</option>
+                    </select>
+                </div>
 
-                <label for="step-select">Selecione a etapa:</label>
-                <select id="step-select">
-                    <option value="1">Etapa 1</option>
-                    <option value="2">Etapa 2</option>
-                    <option value="3">Etapa 3</option>
+                <label for="routine-select">Selecione os Passos:</label>
+                <select id="routine-select" multiple>
+                    <option value="3">Aceitar Cookies</option>
+                    <option value="1">Selecionar Ingresso > Selecionar Data (Home Antiga)</option>
+                    <option value="2">Selecionar Data > Selecionar Ingressos(Home Nova)</option>
+                    <option value="1">Selecionar Local de Embarque (Caso tenha)</option>
+                    <option value="2">Selecionar Sessao (Caso tenha)</option>
+                    <option value="3">Selecionar Horario</option>
+                    <option value="3">Selecionar Categorias (validação padrão)</option>
+                    <option value="3">Selecionar País e Estado (validação padrão)</option>
+                    <option value="3">Adicionar ao Carrinho</option>
+                    <option value="3">Fazer Login</option>
+                    <option value="3">Cadastrar novo usuário</option>
+                    <option value="3">Finalizar Compra</option>
+                    <option value="3">Abrir venda</option>
                 </select>
+                <button id="select-all-routines">Selecionar Tudo</button>
+                <button id="deselect-all-routines">Desmarcar Tudo</button>
             </div>
 
-            <!-- Testes Isolados de Componentes -->
+            <!-- Testes Isolados -->
             <div class="test-card">
-                <h3>Testes Isolados de Componentes</h3>
+                <h3>Testes Isolados</h3>
+                <div class="status">
+                    <div id="status-icon" class="status-icon status-offline"></div>
+                    <div id="status-text" class="status-text">Desconectado</div>
+                </div>
+                <p>
+                    <button id="start-test">Iniciar Teste</button>
+                </p>
+                <div>
+                    <label for="step-select">Selecione o Cliente:</label>
+                    <select id="step-select">
+                        <option value="FF">Fundação Florestal</option>
+                        <option value="M3F">Marco das 3 Fronteiras</option>
+                        <option value="Cataratas">Cataratas</option>
+                        <option value="BioaparquedoRio">Bioparque do Rio</option>
+                        <option value="AquaRio">AquaRio</option>
+                        <option value="AguasCorrentes">Aguas Correntes</option>
+                    </select>
+                </div>
+
                 <label for="component-select">Selecione os componentes:</label>
                 <select id="component-select" multiple>
-                    <option value="componente1">Componente 1</option>
-                    <option value="componente2">Componente 2</option>
-                    <option value="componente3">Componente 3</option>
+                    <option value="componente1">Comprar Ingresso</option>
+                    <option value="componente2">Remarcação</option>
+                    <option value="componente3">Login/Cadastro</option>
+                    <option value="componente4">Acessar Compra</option>
                 </select>
-
-                <label for="client-select">Selecione os clientes:</label>
-                <select id="client-select" multiple>
-                    <option value="cliente1">Cliente 1</option>
-                    <option value="cliente2">Cliente 2</option>
-                    <option value="cliente3">Cliente 3</option>
-                </select>
+                <button id="select-all-components">Selecionar Tudo</button>
+                <button id="deselect-all-components">Desmarcar Tudo</button>
             </div>
         </div>
-
-        <!-- Registro de Log -->
         <div>
-            <h2>Registro de Log</h2>
-            <div id="log-panel" class="log-panel"></div>
+            <h2>Passos: </h2>
+            <div id="steep-panel" class="steep-panel"> aqui vai ficar o registro de passos</div>
+            <br>
+            <button id="download-steeps">Baixar Logs</button>
+
+            <h2>Logs: </h2>
+            <div id="log-panel" class="log-panel"> E aqui vai ficar aquele logzão brabo</div>
+            <br>
             <button id="download-log">Baixar Logs</button>
         </div>
+
         </div>
-    </div>
-
-    <script>
-        const logPanel = document.getElementById('log-panel');
-
-        // Simular recepção de logs via WebSocket ou polling
-        function startLogStream() {
-            // Exemplo de WebSocket
-            const socket = new WebSocket('ws://localhost:8080/logs'); // Substituir pela URL do WebSocket
-            socket.onmessage = function (event) {
-                displayLog(event.data);
-            };
-
-            socket.onerror = function () {
-                displayLog('[ERRO] Falha na conexão com o WebSocket.');
-            };
-
-            socket.onclose = function () {
-                displayLog('[INFO] Conexão com o WebSocket encerrada.');
-            };
-        }
-
-        function displayLog(message) {
-            const logMessage = document.createElement('div');
-            logMessage.className = 'log-message';
-            logMessage.textContent = message;
-            logPanel.appendChild(logMessage);
-
-            // Scroll automático para a última mensagem
-            logPanel.scrollTop = logPanel.scrollHeight;
-        }
-
-        // Iniciar o stream de logs ao carregar a página
-        window.onload = startLogStream;
-
-        // Ação do botão de download de logs
-        document.getElementById('download-log').addEventListener('click', function () {
-            const blob = new Blob([logPanel.textContent], { type: 'text/plain' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'logs.txt';
-            link.click();
-        });
-    </script>
-    
-</body>
+    </body>
 
 </html>
