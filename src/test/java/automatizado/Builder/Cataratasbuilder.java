@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.StringTokenizer;
 
-import org.omg.CORBA.INTERNAL;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
@@ -28,8 +27,7 @@ public class Cataratasbuilder {
     private String senha_usuario = "1";
     private String Nome_Cartao = geradores
             .geradorNome();
-    private String Numero_Cartao = geradores
-            .geradorNumeroCartao();
+    private String Numero_Cartao = "4000000000000010";
     private String mes_validade = geradores
             .geradorValidadeCartao();
     private String codigo_segurança = geradores
@@ -95,9 +93,14 @@ public class Cataratasbuilder {
                     .sendKeys("Ingresso 3 dias");
         } else if (tipo == 7) {
             logger
-                    .info("Iniciando pesquisa: Serviços Especiais");
+                    .info("Iniciando pesquisa: Guarda Volumes");
             ECommercePO.barraDePesquisa
-                    .sendKeys("Serviços Especiais");
+                    .sendKeys("Guarda Volumes");
+        } else if (tipo == 8) {
+            logger
+                    .info("Iniciando pesquisa: Bilhete VIP");
+            ECommercePO.barraDePesquisa
+                    .sendKeys("Bilhete VIP");
         } else {
             logger
                     .warning("Tipo de pesquisa inválido: " + tipo);
@@ -128,26 +131,58 @@ public class Cataratasbuilder {
                 .info("Número de dias do ingresso: " + dias);
 
         while (i != dias) {
-
-            if (dias == 0) {
-                logger
-                        .info("Selecionando data para o dia " + (i + 1));
+            logger
+                    .info("Selecionando data para o dia " + (i + 1));
+            if (i == 0) {
                 wait
                         .until(d -> ECommercePO.ProximoMes
                                 .isDisplayed());
                 ECommercePO.ProximoMes
                         .click();
-            } else if (dias == 1) {
+
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
+
+                ECommercePO.dia
+                        .click();
+
+            } else if (i == 1) {
                 wait
                         .until(d -> ECommercePO.ProximoMes2Receitas
                                 .isDisplayed());
                 ECommercePO.ProximoMes2Receitas
                         .click();
-            } else if (dias == 2) {
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
+                ECommercePO.dia2Receitas
+                        .click();
+            } else if (i == 2) {
                 wait
                         .until(d -> ECommercePO.ProximoMes3Receitas
                                 .isDisplayed());
                 ECommercePO.ProximoMes3Receitas
+                        .click();
+                wait
+                        .until(d -> ECommercePO.dia3Receitas
+                                .isEnabled());
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
+                }
+                ECommercePO.dia3Receitas
                         .click();
             }
             try {
@@ -157,27 +192,8 @@ public class Cataratasbuilder {
                 e
                         .printStackTrace();
             }
-            if (dias == 0) {
-                wait
-                        .until(d -> ECommercePO.dia
-                                .isEnabled());
-                ECommercePO.dia
-                        .click();
-            } else if (dias == 1) {
-                wait
-                        .until(d -> ECommercePO.dia2Receitas
-                                .isEnabled());
-                ECommercePO.dia2Receitas
-                        .click();
-            } else if (dias == 2) {
-                wait
-                        .until(d -> ECommercePO.dia3Receitas
-                                .isEnabled());
-                ECommercePO.dia3Receitas
-                        .click();
-            }
 
-            if (tipo != 3 && tipo != 4 && tipo != 5 && tipo != 6) {
+            if (tipo == 1 || tipo == 2) {
                 logger
                         .info("Selecionando local de embarque...");
                 wait
@@ -196,68 +212,132 @@ public class Cataratasbuilder {
                 e
                         .printStackTrace();
             }
+            if (tipo != 7 && tipo != 8) {
+                logger
+                        .info("Selecionando Horario...");
+                if (i == 0) {
+                    wait
+                            .until(d -> ECommercePO.horario
+                                    .isDisplayed());
+                    ECommercePO.horario
+                            .click();
+                    ECommercePO.confirmarHorario4opcoes
+                            .click();
+                    try {
+                        Thread
+                                .sleep(2000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    wait
+                            .until(d -> ECommercePO.proximo
+                                    .isDisplayed());
+                    ECommercePO.proximo
+                            .click();
+                } else if (i == 1) {
+                    wait
+                            .until(d -> ECommercePO.horario2Receitas
+                                    .isDisplayed());
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    ECommercePO.horario2Receitas
+                            .click();
+                    ECommercePO.confirmarHorario4opcoes
+                            .click();
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    ECommercePO.proximo2Receitas
+                            .click();
+                } else if (i == 2) {
+                    wait
+                            .until(d -> ECommercePO.horario3Receitas
+                                    .isDisplayed());
+                    ECommercePO.horario3Receitas
+                            .click();
+                    ECommercePO.confirmarHorario4opcoes
+                            .click();
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    ECommercePO.proximo3Receitas
+                            .click();
+                }
 
-            logger
-                    .info("Selecionando dia...");
-            if (dias == 0) {
-                wait
-                        .until(d -> ECommercePO.horario
-                                .isDisplayed());
-                ECommercePO.horario
-                        .click();
-                ECommercePO.confirmarHorario4opcoes
-                        .click();
-            } else if (dias == 1) {
-                wait
-                        .until(d -> ECommercePO.horario2Receitas
-                                .isDisplayed());
-                ECommercePO.horario2Receitas
-                        .click();
-                ECommercePO.confirmarHorario4opcoes
-                        .click();
-            } else if (dias == 2) {
-                wait
-                        .until(d -> ECommercePO.horario3Receitas
-                                .isDisplayed());
-                ECommercePO.horario2Receitas
-                        .click();
-                ECommercePO.confirmarHorario4opcoes
-                        .click();
-
+                i++;
+            } else {
+                i++;
             }
-
-            try {
-                Thread
-                        .sleep(1000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-            ECommercePO.proximo
+        }
+        logger
+                .info("Adicionando categoria ao carrinho...");
+        if (tipo == 5) {
+            wait
+                    .until(d -> ECommercePO.adicionarCategoria_2Rec
+                            .isDisplayed());
+            ECommercePO.adicionarCategoria_2Rec
                     .click();
-            dias++;
-            logger
-                    .info("Adicionando categoria ao carrinho...");
+        } else if (tipo == 6) {
+            wait
+                    .until(d -> ECommercePO.adicionarCategoria_3Rec
+                            .isDisplayed());
+            ECommercePO.adicionarCategoria_3Rec
+                    .click();
+        } else {
+            wait
+                    .until(d -> ECommercePO.adicionarCategoria
+                            .isDisplayed());
+            ECommercePO.adicionarCategoria
+                    .click();
         }
 
-        wait
-                .until(d -> ECommercePO.adicionarCategoria
-                        .isDisplayed());
-        ECommercePO.adicionarCategoria
-                .click();
-
-        if (tipo == 1 || tipo == 2) {
+        if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6) {
             logger
                     .info("Selecionando país de origem...");
-            ECommercePO.selecionarPaisOrigem
-                    .click();
+
             if (tipo == 1) {
-                ECommercePO.paiserradoIntegrada
+                ECommercePO.selecionarPaisOrigem
+                        .click();
+                ECommercePO.paiserrado
                         .click();
             } else if (tipo == 2) {
+                ECommercePO.selecionarPaisOrigem
+                        .click();
                 ECommercePO.confirmaPaisOrigemIntegrada
                         .click();
                 ECommercePO.estado
+                        .click();
+                ECommercePO.acre
+                        .click();
+            } else if (tipo == 5) {
+                ECommercePO.selecionarPaisOrigem_2Rec
+                        .click();
+                ECommercePO.confirmaPaisOrigemIntegrada
+                        .click();
+                ECommercePO.estado_2Rec
+                        .click();
+                ECommercePO.acre
+                        .click();
+            } else if (tipo == 6) {
+                ECommercePO.selecionarPaisOrigem_3Rec
+                        .click();
+                ECommercePO.confirmaPaisOrigemIntegrada
+                        .click();
+                ECommercePO.estado_3Rec
                         .click();
                 ECommercePO.acre
                         .click();
@@ -265,9 +345,17 @@ public class Cataratasbuilder {
         }
 
         int verdadeiro = 0;
-        if (tipo != 4) { // SE FOR 1,2 OU 3 ELE ENTRA
-            ECommercePO.adicionarAoCarrinho
-                    .click();
+        if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR 1,2 OU 3 ELE ENTRA
+            if (tipo == 5) {
+                ECommercePO.adicionarAoCarrinho_2Rec
+                        .click();
+            } else if (tipo == 6) {
+                ECommercePO.adicionarAoCarrinho_3Rec
+                        .click();
+            } else {
+                ECommercePO.adicionarAoCarrinho
+                        .click();
+            }
             verdadeiro = 1;
             wait
                     .until(d -> ECommercePO.pegarMensagemErro
@@ -280,13 +368,28 @@ public class Cataratasbuilder {
             }
             verdadeiro = erro
                     .compareTo("Selecione ao menos uma categoria pagante");
+            logger
+                    .info("Trocando Selecionando um pais válido");
         }
 
         if (verdadeiro == 0) {
             int verdadeiro2 = 0;
-            if (tipo != 4) { // SE FOR DIFERENTE DE 4 ENTRAR
-                ECommercePO.adicionarCategoria2
-                        .click();
+            // Adicionar segunda categoria caso tenha
+
+            if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR DIFERENTE DE 4 ENTRAR
+
+                if (tipo == 5) {
+                    ECommercePO.adicionarCategoria2_2Rec
+                            .click();
+                } else if (tipo == 6) {
+                    ECommercePO.adicionarCategoria2_3Rec
+                            .click();
+                } else if(tipo == 8){
+                    
+                }else{
+                    ECommercePO.adicionarCategoria2
+                            .click();
+                }
                 try {
                     Thread
                             .sleep(1000);
@@ -295,7 +398,7 @@ public class Cataratasbuilder {
                             .printStackTrace();
                 }
 
-                if (tipo != 3) {
+                if (tipo == 1 || tipo == 2) {
                     String erro2 = null;
                     ECommercePO.adicionarAoCarrinho
                             .click();
@@ -326,7 +429,7 @@ public class Cataratasbuilder {
                                         .isDisplayed());
                         verdadeiro2 = erro2
                                 .compareTo("País: Brasil não é válido");
-                    } else if (tipo == 3 || tipo == 4) {
+                    } else {
                         verdadeiro2 = 0;
                     }
                 }
@@ -339,7 +442,7 @@ public class Cataratasbuilder {
                     e
                             .printStackTrace();
                 }
-                if (tipo == 1 || tipo == 2) {
+                if (tipo == 1 || tipo == 2 || tipo == 8) {
                     ECommercePO.selecionarPaisOrigem
                             .click();
 
@@ -350,21 +453,72 @@ public class Cataratasbuilder {
                         e
                                 .printStackTrace();
                     }
-                    if (tipo == 1) {
+                    if (tipo == 1 || tipo == 8) {
+
                         ECommercePO.confirmaPaisOrigemIntegrada
                                 .click();
                         ECommercePO.estado
                                 .click();
                         ECommercePO.acre
                                 .click();
+
                     } else {
                         ECommercePO.paiserradoIntegrada
                                 .click();
                     }
                 }
-                ECommercePO.adicionarAoCarrinho
-                        .click();
 
+                if (tipo == 5) {
+                    ECommercePO.adicionarAoCarrinho_2Rec
+                            .click();
+                } else if (tipo == 6) {
+                    ECommercePO.adicionarAoCarrinho_3Rec
+                            .click();
+                } else {
+                    ECommercePO.adicionarAoCarrinho
+                            .click();
+                }
+
+                if (tipo == 5 || tipo == 6 || tipo == 8) {
+                    wait
+                            .until(d -> ECommercePO.nomeUsuario
+                                    .isDisplayed());
+                    ECommercePO.nomeUsuario
+                            .sendKeys(Nome_Cartao);
+                    ECommercePO.tipodocumento
+                            .click();
+                    wait
+                            .until(d -> ECommercePO.outros
+                                    .isDisplayed());
+                    ECommercePO.outros
+                            .click();
+                    ECommercePO.documento
+                            .sendKeys(cpf);
+
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    if(tipo != 8){
+                    ECommercePO.nomeUsuario2
+                            .sendKeys("Cleitin do grau");
+                    ECommercePO.tipodocumento2
+                            .click();
+                    wait
+                            .until(d -> ECommercePO.outros
+                                    .isDisplayed());
+                    ECommercePO.outros
+                            .click();
+                    ECommercePO.documento2
+                            .sendKeys("123456789");
+                    
+                    }
+                    ECommercePO.confirmardadosusuario
+                            .click();
+                }
                 wait
                         .until(d -> ECommercePO.valorBilhete1
                                 .isDisplayed());
@@ -381,7 +535,7 @@ public class Cataratasbuilder {
 
                 if (valor1 == 10.00) {
                     logger
-                            .info("Valor do bilhete válido. Finalizando pedido...");
+                            .info("Finalizando pedido...");
                     wait
                             .until(d -> ECommercePO.registrarEfinalizarPedido
                                     .isDisplayed());
@@ -407,7 +561,6 @@ public class Cataratasbuilder {
                             .click();
                     logger
                             .info("Finalizando pedido...");
-
                     // wait
                     // .until(d -> ECommercePO.EscreverConfirmarSenha
                     // .isDisplayed());
@@ -431,10 +584,11 @@ public class Cataratasbuilder {
 
                     ECommercePO.codigo_segurança
                             .sendKeys(codigo_segurança);
+
                     logger
-                            .info("Preenchendo informações de pagamento: " + "Nome Impresso no Cartão: " + Nome_Cartao
-                                    + "Numero do cartão: " + Numero_Cartao + "Mes de validade: " + mes_validade
-                                    + "Codifo de Segurança " + codigo_segurança + "...");
+                            .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: " + Nome_Cartao
+                                    + ", Numero do cartão: " + Numero_Cartao + ", Mes de validade: " + mes_validade
+                                    + ", Codifo de Segurança " + codigo_segurança + "...");
 
                     ECommercePO.CEP
                             .sendKeys(CEP);
@@ -442,8 +596,19 @@ public class Cataratasbuilder {
                     ECommercePO.Numero_Casa
                             .sendKeys(Numero_Casa);
 
+                    ECommercePO.bandeiracartao
+                            .click();
+                    try {
+                        Thread
+                                .sleep(1000);
+                    } catch (InterruptedException e) {
+                        e
+                                .printStackTrace();
+                    }
+                    ECommercePO.visa
+                            .click();
                     logger
-                            .info("Preenchendo endereço: CEP: " + CEP + "Numero da Casa: " + Numero_Casa + "...");
+                            .info("Preenchendo endereço: CEP: " + CEP + ", Numero da Casa: " + Numero_Casa + "...");
                     try {
                         Thread
                                 .sleep(1000);
@@ -454,6 +619,7 @@ public class Cataratasbuilder {
 
                     ECommercePO.finalizarCompra
                             .click();
+
                     wait
                             .until(d -> ECommercePO.confirmarCompra
                                     .isDisplayed());
@@ -468,18 +634,22 @@ public class Cataratasbuilder {
                     JavascriptExecutor js = (JavascriptExecutor) driver;
                     js
                             .executeScript("alert('ERRO: VALOR DO BILHETE INVÁLIDO');");
+                    logger
+                            .severe("ERRO: VALOR DO BILHETE INVÁLIDO.");
                 }
             } else {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js
                         .executeScript("alert('ERRO: PAIS INVALIDO');");
                 logger
-                        .severe("ERRO: VALOR DO BILHETE INVÁLIDO.");
+                        .severe("ERRO: PAÍS INVALIDO.");
             }
         } else {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js
                     .executeScript("alert('ERRO: CATEGORIA PAGANTE NÃO SELECIONADA');");
+            logger
+                    .severe("ERRO: CATEGORIA PAGANTE NÃO SELECIONADA.");
         }
 
     }
