@@ -1,1 +1,0 @@
-APIS e Bibliotecas: [https://docs.oracle.com/javase/8/docs/api/](https://docs.oracle.com/javase/8/docs/api/).
