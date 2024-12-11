@@ -8,7 +8,7 @@ extra_css:
   - css/extra.css  # Seu arquivo de personalização de estilo CSS
 
 nav:
-  - Home: index.md
+  - Início: index.md
   - Introdução: introducao.md
   - Arquitetura do Software: arquitetura.md
   - Guia de Desenvolvimento: guia_desenvolvimento.md
