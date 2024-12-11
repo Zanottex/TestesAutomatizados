@@ -49,11 +49,11 @@
 
     <!-- Selenium Chrome Driver -->
     <dependency>
-        <groupId>org.seleniumhq.selenium</groupId>
-        <artifactId>selenium-chrome-driver</artifactId>
-        <version>3.141.59</version>
-        <scope>test</scope>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.12.0</version> <!-- Substitua pela versão mais recente -->
     </dependency>
+
 
     <!-- Selenium Support -->
     <dependency>
