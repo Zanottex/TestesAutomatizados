@@ -137,8 +137,11 @@ public class EcommercePO extends BasePO{
     @FindBy(id = "mat-option-10")
     public WebElement confirmaPaisOrigem;
 
-    @FindBy(id = "mat-option-10")
+    @FindBy(id = "mat-option-11")
     public WebElement confirmaPaisOrigemIntegrada;
+
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]/input")
+    public WebElement CEP_Nas_categorias;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/div/div[2]/div[1]/span[1]/b")
     public WebElement Nomecategoria;
