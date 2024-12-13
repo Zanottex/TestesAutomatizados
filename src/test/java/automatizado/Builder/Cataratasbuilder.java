@@ -317,7 +317,7 @@ public class Cataratasbuilder {
             } else if (tipo == 2) {
                 ECommercePO.selecionarPaisOrigem
                         .click();
-                ECommercePO.confirmaPaisOrigemIntegrada
+                ECommercePO.confirmaPaisOrigem
                         .click();
                 ECommercePO.estado
                         .click();
@@ -326,7 +326,7 @@ public class Cataratasbuilder {
             } else if (tipo == 5) {
                 ECommercePO.selecionarPaisOrigem_2Rec
                         .click();
-                ECommercePO.confirmaPaisOrigemIntegrada
+                ECommercePO.confirmaPaisOrigem
                         .click();
                 ECommercePO.estado_2Rec
                         .click();
@@ -335,7 +335,7 @@ public class Cataratasbuilder {
             } else if (tipo == 6) {
                 ECommercePO.selecionarPaisOrigem_3Rec
                         .click();
-                ECommercePO.confirmaPaisOrigemIntegrada
+                ECommercePO.confirmaPaisOrigem
                         .click();
                 ECommercePO.estado_3Rec
                         .click();
@@ -455,7 +455,7 @@ public class Cataratasbuilder {
                     }
                     if (tipo == 1 || tipo == 8) {
 
-                        ECommercePO.confirmaPaisOrigemIntegrada
+                        ECommercePO.confirmaPaisOrigem
                                 .click();
                         ECommercePO.estado
                                 .click();
@@ -463,7 +463,7 @@ public class Cataratasbuilder {
                                 .click();
 
                     } else {
-                        ECommercePO.paiserradoIntegrada
+                        ECommercePO.paiserrado
                                 .click();
                     }
                 }

@@ -70,17 +70,17 @@ public class BioParqueDoRioBuilder {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bioparque do Rio Anual");
                         ECommercePO.barraDePesquisa
-                                        .sendKeys("Ingresso Ingresso Bioparque do Rio");
+                                        .sendKeys("Passaporte anual Bioparque do Rio - Testes Automatizados");
                 } else if (tipo == 3) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bioparque do Rio + AquaRio");
                         ECommercePO.barraDePesquisa
-                                        .sendKeys("Ingresso Bioparque do Rio + AquaRio");
+                                        .sendKeys("Combo BioParque do Rio + AquaRio - Testes Automatizados");
                 } else if (tipo == 4) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bioparque do Rio + Cristo Redentor");
                         ECommercePO.barraDePesquisa
-                                        .sendKeys("Ingresso Bioparque do Rio + Cristo Redentor");
+                                        .sendKeys("Combo BioParque do Rio + Paineiras Corcovado - Testes Automatizados");
                 } else {
                         logger
                                         .warning("Tipo de pesquisa inválido: " + tipo);
@@ -93,6 +93,9 @@ public class BioParqueDoRioBuilder {
                         e
                                         .printStackTrace();
                 }
+                wait
+                                .until(d -> ECommercePO.bilhete_a_venda_grupo1
+                                                .isDisplayed());
                 ECommercePO.bilhete_a_venda_grupo1
                                 .click();
                 logger
@@ -144,26 +147,16 @@ public class BioParqueDoRioBuilder {
                                 }
                                 ECommercePO.dia2Receitas
                                                 .click();
-                        }
 
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
-
-                        if (tipo == 4 && i == 1) {
-                                logger
-                                                .info("Selecionando local de embarque...");
-                                wait
-                                                .until(d -> ECommercePO.localEmbarque
-                                                                .isDisplayed());
-                                ECommercePO.localEmbarque
-                                                .click();
-                                ECommercePO.localEmbarqueConfirmar
-                                                .click();
+                                if (tipo == 4) {
+                                        wait
+                                                        .until(d -> ECommercePO.localEmbarque2Receitas
+                                                                        .isDisplayed());
+                                        ECommercePO.localEmbarque2Receitas
+                                                        .click();
+                                        ECommercePO.localEmbarqueConfirmar
+                                                        .click();
+                                }
                         }
 
                         try {
@@ -177,32 +170,34 @@ public class BioParqueDoRioBuilder {
                         logger
                                         .info("Selecionando Horario...");
                         if (i == 0) {
-                                wait
-                                                .until(d -> ECommercePO.horario
-                                                                .isDisplayed());
-                                ECommercePO.horario
-                                                .click();
-                                try {
-                                        Thread
-                                                        .sleep(1000);
-                                } catch (InterruptedException e) {
-                                        e
-                                                        .printStackTrace();
+                                if (tipo != 2) {
+                                        wait
+                                                        .until(d -> ECommercePO.horario
+                                                                        .isDisplayed());
+                                        ECommercePO.horario
+                                                        .click();
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
+                                        ECommercePO.confirmarHorario4opcoes
+                                                        .click();
+                                        try {
+                                                Thread
+                                                                .sleep(2000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
+                                        wait
+                                                        .until(d -> ECommercePO.proximo
+                                                                        .isDisplayed());
+                                        ECommercePO.proximo
+                                                        .click();
                                 }
-                                ECommercePO.confirmarHorario4opcoes
-                                                .click();
-                                try {
-                                        Thread
-                                                        .sleep(2000);
-                                } catch (InterruptedException e) {
-                                        e
-                                                        .printStackTrace();
-                                }
-                                wait
-                                                .until(d -> ECommercePO.proximo
-                                                                .isDisplayed());
-                                ECommercePO.proximo
-                                                .click();
                         } else if (i == 1) {
                                 wait
                                                 .until(d -> ECommercePO.horario2Receitas
@@ -253,13 +248,18 @@ public class BioParqueDoRioBuilder {
                 if (tipo == 4 || tipo == 3) {
                         ECommercePO.selecionarPaisOrigem_2Rec
                                         .click();
-                        ECommercePO.confirmaPaisOrigemIntegrada
+                        wait
+                                        .until(d -> ECommercePO.confirmaPaisOrigem
+                                                        .isDisplayed());
+                        ECommercePO.confirmaPaisOrigem
                                         .click();
-                        ECommercePO.selecionarPaisOrigem_2Rec
+                        ECommercePO.estado_2Rec
                                         .click();
-                        ECommercePO.confirmaPaisOrigemIntegrada
+                        ECommercePO.acre
                                         .click();
                         ECommercePO.adicionarCategoria2_2Rec
+                                        .click();
+                        ECommercePO.adicionarCategoria3_2Rec
                                         .click();
                         ECommercePO.adicionarAoCarrinho_2Rec
                                         .click();
@@ -267,13 +267,56 @@ public class BioParqueDoRioBuilder {
                 } else {
                         ECommercePO.selecionarPaisOrigem
                                         .click();
-                        ECommercePO.confirmaPaisOrigemIntegrada
+                        ECommercePO.confirmaPaisOrigem
                                         .click();
                         ECommercePO.CEP_Nas_categorias
                                         .sendKeys("85509432");
                         ECommercePO.adicionarCategoria2
                                         .click();
+                        wait
+                                        .until(d -> ECommercePO.adicionarAoCarrinho
+                                                        .isEnabled());
                         ECommercePO.adicionarAoCarrinho
+                                        .click();
+                }
+
+                if (tipo == 2) {
+                        wait
+                                        .until(d -> ECommercePO.nomeUsuario
+                                                        .isDisplayed());
+                        ECommercePO.nomeUsuario
+                                        .sendKeys(Nome_Cartao);
+                        ECommercePO.tipodocumento
+                                        .click();
+                        wait
+                                        .until(d -> ECommercePO.outros
+                                                        .isDisplayed());
+                        ECommercePO.outros
+                                        .click();
+                        ECommercePO.documento
+                                        .sendKeys(cpf);
+
+                        try {
+                                Thread
+                                                .sleep(1000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
+
+                        ECommercePO.nomeUsuario2
+                                        .sendKeys("Cleitin do grau");
+                        ECommercePO.tipodocumento2
+                                        .click();
+                        wait
+                                        .until(d -> ECommercePO.outros
+                                                        .isDisplayed());
+                        ECommercePO.outros
+                                        .click();
+                        ECommercePO.documento2
+                                        .sendKeys("123456789");
+
+                        ECommercePO.confirmardadosusuario
                                         .click();
                 }
 
