@@ -365,7 +365,6 @@ public class FundacaoBuilder {
             int ANO2 = Integer.parseInt(ano2);
 
             int MESINICIO = 0;
-            int MESTERMINO = 0;
             
             if(MesInicio.equals("Jan")){
                 MESINICIO = 1;
@@ -403,8 +402,9 @@ public class FundacaoBuilder {
                 MESINICIO = 12;
             }
 
+            int MESTERMINO = 0;
             if(MesTermino.equals("Jan")){
-                MESTERMINO = 12;
+                MESTERMINO = 1;
             }else if(MesTermino.equals("Feb")){
                 MESTERMINO = 2;
             }
@@ -524,6 +524,12 @@ public class FundacaoBuilder {
         ECommercePO.localEmbarque.click();
         ECommercePO.localEmbarqueConfirmar.click();
 
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
         wait.until(d -> ECommercePO.CódigoCredenciado.isDisplayed());
         ECommercePO.CódigoCredenciado.click();
 
@@ -532,21 +538,22 @@ public class FundacaoBuilder {
         wait.until(d -> ECommercePO.ConfirmarCredenciado.isDisplayed());
         ECommercePO.ConfirmarCredenciado.click();
 
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        wait.until(d -> ECommercePO.esperaHorario.isDisplayed());
-        ECommercePO.horario.click();
-        ECommercePO.confirmarHorario4opcoes.click();
+        // try {
+        //     Thread.sleep(3000);
+        // } catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
+        // wait.until(d -> ECommercePO.esperaHorario.isDisplayed());
+        // ECommercePO.horario.click();
+        // ECommercePO.confirmarHorario4opcoes.click();
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // try {
+        //     Thread.sleep(1000);
+        // } catch (InterruptedException e) {
+        //     e.printStackTrace();
+        // }
 
+        wait.until(d -> ECommercePO.proximo.isDisplayed());
         ECommercePO.proximo.click();
 
         ECommercePO.adicionarCategoria.click();

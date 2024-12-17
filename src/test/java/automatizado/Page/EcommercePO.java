@@ -170,7 +170,7 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card[3]/div/div/mat-form-field[4]/div[1]/div/div[2]/input")
     public WebElement data_de_nascimento_ColetaDeDados_TerceiroUsuario;
 
-    @FindBy(id = "mat-option-11")
+    @FindBy(id = "mat-option-17")
     public WebElement confirmaPaisOrigem;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]/input")
@@ -188,7 +188,7 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/div/div[2]/div[1]/span[1]/b")
     public WebElement Nomecategoria;
 
-    @FindBy(id = "mat-option-13")
+    @FindBy(id = "mat-option-20")
     public WebElement paiserrado;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]")
@@ -206,8 +206,14 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/div[3]/escolha-sessao/div/section/div[2]/mat-icon")
     public WebElement esperaSessao;
 
-    @FindBy(id = "mat-option-257")
+    @FindBy(id = "mat-option-263")
     public WebElement acre;
+
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/termoaceitebilhetecomponent/div/div/div/div[3]/mat-checkbox")
+    public WebElement aceitar_termos;
+
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/termoaceitebilhetecomponent/div/div/div/div[4]/div[2]/button")
+    public WebElement continuar_termos;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/section/div/div[2]/div/div/span")
     public WebElement DiaInicio;

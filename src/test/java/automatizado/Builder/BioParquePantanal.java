@@ -22,15 +22,6 @@ public class BioParquePantanal {
     private String senha_usuario = "1";
     private String Nome_Cartao = geradores
             .geradorNome();
-    private String Numero_Cartao = "4000000000000010";
-    private String mes_validade = geradores
-            .geradorValidadeCartao();
-    private String codigo_segurança = geradores
-            .geradorCodigoSeguranca();
-    private String CEP = geradores
-            .geradorCEP();
-    private String Numero_Casa = geradores
-            .geradorNumeroCasa();
     private String cpf = geradores
             .geradorCPF();
 
@@ -56,7 +47,7 @@ public class BioParquePantanal {
         logger
                 .info("Aceitando cookies...");
 
-        if (tipo == 1) {
+        if (tipo == 1 || tipo == 3) {
             logger
                     .info("Iniciando pesquisa: Ingresso Bioparque Pantanal");
             ECommercePO.barraDePesquisa
@@ -66,12 +57,7 @@ public class BioParquePantanal {
                     .info("Iniciando pesquisa: Biopaque pantanal Acesso Prioritário e Preferencial");
             ECommercePO.barraDePesquisa
                     .sendKeys("Biopaque pantanal Acesso Prioritário e Preferencial - Teste automatizado");
-        } else if (tipo == 3) {
-            logger
-                    .info("Iniciando pesquisa: Biopaque pantanal Acesso - Grupos");
-            ECommercePO.barraDePesquisa
-                    .sendKeys("Biopaque pantanal Acesso - Grupos - Testes Automatizados");
-        } else {
+        }  else {
             logger
                     .warning("Tipo de pesquisa inválido: " + tipo);
         }
@@ -153,10 +139,17 @@ public class BioParquePantanal {
         logger
                 .info("Selecionando país de origem...");
 
+        if(tipo == 3){
+            int i =0;
+            while(i != 9){
         ECommercePO.adicionarCategoria
                 .click();
+                i++;
+            }
+        }
         ECommercePO.adicionarCategoria2
                 .click();
+                
         if (tipo == 2) {
             ECommercePO.adicionarCategoria3
                     .click();
@@ -234,7 +227,7 @@ public class BioParquePantanal {
         ECommercePO.CEP_Na_ColetaDeDados_SegundoUsuario
                 .sendKeys("85509432");
 
-        if (tipo == 2) {
+        if (tipo == 2 || tipo == 3) {
             ECommercePO.nomeUsuario3
                     .sendKeys("Flavin do pneu");
             ECommercePO.tipodocumento3
@@ -261,6 +254,9 @@ public class BioParquePantanal {
                     .click();
             ECommercePO.CEP_Na_ColetaDeDados_TerceiroUsuario
                     .sendKeys("85509432");
+        }
+        if(tipo == 3){
+            
         }
 
         ECommercePO.confirmardadosusuario
