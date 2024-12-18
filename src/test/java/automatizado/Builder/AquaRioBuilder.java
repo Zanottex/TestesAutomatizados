@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.StringTokenizer;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -68,9 +69,9 @@ public class AquaRioBuilder {
                                         .sendKeys("Ingresso Aquario - Teste Automatizado");
                 } else if (tipo == 2) {
                         logger
-                                        .info("Iniciando pesquisa: Ingresso Estrangeiro");
+                                        .info("Iniciando pesquisa: Ingresso Aquario + mar de espelho + museu de cera");
                         ECommercePO.barraDePesquisa
-                                        .sendKeys("Ingresso Estrangeiro");
+                                        .sendKeys("Ingresso Aquario + mar de espelho + museu de cera");
                 } else if (tipo == 3) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Experiências");
@@ -119,9 +120,9 @@ public class AquaRioBuilder {
                                 .info("Selecionando bilhete...");
 
                 int dias = 0;
-                if (tipo == 5) {
+                if (tipo == 3 || tipo == 4) {
                         dias = 2;
-                } else if (tipo == 6) {
+                } else if (tipo == 2) {
                         dias = 3;
                 } else {
                         dias = 1;
@@ -172,9 +173,7 @@ public class AquaRioBuilder {
                                                                 .isDisplayed());
                                 ECommercePO.ProximoMes3Receitas
                                                 .click();
-                                wait
-                                                .until(d -> ECommercePO.dia3Receitas
-                                                                .isEnabled());
+
                                 try {
                                         Thread
                                                         .sleep(1000);
@@ -182,6 +181,9 @@ public class AquaRioBuilder {
                                         e
                                                         .printStackTrace();
                                 }
+                                wait
+                                                .until(d -> ECommercePO.dia3Receitas
+                                                                .isEnabled());
                                 ECommercePO.dia3Receitas
                                                 .click();
                         }
@@ -212,69 +214,71 @@ public class AquaRioBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        logger
-                                        .info("Selecionando Horario...");
-                        if (i == 0) {
-                                wait
-                                                .until(d -> ECommercePO.horario
-                                                                .isDisplayed());
-                                ECommercePO.horario
-                                                .click();
-                                ECommercePO.confirmarHorario4opcoes
-                                                .click();
-                                try {
-                                        Thread
-                                                        .sleep(2000);
-                                } catch (InterruptedException e) {
-                                        e
-                                                        .printStackTrace();
+                        if (tipo != 2) {
+                                logger
+                                                .info("Selecionando Horario...");
+                                if (i == 0) {
+                                        wait
+                                                        .until(d -> ECommercePO.horario
+                                                                        .isDisplayed());
+                                        ECommercePO.horario
+                                                        .click();
+                                        ECommercePO.confirmarHorario4opcoes
+                                                        .click();
+                                        try {
+                                                Thread
+                                                                .sleep(2000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
+                                        wait
+                                                        .until(d -> ECommercePO.proximo
+                                                                        .isDisplayed());
+                                        ECommercePO.proximo
+                                                        .click();
+                                } else if (i == 1) {
+                                        wait
+                                                        .until(d -> ECommercePO.horario2Receitas
+                                                                        .isDisplayed());
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
+                                        ECommercePO.horario2Receitas
+                                                        .click();
+                                        ECommercePO.confirmarHorario4opcoes
+                                                        .click();
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
+                                        ECommercePO.proximo2Receitas
+                                                        .click();
+                                } else if (i == 2) {
+                                        wait
+                                                        .until(d -> ECommercePO.horario3Receitas
+                                                                        .isDisplayed());
+                                        ECommercePO.horario3Receitas
+                                                        .click();
+                                        ECommercePO.confirmarHorario4opcoes
+                                                        .click();
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
+                                        ECommercePO.proximo3Receitas
+                                                        .click();
                                 }
-                                wait
-                                                .until(d -> ECommercePO.proximo
-                                                                .isDisplayed());
-                                ECommercePO.proximo
-                                                .click();
-                        } else if (i == 1) {
-                                wait
-                                                .until(d -> ECommercePO.horario2Receitas
-                                                                .isDisplayed());
-                                try {
-                                        Thread
-                                                        .sleep(1000);
-                                } catch (InterruptedException e) {
-                                        e
-                                                        .printStackTrace();
-                                }
-                                ECommercePO.horario2Receitas
-                                                .click();
-                                ECommercePO.confirmarHorario4opcoes
-                                                .click();
-                                try {
-                                        Thread
-                                                        .sleep(1000);
-                                } catch (InterruptedException e) {
-                                        e
-                                                        .printStackTrace();
-                                }
-                                ECommercePO.proximo2Receitas
-                                                .click();
-                        } else if (i == 2) {
-                                wait
-                                                .until(d -> ECommercePO.horario3Receitas
-                                                                .isDisplayed());
-                                ECommercePO.horario3Receitas
-                                                .click();
-                                ECommercePO.confirmarHorario4opcoes
-                                                .click();
-                                try {
-                                        Thread
-                                                        .sleep(1000);
-                                } catch (InterruptedException e) {
-                                        e
-                                                        .printStackTrace();
-                                }
-                                ECommercePO.proximo3Receitas
-                                                .click();
                         }
 
                         i++;
@@ -290,15 +294,11 @@ public class AquaRioBuilder {
                                         .click();
                 } else if (tipo == 2) {
                         wait
-                                        .until(d -> ECommercePO.adicionarCategoria_2Rec
-                                                        .isDisplayed());
-                        ECommercePO.adicionarCategoria_2Rec
-                                        .click();
-                        wait
                                         .until(d -> ECommercePO.adicionarCategoria_3Rec
                                                         .isDisplayed());
                         ECommercePO.adicionarCategoria_3Rec
                                         .click();
+
                 } else {
                         wait
                                         .until(d -> ECommercePO.adicionarCategoria
@@ -314,19 +314,39 @@ public class AquaRioBuilder {
                                 .click();
                 ECommercePO.confirmaPaisOrigem
                                 .click();
-                ECommercePO.estado
-                                .click();
+                try {
+                        Thread
+                                        .sleep(1000);
+                } catch (InterruptedException e) {
+                        e
+                                        .printStackTrace();
+                }
+                if (tipo == 2) {
+                        ECommercePO.estado_3Rec
+                                        .click();
+                } else if (tipo == 3 || tipo == 4) {
+                        ECommercePO.estado_2Rec
+                                        .click();
+                } else {
+                        ECommercePO.estado
+                                        .click();
+                }
                 ECommercePO.acre
                                 .click();
-
                 if (tipo == 3 || tipo == 4) {
                         ECommercePO.adicionarCategoria2_2Rec
+                                        .click();
+                        ECommercePO.adicionarCategoria3_3Rec
                                         .click();
                 } else if (tipo == 2) {
                         ECommercePO.adicionarCategoria2_3Rec
                                         .click();
+                        ECommercePO.adicionarCategoria3_3Rec
+                                        .click();
                 } else {
                         ECommercePO.adicionarCategoria2
+                                        .click();
+                        ECommercePO.adicionarCategoria2Desconto
                                         .click();
                 }
                 try {
@@ -365,6 +385,27 @@ public class AquaRioBuilder {
                                                 .isDisplayed());
                 ECommercePO.nomeUsuario2
                                 .sendKeys(Nome_Cartao);
+                ECommercePO.nomeUsuario3
+                                .sendKeys(Nome_Cartao);
+
+                ECommercePO.selecionarConvenio_coletaDeDados_usuario2
+                                .click();
+
+                wait
+                                .until(d -> ECommercePO.primeiro_convenio
+                                                .isDisplayed());
+
+                ECommercePO.primeiro_convenio
+                                .click();
+                ECommercePO.selecionarConvenio_coletaDeDados_usuario3
+                                .click();
+                wait
+                                .until(d -> ECommercePO.primeiro_convenio
+                                                .isDisplayed());
+
+                ECommercePO.primeiro_convenio
+                                .click();
+
                 // ECommercePO.tipodocumento
                 // .click();
                 // wait
@@ -413,7 +454,7 @@ public class AquaRioBuilder {
                 Double valor1 = Double
                                 .valueOf(valorbilhete1);
 
-                if (valor1 == 9.00) {
+                if (valor1 == 15.00) {
                         logger
                                         .info("Finalizando pedido...");
                         wait

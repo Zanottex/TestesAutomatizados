@@ -33,6 +33,31 @@ public class AquaRioTeste extends BaseTeste{
         AquaRioBuilder Aquario = new AquaRioBuilder(ECommercePO);
 
         Aquario
-                .Ingresso(driver, 1 /* TIPO 1 = BioParqueDoRio */);
+                .Ingresso(driver, 1 /* TIPO 1 = Bilhete avulsso acesso Aquario */);
+    }
+
+    @Test
+    public void TC002_Bilhete_Aquario_Museu_Mar() {
+        String aberto;
+        try {
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
+        }
+
+        ECommercePO = new EcommercePO(driver);
+        AquaRioBuilder Aquario = new AquaRioBuilder(ECommercePO);
+
+        Aquario
+                .Ingresso(driver, 2 /* TIPO 2 = bilhete COMBO: aquario + museu de cera + mar de espelhos */);
     }
 }
