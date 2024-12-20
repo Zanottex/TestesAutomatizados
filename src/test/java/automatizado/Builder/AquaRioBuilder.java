@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.StringTokenizer;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -369,15 +368,36 @@ public class AquaRioBuilder {
                         ECommercePO.acre
                                         .click();
                 } else if (tipo == 5) {
-                        ECommercePO.CEP_Nas_categorias
-                                        .sendKeys("85502060");
+                        boolean cep = false;
+                        try {
+                                ECommercePO.CEP_Nas_categorias
+                                                .isDisplayed();
+                                cep = true;
+                        } catch (Exception e) {
+                                cep = false;
+                        }
+                        if (cep) {
+                                ECommercePO.CEP_Nas_categorias
+                                                .sendKeys("85509432");
+                        }
                 } else if (tipo == 7 || tipo == 6) {
 
                 } else {
-                        ECommercePO.estado
-                                        .click();
-                        ECommercePO.acre
-                                        .click();
+                        boolean cep = false;
+                        try {
+                                ECommercePO.estado
+                                                .isDisplayed();
+                                cep = true;
+                        } catch (Exception e) {
+                                cep = false;
+                        }
+                        if (cep) {
+                                ECommercePO.estado
+                                                .click();
+                                ECommercePO.acre
+                                                .click();
+                        }
+
                 }
 
                 if (tipo == 3 || tipo == 4) {
@@ -437,13 +457,19 @@ public class AquaRioBuilder {
                         ECommercePO.nomeUsuario2
                                         .sendKeys(Nome_Cartao);
                         if (tipo != 5) {
+
                                 ECommercePO.nomeUsuario3
                                                 .sendKeys(Nome_Cartao);
                                 ECommercePO.selecionarConvenio_coletaDeDados_usuario3
                                                 .click();
+                                wait
+                                                .until(d -> ECommercePO.primeiro_convenio
+                                                                .isDisplayed());
+                                ECommercePO.primeiro_convenio
+                                                .click();
+
                                 ECommercePO.selecionarConvenio_coletaDeDados_usuario2
                                                 .click();
-
                                 wait
                                                 .until(d -> ECommercePO.primeiro_convenio
                                                                 .isDisplayed());
@@ -451,15 +477,7 @@ public class AquaRioBuilder {
                                 ECommercePO.primeiro_convenio
                                                 .click();
 
-                                wait
-                                                .until(d -> ECommercePO.primeiro_convenio
-                                                                .isDisplayed());
-
-                                ECommercePO.primeiro_convenio
-                                                .click();
-                        }
-
-                        if (tipo == 5) {
+                        } else {
                                 ECommercePO.tipodocumento
                                                 .click();
                                 wait

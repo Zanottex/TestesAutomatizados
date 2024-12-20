@@ -547,11 +547,11 @@ public class FundacaoBuilder {
         // ECommercePO.horario.click();
         // ECommercePO.confirmarHorario4opcoes.click();
 
-        // try {
-        //     Thread.sleep(1000);
-        // } catch (InterruptedException e) {
-        //     e.printStackTrace();
-        // }
+         try {
+             Thread.sleep(1000);
+         } catch (InterruptedException e) {
+             e.printStackTrace();
+         }
 
         wait.until(d -> ECommercePO.proximo.isDisplayed());
         ECommercePO.proximo.click();
@@ -762,11 +762,11 @@ public class FundacaoBuilder {
          valorbilhete1 = valorbilhete1.replaceAll(",", ".");
          Double valor1 = Double.valueOf(valorbilhete1);
 
-        //StringTokenizer resulBilhete2 = new StringTokenizer(ECommercePO.valorBilhete2.getText());
-        //String valorbilhete2 = resulBilhete2.nextToken(" ");
-         //valorbilhete2 = resulBilhete2.nextToken(" ");
-         //valorbilhete2 = valorbilhete2.replaceAll(",", ".");
-        Double valor2 = 10.0;//Float.valueOf(valorbilhete2);
+        //StringTokenizer resulBilhete2 = new StringTokenizer(ECommercePO.valorbilhete2_vinculado.getText());
+        //String valorbilhete2_vinculado = resulBilhete2.nextToken(" ");
+         //valorbilhete2_vinculado = resulBilhete2.nextToken(" ");
+         //valorbilhete2_vinculado = valorbilhete2_vinculado.replaceAll(",", ".");
+        Double valor2 = 10.0;//Float.valueOf(valorbilhete2_vinculado);
 
         if(valor1 + valor2 == valorsomado){
         

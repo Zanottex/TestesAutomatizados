@@ -188,7 +188,7 @@ public class EcommercePO extends BasePO{
     public WebElement data_de_nascimento_ColetaDeDados_TerceiroUsuario;
 
     /*TODO: Arrumar uma forma de essa opção sempre clicar no brasil quando selecionar um pais. */
-    @FindBy(id = "mat-option-23")
+    @FindBy(id = "mat-option-11")
     public WebElement confirmaPaisOrigem;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]/input")
@@ -207,7 +207,7 @@ public class EcommercePO extends BasePO{
     public WebElement Nomecategoria;
 
     /*TODO: Arrumar uma forma de essa opção sempre clicar no estado unidos quando selecionar um pais. */
-    @FindBy(id = "mat-option-11")
+    @FindBy(id = "mat-option-14")
     public WebElement paiserrado;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]")
@@ -225,7 +225,7 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/div[3]/escolha-sessao/div/section/div[2]/mat-icon")
     public WebElement esperaSessao;
 
-    @FindBy(id = "mat-option-263")
+    @FindBy(id = "mat-option-270")
     public WebElement acre;
 
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/termoaceitebilhetecomponent/div/div/div/div[3]/mat-checkbox")
@@ -233,6 +233,9 @@ public class EcommercePO extends BasePO{
 
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/termoaceitebilhetecomponent/div/div/div/div[4]/div[2]/button")
     public WebElement continuar_termos;
+
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[3]/div[1]/div/mat-checkbox")
+    public WebElement aceitar_termos_finalizar_pedido;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/section/div/div[2]/div/div/span")
     public WebElement DiaInicio;
@@ -340,6 +343,9 @@ public class EcommercePO extends BasePO{
     public WebElement valorBilhete1;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[1]/app-bilhete-card/div/div[2]/mat-card/div[2]/div/span[2]")
+    public WebElement valorBilhete2_vinculado;
+
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[1]/app-bilhete-card/div/div[2]/mat-card/div[1]/div/span[2]")
     public WebElement valorBilhete2;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[2]/div[1]/div/span/span[2]")
@@ -381,7 +387,19 @@ public class EcommercePO extends BasePO{
     public WebElement diaHome;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/dashboard/div/div/home-com-calendario/div/section/div/product-card-new/div/div[1]/div/mat-card/section/button")
-    public WebElement continuar;
+    public WebElement continuarHome_primeiroBilhete_grupo1;
+
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/dashboard/div/div/home-com-calendario/div/section/div[2]/product-card-new/div/div[1]/div/mat-card/section/button")
+    public WebElement continuarHome_primeiroBilhete_grupo2;
+
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-bottom-sheet-container/app-bottom-sheet-overview/div/div[2]/div[2]/app-products-pop-up/div/div[1]/div[1]/mat-card/section/button")
+    public WebElement bilhete_extra_popUP_1;
+
+    @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-bottom-sheet-container/app-bottom-sheet-overview/div/div[2]/div[2]/app-products-pop-up/div/div[1]/div[2]/mat-card/section/button")
+    public WebElement bilhete_extra_popUP_2;
+
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/dashboard/div/div/home-com-calendario/div/section/div/product-card-new/div/div[1]/div[2]/mat-card/section/button")
+    public WebElement continuarHome_segundoBilhete_grupo1;
 
     @FindBy(xpath = "/html/body/div[2]/div/div/cdk-dialog-container/app-info-produtos-new/div/div/div/div[2]/section[2]/div[2]/button")
     public WebElement horarioPopUp;
@@ -390,7 +408,10 @@ public class EcommercePO extends BasePO{
     public WebElement ConfirmahorarioPopUp;
 
     @FindBy(xpath = "/html/body/div[2]/div/div/cdk-dialog-container/app-info-produtos-new/div/div/div/div[2]/section[3]/div[2]/div/div/button[2]")
-    public WebElement categoriaPopUp;
+    public WebElement categoria1_PopUp;
+
+    @FindBy(xpath = "/html/body/div[2]/div/div/cdk-dialog-container/app-info-produtos-new/div/div/div/div[2]/section[3]/div[2]/div[2]/div/button[2]")
+    public WebElement categoria2_PopUp;
 
     @FindBy(xpath = "/html/body/div[2]/div/div/cdk-dialog-container/app-info-produtos-new/div/div/div/div[2]/app-coleta-pais-estado/div/div/div[1]/mat-form-field/div[1]/div/div[2]")
     public WebElement PaisDeOrigemPopUP;
@@ -400,6 +421,9 @@ public class EcommercePO extends BasePO{
 
     @FindBy(xpath = "/html/body/div[2]/div/div/cdk-dialog-container/app-info-produtos-new/div/div/div/div[2]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]")
     public WebElement EstadoPopUp;
+
+    @FindBy(xpath = "/html/body/div[2]/div/div/cdk-dialog-container/app-info-produtos-new/div/div/div/div[2]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]/input")
+    public WebElement CEPPopUp;
 
     @FindBy(xpath = "/html/body/div[2]/div[3]/div/div/mat-option[1]")
     public WebElement AcrePopUp;

@@ -563,6 +563,9 @@ public class Cataratasbuilder {
                                                         .info("Finalizando pedido...");
 
                                         if (tipo == 4) {
+                                                wait
+                                                                .until(d -> ECommercePO.aceitar_termos
+                                                                                .isDisplayed());
                                                 ECommercePO.aceitar_termos
                                                                 .click();
                                                 ECommercePO.continuar_termos

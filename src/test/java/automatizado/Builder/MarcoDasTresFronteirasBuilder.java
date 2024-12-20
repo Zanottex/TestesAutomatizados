@@ -40,8 +40,8 @@ public class MarcoDasTresFronteirasBuilder {
          wait.until(d -> ECommercePO.diaHome.isDisplayed());
          ECommercePO.diaHome.click();
 
-         wait.until(d -> ECommercePO.continuar.isEnabled());
-         ECommercePO.continuar.click();
+         wait.until(d -> ECommercePO.continuarHome_primeiroBilhete_grupo2.isEnabled());
+         ECommercePO.continuarHome_primeiroBilhete_grupo2.click();
 
          wait.until(d -> ECommercePO.horarioPopUp.isDisplayed());
          ECommercePO.horarioPopUp.click();
@@ -49,8 +49,8 @@ public class MarcoDasTresFronteirasBuilder {
          wait.until(d -> ECommercePO.horarioPopUp.isDisplayed());
          ECommercePO.horarioPopUp.click();
 
-         wait.until(d -> ECommercePO.categoriaPopUp.isDisplayed());
-         ECommercePO.categoriaPopUp.click();
+         wait.until(d -> ECommercePO.categoria1_PopUp.isDisplayed());
+         ECommercePO.categoria1_PopUp.click();
 
          ECommercePO.PaisDeOrigemPopUP.click();
          ECommercePO.BrasilPopUp.click();
