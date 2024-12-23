@@ -32,8 +32,6 @@ public class AguasCorrentesBuilder {
             .geradorCEP();
     private String Numero_Casa = geradores
             .geradorNumeroCasa();
-    private String cpf = geradores
-            .geradorCPF();
 
     private static final Logger logger = Logger
             .getLogger(AquaRioBuilder.class
@@ -80,7 +78,7 @@ public class AguasCorrentesBuilder {
             wait
                     .until(d -> ECommercePO.continuarHome_segundoBilhete_grupo1
                             .isEnabled());
-            ECommercePO.continuarHome_primeiroBilhete_grupo1
+            ECommercePO.continuarHome_segundoBilhete_grupo1
                     .click();
         }
 
@@ -127,6 +125,13 @@ public class AguasCorrentesBuilder {
         wait
                 .until(d -> ECommercePO.adicionarAoCarrinhoPopUP
                         .isDisplayed());
+        try {
+            Thread
+                    .sleep(1000);
+        } catch (InterruptedException e) {
+            e
+                    .printStackTrace();
+        }
         ECommercePO.adicionarAoCarrinhoPopUP
                 .click();
 
@@ -191,7 +196,7 @@ public class AguasCorrentesBuilder {
         Double valor1 = Double
                 .valueOf(valorbilhete1);
 
-                StringTokenizer resulBilhete2 = new StringTokenizer(ECommercePO.valorBilhete2
+        StringTokenizer resulBilhete2 = new StringTokenizer(ECommercePO.valorBilhete2
                 .getText());
         String valorbilhete2 = resulBilhete2
                 .nextToken(" ");
@@ -217,11 +222,13 @@ public class AguasCorrentesBuilder {
             ECommercePO.Logar
                     .click();
 
+                    
             wait
                     .until(d -> ECommercePO.aceitar_termos_finalizar_pedido
                             .isDisplayed());
             ECommercePO.aceitar_termos_finalizar_pedido
                     .click();
+                    
 
             wait
                     .until(d -> ECommercePO.finalizarPedido

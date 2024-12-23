@@ -33,7 +33,32 @@ public class AguasCorrentesTestes extends BaseTeste{
         AguasCorrentesBuilder aguas = new AguasCorrentesBuilder(ECommercePO);
 
         aguas
-                .avulsso(driver, 1 /* TIPO 1 = Bilhete avulsso acesso Aquario */);
+                .avulsso(driver, 1 /* TIPO 1 = Bilhete avulsso acesso Aquas */);
+    }
+
+    @Test
+    public void TC002_Bilhete_AguasCorrentes_5dias() {
+        String aberto;
+        try {
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
+        }
+
+        ECommercePO = new EcommercePO(driver);
+        AguasCorrentesBuilder aguas = new AguasCorrentesBuilder(ECommercePO);
+
+        aguas
+                .avulsso(driver, 2 /* TIPO 2 = Bilhete 5 pessoas */);
     }
 
 }
