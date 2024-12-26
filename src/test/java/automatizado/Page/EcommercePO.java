@@ -14,8 +14,11 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-auth/div[1]/div/login-cliente-final/mat-card/mat-card-content/mat-form-field[2]/div[1]/div/div[2]/input")
     public WebElement senha_ecommerce;
 
-    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-toolbar/div/div/div/div[2]/div/button[2]")
+    @FindBy(id = "accountButton")
     public WebElement olaFaçaSeuLogin;
+
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav/div/mat-tab-group/div/mat-tab-body[2]/div/menu-content/div/div[1]/mat-list/a[1]/mat-list-item")
+    public WebElement meus_pedidos;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav/div/mat-tab-group/div/mat-tab-body[2]/div/menu-content/div/div/div[2]/button[1]")
     public WebElement Entrar;
@@ -25,6 +28,25 @@ public class EcommercePO extends BasePO{
 
     @FindBy(id = "mat-input-0")
     public WebElement barraDePesquisa;
+
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/meus-pedidos/div/mat-card/mat-card-content[2]/table/tbody/tr[1]/td[1]")
+    public WebElement ultima_venda;
+
+    @FindBy(xpath = "/html/body/div[3]/div[2]/div/mat-dialog-container/div/div/details-pedido/div/div[1]/div[2]/div/button[3]")
+    public WebElement alterar_informações_da_visita;
+
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/alterarhorariocomponent/div/mat-card/mat-card-content/mat-accordion/mat-expansion-panel/div/div/div/mat-card/mat-card-content[2]/mat-card/div[2]/div/mat-form-field[1]/div[1]/div/div[3]/mat-datepicker-toggle/button")
+    public WebElement alterar_data_de_visita;
+
+    @FindBy(xpath = "/html/body/div[3]/div[2]/div/mat-datepicker-content/div[2]/mat-calendar/mat-calendar-header-config/div/div/button[2]")
+    public WebElement proximo_mes_remarcação;
+
+    @FindBy(xpath = "/html/body/div[3]/div[2]/div/mat-datepicker-content/div[2]/mat-calendar/div/mat-month-view/table/tbody/tr[5]/td[2]/button")
+    public WebElement dia_remarcação;
+
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/alterarhorariocomponent/div/mat-card/mat-card-actions/button[2]")
+    public WebElement salvar_remarcação;
+
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/dashboard/div/div/div/div[2]/productshighlights/div/div[1]/div[1]")
     public WebElement bilhete_a_venda_grupo1;
@@ -188,7 +210,7 @@ public class EcommercePO extends BasePO{
     public WebElement data_de_nascimento_ColetaDeDados_TerceiroUsuario;
 
     /*TODO: Arrumar uma forma de essa opção sempre clicar no brasil quando selecionar um pais. */
-    @FindBy(id = "mat-option-11")
+    @FindBy(id = "mat-option-23")
     public WebElement confirmaPaisOrigem;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]/input")
