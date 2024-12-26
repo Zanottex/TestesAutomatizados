@@ -143,11 +143,13 @@ public class BioParquePantanal {
                                 .click();
                 if (tipo == 3) {
                         int i = 0;
-                        while (i != 8) {
+                        while (i != 7) {
                                 ECommercePO.adicionarCategoria
                                                 .click();
                                 i++;
                         }
+                        ECommercePO.adicionarCategoria2
+                                .click();
                 }
 
                 if (tipo == 2) {
@@ -227,7 +229,7 @@ public class BioParquePantanal {
                                 .sendKeys("123456789");
                 ECommercePO.data_de_nascimento_ColetaDeDados_SegundoUsuario
                                 .sendKeys("01/01/2020");
-                ECommercePO.selecionarPaisOrigem_Na_ColetaDeDados_SegundoUsuario
+                ECommercePO.selecionarPaisOrigem_Na_ColetaDeDados_SegundoUsuario_segundaCategoria
                                 .click();
                 try {
                         Thread
@@ -238,6 +240,9 @@ public class BioParquePantanal {
                 }
                 ECommercePO.confirmarPaisOrigem_Na_ColetaDeDados
                                 .click();
+                wait
+                                .until(d -> ECommercePO.CEP_Na_ColetaDeDados_SegundoUsuario
+                                                .isDisplayed());
                 ECommercePO.CEP_Na_ColetaDeDados_SegundoUsuario
                                 .sendKeys("85509432");
 

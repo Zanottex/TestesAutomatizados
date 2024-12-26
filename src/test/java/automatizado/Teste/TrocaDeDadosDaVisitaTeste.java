@@ -7,7 +7,7 @@ import automatizado.Page.EcommercePO;
 
 public class TrocaDeDadosDaVisitaTeste extends BaseTeste {
     
-    private static final String URL_Ecommerce = "https://zanottincalendario.testescard.limber.net.br/";
+    private static final String URL_Ecommerce = "https://testeauto_integrada.testescard.limber.net.br/";
     private static EcommercePO ecommercePO;
 
     @Test

@@ -54,40 +54,53 @@ public class AguasCorrentesBuilder {
                 .until(d -> ECommercePO.aceitarcookies
                         .isDisplayed());
         ECommercePO.aceitarcookies
-                .click();
+                        .click();
+                        logger
+                        .info("Aceitando os cookies.");
 
         wait
                 .until(d -> ECommercePO.proximoMesHome
                         .isEnabled());
         ECommercePO.proximoMesHome
-                .click();
+                        .click();
+                        logger
+                        .info("Selecionando o mes.");
 
         wait
                 .until(d -> ECommercePO.diaHome
                         .isDisplayed());
         ECommercePO.diaHome
-                .click();
+                        .click();
+                        logger
+                        .info("Selecionando o dia.");
 
         if (tipo == 1) {
             wait
                     .until(d -> ECommercePO.continuarHome_primeiroBilhete_grupo1
                             .isEnabled());
             ECommercePO.continuarHome_primeiroBilhete_grupo1
-                    .click();
+                            .click();
+                            logger
+                            .info("Selecionando o bilhete avulsso.");
         } else if (tipo == 2) {
             wait
                     .until(d -> ECommercePO.continuarHome_segundoBilhete_grupo1
                             .isEnabled());
             ECommercePO.continuarHome_segundoBilhete_grupo1
-                    .click();
+                            .click();
+                            logger
+                            .info("Selecionando o bilhete combo 5 ingressos.");
         }
 
         wait
                 .until(d -> ECommercePO.horarioPopUp
                         .isDisplayed());
         ECommercePO.horarioPopUp
-                .click();
+                        .click();
+                        logger
+                                        .info("Seleconando o horario.");
 
+                        /*confirma o horario */
         wait
                 .until(d -> ECommercePO.horarioPopUp
                         .isDisplayed());

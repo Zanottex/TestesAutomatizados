@@ -22,6 +22,7 @@ public class AquaRioBuilder {
                         .getLogger(AquaRioBuilder.class
                                         .getName());
 
+                                        /*Dados dos usuarios */
         private EcommercePO ECommercePO;
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";

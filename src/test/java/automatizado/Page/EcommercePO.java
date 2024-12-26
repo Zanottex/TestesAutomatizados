@@ -185,6 +185,9 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/div[2]/div[4]/div/div/mat-option[2]")
     public WebElement confirmarPaisOrigem_Na_ColetaDeDados;
 
+    @FindBy(id = "mat-select-38")
+    public WebElement selecionarPaisOrigem_Na_ColetaDeDados_SegundoUsuario_segundaCategoria;
+
     @FindBy(id = "mat-select-10")
     public WebElement selecionarPaisOrigem_Na_ColetaDeDados_SegundoUsuario;
 
@@ -209,8 +212,11 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card[3]/div/div/mat-form-field[4]/div[1]/div/div[2]/input")
     public WebElement data_de_nascimento_ColetaDeDados_TerceiroUsuario;
 
-    /*TODO: Arrumar uma forma de essa opção sempre clicar no brasil quando selecionar um pais. */
-    @FindBy(id = "mat-option-23")
+    /*TODO: Arrumar uma forma de essa opção sempre clicar no brasil quando selecionar um pais. 
+     * O brasil aparece em posições diferentes dependendo do bilhete exemplo o bilhete do aquas correntes é de numero 22 ou 23,
+     *  já o do fundação é 10 ou 11 ele pode alternar nesses valores
+    */
+    @FindBy(id = "mat-option-22")
     public WebElement confirmaPaisOrigem;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]/div/div[2]/input")
