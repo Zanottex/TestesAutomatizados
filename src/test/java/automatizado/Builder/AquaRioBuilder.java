@@ -191,13 +191,6 @@ public class AquaRioBuilder {
                                                 .printStackTrace();
                         }
 
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
                         if (tipo != 2 && tipo != 5) {
                                 logger
                                                 .info("Selecionando Horario...");

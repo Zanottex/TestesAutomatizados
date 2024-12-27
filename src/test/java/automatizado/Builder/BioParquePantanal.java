@@ -20,10 +20,6 @@ public class BioParquePantanal {
 
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";
-        private String Nome_Cartao = geradores
-                        .geradorNome();
-        private String cpf = geradores
-                        .geradorCPF();
 
         static {
                 // Configuração do handler de log para exibir logs no console
@@ -149,7 +145,7 @@ public class BioParquePantanal {
                                 i++;
                         }
                         ECommercePO.adicionarCategoria2
-                                .click();
+                                        .click();
                 }
 
                 if (tipo == 2) {
@@ -186,25 +182,10 @@ public class BioParquePantanal {
                 wait
                                 .until(d -> ECommercePO.nomeUsuario
                                                 .isDisplayed());
-                ECommercePO.nomeUsuario
-                                .sendKeys(Nome_Cartao);
-                ECommercePO.tipodocumento
-                                .click();
-                wait
-                                .until(d -> ECommercePO.outros
-                                                .isDisplayed());
-                ECommercePO.outros
-                                .click();
-                ECommercePO.documento
-                                .sendKeys(cpf);
-                ECommercePO.data_de_nascimento_ColetaDeDados_PrimeiroUsuario
-                                .sendKeys("01/01/2000");
-                ECommercePO.selecionarPaisOrigem_Na_ColetaDeDados_PrimeiroUsuario
-                                .click();
-                ECommercePO.confirmarPaisOrigem_Na_ColetaDeDados
-                                .click();
-                ECommercePO.CEP_Na_ColetaDeDados_PrimeiroUsuario
-                                .sendKeys("85509432");
+                /* nome usuario 1 */
+                ECommercePO
+                                .dadosUsuarios(1, 1, "09285844960", "Gustavo Zanotto", "12/02/1990", 261, "85509432",
+                                                driver);
 
                 try {
                         Thread
@@ -215,22 +196,15 @@ public class BioParquePantanal {
                         e
                                         .printStackTrace();
                 }
-
-                ECommercePO.nomeUsuario2
-                                .sendKeys("Cleitin do grau");
-                ECommercePO.tipodocumento2
-                                .click();
-                wait
-                                .until(d -> ECommercePO.outros
-                                                .isDisplayed());
-                ECommercePO.outros
-                                .click();
-                ECommercePO.documento2
-                                .sendKeys("123456789");
-                ECommercePO.data_de_nascimento_ColetaDeDados_SegundoUsuario
-                                .sendKeys("01/01/2020");
-                ECommercePO.selecionarPaisOrigem_Na_ColetaDeDados_SegundoUsuario_segundaCategoria
-                                .click();
+                /* Segundo usuario */
+                ECommercePO
+                                .dadosUsuarios(1, 2, geradores
+                                                .geradorCPF(),
+                                                geradores
+                                                                .geradorNome(),
+                                                geradores
+                                                                .geradorDataNascimento(),
+                                                510, "85502060", driver);
                 try {
                         Thread
                                         .sleep(1000);
@@ -238,43 +212,39 @@ public class BioParquePantanal {
                         e
                                         .printStackTrace();
                 }
-                ECommercePO.confirmarPaisOrigem_Na_ColetaDeDados
-                                .click();
-                wait
-                                .until(d -> ECommercePO.CEP_Na_ColetaDeDados_SegundoUsuario
-                                                .isDisplayed());
-                ECommercePO.CEP_Na_ColetaDeDados_SegundoUsuario
-                                .sendKeys("85509432");
 
                 if (tipo == 2 || tipo == 3) {
-                        ECommercePO.nomeUsuario3
-                                        .sendKeys("Flavin do pneu");
-                        ECommercePO.tipodocumento3
-                                        .click();
-                        wait
-                                        .until(d -> ECommercePO.outros
-                                                        .isDisplayed());
-                        ECommercePO.outros
-                                        .click();
-                        ECommercePO.documento3
-                                        .sendKeys("987654321");
-                        ECommercePO.data_de_nascimento_ColetaDeDados_TerceiroUsuario
-                                        .sendKeys("01/01/1990");
-                        ECommercePO.selecionarPaisOrigem_Na_ColetaDeDados_TerceiroUsuario
-                                        .click();
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
-                        ECommercePO.confirmarPaisOrigem_Na_ColetaDeDados
-                                        .click();
-                        ECommercePO.CEP_Na_ColetaDeDados_TerceiroUsuario
-                                        .sendKeys("85509432");
+                        /* primeiro usuario segunda categoria */
+                        ECommercePO
+                                        .dadosUsuarios(2, 1, geradores
+                                                        .geradorCPF(),
+                                                        geradores
+                                                                        .geradorNome(),
+                                                        "03/04/2020", 2253, "85502060", driver);
                 }
                 if (tipo == 3) {
+                        int i = 3;
+                        int id = 759;
+                        while (i != 9) {
+                                ECommercePO
+                                                .dadosUsuarios(1, i, geradores
+                                                                .geradorCPF(),
+                                                                geradores
+                                                                                .geradorNome(),
+                                                                geradores
+                                                                                .geradorDataNascimento(),
+                                                                id, "85502060",
+                                                                driver);
+                                i++;
+                                /*o numero de id do brasil na hora de selecionar o pais começa em 261 e aumenta de 249 em 249 para cada usuario*/
+                                id += 249;
+                        }
+                        ECommercePO
+                                        .dadosUsuarios(2,2, geradores
+                                                        .geradorCPF(),
+                                                        geradores
+                                                                        .geradorNome(),
+                                                        "23/09/2018", 2502, "85502060", driver);
 
                 }
 

@@ -1,13 +1,15 @@
 package automatizado.Page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+public class EcommercePO extends BasePO {
 
-public class EcommercePO extends BasePO{
-
-    /*Dentro do E-Commerce */
+    /* Dentro do E-Commerce */
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-auth/div[1]/div/login-cliente-final/mat-card/mat-card-content/mat-form-field[1]/div[1]/div/div[2]/input")
     public WebElement Email_ecommerce;
 
@@ -47,7 +49,6 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/alterarhorariocomponent/div/mat-card/mat-card-actions/button[2]")
     public WebElement salvar_remarcação;
 
-
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/dashboard/div/div/div/div[2]/productshighlights/div/div[1]/div[1]")
     public WebElement bilhete_a_venda_grupo1;
 
@@ -84,11 +85,18 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/div")
     public WebElement horario;
 
-    /* Tem um pequeno conflito na parte de horario e local de embarque pois o embarque quando se tem apareçe antes do horario e caso não tenho embarque o horario fica no lugar dele*/
+    /*
+     * Tem um pequeno conflito na parte de horario e local de embarque pois o
+     * embarque quando se tem apareçe antes do horario e caso não tenho embarque o
+     * horario fica no lugar dele
+     */
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div/div[1]/div")
     public WebElement horario2Receitas;
 
-    /*esse horario serve para quando se tem tanto local de embarque e selecionar horario ao mesmo tempo que se tem 2 receitas */
+    /*
+     * esse horario serve para quando se tem tanto local de embarque e selecionar
+     * horario ao mesmo tempo que se tem 2 receitas
+     */
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div/div[1]/div[2]")
     public WebElement horario2Receitas_comLocalDeEmbarque;
 
@@ -212,10 +220,12 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card[3]/div/div/mat-form-field[4]/div[1]/div/div[2]/input")
     public WebElement data_de_nascimento_ColetaDeDados_TerceiroUsuario;
 
-    /*TODO: Arrumar uma forma de essa opção sempre clicar no brasil quando selecionar um pais. 
-     * O brasil aparece em posições diferentes dependendo do bilhete exemplo o bilhete do aquas correntes é de numero 22 ou 23,
-     *  já o do fundação é 10 ou 11 ele pode alternar nesses valores
-    */
+    /*
+     * TODO: Arrumar uma forma de essa opção sempre clicar no brasil quando
+     * selecionar um pais. O brasil aparece em posições diferentes dependendo do
+     * bilhete exemplo o bilhete do aquas correntes é de numero 22 ou 23, já o do
+     * fundação é 10 ou 11 ele pode alternar nesses valores
+     */
     @FindBy(id = "mat-option-22")
     public WebElement confirmaPaisOrigem;
 
@@ -234,7 +244,10 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/div/div[2]/div[1]/span[1]/b")
     public WebElement Nomecategoria;
 
-    /*TODO: Arrumar uma forma de essa opção sempre clicar no estado unidos quando selecionar um pais. */
+    /*
+     * TODO: Arrumar uma forma de essa opção sempre clicar no estado unidos quando
+     * selecionar um pais.
+     */
     @FindBy(id = "mat-option-14")
     public WebElement paiserrado;
 
@@ -406,8 +419,7 @@ public class EcommercePO extends BasePO{
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/compraconfirmadacomponent/div/mat-card/mensagem-personalizada/div/section[2]/span/div")
     public WebElement confirmarCompra;
 
-
-    /*Calendário na home */
+    /* Calendário na home */
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/dashboard/div/div/home-com-calendario/div/mat-card/div/header/section/button[2]")
     public WebElement proximoMesHome;
 
@@ -483,4 +495,81 @@ public class EcommercePO extends BasePO{
     public EcommercePO(WebDriver driver) {
         super(driver);
     }
+
+    public void Nomeusuario(int grupo, int numero, String nome, WebDriver driver) {
+        driver
+                .findElement(By
+                        .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                + grupo + "]/div[" + numero + "]/div/mat-form-field[1]/div[1]/div/div[2]/input"))
+                .sendKeys(nome);
+        ;
+    }
+
+    public void tipoDocumento(int grupo, int numero, WebDriver driver) {
+        driver
+                .findElement(By
+                        .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                + grupo + "]/div[" + numero + "]/div/mat-form-field[2]/div[1]/div/div[2]"))
+                .click();
+    }
+
+    public void valorDocumento(int grupo, int numero, String documento, WebDriver driver) {
+        driver
+                .findElement(By
+                        .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                + grupo + "]/div[" + numero + "]/div/mat-form-field[3]/div[1]/div/div[2]/input"))
+                .sendKeys(documento);
+    }
+
+    public void dataNascimento(int grupo, int numero, String data, WebDriver driver) {
+        driver
+                .findElement(By
+                        .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                + grupo + "]/div[" + numero + "]/div/mat-form-field[4]/div[1]/div/div[2]/input"))
+                .sendKeys(data);
+    }
+
+    public void selecionarPaisOrigem(int grupo, int numero, WebDriver driver) {
+        driver
+                .findElement(By
+                        .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                + grupo + "]/div[" + numero + "]/div/div[3]/mat-form-field/div[1]/div/div[2]"))
+                .click();
+    }
+
+    public void Pais(int id, WebDriver driver) {
+        driver
+                .findElement(By
+                        .id("mat-option-" + id))
+                .click();
+    }
+
+    public void CEP_coletaDeDados(int grupo, int numero, String cep, WebDriver driver) {
+        driver
+                .findElement(By
+                        .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                + grupo + "]/div[" + numero + "]/div/div[3]/mat-form-field[2]/div[1]/div/div[2]/input"))
+                .sendKeys(cep);
+    }
+
+    public void dadosUsuarios(int grupo, int numero, String documento, String nome, String data, int id, String cep,
+            WebDriver driver) {
+        Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
+
+        Nomeusuario(grupo, numero, nome, driver);
+        tipoDocumento(grupo, numero, driver);
+
+        wait
+                .until(d -> outros
+                        .isDisplayed());
+        outros
+                .click();
+                
+        valorDocumento(grupo, numero, documento, driver);
+        dataNascimento(grupo, numero, data, driver);
+        selecionarPaisOrigem(grupo, numero, driver);
+        Pais(id, driver);
+        CEP_coletaDeDados(grupo, numero, cep, driver);
+    }
+
 }

@@ -30,7 +30,7 @@ public class FundaçãoTeste extends BaseTeste{
         EcommercePO = new EcommercePO(driver);
         FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
 
-        ecommerce.venda_simples(driver);
+        ecommerce.Builder(driver, 1);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class FundaçãoTeste extends BaseTeste{
         EcommercePO = new EcommercePO(driver);
         FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
 
-        ecommerce.multiplas_datas(driver);
+        ecommerce.Builder(driver, 2);
     }
 
     @Test
