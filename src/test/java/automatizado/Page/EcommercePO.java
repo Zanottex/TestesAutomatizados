@@ -261,7 +261,7 @@ public class EcommercePO extends BasePO {
     public WebElement estado_3Rec;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/div[2]/escolha-horario-vaga/div/section/div[2]/mat-icon")
-    public WebElement esperaHorario;
+    public WebElement horarioCredenciado;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[1]/div/div/div/div/div[1]/div[3]/escolha-sessao/div/section/div[2]/mat-icon")
     public WebElement esperaSessao;
@@ -382,14 +382,14 @@ public class EcommercePO extends BasePO {
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[1]/app-bilhete-card/div/div/mat-card/div[1]/div/span[2]")
     public WebElement valorBilhete1;
-
+                    
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[1]/app-bilhete-card/div/div[2]/mat-card/div[2]/div/span[2]")
     public WebElement valorBilhete2_vinculado;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[1]/app-bilhete-card/div/div[2]/mat-card/div[1]/div/span[2]")
     public WebElement valorBilhete2;
 
-    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[2]/div[1]/div/span/span[2]")
+    @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[2]/div[1]/section")
     public WebElement valorSomado;
 
     @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[2]/div[1]/div/span/span[3]")
@@ -497,12 +497,21 @@ public class EcommercePO extends BasePO {
     }
 
     public void Nomeusuario(int grupo, int numero, String nome, WebDriver driver) {
-        driver
+            driver
+                            .findElement(By
+                                            .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                                            + grupo + "]/div[" + numero
+                                                            + "]/div/mat-form-field[1]/div[1]/div/div[2]/input"))
+                            .sendKeys(nome);
+            ;
+    }
+    
+    public String valorBilhete(int numero, WebDriver driver) {
+        return driver
                 .findElement(By
-                        .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
-                                + grupo + "]/div[" + numero + "]/div/mat-form-field[1]/div[1]/div/div[2]/input"))
-                .sendKeys(nome);
-        ;
+                        .xpath("/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div["+numero+"]/div[1]/section"))
+                .getText();
+        
     }
 
     public void tipoDocumento(int grupo, int numero, WebDriver driver) {

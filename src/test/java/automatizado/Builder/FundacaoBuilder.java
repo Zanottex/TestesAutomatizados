@@ -59,16 +59,37 @@ public class FundacaoBuilder {
         } else if (tipo == 2) {
             ECommercePO.barraDePesquisa
                     .sendKeys("Bilhete Multiplas Datas de Visita");
+            try {
+                Thread
+                        .sleep(1000);
+            } catch (InterruptedException e) {
+                e
+                        .printStackTrace();
+            }
             ECommercePO.bilhete_a_venda_grupo1
                     .click();
         } else if (tipo == 3) {
             ECommercePO.barraDePesquisa
                     .sendKeys("Bilhete Credenciado");
+            try {
+                Thread
+                        .sleep(1000);
+            } catch (InterruptedException e) {
+                e
+                        .printStackTrace();
+            }
             ECommercePO.bilhete_a_venda_grupo2
                     .click();
         } else if (tipo == 4) {
             ECommercePO.barraDePesquisa
                     .sendKeys("Bilhete Vinculado 1");
+            try {
+                Thread
+                        .sleep(1000);
+            } catch (InterruptedException e) {
+                e
+                        .printStackTrace();
+            }
             ECommercePO.bilhete_a_venda_grupo1
                     .click();
         } else if (tipo == 5) {
@@ -77,8 +98,16 @@ public class FundacaoBuilder {
             ECommercePO.bilhete_a_venda_grupo1
                     .click();
         } else if (tipo == 6) {
+
             ECommercePO.barraDePesquisa
                     .sendKeys("Bilhete quantidade mínima");
+            try {
+                Thread
+                        .sleep(1000);
+            } catch (InterruptedException e) {
+                e
+                        .printStackTrace();
+            }
             ECommercePO.bilhete_a_venda_grupo1
                     .click();
         }
@@ -150,20 +179,63 @@ public class FundacaoBuilder {
         ECommercePO.localEmbarqueConfirmar
                 .click();
 
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
+        if (tipo == 3) {
+            wait
+                    .until(d -> ECommercePO.CódigoCredenciado
+                            .isDisplayed());
+            ECommercePO.CódigoCredenciado
+                    .click();
+
+            ECommercePO.ColocarCódigoCredenciado
+                    .sendKeys("121525");
+            ECommercePO.ConfirmarCredenciado
+                    .click();
+            wait
+                    .until(d -> ECommercePO.ConfirmarCredenciado
+                            .isDisplayed());
+            ECommercePO.ConfirmarCredenciado
+                    .click();
+            try {
+                Thread
+                        .sleep(1000);
+            } catch (InterruptedException e) {
+                e
+                        .printStackTrace();
+            }
+            wait
+                    .until(d -> ECommercePO.horarioCredenciado
+                            .isEnabled());
+            ECommercePO.horarioCredenciado
+                    .click();
+            wait
+                    .until(d -> ECommercePO.sessaoConfirmar
+                            .isEnabled());
+            ECommercePO.sessaoConfirmar
+                    .click();
+
+        } else {
+            try {
+                Thread
+                        .sleep(6000);
+            } catch (InterruptedException e) {
+                e
+                        .printStackTrace();
+            }
+            wait
+                    .until(d -> ECommercePO.horario
+                            .isDisplayed());
+            ECommercePO.horario
+                    .click();
+            ECommercePO.confirmarHorario4opcoes
+                    .click();
+            ECommercePO.sessao
+                    .click();
+            wait
+                    .until(d -> ECommercePO.sessaoConfirmar
+                            .isEnabled());
+            ECommercePO.sessaoConfirmar
+                    .click();
         }
-        wait
-                .until(d -> ECommercePO.esperaHorario
-                        .isEnabled());
-        ECommercePO.horario
-                .click();
-        ECommercePO.confirmarHorario4opcoes
-                .click();
 
         try {
             Thread
@@ -172,25 +244,15 @@ public class FundacaoBuilder {
             e
                     .printStackTrace();
         }
-        ECommercePO.sessao
-                .click();
         wait
-                .until(d -> ECommercePO.sessaoConfirmar
-                        .isEnabled());
-        ECommercePO.sessaoConfirmar
-                .click();
-
-        try {
-            Thread
-                    .sleep(2000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
+                .until(d -> ECommercePO.proximo
+                        .isDisplayed());
         ECommercePO.proximo
                 .click();
 
+        wait
+                .until(d -> ECommercePO.adicionarCategoria
+                        .isDisplayed());
         ECommercePO.adicionarCategoria
                 .click();
 
@@ -199,6 +261,23 @@ public class FundacaoBuilder {
 
         ECommercePO
                 .Pais(14, driver);
+
+        Double valorsomado = 0.0;
+        if (tipo == 4) {
+            wait
+                    .until(d -> ECommercePO.valorSomado
+                            .isDisplayed());
+            StringTokenizer Result = new StringTokenizer(ECommercePO.valorSomado
+                    .getText());
+            String valortotal = Result
+                    .nextToken(" ");
+            valortotal = Result
+                    .nextToken(" ");
+            valortotal = valortotal
+                    .replaceAll(",", ".");
+            valorsomado = Double
+                    .valueOf(valortotal);
+        }
 
         ECommercePO.adicionarAoCarrinho
                 .click();
@@ -229,689 +308,242 @@ public class FundacaoBuilder {
                     .click();
             ECommercePO.acre
                     .click();
-            ECommercePO.adicionarAoCarrinho
-                    .click();
 
-            wait
-                    .until(d -> ECommercePO.nomeUsuario
-                            .isDisplayed());
-            ECommercePO.nomeUsuario
-                    .sendKeys(Nome_Cartao);
-            ECommercePO.tipodocumento
-                    .click();
-            wait
-                    .until(d -> ECommercePO.outros
-                            .isDisplayed());
-            ECommercePO.outros
-                    .click();
-            ECommercePO.documento
-                    .sendKeys(cpf);
-
-            ECommercePO.confirmardadosusuario
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.valorBilhete1
-                            .isDisplayed());
-            StringTokenizer resul = new StringTokenizer(ECommercePO.valorBilhete1
-                    .getText());
-            String valor = resul
-                    .nextToken(" ");
-            valor = resul
-                    .nextToken(" ");
-            valor = valor
-                    .replaceAll(",", ".");
-            Float valor1 = Float
-                    .valueOf(valor);
-
-            if (valor1 == 10.00 || valor1 == 70.00) {
-                ECommercePO.registrarEfinalizarPedido
-                        .click();
+            if (tipo == 5) {
                 wait
-                        .until(d -> ECommercePO.Email_ecommerce
+                        .until(d -> ECommercePO.valorSomado
                                 .isDisplayed());
-                ECommercePO.Email_ecommerce
-                        .sendKeys(email_usuario);
-                ECommercePO.senha_ecommerce
-                        .sendKeys(senha_usuario);
-                ECommercePO.Logar
-                        .click();
+                StringTokenizer Result = new StringTokenizer(ECommercePO.valorSomado
+                        .getText());
+                String valortotal = Result
+                        .nextToken(" ");
+                valortotal = Result
+                        .nextToken(" ");
+                valortotal = valortotal
+                        .replaceAll(",", ".");
+                valorsomado = Double
+                        .valueOf(valortotal);
 
-                wait
-                        .until(d -> ECommercePO.finalizarPedido
-                                .isDisplayed());
-                ECommercePO.finalizarPedido
-                        .click();
-                int MESTERMINO = 13;
-                int MESINICIO = 13;
-                String data1 = null;
-                String resto = null;
-                String data2 = null;
-                String dia1 = null;
-                int DIA1 = 13;
-                String mes1 = null;
-                int MES1 = 13;
-                String ano1 = null;
-                int ANO1 = 13;
-                String dia2 = null;
-                int DIA2 = 13;
-                String mes2 = null;
-                int MES2 = 13;
-                String ano2 = null;
-                int ANO2 = 13;
-                if (tipo == 2) {
-                    wait
-                            .until(d -> ECommercePO.datas
-                                    .isDisplayed());
-                    StringTokenizer datas = new StringTokenizer(ECommercePO.datas
-                            .getText());
-                    data1 = datas
-                            .nextToken("-");
-                    resto = datas
-                            .nextToken("-");
-                    StringTokenizer fds = new StringTokenizer(resto);
-                    data2 = fds
-                            .nextToken(" ");
-
-                    StringTokenizer Data1 = new StringTokenizer(data1);
-                    dia1 = Data1
-                            .nextToken("/");
-                    DIA1 = Integer
-                            .parseInt(dia1);
-                    mes1 = Data1
-                            .nextToken("/");
-                    MES1 = Integer
-                            .parseInt(mes1);
-                    ano1 = Data1
-                            .nextToken("/");
-                    ano1 = ano1
-                            .replaceAll(" ", "");
-                    ANO1 = Integer
-                            .parseInt(ano1);
-
-                    StringTokenizer Data2 = new StringTokenizer(data2);
-                    dia2 = Data2
-                            .nextToken("/");
-                    DIA2 = Integer
-                            .parseInt(dia2);
-                    mes2 = Data2
-                            .nextToken("/");
-                    MES2 = Integer
-                            .parseInt(mes2);
-                    ano2 = Data2
-                            .nextToken("/");
-                    ano2 = ano2
-                            .replaceAll(" ", "");
-                    ANO2 = Integer
-                            .parseInt(ano2);
-
-                    if (MesInicio
-                            .equals("Jan")) {
-                        MESINICIO = 1;
-                    } else if (MesInicio
-                            .equals("Feb")) {
-                        MESINICIO = 2;
-                    } else if (MesInicio
-                            .equals("Mar")) {
-                        MESINICIO = 3;
-                    } else if (MesInicio
-                            .equals("Apr")) {
-                        MESINICIO = 4;
-                    } else if (MesInicio
-                            .equals("May")) {
-                        MESINICIO = 5;
-                    } else if (MesInicio
-                            .equals("Jun")) {
-                        MESINICIO = 6;
-                    } else if (MesInicio
-                            .equals("Jul")) {
-                        MESINICIO = 7;
-                    } else if (MesInicio
-                            .equals("Ago")) {
-                        MESINICIO = 8;
-                    } else if (MesInicio
-                            .equals("Sep")) {
-                        MESINICIO = 9;
-                    } else if (MesInicio
-                            .equals("Oct")) {
-                        MESINICIO = 10;
-                    } else if (MesInicio
-                            .equals("Nov")) {
-                        MESINICIO = 11;
-                    } else if (MesInicio
-                            .equals("Dec")) {
-                        MESINICIO = 12;
-                    }
-
-                    if (MesTermino
-                            .equals("Jan")) {
-                        MESTERMINO = 1;
-                    } else if (MesTermino
-                            .equals("Feb")) {
-                        MESTERMINO = 2;
-                    } else if (MesTermino
-                            .equals("Mar")) {
-                        MESTERMINO = 3;
-                    } else if (MesTermino
-                            .equals("Apr")) {
-                        MESTERMINO = 4;
-                    } else if (MesTermino
-                            .equals("May")) {
-                        MESTERMINO = 5;
-                    } else if (MesTermino
-                            .equals("Jun")) {
-                        MESTERMINO = 6;
-                    } else if (MesTermino
-                            .equals("Jul")) {
-                        MESTERMINO = 7;
-                    } else if (MesTermino
-                            .equals("Ago")) {
-                        MESTERMINO = 8;
-                    } else if (MesTermino
-                            .equals("Sep")) {
-                        MESTERMINO = 9;
-                    } else if (MesTermino
-                            .equals("Oct")) {
-                        MESTERMINO = 10;
-                    } else if (MesTermino
-                            .equals("Nov")) {
-                        MESTERMINO = 11;
-                    } else if (MesTermino
-                            .equals("Dec")) {
-                        MESTERMINO = 12;
-                    }
-                }
-
-                if (DIAINICIO == DIA1 && DIATERMINO == DIA2 && MESINICIO == MES1 && MESTERMINO == MES2
-                        && ANOINICIO == ANO1 && ANOTERMINO == ANO2 || tipo != 2) {
-                    wait
-                            .until(d -> ECommercePO.Nome_Do_Cartao
-                                    .isDisplayed());
-
-                    ECommercePO.Nome_Do_Cartao
-                            .sendKeys(Nome_Cartao);
-
-                    ECommercePO.Numero_Cartao
-                            .sendKeys(Numero_Cartao);
-
-                    ECommercePO.Mes_Validade
-                            .sendKeys(mes_validade);
-
-                    ECommercePO.codigo_segurança
-                            .sendKeys(codigo_segurança);
-
-                    ECommercePO.CEP
-                            .sendKeys(CEP);
-
-                    ECommercePO.Numero_Casa
-                            .sendKeys(Numero_Casa);
-                    try {
-                        Thread
-                                .sleep(1000);
-                    } catch (InterruptedException e) {
-                        e
-                                .printStackTrace();
-                    }
-
-                    ECommercePO.finalizarCompra
+                if (valorsomado == 10.0) {
+                    ECommercePO.adicionarCategoria
                             .click();
-
                     wait
-                            .until(d -> ECommercePO.confirmarCompra
+                            .until(d -> ECommercePO.valorDesconto
                                     .isDisplayed());
-                    String mensagem = ECommercePO.confirmarCompra
-                            .getText();
-                    assertEquals(
-                            "Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                            mensagem);
+                    Result = new StringTokenizer(ECommercePO.valorDesconto
+                            .getText());
+                    valortotal = Result
+                            .nextToken(" ");
+                    valortotal = Result
+                            .nextToken(" ");
+                    valortotal = valortotal
+                            .replaceAll(",", ".");
+                    valorsomado = Double
+                            .valueOf(valortotal);
 
+                    if (valorsomado == 10.0) {
+                        ECommercePO.tirarcategoria1
+                                .click();
+                        ECommercePO.tirarcategoria1
+                                .click();
+                        ECommercePO.adicionarCategoria2Desconto
+                                .click();
+                        ECommercePO.adicionarCategoria2Desconto
+                                .click();
+                        wait
+                                .until(d -> ECommercePO.valorDesconto
+                                        .isDisplayed());
+                        Result = new StringTokenizer(ECommercePO.valorDesconto
+                                .getText());
+                        valortotal = Result
+                                .nextToken(" ");
+                        valortotal = Result
+                                .nextToken(" ");
+                        valortotal = valortotal
+                                .replaceAll(",", ".");
+                        valorsomado = Double
+                                .valueOf(valortotal);
+
+                        if (valorsomado == 5.0) {
+                            ECommercePO.tirarcategoria2
+                                    .click();
+                            ECommercePO.adicionarCategoria
+                                    .click();
+
+                            wait
+                                    .until(d -> ECommercePO.valorDesconto
+                                            .isDisplayed());
+                            Result = new StringTokenizer(ECommercePO.valorDesconto
+                                    .getText());
+                            valortotal = Result
+                                    .nextToken(" ");
+                            valortotal = Result
+                                    .nextToken(" ");
+                            valortotal = valortotal
+                                    .replaceAll(",", ".");
+                            valorsomado = Double
+                                    .valueOf(valortotal);
+
+                            if (valorsomado == 7.50) {
+                                ECommercePO.adicionarAoCarrinho
+                                        .click();
+
+                            } else {
+                                JavascriptExecutor js = (JavascriptExecutor) driver;
+                                js
+                                        .executeScript("alert('ERRO: VALOR INVALIDO DO DESCONTO DO BILHETE');");
+                            }
+                        } else {
+                            JavascriptExecutor js = (JavascriptExecutor) driver;
+                            js
+                                    .executeScript("alert('ERRO: VALOR INVALIDO DO DESCONTO DO BILHETE');");
+                        }
+                    } else {
+                        JavascriptExecutor js = (JavascriptExecutor) driver;
+                        js
+                                .executeScript("alert('ERRO: VALOR INVALIDO DO DESCONTO DO BILHETE');");
+                    }
+                }
+            } else if (tipo == 6) {
+                ECommercePO.tirarcategoria1
+                        .click();
+
+                boolean possivel = true;
+                try {
+                    possivel = ECommercePO.adicionarAoCarrinho
+                            .isEnabled();
+                } catch (Exception e) {
                 }
 
+                if (possivel == false) {
+
+                    ECommercePO.adicionarCategoria
+                            .click();
+                    ECommercePO.adicionarAoCarrinho
+                            .click();
+                }
             } else {
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js
-                        .executeScript("alert('ERRO: VALOR INVALIDO DO BILHETE');");
-
+                ECommercePO.adicionarAoCarrinho
+                        .click();
             }
-        } else {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js
-                    .executeScript("alert('ERRO: PAIS INVALIDO PARA A CATEGORIA!');");
-
         }
-    }
-
-    public void venda_simples(WebDriver driver) {
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
 
         wait
-                .until(d -> ECommercePO.barraDePesquisa
+                .until(d -> ECommercePO.nomeUsuario
                         .isDisplayed());
-
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete para fundação");
-        ECommercePO.bilhete_a_venda_grupo1
+        ECommercePO
+                .Nomeusuario(1, 1, "Gustavo Zanotto", driver);
+        ECommercePO.tipodocumento
                 .click();
-
-        try {
-            try {
-                Thread
-                        .sleep(2000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-
-            ECommercePO.aceitarcookies
-                    .click();
-        } catch (Exception e) {
-        }
-
         wait
-                .until(d -> ECommercePO.barraDePesquisa
+                .until(d -> ECommercePO.outros
                         .isDisplayed());
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete Fundação com sessão e embarque");
-        ECommercePO.bilhete_a_venda_grupo1
+        ECommercePO.outros
                 .click();
 
-        wait
-                .until(d -> ECommercePO.ProximoMes
-                        .isDisplayed());
-        ECommercePO.ProximoMes
-                .click();
+        ECommercePO
+                .valorDocumento(1, 1, "123456789", driver);
 
-        try {
-            Thread
-                    .sleep(3000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        wait
-                .until(d -> ECommercePO.dia
-                        .isDisplayed());
-        ECommercePO.dia
-                .click();
-
-        wait
-                .until(d -> ECommercePO.localEmbarque
-                        .isDisplayed());
-        ECommercePO.localEmbarque
-                .click();
-        ECommercePO.localEmbarqueConfirmar
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        wait
-                .until(d -> ECommercePO.esperaHorario
-                        .isEnabled());
-        ECommercePO.horario
-                .click();
-        ECommercePO.confirmarHorario4opcoes
-                .click();
-
-        try {
-            Thread
-                    .sleep(2000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        ECommercePO.sessao
-                .click();
-        ECommercePO.sessaoConfirmar
-                .click();
-
-        try {
-            Thread
-                    .sleep(2000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        ECommercePO.proximo
-                .click();
-
-        ECommercePO.adicionarCategoria
-                .click();
-
-        ECommercePO.selecionarPaisOrigem
-                .click();
-
-        ECommercePO.paiserrado
-                .click();
-
-        ECommercePO.adicionarAoCarrinho
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        String erro = ECommercePO.pegarMensagemErro
-                .getText();
-
-        if (erro != null) {
-            ECommercePO.selecionarPaisOrigem
-                    .click();
-            try {
-                Thread
-                        .sleep(1000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-            ECommercePO.confirmaPaisOrigem
-                    .click();
-            ECommercePO.estado
-                    .click();
-            ECommercePO.acre
-                    .click();
-            ECommercePO.adicionarAoCarrinho
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.nomeUsuario
-                            .isDisplayed());
-            ECommercePO.nomeUsuario
-                    .sendKeys(Nome_Cartao);
-            ECommercePO.tipodocumento
-                    .click();
+        if (tipo == 5) {
+            ECommercePO
+                    .Nomeusuario(2, 1, "Marcelo Leopoldo ", driver);
+            ECommercePO
+                    .tipoDocumento(2, 1, driver);
             wait
                     .until(d -> ECommercePO.outros
                             .isDisplayed());
             ECommercePO.outros
                     .click();
-            ECommercePO.documento
-                    .sendKeys(cpf);
 
-            ECommercePO.confirmardadosusuario
+            ECommercePO
+                    .valorDocumento(2, 1, "987654321", driver);
+        } else if (tipo == 6) {
+            ECommercePO
+                    .Nomeusuario(1, 2, "Marcelo Leopoldo ", driver);
+            ECommercePO
+                    .tipoDocumento(1, 2, driver);
+            wait
+                    .until(d -> ECommercePO.outros
+                            .isDisplayed());
+            ECommercePO.outros
                     .click();
 
+            ECommercePO
+                    .valorDocumento(1, 2, "987654321", driver);
+        }
+
+        ECommercePO.confirmardadosusuario
+                .click();
+
+        Double valor1 = 0.0;
+
+        if (tipo == 4) {
             wait
                     .until(d -> ECommercePO.valorBilhete1
                             .isDisplayed());
-            StringTokenizer resul = new StringTokenizer(ECommercePO.valorBilhete1
+            StringTokenizer resulBilhete1 = new StringTokenizer(ECommercePO.valorBilhete1
                     .getText());
-            String valor = resul
+            String valorbilhete1 = resulBilhete1
                     .nextToken(" ");
-            valor = resul
+            valorbilhete1 = resulBilhete1
                     .nextToken(" ");
-            valor = valor
+            valorbilhete1 = valorbilhete1
                     .replaceAll(",", ".");
-            Float valor1 = Float
-                    .valueOf(valor);
+            valor1 = Double
+                    .valueOf(valorbilhete1);
 
-            if (valor1 == 10.00) {
-                ECommercePO.registrarEfinalizarPedido
-                        .click();
-                wait
-                        .until(d -> ECommercePO.Email_ecommerce
-                                .isDisplayed());
-                ECommercePO.Email_ecommerce
-                        .sendKeys(email_usuario);
-                ECommercePO.senha_ecommerce
-                        .sendKeys(senha_usuario);
-                ECommercePO.Logar
-                        .click();
+            StringTokenizer resulBilhete2 = new StringTokenizer(ECommercePO.valorBilhete2_vinculado
+                    .getText());
+            String valorbilhete2_vinculado = resulBilhete2
+                    .nextToken(" ");
+            valorbilhete2_vinculado = resulBilhete2
+                    .nextToken(" ");
+            valorbilhete2_vinculado = valorbilhete2_vinculado
+                    .replaceAll(",", ".");
+            Double valor2 = Double
+                    .valueOf(valorbilhete2_vinculado);
+            valorsomado = valor2 + valor1;
+        } else {
+            boolean logado = false;
+            try {
+                logado = ECommercePO.finalizarPedido
+                        .isDisplayed();
+            } catch (Exception e) {
 
-                wait
-                        .until(d -> ECommercePO.finalizarPedido
-                                .isDisplayed());
-                ECommercePO.finalizarPedido
-                        .click();
-
-                wait
-                        .until(d -> ECommercePO.Nome_Do_Cartao
-                                .isDisplayed());
-
-                ECommercePO.Nome_Do_Cartao
-                        .sendKeys(Nome_Cartao);
-
-                ECommercePO.Numero_Cartao
-                        .sendKeys(Numero_Cartao);
-
-                ECommercePO.Mes_Validade
-                        .sendKeys(mes_validade);
-
-                ECommercePO.codigo_segurança
-                        .sendKeys(codigo_segurança);
-
-                ECommercePO.CEP
-                        .sendKeys(CEP);
-
-                ECommercePO.Numero_Casa
-                        .sendKeys(Numero_Casa);
+            }
+            StringTokenizer resulBilhete1 = null;
+            if (logado) {
                 try {
                     Thread
-                            .sleep(1000);
+                            .sleep(2000);
                 } catch (InterruptedException e) {
                     e
                             .printStackTrace();
                 }
-
-                ECommercePO.finalizarCompra
-                        .click();
-
-                wait
-                        .until(d -> ECommercePO.confirmarCompra
-                                .isDisplayed());
-                String mensagem = ECommercePO.confirmarCompra
-                        .getText();
-                assertEquals(
-                        "Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                        mensagem);
+                resulBilhete1 = new StringTokenizer(ECommercePO.valorBilhete(1, driver));
             } else {
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js
-                        .executeScript("alert('ERRO: VALOR INVALIDO DO BILHETE');");
-
+                wait
+                        .until(d -> ECommercePO.valorSomado
+                                .isDisplayed());
+                resulBilhete1 = new StringTokenizer(ECommercePO.valorSomado
+                        .getText());
             }
 
-        } else {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js
-                    .executeScript("alert('ERRO: PAIS INVALIDO PARA A CATEGORIA!');");
-
-        }
-    }
-
-    public void multiplas_datas(WebDriver driver) {
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete para fundação");
-        ECommercePO.bilhete_a_venda_grupo1
-                .click();
-
-        try {
-            try {
-                Thread
-                        .sleep(2000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-
-            ECommercePO.aceitarcookies
-                    .click();
-        } catch (Exception e) {
-        }
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete Multiplas Datas de Visita");
-        ECommercePO.bilhete_a_venda_grupo1
-                .click();
-
-        wait
-                .until(d -> ECommercePO.ProximoMes
-                        .isDisplayed());
-        ECommercePO.ProximoMes
-                .click();
-
-        try {
-            Thread
-                    .sleep(2000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        wait
-                .until(d -> ECommercePO.dia
-                        .isDisplayed());
-        ECommercePO.dia
-                .click();
-        try {
-            Thread
-                    .sleep(2000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        ECommercePO.diaFim
-                .click();
-
-        wait
-                .until(d -> ECommercePO.DiaInicio
-                        .isDisplayed());
-        String diaInicio = ECommercePO.DiaInicio
-                .getText();
-        int DIAINICIO = Integer
-                .parseInt(diaInicio);
-        String diaTermino = ECommercePO.DiaTermino
-                .getText();
-        int DIATERMINO = Integer
-                .parseInt(diaTermino);
-        String MesInicio = ECommercePO.MesInicio
-                .getText();
-        String MesTermino = ECommercePO.MesTermino
-                .getText();
-        String AnoInicio = ECommercePO.AnoInicio
-                .getText();
-        int ANOINICIO = Integer
-                .parseInt(AnoInicio);
-        String AnoTermino = ECommercePO.AnoTermino
-                .getText();
-        int ANOTERMINO = Integer
-                .parseInt(AnoTermino);
-
-        try {
-            Thread
-                    .sleep(3000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        wait
-                .until(d -> ECommercePO.proximo
-                        .isEnabled());
-        ECommercePO.proximo
-                .click();
-
-        ECommercePO.adicionarCategoria
-                .click();
-
-        ECommercePO.selecionarPaisOrigem
-                .click();
-        try {
-            Thread
-                    .sleep(2000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        ECommercePO.paiserrado
-                .click();
-
-        wait
-                .until(d -> ECommercePO.adicionarAoCarrinho
-                        .isEnabled());
-        ECommercePO.adicionarAoCarrinho
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        String erro = ECommercePO.pegarMensagemErro
-                .getText();
-
-        if (erro != null) {
-            ECommercePO.selecionarPaisOrigem
-                    .click();
-            try {
-                Thread
-                        .sleep(1000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-            ECommercePO.confirmaPaisOrigem
-                    .click();
-            ECommercePO.estado
-                    .click();
-            ECommercePO.acre
-                    .click();
-            ECommercePO.adicionarAoCarrinho
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.nomeUsuario
-                            .isDisplayed());
-            ECommercePO.nomeUsuario
-                    .sendKeys(Nome_Cartao);
-            ECommercePO.tipodocumento
-                    .click();
-            wait
-                    .until(d -> ECommercePO.outros
-                            .isDisplayed());
-            ECommercePO.outros
-                    .click();
-            ECommercePO.documento
-                    .sendKeys(cpf);
-
-            ECommercePO.confirmardadosusuario
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.valorBilhete1
-                            .isDisplayed());
-            StringTokenizer resul = new StringTokenizer(ECommercePO.valorBilhete1
-                    .getText());
-            String valor = resul
+            String valorbilhete1 = resulBilhete1
                     .nextToken(" ");
-            valor = resul
+            valorbilhete1 = resulBilhete1
                     .nextToken(" ");
-            valor = valor
+            valorbilhete1 = resulBilhete1
+                    .nextToken(" ");
+            valorbilhete1 = valorbilhete1
                     .replaceAll(",", ".");
-            Float valor1 = Float
-                    .valueOf(valor);
+            valor1 = Double
+                    .valueOf(valorbilhete1);
+        }
 
-            if (valor1 == 70.00) {
+        if (valor1 == 10.00 || valor1 == 70.00 || valorsomado != 20.00) {
+            if (ECommercePO.registrarEfinalizarPedido
+                    .isDisplayed()) {
                 ECommercePO.registrarEfinalizarPedido
                         .click();
                 wait
@@ -924,58 +556,77 @@ public class FundacaoBuilder {
                 ECommercePO.Logar
                         .click();
 
-                wait
-                        .until(d -> ECommercePO.finalizarPedido
-                                .isDisplayed());
-                ECommercePO.finalizarPedido
-                        .click();
+            } else {
 
+            }
+
+            wait
+                    .until(d -> ECommercePO.finalizarPedido
+                            .isDisplayed());
+            ECommercePO.finalizarPedido
+                    .click();
+            int MESTERMINO = 13;
+            int MESINICIO = 13;
+            String data1 = null;
+            String resto = null;
+            String data2 = null;
+            String dia1 = null;
+            int DIA1 = 13;
+            String mes1 = null;
+            int MES1 = 13;
+            String ano1 = null;
+            int ANO1 = 13;
+            String dia2 = null;
+            int DIA2 = 13;
+            String mes2 = null;
+            int MES2 = 13;
+            String ano2 = null;
+            int ANO2 = 13;
+            if (tipo == 2) {
                 wait
                         .until(d -> ECommercePO.datas
                                 .isDisplayed());
                 StringTokenizer datas = new StringTokenizer(ECommercePO.datas
                         .getText());
-                String data1 = datas
+                data1 = datas
                         .nextToken("-");
-                String resto = datas
+                resto = datas
                         .nextToken("-");
                 StringTokenizer fds = new StringTokenizer(resto);
-                String data2 = fds
+                data2 = fds
                         .nextToken(" ");
 
                 StringTokenizer Data1 = new StringTokenizer(data1);
-                String dia1 = Data1
+                dia1 = Data1
                         .nextToken("/");
-                int DIA1 = Integer
+                DIA1 = Integer
                         .parseInt(dia1);
-                String mes1 = Data1
+                mes1 = Data1
                         .nextToken("/");
-                int MES1 = Integer
+                MES1 = Integer
                         .parseInt(mes1);
-                String ano1 = Data1
+                ano1 = Data1
                         .nextToken("/");
                 ano1 = ano1
                         .replaceAll(" ", "");
-                int ANO1 = Integer
+                ANO1 = Integer
                         .parseInt(ano1);
 
                 StringTokenizer Data2 = new StringTokenizer(data2);
-                String dia2 = Data2
+                dia2 = Data2
                         .nextToken("/");
-                int DIA2 = Integer
+                DIA2 = Integer
                         .parseInt(dia2);
-                String mes2 = Data2
+                mes2 = Data2
                         .nextToken("/");
-                int MES2 = Integer
+                MES2 = Integer
                         .parseInt(mes2);
-                String ano2 = Data2
+                ano2 = Data2
                         .nextToken("/");
                 ano2 = ano2
                         .replaceAll(" ", "");
-                int ANO2 = Integer
+                ANO2 = Integer
                         .parseInt(ano2);
-
-                int MESINICIO = 0;
 
                 if (MesInicio
                         .equals("Jan")) {
@@ -1015,7 +666,6 @@ public class FundacaoBuilder {
                     MESINICIO = 12;
                 }
 
-                int MESTERMINO = 0;
                 if (MesTermino
                         .equals("Jan")) {
                     MESTERMINO = 1;
@@ -1053,1211 +703,63 @@ public class FundacaoBuilder {
                         .equals("Dec")) {
                     MESTERMINO = 12;
                 }
+            }
 
-                if (DIAINICIO == DIA1 && DIATERMINO == DIA2 && MESINICIO == MES1 && MESTERMINO == MES2
-                        && ANOINICIO == ANO1 && ANOTERMINO == ANO2) {
-                    wait
-                            .until(d -> ECommercePO.Nome_Do_Cartao
-                                    .isDisplayed());
+            if (DIAINICIO == DIA1 && DIATERMINO == DIA2 && MESINICIO == MES1 && MESTERMINO == MES2 && ANOINICIO == ANO1
+                    && ANOTERMINO == ANO2 || tipo != 2) {
+                wait
+                        .until(d -> ECommercePO.Nome_Do_Cartao
+                                .isDisplayed());
 
-                    ECommercePO.Nome_Do_Cartao
-                            .sendKeys(Nome_Cartao);
+                ECommercePO.Nome_Do_Cartao
+                        .sendKeys(Nome_Cartao);
 
-                    ECommercePO.Numero_Cartao
-                            .sendKeys(Numero_Cartao);
+                ECommercePO.Numero_Cartao
+                        .sendKeys(Numero_Cartao);
 
-                    ECommercePO.Mes_Validade
-                            .sendKeys(mes_validade);
+                ECommercePO.Mes_Validade
+                        .sendKeys(mes_validade);
 
-                    ECommercePO.codigo_segurança
-                            .sendKeys(codigo_segurança);
+                ECommercePO.codigo_segurança
+                        .sendKeys(codigo_segurança);
 
-                    ECommercePO.CEP
-                            .sendKeys(CEP);
+                ECommercePO.CEP
+                        .sendKeys(CEP);
 
-                    ECommercePO.Numero_Casa
-                            .sendKeys(Numero_Casa);
-                    try {
-                        Thread
-                                .sleep(1000);
-                    } catch (InterruptedException e) {
-                        e
-                                .printStackTrace();
-                    }
-
-                    ECommercePO.finalizarCompra
-                            .click();
-
-                    wait
-                            .until(d -> ECommercePO.confirmarCompra
-                                    .isDisplayed());
-                    String mensagem = ECommercePO.confirmarCompra
-                            .getText();
-                    assertEquals(
-                            "Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                            mensagem);
-
-                } else {
-                    JavascriptExecutor js = (JavascriptExecutor) driver;
-                    js
-                            .executeScript("alert('ERRO: DATAS DE VISITAS ERRADAS');");
+                ECommercePO.Numero_Casa
+                        .sendKeys(Numero_Casa);
+                try {
+                    Thread
+                            .sleep(1000);
+                } catch (InterruptedException e) {
+                    e
+                            .printStackTrace();
                 }
+
+                ECommercePO.finalizarCompra
+                        .click();
+
+                wait
+                        .until(d -> ECommercePO.confirmarCompra
+                                .isDisplayed());
+                String mensagem = ECommercePO.confirmarCompra
+                        .getText();
+                assertEquals(
+                        "Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
+                        mensagem);
 
             } else {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js
                         .executeScript("alert('ERRO: VALOR INVALIDO DO BILHETE');");
+
             }
+
         } else {
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js
-                    .executeScript("alert('ERRO: PAIS INVALIDO PARA A CATEGORIA!');");
-        }
-    }
+                    .executeScript("alert('ERRO: VALOR INVALIDO DO BILHETE!');");
 
-    public void credenciado(WebDriver driver) {
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete para fundação");
-        ECommercePO.bilhete_a_venda_grupo1
-                .click();
-
-        try {
-            try {
-                Thread
-                        .sleep(2000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-
-            ECommercePO.aceitarcookies
-                    .click();
-        } catch (Exception e) {
-        }
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete Credenciado");
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        ECommercePO.bilhete_a_venda_grupo2
-                .click();
-
-        wait
-                .until(d -> ECommercePO.ProximoMes
-                        .isDisplayed());
-        ECommercePO.ProximoMes
-                .click();
-
-        try {
-            Thread
-                    .sleep(3000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        wait
-                .until(d -> ECommercePO.dia
-                        .isDisplayed());
-        ECommercePO.dia
-                .click();
-
-        ECommercePO.localEmbarque
-                .click();
-        ECommercePO.localEmbarqueConfirmar
-                .click();
-
-        try {
-            Thread
-                    .sleep(3000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        wait
-                .until(d -> ECommercePO.CódigoCredenciado
-                        .isDisplayed());
-        ECommercePO.CódigoCredenciado
-                .click();
-
-        ECommercePO.ColocarCódigoCredenciado
-                .sendKeys("121525");
-        ECommercePO.ConfirmarCredenciado
-                .click();
-        wait
-                .until(d -> ECommercePO.ConfirmarCredenciado
-                        .isDisplayed());
-        ECommercePO.ConfirmarCredenciado
-                .click();
-
-        // try {
-        // Thread.sleep(3000);
-        // } catch (InterruptedException e) {
-        // e.printStackTrace();
-        // }
-        // wait.until(d -> ECommercePO.esperaHorario.isDisplayed());
-        // ECommercePO.horario.click();
-        // ECommercePO.confirmarHorario4opcoes.click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        wait
-                .until(d -> ECommercePO.proximo
-                        .isDisplayed());
-        ECommercePO.proximo
-                .click();
-
-        ECommercePO.adicionarCategoria
-                .click();
-
-        ECommercePO.selecionarPaisOrigem
-                .click();
-
-        ECommercePO.paiserrado
-                .click();
-
-        ECommercePO.adicionarAoCarrinho
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        String erro = ECommercePO.pegarMensagemErro
-                .getText();
-
-        if (erro != null) {
-            ECommercePO.selecionarPaisOrigem
-                    .click();
-            try {
-                Thread
-                        .sleep(1000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-            ECommercePO.confirmaPaisOrigem
-                    .click();
-            ECommercePO.estado
-                    .click();
-            ECommercePO.acre
-                    .click();
-            ECommercePO.adicionarAoCarrinho
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.nomeUsuario
-                            .isDisplayed());
-            ECommercePO.nomeUsuario
-                    .sendKeys(Nome_Cartao);
-            ECommercePO.tipodocumento
-                    .click();
-            wait
-                    .until(d -> ECommercePO.outros
-                            .isDisplayed());
-            ECommercePO.outros
-                    .click();
-            ECommercePO.documento
-                    .sendKeys(cpf);
-
-            ECommercePO.confirmardadosusuario
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.valorBilhete1
-                            .isDisplayed());
-            StringTokenizer resul = new StringTokenizer(ECommercePO.valorBilhete1
-                    .getText());
-            String valor = resul
-                    .nextToken(" ");
-            valor = resul
-                    .nextToken(" ");
-            valor = valor
-                    .replaceAll(",", ".");
-            Float valor1 = Float
-                    .valueOf(valor);
-
-            if (valor1 == 10.00) {
-                ECommercePO.registrarEfinalizarPedido
-                        .click();
-                wait
-                        .until(d -> ECommercePO.Email_ecommerce
-                                .isDisplayed());
-                ECommercePO.Email_ecommerce
-                        .sendKeys(email_usuario);
-                ECommercePO.senha_ecommerce
-                        .sendKeys(senha_usuario);
-                ECommercePO.Logar
-                        .click();
-
-                wait
-                        .until(d -> ECommercePO.finalizarPedido
-                                .isDisplayed());
-                ECommercePO.finalizarPedido
-                        .click();
-
-                wait
-                        .until(d -> ECommercePO.Nome_Do_Cartao
-                                .isDisplayed());
-
-                ECommercePO.Nome_Do_Cartao
-                        .sendKeys(Nome_Cartao);
-
-                ECommercePO.Numero_Cartao
-                        .sendKeys(Numero_Cartao);
-
-                ECommercePO.Mes_Validade
-                        .sendKeys(mes_validade);
-
-                ECommercePO.codigo_segurança
-                        .sendKeys(codigo_segurança);
-
-                ECommercePO.CEP
-                        .sendKeys(CEP);
-
-                ECommercePO.Numero_Casa
-                        .sendKeys(Numero_Casa);
-                try {
-                    Thread
-                            .sleep(1000);
-                } catch (InterruptedException e) {
-                    e
-                            .printStackTrace();
-                }
-
-                ECommercePO.finalizarCompra
-                        .click();
-
-                wait
-                        .until(d -> ECommercePO.confirmarCompra
-                                .isEnabled());
-                String mensagem = ECommercePO.confirmarCompra
-                        .getText();
-                assertEquals(
-                        "Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                        mensagem);
-            } else {
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js
-                        .executeScript("alert(''ERRO: VALOR INVALIDO DO BILHETE');");
-            }
-        } else {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js
-                    .executeScript("alert('ERRO: PAIS INVALIDO PARA A CATEGORIA!');");
-        }
-    }
-
-    public void vinculado(WebDriver driver) {
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete para fundação");
-        ECommercePO.bilhete_a_venda_grupo1
-                .click();
-
-        try {
-            try {
-                Thread
-                        .sleep(2000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-
-            ECommercePO.aceitarcookies
-                    .click();
-        } catch (Exception e) {
-        }
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete Vinculado 1");
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        ECommercePO.bilhete_a_venda_grupo1
-                .click();
-
-        wait
-                .until(d -> ECommercePO.ProximoMes
-                        .isDisplayed());
-        ECommercePO.ProximoMes
-                .click();
-
-        try {
-            Thread
-                    .sleep(3000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        wait
-                .until(d -> ECommercePO.dia
-                        .isDisplayed());
-        ECommercePO.dia
-                .click();
-
-        ECommercePO.localEmbarque
-                .click();
-        ECommercePO.localEmbarqueConfirmar
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        wait
-                .until(d -> ECommercePO.esperaHorario
-                        .isDisplayed());
-        ECommercePO.horario
-                .click();
-        ECommercePO.confirmarHorario4opcoes
-                .click();
-
-        try {
-            Thread
-                    .sleep(2000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        wait
-                .until(d -> ECommercePO.proximo
-                        .isEnabled());
-        ECommercePO.proximo
-                .click();
-
-        wait
-                .until(d -> ECommercePO.adicionarCategoria
-                        .isEnabled());
-        ECommercePO.adicionarCategoria
-                .click();
-
-        ECommercePO.selecionarPaisOrigem
-                .click();
-
-        ECommercePO.paiserrado
-                .click();
-
-        ECommercePO.adicionarAoCarrinho
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        String erro = null;
-        try {
-            erro = ECommercePO.pegarMensagemErro
-                    .getText();
-        } catch (Exception e) {
-
-        }
-
-        if (erro != null) {
-
-            ECommercePO.selecionarPaisOrigem
-                    .click();
-            try {
-                Thread
-                        .sleep(1000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-            ECommercePO.confirmaPaisOrigem
-                    .click();
-            ECommercePO.estado
-                    .click();
-            ECommercePO.acre
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.valorSomado
-                            .isDisplayed());
-            StringTokenizer Result = new StringTokenizer(ECommercePO.valorSomado
-                    .getText());
-            String valortotal = Result
-                    .nextToken(" ");
-            valortotal = Result
-                    .nextToken(" ");
-            valortotal = valortotal
-                    .replaceAll(",", ".");
-            Double valorsomado = Double
-                    .valueOf(valortotal);
-
-            ECommercePO.adicionarAoCarrinho
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.nomeUsuario
-                            .isDisplayed());
-            ECommercePO.nomeUsuario
-                    .sendKeys(Nome_Cartao);
-            ECommercePO.tipodocumento
-                    .click();
-            wait
-                    .until(d -> ECommercePO.outros
-                            .isDisplayed());
-            ECommercePO.outros
-                    .click();
-            ECommercePO.documento
-                    .sendKeys(cpf);
-
-            ECommercePO.confirmardadosusuario
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.valorBilhete1
-                            .isDisplayed());
-            StringTokenizer resulBilhete1 = new StringTokenizer(ECommercePO.valorBilhete1
-                    .getText());
-            String valorbilhete1 = resulBilhete1
-                    .nextToken(" ");
-            valorbilhete1 = resulBilhete1
-                    .nextToken(" ");
-            valorbilhete1 = valorbilhete1
-                    .replaceAll(",", ".");
-            Double valor1 = Double
-                    .valueOf(valorbilhete1);
-
-            // StringTokenizer resulBilhete2 = new
-            // StringTokenizer(ECommercePO.valorbilhete2_vinculado.getText());
-            // String valorbilhete2_vinculado = resulBilhete2.nextToken(" ");
-            // valorbilhete2_vinculado = resulBilhete2.nextToken(" ");
-            // valorbilhete2_vinculado = valorbilhete2_vinculado.replaceAll(",", ".");
-            Double valor2 = 10.0;// Float.valueOf(valorbilhete2_vinculado);
-
-            if (valor1 + valor2 == valorsomado) {
-
-                ECommercePO.registrarEfinalizarPedido
-                        .click();
-                wait
-                        .until(d -> ECommercePO.Email_ecommerce
-                                .isDisplayed());
-                ECommercePO.Email_ecommerce
-                        .sendKeys(email_usuario);
-                ECommercePO.senha_ecommerce
-                        .sendKeys(senha_usuario);
-                ECommercePO.Logar
-                        .click();
-
-                wait
-                        .until(d -> ECommercePO.finalizarPedido
-                                .isDisplayed());
-                ECommercePO.finalizarPedido
-                        .click();
-
-                wait
-                        .until(d -> ECommercePO.Nome_Do_Cartao
-                                .isDisplayed());
-
-                ECommercePO.Nome_Do_Cartao
-                        .sendKeys(Nome_Cartao);
-
-                ECommercePO.Numero_Cartao
-                        .sendKeys(Numero_Cartao);
-
-                ECommercePO.Mes_Validade
-                        .sendKeys(mes_validade);
-
-                ECommercePO.codigo_segurança
-                        .sendKeys(codigo_segurança);
-
-                ECommercePO.CEP
-                        .sendKeys(CEP);
-
-                ECommercePO.Numero_Casa
-                        .sendKeys(Numero_Casa);
-                try {
-                    Thread
-                            .sleep(1000);
-                } catch (InterruptedException e) {
-                    e
-                            .printStackTrace();
-                }
-
-                ECommercePO.finalizarCompra
-                        .click();
-
-                wait
-                        .until(d -> ECommercePO.confirmarCompra
-                                .isDisplayed());
-                String mensagem = ECommercePO.confirmarCompra
-                        .getText();
-                assertEquals(
-                        "Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                        mensagem);
-            } else {
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js
-                        .executeScript("alert(''ERRO: VALOR INVALIDO DO BILHETE');");
-            }
-        } else {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js
-                    .executeScript("alert('ERRO: PAIS INVALIDO PARA A CATEGORIA!');");
-        }
-    }
-
-    public void progressivo(WebDriver driver) {
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete para fundação");
-        ECommercePO.bilhete_a_venda_grupo1
-                .click();
-
-        try {
-            try {
-                Thread
-                        .sleep(2000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-            ECommercePO.aceitarcookies
-                    .click();
-        } catch (Exception e) {
-        }
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete Desconto Progressivo");
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        ECommercePO.bilhete_a_venda_grupo1
-                .click();
-
-        wait
-                .until(d -> ECommercePO.ProximoMes
-                        .isDisplayed());
-        ECommercePO.ProximoMes
-                .click();
-
-        try {
-            Thread
-                    .sleep(3000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        wait
-                .until(d -> ECommercePO.dia
-                        .isDisplayed());
-        ECommercePO.dia
-                .click();
-
-        ECommercePO.localEmbarque
-                .click();
-        ECommercePO.localEmbarqueConfirmar
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        wait
-                .until(d -> ECommercePO.esperaHorario
-                        .isDisplayed());
-        ECommercePO.horario
-                .click();
-        ECommercePO.confirmarHorario4opcoes
-                .click();
-
-        try {
-            Thread
-                    .sleep(2000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        wait
-                .until(d -> ECommercePO.proximo
-                        .isEnabled());
-        ECommercePO.proximo
-                .click();
-
-        ECommercePO.adicionarCategoria
-                .click();
-
-        ECommercePO.selecionarPaisOrigem
-                .click();
-
-        ECommercePO.paiserrado
-                .click();
-
-        ECommercePO.adicionarAoCarrinho
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        String erro = null;
-        try {
-            erro = ECommercePO.pegarMensagemErro
-                    .getText();
-        } catch (Exception e) {
-
-        }
-
-        if (erro != null) {
-
-            ECommercePO.selecionarPaisOrigem
-                    .click();
-            try {
-                Thread
-                        .sleep(1000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-            ECommercePO.confirmaPaisOrigem
-                    .click();
-            ECommercePO.estado
-                    .click();
-            ECommercePO.acre
-                    .click();
-
-            wait
-                    .until(d -> ECommercePO.valorSomado
-                            .isDisplayed());
-            StringTokenizer Result = new StringTokenizer(ECommercePO.valorSomado
-                    .getText());
-            String valortotal = Result
-                    .nextToken(" ");
-            valortotal = Result
-                    .nextToken(" ");
-            valortotal = valortotal
-                    .replaceAll(",", ".");
-            Double valorsomado = Double
-                    .valueOf(valortotal);
-
-            if (valorsomado == 10.0) {
-                ECommercePO.adicionarCategoria
-                        .click();
-                wait
-                        .until(d -> ECommercePO.valorDesconto
-                                .isDisplayed());
-                Result = new StringTokenizer(ECommercePO.valorDesconto
-                        .getText());
-                valortotal = Result
-                        .nextToken(" ");
-                valortotal = Result
-                        .nextToken(" ");
-                valortotal = valortotal
-                        .replaceAll(",", ".");
-                valorsomado = Double
-                        .valueOf(valortotal);
-
-                if (valorsomado == 10.0) {
-                    ECommercePO.tirarcategoria1
-                            .click();
-                    ECommercePO.tirarcategoria1
-                            .click();
-                    ECommercePO.adicionarCategoria2Desconto
-                            .click();
-                    ECommercePO.adicionarCategoria2Desconto
-                            .click();
-                    wait
-                            .until(d -> ECommercePO.valorDesconto
-                                    .isDisplayed());
-                    Result = new StringTokenizer(ECommercePO.valorDesconto
-                            .getText());
-                    valortotal = Result
-                            .nextToken(" ");
-                    valortotal = Result
-                            .nextToken(" ");
-                    valortotal = valortotal
-                            .replaceAll(",", ".");
-                    valorsomado = Double
-                            .valueOf(valortotal);
-
-                    if (valorsomado == 5.0) {
-                        ECommercePO.tirarcategoria2
-                                .click();
-                        ECommercePO.adicionarCategoria
-                                .click();
-
-                        wait
-                                .until(d -> ECommercePO.valorDesconto
-                                        .isDisplayed());
-                        Result = new StringTokenizer(ECommercePO.valorDesconto
-                                .getText());
-                        valortotal = Result
-                                .nextToken(" ");
-                        valortotal = Result
-                                .nextToken(" ");
-                        valortotal = valortotal
-                                .replaceAll(",", ".");
-                        valorsomado = Double
-                                .valueOf(valortotal);
-
-                        if (valorsomado == 7.50) {
-                            ECommercePO.adicionarAoCarrinho
-                                    .click();
-
-                            wait
-                                    .until(d -> ECommercePO.nomeUsuario
-                                            .isDisplayed());
-                            ECommercePO.nomeUsuario
-                                    .sendKeys(Nome_Cartao);
-                            ECommercePO.tipodocumento
-                                    .click();
-                            wait
-                                    .until(d -> ECommercePO.outros
-                                            .isDisplayed());
-                            ECommercePO.outros
-                                    .click();
-                            ECommercePO.documento
-                                    .sendKeys(cpf);
-
-                            ECommercePO.nomeUsuario2
-                                    .sendKeys("Cleitin do grau");
-                            ECommercePO.tipodocumento2
-                                    .click();
-                            wait
-                                    .until(d -> ECommercePO.outros
-                                            .isDisplayed());
-                            ECommercePO.outros
-                                    .click();
-                            ECommercePO.documento2
-                                    .sendKeys("123456789");
-                            ECommercePO.confirmardadosusuario
-                                    .click();
-
-                            wait
-                                    .until(d -> ECommercePO.registrarEfinalizarPedido
-                                            .isDisplayed());
-                            ECommercePO.registrarEfinalizarPedido
-                                    .click();
-                            wait
-                                    .until(d -> ECommercePO.Email_ecommerce
-                                            .isDisplayed());
-                            ECommercePO.Email_ecommerce
-                                    .sendKeys(email_usuario);
-                            ECommercePO.senha_ecommerce
-                                    .sendKeys(senha_usuario);
-                            ECommercePO.Logar
-                                    .click();
-
-                            wait
-                                    .until(d -> ECommercePO.finalizarPedido
-                                            .isDisplayed());
-                            ECommercePO.finalizarPedido
-                                    .click();
-
-                            wait
-                                    .until(d -> ECommercePO.Nome_Do_Cartao
-                                            .isDisplayed());
-
-                            ECommercePO.Nome_Do_Cartao
-                                    .sendKeys(Nome_Cartao);
-
-                            ECommercePO.Numero_Cartao
-                                    .sendKeys(Numero_Cartao);
-
-                            ECommercePO.Mes_Validade
-                                    .sendKeys(mes_validade);
-
-                            ECommercePO.codigo_segurança
-                                    .sendKeys(codigo_segurança);
-
-                            ECommercePO.CEP
-                                    .sendKeys(CEP);
-
-                            ECommercePO.Numero_Casa
-                                    .sendKeys(Numero_Casa);
-                            try {
-                                Thread
-                                        .sleep(1000);
-                            } catch (InterruptedException e) {
-                                e
-                                        .printStackTrace();
-                            }
-
-                            ECommercePO.finalizarCompra
-                                    .click();
-                            wait
-                                    .until(d -> ECommercePO.confirmarCompra
-                                            .isDisplayed());
-                            String mensagem = ECommercePO.confirmarCompra
-                                    .getText();
-                            assertEquals(
-                                    "Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                                    mensagem);
-                        } else {
-                            JavascriptExecutor js = (JavascriptExecutor) driver;
-                            js
-                                    .executeScript(
-                                            "alert('ERRO: VALOR INVALIDO DO DESCONTO COM DIFERENTES CATEGORIAS É MAIOR OU MENOR');");
-                        }
-                    } else {
-                        JavascriptExecutor js = (JavascriptExecutor) driver;
-                        js
-                                .executeScript("alert('ERRO: VALOR INVALIDO DO DESCONTO VALOR MAIOR OU MENOR');");
-                    }
-                } else {
-                    JavascriptExecutor js = (JavascriptExecutor) driver;
-                    js
-                            .executeScript("alert('ERRO: VALOR INVALIDO DO DESCONTO VALOR MAIOR OU MENOR');");
-                }
-            } else {
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js
-                        .executeScript(
-                                "alert('ERRO: VALOR INVALIDO DO DESCONTO QUANTIDADE DE BILHETES MENOR QUE A REQUERIDA');");
-            }
-        } else {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js
-                    .executeScript("alert('ERRO: PAIS INVALIDO PARA A CATEGORIA!');");
-        }
-    }
-
-    public void quantidadeMinima(WebDriver driver) {
-        Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete para fundação");
-        ECommercePO.bilhete_a_venda_grupo1
-                .click();
-
-        try {
-            try {
-                Thread
-                        .sleep(2000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-
-            ECommercePO.aceitarcookies
-                    .click();
-        } catch (Exception e) {
-        }
-
-        wait
-                .until(d -> ECommercePO.barraDePesquisa
-                        .isDisplayed());
-        ECommercePO.barraDePesquisa
-                .sendKeys("Bilhete quantidade mínima");
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        ECommercePO.bilhete_a_venda_grupo1
-                .click();
-
-        wait
-                .until(d -> ECommercePO.ProximoMes
-                        .isDisplayed());
-        ECommercePO.ProximoMes
-                .click();
-
-        try {
-            Thread
-                    .sleep(3000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        wait
-                .until(d -> ECommercePO.dia
-                        .isDisplayed());
-        ECommercePO.dia
-                .click();
-
-        ECommercePO.localEmbarque
-                .click();
-        ECommercePO.localEmbarqueConfirmar
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        wait
-                .until(d -> ECommercePO.esperaHorario
-                        .isDisplayed());
-        ECommercePO.horario
-                .click();
-        ECommercePO.confirmarHorario4opcoes
-                .click();
-
-        try {
-            Thread
-                    .sleep(2000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        wait
-                .until(d -> ECommercePO.proximo
-                        .isEnabled());
-        ECommercePO.proximo
-                .click();
-
-        wait
-                .until(d -> ECommercePO.adicionarCategoria
-                        .isEnabled());
-        ECommercePO.adicionarCategoria
-                .click();
-
-        ECommercePO.selecionarPaisOrigem
-                .click();
-
-        ECommercePO.paiserrado
-                .click();
-
-        ECommercePO.adicionarAoCarrinho
-                .click();
-
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-
-        String erro = null;
-        try {
-            erro = ECommercePO.pegarMensagemErro
-                    .getText();
-        } catch (Exception e) {
-
-        }
-
-        if (erro != null) {
-
-            ECommercePO.selecionarPaisOrigem
-                    .click();
-            try {
-                Thread
-                        .sleep(1000);
-            } catch (InterruptedException e) {
-                e
-                        .printStackTrace();
-            }
-            ECommercePO.confirmaPaisOrigem
-                    .click();
-            ECommercePO.estado
-                    .click();
-            ECommercePO.acre
-                    .click();
-
-            ECommercePO.tirarcategoria1
-                    .click();
-
-            boolean possivel = true;
-            try {
-                possivel = ECommercePO.adicionarAoCarrinho
-                        .isEnabled();
-            } catch (Exception e) {
-            }
-
-            if (possivel == false) {
-
-                ECommercePO.adicionarCategoria
-                        .click();
-
-                wait
-                        .until(d -> ECommercePO.valorSomado
-                                .isDisplayed());
-                StringTokenizer Result = new StringTokenizer(ECommercePO.valorSomado
-                        .getText());
-                String valortotal = Result
-                        .nextToken(" ");
-                valortotal = Result
-                        .nextToken(" ");
-                valortotal = valortotal
-                        .replaceAll(",", ".");
-                Double valorsomado = Double
-                        .valueOf(valortotal);
-
-                if (20.00 == valorsomado) {
-
-                    ECommercePO.adicionarAoCarrinho
-                            .click();
-
-                    wait
-                            .until(d -> ECommercePO.nomeUsuario
-                                    .isDisplayed());
-                    ECommercePO.nomeUsuario
-                            .sendKeys(Nome_Cartao);
-                    ECommercePO.tipodocumento
-                            .click();
-                    wait
-                            .until(d -> ECommercePO.outros
-                                    .isDisplayed());
-                    ECommercePO.outros
-                            .click();
-                    ECommercePO.documento
-                            .sendKeys(cpf);
-
-                    ECommercePO.nomeUsuario2brasileiro
-                            .sendKeys("Cleitin do grau");
-                    ECommercePO.tipodocumento2brasileiro
-                            .click();
-                    wait
-                            .until(d -> ECommercePO.outros
-                                    .isDisplayed());
-                    ECommercePO.outros
-                            .click();
-                    ECommercePO.documento2brasileiro
-                            .sendKeys("123456789");
-                    ECommercePO.confirmardadosusuario
-                            .click();
-
-                    wait
-                            .until(d -> ECommercePO.registrarEfinalizarPedido
-                                    .isDisplayed());
-                    ECommercePO.registrarEfinalizarPedido
-                            .click();
-
-                    wait
-                            .until(d -> ECommercePO.Email_ecommerce
-                                    .isDisplayed());
-                    ECommercePO.Email_ecommerce
-                            .sendKeys(email_usuario);
-                    ECommercePO.senha_ecommerce
-                            .sendKeys(senha_usuario);
-                    ECommercePO.Logar
-                            .click();
-
-                    wait
-                            .until(d -> ECommercePO.finalizarPedido
-                                    .isDisplayed());
-                    ECommercePO.finalizarPedido
-                            .click();
-
-                    wait
-                            .until(d -> ECommercePO.Nome_Do_Cartao
-                                    .isDisplayed());
-
-                    ECommercePO.Nome_Do_Cartao
-                            .sendKeys(Nome_Cartao);
-
-                    ECommercePO.Numero_Cartao
-                            .sendKeys(Numero_Cartao);
-
-                    ECommercePO.Mes_Validade
-                            .sendKeys(mes_validade);
-
-                    ECommercePO.codigo_segurança
-                            .sendKeys(codigo_segurança);
-
-                    ECommercePO.CEP
-                            .sendKeys(CEP);
-
-                    ECommercePO.Numero_Casa
-                            .sendKeys(Numero_Casa);
-                    try {
-                        Thread
-                                .sleep(1000);
-                    } catch (InterruptedException e) {
-                        e
-                                .printStackTrace();
-                    }
-
-                    ECommercePO.finalizarCompra
-                            .click();
-
-                    wait
-                            .until(d -> ECommercePO.confirmarCompra
-                                    .isDisplayed());
-                    String mensagem = ECommercePO.confirmarCompra
-                            .getText();
-                    assertEquals(
-                            "Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                            mensagem);
-                } else {
-                    JavascriptExecutor js = (JavascriptExecutor) driver;
-                    js
-                            .executeScript("alert(''ERRO: VALOR INVALIDO DO BILHETE');");
-                }
-            } else {
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js
-                        .executeScript("alert('ERRO: QUANTIDADE MINIMA NÃO ATINGIDA');");
-            }
-        } else {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js
-                    .executeScript("alert('ERRO: PAIS INVALIDO PARA A CATEGORIA!');");
         }
     }
 

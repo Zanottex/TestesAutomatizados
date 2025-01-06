@@ -72,7 +72,7 @@ public class FundaçãoTeste extends BaseTeste{
         EcommercePO = new EcommercePO(driver);
         FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
 
-        ecommerce.credenciado(driver);
+        ecommerce.Builder(driver, 3);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class FundaçãoTeste extends BaseTeste{
         EcommercePO = new EcommercePO(driver);
         FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
 
-        ecommerce.vinculado(driver);
+        ecommerce.Builder(driver, 4);
           
     }
 
@@ -115,7 +115,7 @@ public class FundaçãoTeste extends BaseTeste{
         EcommercePO = new EcommercePO(driver);
         FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
 
-        ecommerce.progressivo(driver);
+        ecommerce.Builder(driver, 5);
           
     }
 
@@ -137,7 +137,7 @@ public class FundaçãoTeste extends BaseTeste{
         EcommercePO = new EcommercePO(driver);
         FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
 
-        ecommerce.quantidadeMinima(driver);
+        ecommerce.Builder(driver, 6);
           
     }
 }
