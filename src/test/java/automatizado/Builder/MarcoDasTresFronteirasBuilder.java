@@ -3,6 +3,9 @@ package automatizado.Builder;
 import static org.junit.Assert.assertEquals;
 
 import java.util.StringTokenizer;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
@@ -23,9 +26,22 @@ public class MarcoDasTresFronteirasBuilder {
     private String Numero_Casa = "1050"; 
     private String cpf = "09285844960"; 
     
-    public MarcoDasTresFronteirasBuilder(EcommercePO ecommercePO){
+    public MarcoDasTresFronteirasBuilder(EcommercePO ecommercePO) {
         this.ECommercePO = ecommercePO;
     }
+    
+    private static final Logger logger = Logger
+                        .getLogger(AquaRioBuilder.class
+                                        .getName());
+
+        static {
+                // Configuração do handler de log para exibir logs no console
+                ConsoleHandler consoleHandler = new ConsoleHandler();
+                consoleHandler
+                                .setLevel(Level.ALL);
+                logger
+                                .addHandler(consoleHandler);
+        }
 
     public void venda_padrao(WebDriver driver){
 
@@ -38,10 +54,16 @@ public class MarcoDasTresFronteirasBuilder {
          ECommercePO.proximoMesHome.click();
 
          wait.until(d -> ECommercePO.diaHome.isDisplayed());
-         ECommercePO.diaHome.click();
+         ECommercePO.diaHome
+                 .click();
+                 logger
+                 .info("Selecionando o dia no calendario.");
 
-         wait.until(d -> ECommercePO.continuar.isEnabled());
-         ECommercePO.continuar.click();
+         wait.until(d -> ECommercePO.continuarHome_primeiroBilhete_grupo2.isEnabled());
+         ECommercePO.continuarHome_primeiroBilhete_grupo2
+                 .click();
+                 logger
+                 .info("Selecionando o bilhete disponivel para aquela data.");
 
          wait.until(d -> ECommercePO.horarioPopUp.isDisplayed());
          ECommercePO.horarioPopUp.click();
@@ -49,15 +71,21 @@ public class MarcoDasTresFronteirasBuilder {
          wait.until(d -> ECommercePO.horarioPopUp.isDisplayed());
          ECommercePO.horarioPopUp.click();
 
-         wait.until(d -> ECommercePO.categoriaPopUp.isDisplayed());
-         ECommercePO.categoriaPopUp.click();
+         wait.until(d -> ECommercePO.categoria1_PopUp.isDisplayed());
+         ECommercePO.categoria1_PopUp
+                 .click();
+                 logger
+                 .info("Selecionando as categorias que serão compradas.");
 
          ECommercePO.PaisDeOrigemPopUP.click();
          ECommercePO.BrasilPopUp.click();
 
          ECommercePO.EstadoPopUp.click();
          wait.until(d -> ECommercePO.AcrePopUp.isDisplayed());
-         ECommercePO.AcrePopUp.click();
+         ECommercePO.AcrePopUp
+                 .click();
+                 logger
+                 .info("Colocando pais brasil e o estado.");
 
          ECommercePO.adicionarAoCarrinhoPopUP.click();
 
@@ -67,7 +95,8 @@ public class MarcoDasTresFronteirasBuilder {
         wait.until(d -> ECommercePO.outrosPopUp.isDisplayed());
         ECommercePO.outrosPopUp.click();
         ECommercePO.documentoPopUp.sendKeys(cpf);
-
+        logger
+        .info("Colocando os dados do usuario para a visita");
         ECommercePO.confirmardadosdoUsuarioPopUp.click();
 
         wait.until(d -> ECommercePO.valorBilhete1.isDisplayed());
@@ -83,7 +112,10 @@ public class MarcoDasTresFronteirasBuilder {
         wait.until(d -> ECommercePO.Email_ecommerce.isDisplayed());
             ECommercePO.Email_ecommerce.sendKeys(email_usuario);
             ECommercePO.senha_ecommerce.sendKeys(senha_usuario);
-            ECommercePO.Logar.click();
+            ECommercePO.Logar
+                    .click();
+                    logger
+                    .info("Logando na conta do usuario.");
 
         wait.until(d -> ECommercePO.finalizarPedido.isDisplayed());
         ECommercePO.finalizarPedido.click();
@@ -100,14 +132,20 @@ public class MarcoDasTresFronteirasBuilder {
 
         ECommercePO.CEP.sendKeys(CEP);
 
-        ECommercePO.Numero_Casa.sendKeys(Numero_Casa);
+        ECommercePO.Numero_Casa
+                .sendKeys(Numero_Casa);
+                logger
+                .info("Inserindo os dados para finalizar a compra. (CEP, cartão de crédito, CEP)");
         try {
             Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-        ECommercePO.finalizarCompra.click();
+            ECommercePO.finalizarCompra
+                    .click();
+                    logger
+                    .info("Compra finalizada.");
 
         wait.until(d -> ECommercePO.confirmarCompra.isDisplayed());
         String mensagem = ECommercePO.confirmarCompra.getText();
