@@ -1,6 +1,14 @@
 package automatizado.Builder;
 
 import static org.junit.Assert.assertEquals;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -10,6 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import automatizado.Generators.geradores;
 import automatizado.Page.EcommercePO;
+import net.bytebuddy.asm.Advice.Local;
 
 public class BioParquePantanal {
         private EcommercePO ECommercePO;
@@ -30,6 +39,8 @@ public class BioParquePantanal {
                                 .addHandler(consoleHandler);
         }
 
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
         public void Ingresso(WebDriver driver, int tipo) {
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
                 logger
@@ -38,8 +49,19 @@ public class BioParquePantanal {
                 wait
                                 .until(d -> ECommercePO.barraDePesquisa
                                                 .isDisplayed());
-                ECommercePO.aceitarcookies
-                                .click();
+                try {
+                        try {
+                                Thread
+                                                .sleep(2000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
+
+                        ECommercePO.aceitarcookies
+                                        .click();
+                } catch (Exception e) {
+                }
                 logger
                                 .info("Aceitando cookies...");
 
@@ -196,36 +218,45 @@ public class BioParquePantanal {
                         e
                                         .printStackTrace();
                 }
-                /* Segundo usuario */
-                ECommercePO
-                                .dadosUsuarios(1, 2, geradores
-                                                .geradorCPF(),
-                                                geradores
-                                                                .geradorNome(),
-                                                geradores
-                                                                .geradorDataNascimento(),
-                                                510, "85502060", driver);
-                try {
-                        Thread
-                                        .sleep(1000);
-                } catch (InterruptedException e) {
-                        e
-                                        .printStackTrace();
-                }
 
-                if (tipo == 2 || tipo == 3) {
+                if (tipo == 2) {
                         /* primeiro usuario segunda categoria */
                         ECommercePO
                                         .dadosUsuarios(2, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
-                                                        "03/04/2020", 2253, "85502060", driver);
-                }
-                if (tipo == 3) {
-                        int i = 3;
-                        int id = 759;
+                                                        "03/04/2020", 510, "85502060", driver);
+                        ECommercePO
+                                        .dadosUsuarios(3, 1, geradores
+                                                        .geradorCPF(),
+                                                        geradores
+                                                                        .geradorNome(),
+                                                        "03/04/2020", 759, "85502060", driver);
+                } else if (tipo == 3) {
+                        int i = 2;
+                        int id = 510;
+
                         while (i != 9) {
+                                String dataAtual = LocalDate
+                                                .now()
+                                                .toString();
+                                Date DataHoje = null;
+                                Date DataGerada = null;             
+
+                                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                                try {
+                                        DataHoje = formato
+                                                        .parse(dataAtual);
+                                        DataGerada = formato
+                                                        .parse(geradores
+                                                                        .geradorDataNascimento());
+                                } catch (ParseException e) {
+                                        // TODO Auto-generated catch block
+                                        e
+                                                        .printStackTrace();
+                                }
+                               
                                 ECommercePO
                                                 .dadosUsuarios(1, i, geradores
                                                                 .geradorCPF(),
@@ -233,43 +264,74 @@ public class BioParquePantanal {
                                                                                 .geradorNome(),
                                                                 geradores
                                                                                 .geradorDataNascimento(),
-                                                                id, "85502060",
-                                                                driver);
+                                                                id, "85502060", driver);
                                 i++;
-                                /*o numero de id do brasil na hora de selecionar o pais começa em 261 e aumenta de 249 em 249 para cada usuario*/
+                                /*
+                                 * o numero de id do brasil na hora de selecionar o pais começa em 261 e aumenta
+                                 * de 249 em 249 para cada usuario
+                                 */
                                 id += 249;
                         }
                         ECommercePO
-                                        .dadosUsuarios(2,2, geradores
+                                        .dadosUsuarios(2, 1, geradores
+                                                        .geradorCPF(),
+                                                        geradores
+                                                                        .geradorNome(),
+                                                        "03/04/2020", 2253, "85502060", driver);
+                        ECommercePO
+                                        .dadosUsuarios(2, 2, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
                                                         "23/09/2018", 2502, "85502060", driver);
 
+                } else {
+                        ECommercePO
+                                        .dadosUsuarios(2, 1, geradores
+                                                        .geradorCPF(),
+                                                        geradores
+                                                                        .geradorNome(),
+                                                        geradores
+                                                                        .geradorDataNascimento(),
+                                                        510, "85502060", driver);
                 }
 
                 ECommercePO.confirmardadosusuario
                                 .click();
 
-                logger
-                                .info("Finalizando pedido...");
-                wait
-                                .until(d -> ECommercePO.registrarEfinalizarPedido
-                                                .isDisplayed());
-                ECommercePO.registrarEfinalizarPedido
-                                .click();
+                boolean logado = false;
+                try {
+                        Thread
+                                        .sleep(3000);
+                        logado = ECommercePO.finalizarPedido
+                                        .isDisplayed();
+                } catch (Exception e) {
 
-                wait
-                                .until(d -> ECommercePO.Email_ecommerce
-                                                .isDisplayed());
-                ECommercePO.Email_ecommerce
-                                .sendKeys(email_usuario);
-                ECommercePO.senha_ecommerce
-                                .sendKeys(senha_usuario);
-                ECommercePO.Logar
-                                .click();
-                logger
-                                .info("Fazendo Login...");
+                }
+
+                if (logado) {
+
+                } else {
+                        logger
+                                        .info("Finalizando pedido...");
+                        wait
+                                        .until(d -> ECommercePO.registrarEfinalizarPedido
+                                                        .isDisplayed());
+                        ECommercePO.registrarEfinalizarPedido
+                                        .click();
+
+                        wait
+                                        .until(d -> ECommercePO.Email_ecommerce
+                                                        .isDisplayed());
+                        ECommercePO.Email_ecommerce
+                                        .sendKeys(email_usuario);
+                        ECommercePO.senha_ecommerce
+                                        .sendKeys(senha_usuario);
+                        ECommercePO.Logar
+                                        .click();
+                        logger
+                                        .info("Fazendo Login...");
+                }
 
                 wait
                                 .until(d -> ECommercePO.finalizarPedido

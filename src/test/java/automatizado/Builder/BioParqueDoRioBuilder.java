@@ -56,8 +56,19 @@ public class BioParqueDoRioBuilder {
                 wait
                                 .until(d -> ECommercePO.barraDePesquisa
                                                 .isDisplayed());
-                ECommercePO.aceitarcookies
-                                .click();
+                try {
+                        try {
+                                Thread
+                                                .sleep(2000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
+
+                        ECommercePO.aceitarcookies
+                                        .click();
+                } catch (Exception e) {
+                }
                 logger
                                 .info("Aceitando cookies...");
 

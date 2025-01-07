@@ -44,7 +44,7 @@ public class BioParquePantanalTeste extends BaseTeste{
         iniciar(URL_Ecommerce);
         }
         else{
-            driver.get(URL_HOMOLOG);
+            driver.get(URL_Ecommerce);
         }
         EcommercePO = new EcommercePO(driver);
 
