@@ -5,202 +5,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Testes Internos</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            width: 85%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            color: #3498db;
-            margin-bottom: 10px;
-        }
-
-        .test-options,
-        .log-panel {
-            margin-bottom: 30px;
-        }
-
-        .test-card {
-            background-color: #ffffff;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .test-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            color: #34495e;
-        }
-
-        .test-card label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 8px;
-            color: #2c3e50;
-        }
-
-        .test-card select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            background-color: #ecf0f1;
-            color: #34495e;
-        }
-
-        .test-card select:focus {
-            outline: none;
-            border-color: #3498db;
-        }
-
-        button {
-            width: 100%;
-            background-color: #3498db;
-            color: white;
-            padding: 12px;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            border-radius: 5px;
-        }
-
-        button:hover {
-            background-color: #2980b9;
-        }
-
-        .log-panel {
-            background-color: #ffffff;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .log-panel h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #34495e;
-        }
-
-        .log-step p {
-            margin-bottom: 15px;
-            font-size: 1rem;
-            color: #7f8c8d;
-        }
-
-        .log-step strong {
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Sistema de Testes Internos</h1>
-        </header>
 
-        <div class="test-options">
-            <h2>Escolha uma Opção de Teste</h2>
+    <body>
+        <div class="container">
+            <div class="test-options">
+                <div class="test-card">
+                    <h3>Configurações de Teste</h3>
 
-            <!-- Teste Completo -->
-            <div class="test-card">
-                <h3>Teste Completo</h3>
-                <button id="start-test">Iniciar Teste Completo</button>
+                    <!-- Conteúdo rolável dentro do card -->
+                    <div class="scrollable-content">
+                        <!-- Primeira Seção -->
+                        <h4 class="section-title">Preencher Dados Automaticamente</h4>
+                        <div class="form-check">
+                            <label>
+                                <input type="checkbox" id="preencherDados_Pagamento" checked>
+                                Pagamento
+                            </label>
+                            <label>
+                                <input type="checkbox" id="preencherDados_Endereco" checked>
+                                Endereço
+                            </label>
+                            <label>
+                                <input type="checkbox" id="preencherDados_Titular" checked>
+                                Titular
+                            </label>
+                            <label>
+                                <input type="checkbox" id="preencherDados_Visitante" checked>
+                                Visitante
+                            </label>
+                        </div>
+
+                        <!-- Segunda Seção -->
+                        <h4 class="section-title">Outras Configurações</h4>
+                        <div class="form-check">
+                            <label>
+                                <input type="checkbox" id="opcao_1">
+                                Opção 1
+                            </label>
+                            <label>
+                                <input type="checkbox" id="opcao_2">
+                                Opção 2
+                            </label>
+                            <label>
+                                <input type="checkbox" id="opcao_3">
+                                Opção 3
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Botão para ações -->
+                    <div class="actions">
+                        <button class="btn">Salvar Configurações</button>
+                    </div>
+                </div>
+
+
+                <!-- Testar Rotinas -->
+                <div class="test-card">
+                    <h3>Testar Rotinas de Clientes</h3>
+                    <div class="status">
+                        <div id="status-icon" class="status-icon status-offline"></div>
+                        <div id="status-text" class="status-text">Desconectado</div>
+                    </div>
+                    <p>
+                        <button id="start-test">Iniciar Teste</button>
+                    </p>
+                    <div>
+                        <label for="step-select">Selecione o Cliente:</label>
+                        <select id="step-select">
+                            <option value="FF">Fundação Florestal</option>
+                            <option value="M3F">Marco das 3 Fronteiras</option>
+                            <option value="Cataratas">Cataratas</option>
+                            <option value="BioaparquedoRio">Bioparque do Rio</option>
+                            <option value="AquaRio">AquaRio</option>
+                            <option value="AguasCorrentes">Aguas Correntes</option>
+                        </select>
+                    </div>
+
+                    <label for="routine-select">Selecione os Passos:</label>
+                    <select id="routine-select" multiple>
+                        <option value="3">Aceitar Cookies</option>
+                        <option value="1">Selecionar Ingresso > Selecionar Data (Home Antiga)</option>
+                        <option value="2">Selecionar Data > Selecionar Ingressos(Home Nova)</option>
+                        <option value="1">Selecionar Local de Embarque (Caso tenha)</option>
+                        <option value="2">Selecionar Sessao (Caso tenha)</option>
+                        <option value="3">Selecionar Horario</option>
+                        <option value="3">Selecionar Categorias (validação padrão)</option>
+                        <option value="3">Selecionar País e Estado (validação padrão)</option>
+                        <option value="3">Adicionar ao Carrinho</option>
+                        <option value="3">Fazer Login</option>
+                        <option value="3">Cadastrar novo usuário</option>
+                        <option value="3">Finalizar Compra</option>
+                        <option value="3">Abrir venda</option>
+                    </select>
+                    <button id="select-all-routines">Selecionar Tudo</button>
+                    <button id="deselect-all-routines">Desmarcar Tudo</button>
+                </div>
+
+                <!-- Testes Isolados -->
+                <div class="test-card">
+                    <h3>Testes Isolados</h3>
+                    <div class="status">
+                        <div id="status-icon" class="status-icon status-offline"></div>
+                        <div id="status-text" class="status-text">Desconectado</div>
+                    </div>
+                    <p>
+                        <button id="start-test-isolado">Iniciar Teste</button>
+                    </p>
+                    <div>
+                        <label for="step-select">Selecione o Cliente:</label>
+                        <select id="step-select">
+                            <option value="FF">Fundação Florestal</option>
+                            <option value="M3F">Marco das 3 Fronteiras</option>
+                            <option value="Cataratas">Cataratas</option>
+                            <option value="BioaparquedoRio">Bioparque do Rio</option>
+                            <option value="AquaRio">AquaRio</option>
+                            <option value="AguasCorrentes">Aguas Correntes</option>
+                        </select>
+                    </div>
+
+                    <label for="component-select">Selecione os componentes:</label>
+                    <select id="component-select" multiple>
+                        <option value="componente1">Comprar Ingresso</option>
+                        <option value="componente2">Remarcação</option>
+                        <option value="componente3">Login/Cadastro</option>
+                        <option value="componente4">Acessar Compra</option>
+                    </select>
+                    <button id="select-all-components">Selecionar Tudo</button>
+                    <button id="deselect-all-components">Desmarcar Tudo</button>
+                </div>
+            </div>
+            <div>
+                <h2>Passos: </h2>
+                <div id="steep-panel" class="steep-panel"> aqui vai ficar o registro de passos</div>
+                <br>
+                <button id="download-steeps">Baixar Logs</button>
+
+                <h2>Logs: </h2>
+                <div id="log-panel" class="log-panel"> E aqui vai ficar aquele logzão brabo</div>
+                <br>
+                <button id="download-log">Baixar Logs</button>
             </div>
 
-            <!-- Testar Rotinas de Clientes -->
-            <div class="test-card">
-                <h3>Testar Rotinas de Clientes</h3>
-                <label for="routine-select">Selecione a rotina:</label>
-                <select id="routine-select">
-                    <option value="login">Rotina de Login</option>
-                    <option value="cadastro">Rotina de Cadastro</option>
-                    <option value="compra">Rotina de Compra</option>
-                </select>
-
-                <label for="step-select">Selecione a etapa:</label>
-                <select id="step-select">
-                    <option value="1">Etapa 1</option>
-                    <option value="2">Etapa 2</option>
-                    <option value="3">Etapa 3</option>
-                </select>
-            </div>
-
-            <!-- Testes Isolados de Componentes -->
-            <div class="test-card">
-                <h3>Testes Isolados de Componentes</h3>
-                <label for="component-select">Selecione os componentes:</label>
-                <select id="component-select" multiple>
-                    <option value="componente1">Componente 1</option>
-                    <option value="componente2">Componente 2</option>
-                    <option value="componente3">Componente 3</option>
-                </select>
-
-                <label for="client-select">Selecione os clientes:</label>
-                <select id="client-select" multiple>
-                    <option value="cliente1">Cliente 1</option>
-                    <option value="cliente2">Cliente 2</option>
-                    <option value="cliente3">Cliente 3</option>
-                </select>
-            </div>
         </div>
+        <script>
+            // URL do serviço CORS
+            const url = 'https://cors-anywhere.herokuapp.com/iniciar-teste';
 
-        <!-- Registro de Log -->
-        <div class="log-panel">
-            <h2>Registro de Log</h2>
-            <div class="log-step" id="log-container">
-                <!-- Logs serão adicionados aqui -->
-            </div>
-            <button id="download-log">Baixar Logs</button>
-        </div>
-    </div>
+            // Função chamada quando o botão "iniciar-teste" for clicado
+            function iniciarTeste() {
+                fetch(url, {
+                    method: 'POST', // Método HTTP
+                    headers: {
+                        'Content-Type': 'application/json', // Enviar como JSON
+                    },
+                    body: JSON.stringify({}) // Corpo vazio para iniciar o teste
+                })
+                    .then(response => response.json()) // Espera que a resposta seja JSON
+                    .then(data => {
+                        // Exibe o log no painel de logs
+                        document.getElementById("log-panel").innerText = data.log;
+                    })
+                    .catch(error => {
+                        console.error('Erro ao iniciar o teste:', error);
+                    });
+            }
 
-    <script>
-        // Função para adicionar logs dinamicamente
-        function addLog(message) {
-            const logContainer = document.getElementById("log-container");
-            const logMessage = document.createElement("p");
-            logMessage.textContent = message;
-            logContainer.appendChild(logMessage);
-        }
-
-        // Exemplo de logs sendo adicionados
-        addLog("Teste completo iniciado!");
-        addLog("Rotina de Login executada.");
-        addLog("Etapa 1 concluída.");
-
-        // Adicionar ações para os botões, se necessário
-        document.getElementById("start-test").addEventListener("click", function () {
-            addLog("Teste completo iniciado!");
-        });
-        document.getElementById("download-log").addEventListener("click", function () {
-            alert("Baixando logs...");
-        });
-    </script>
-</body>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Adiciona o evento de clique ao botão "start-test"
+                document.getElementById("start-test").addEventListener('click', iniciarTeste);
+            });
+        </script>
+    </body>
 
 </html>
