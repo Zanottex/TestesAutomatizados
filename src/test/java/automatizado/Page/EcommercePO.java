@@ -557,12 +557,23 @@ public class EcommercePO extends BasePO {
         }
 
         public void dataNascimento(int grupo, int numero, String data, WebDriver driver) {
-                driver
-                                .findElement(By
-                                                .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
-                                                                + grupo + "]/div[" + numero
-                                                                + "]/div/mat-form-field[4]/div[1]/div/div[2]/input"))
-                                .sendKeys(data);
+                if (data
+                                .equals("")) {
+                        driver
+                                        .findElement(By
+                                                        .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                                                        + grupo + "]/div[" + numero
+                                                                        + "]/div/mat-form-field[4]/div[1]/div/div[2]/input"))
+                                        .clear();
+                        ;
+                } else {
+                        driver
+                                        .findElement(By
+                                                        .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                                                        + grupo + "]/div[" + numero
+                                                                        + "]/div/mat-form-field[4]/div[1]/div/div[2]/input"))
+                                        .sendKeys(data);
+                }
         }
 
         public void selecionarPaisOrigem(int grupo, int numero, WebDriver driver) {
@@ -588,6 +599,13 @@ public class EcommercePO extends BasePO {
                                                                 + grupo + "]/div[" + numero
                                                                 + "]/div/div[3]/mat-form-field[2]/div[1]/div/div[2]/input"))
                                 .sendKeys(cep);
+        }
+
+        public String Erro_ColetaDeDados(int grupo, int numero,  WebDriver driver) {
+                return driver
+                                .findElement(By
+                                                .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card[1]/div["+numero+"]/div/mat-form-field[4]/div[2]/div/mat-error"))
+                                .getText();
         }
 
         public void dadosUsuarios(int grupo, int numero, String documento, String nome, String data, int id, String cep,

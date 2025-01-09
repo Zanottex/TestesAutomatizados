@@ -2,13 +2,7 @@ package automatizado.Builder;
 
 import static org.junit.Assert.assertEquals;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import automatizado.Generators.geradores;
 import automatizado.Page.EcommercePO;
-import net.bytebuddy.asm.Advice.Local;
 
 public class BioParquePantanal {
         private EcommercePO ECommercePO;
@@ -106,7 +99,7 @@ public class BioParquePantanal {
 
                 try {
                         Thread
-                                        .sleep(2000);
+                                        .sleep(3000);
                 } catch (InterruptedException e) {
                         e
                                         .printStackTrace();
@@ -179,8 +172,7 @@ public class BioParquePantanal {
                                 .click();
                 ECommercePO.selecionarPaisOrigem
                                 .click();
-                ECommercePO.confirmaPaisOrigem
-                                .click();
+                ECommercePO.confirmaPaisOrigem.click();
 
                 boolean cep = false;
                 try {
@@ -205,9 +197,7 @@ public class BioParquePantanal {
                                 .until(d -> ECommercePO.nomeUsuario
                                                 .isDisplayed());
                 /* nome usuario 1 */
-                ECommercePO
-                                .dadosUsuarios(1, 1, "09285844960", "Gustavo Zanotto", "12/02/1990", 261, "85509432",
-                                                driver);
+                
 
                 try {
                         Thread
@@ -222,6 +212,12 @@ public class BioParquePantanal {
                 if (tipo == 2) {
                         /* primeiro usuario segunda categoria */
                         ECommercePO
+                                        .dadosUsuarios(1, 1, geradores
+                                                        .geradorCPF(),
+                                                        geradores
+                                                                        .geradorNome(),
+                                                        "03/04/2020", 261, "85502060", driver);
+                        ECommercePO
                                         .dadosUsuarios(2, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
@@ -234,37 +230,16 @@ public class BioParquePantanal {
                                                                         .geradorNome(),
                                                         "03/04/2020", 759, "85502060", driver);
                 } else if (tipo == 3) {
-                        int i = 2;
-                        int id = 510;
+                        int i = 1;
+                        int id = 261;
 
                         while (i != 9) {
-                                String dataAtual = LocalDate
-                                                .now()
-                                                .toString();
-                                Date DataHoje = null;
-                                Date DataGerada = null;             
-
-                                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                                try {
-                                        DataHoje = formato
-                                                        .parse(dataAtual);
-                                        DataGerada = formato
-                                                        .parse(geradores
-                                                                        .geradorDataNascimento());
-                                } catch (ParseException e) {
-                                        // TODO Auto-generated catch block
-                                        e
-                                                        .printStackTrace();
-                                }
-                               
                                 ECommercePO
                                                 .dadosUsuarios(1, i, geradores
                                                                 .geradorCPF(),
                                                                 geradores
                                                                                 .geradorNome(),
-                                                                geradores
-                                                                                .geradorDataNascimento(),
-                                                                id, "85502060", driver);
+                                                                geradores.geradorDataNascimento(12,18, driver), id, "85502060", driver);
                                 i++;
                                 /*
                                  * o numero de id do brasil na hora de selecionar o pais começa em 261 e aumenta
@@ -286,14 +261,19 @@ public class BioParquePantanal {
                                                         "23/09/2018", 2502, "85502060", driver);
 
                 } else {
+                        
+                        ECommercePO
+                                        .dadosUsuarios(1, 1, geradores
+                                                        .geradorCPF(),
+                                                        geradores
+                                                                        .geradorNome(),
+                                                        "03/04/2020", 261, "85502060", driver);
                         ECommercePO
                                         .dadosUsuarios(2, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
-                                                        geradores
-                                                                        .geradorDataNascimento(),
-                                                        510, "85502060", driver);
+                                                        geradores.geradorDataNascimento(0,12,driver), 510, "85502060", driver);
                 }
 
                 ECommercePO.confirmardadosusuario
