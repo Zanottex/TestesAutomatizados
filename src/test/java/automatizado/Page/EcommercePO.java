@@ -547,6 +547,13 @@ public class EcommercePO extends BasePO {
                                 .click();
         }
 
+        public void estado(int numero, WebDriver driver) {
+                driver
+                                .findElement(By
+                                                .xpath("/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div["+numero+"]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]"))
+                                .click();
+        }
+
         public void valorDocumento(int grupo, int numero, String documento, WebDriver driver) {
                 driver
                                 .findElement(By
@@ -582,6 +589,13 @@ public class EcommercePO extends BasePO {
                                                 .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
                                                                 + grupo + "]/div[" + numero
                                                                 + "]/div/div[3]/mat-form-field/div[1]/div/div[2]"))
+                                .click();
+        }
+
+        public void categorias(int grupo, int numero, WebDriver driver) {
+                driver
+                                .findElement(By
+                                                .xpath("/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div["+grupo+"]/div/div/div/div[1]/div/div["+numero+"]/div[2]/button[2]"))
                                 .click();
         }
 
