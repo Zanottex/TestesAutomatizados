@@ -183,7 +183,7 @@ public class geradores {
                         ECommercePO.nomeUsuario
                                 .click();
                         Thread
-                                .sleep(3000);
+                                .sleep(1000);
                     } catch (InterruptedException e) {
                         e
                                 .printStackTrace();

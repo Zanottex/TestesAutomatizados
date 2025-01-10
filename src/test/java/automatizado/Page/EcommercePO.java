@@ -601,12 +601,16 @@ public class EcommercePO extends BasePO {
                                 .sendKeys(cep);
         }
 
-        public String Erro_ColetaDeDados(int grupo, int numero,  WebDriver driver) {
+        public String Erro_ColetaDeDados(int grupo, int numero, WebDriver driver) {
                 return driver
                                 .findElement(By
-                                                .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card[1]/div["+numero+"]/div/mat-form-field[4]/div[2]/div/mat-error"))
+                                                .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card[1]/div["
+                                                                + numero
+                                                                + "]/div/mat-form-field[4]/div[2]/div/mat-error"))
                                 .getText();
         }
+        
+        
 
         public void dadosUsuarios(int grupo, int numero, String documento, String nome, String data, int id, String cep,
                         WebDriver driver) {

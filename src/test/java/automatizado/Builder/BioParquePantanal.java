@@ -267,13 +267,13 @@ public class BioParquePantanal {
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
-                                                        "03/04/2020", 261, "85502060", driver);
+                                                                        geradores.geradorDataNascimento(18,99,driver), 261, "85502060", driver);
                         ECommercePO
                                         .dadosUsuarios(2, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
-                                                        geradores.geradorDataNascimento(0,12,driver), 510, "85502060", driver);
+                                                        geradores.geradorDataNascimento(3,12,driver), 510, "85502060", driver);
                 }
 
                 ECommercePO.confirmardadosusuario

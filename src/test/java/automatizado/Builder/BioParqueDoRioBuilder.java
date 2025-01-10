@@ -189,7 +189,7 @@ public class BioParqueDoRioBuilder {
                                                         .click();
                                         try {
                                                 Thread
-                                                                .sleep(1000);
+                                                                .sleep(1500);
                                         } catch (InterruptedException e) {
                                                 e
                                                                 .printStackTrace();
@@ -259,15 +259,24 @@ public class BioParqueDoRioBuilder {
                 if (tipo == 4 || tipo == 3) {
                         ECommercePO.selecionarPaisOrigem_2Rec
                                         .click();
-                        wait
-                                        .until(d -> ECommercePO.confirmaPaisOrigem
-                                                        .isDisplayed());
-                        ECommercePO.confirmaPaisOrigem
-                                        .click();
-                        ECommercePO.estado_2Rec
-                                        .click();
-                        ECommercePO.acre
-                                        .click();
+                        try {
+                                Thread
+                                                .sleep(1000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
+                        ECommercePO
+                                        .Pais(24, driver);
+                        try {
+                                ECommercePO.estado_2Rec
+                                                .click();
+                                ECommercePO.acre
+                                                .click();
+                        } catch (Exception e) {
+
+                        }
+
                         ECommercePO.adicionarCategoria2_2Rec
                                         .click();
                         ECommercePO.adicionarCategoria3_2Rec
@@ -276,19 +285,28 @@ public class BioParqueDoRioBuilder {
                                         .click();
 
                 } else {
-                        ECommercePO.selecionarPaisOrigem
-                                        .click();
-                        ECommercePO.confirmaPaisOrigem
-                                        .click();
-                        ECommercePO.CEP_Nas_categorias
-                                        .sendKeys("85509432");
                         ECommercePO.adicionarCategoria2
                                         .click();
+
+                        ECommercePO.selecionarPaisOrigem
+                                        .click();
+                        ECommercePO
+                                        .Pais(24, driver);
+
+                        try {
+                                ECommercePO.CEP_Nas_categorias
+                                                .sendKeys("85509432");
+
+                        } catch (Exception e) {
+
+                        }
+
                         wait
                                         .until(d -> ECommercePO.adicionarAoCarrinho
                                                         .isEnabled());
                         ECommercePO.adicionarAoCarrinho
                                         .click();
+
                 }
 
                 if (tipo == 2) {
@@ -330,42 +348,60 @@ public class BioParqueDoRioBuilder {
                         ECommercePO.confirmardadosusuario
                                         .click();
                 }
+                boolean logado = false;
+                try {
+                        Thread
+                                        .sleep(3000);
+                        logado = ECommercePO.finalizarPedido
+                                        .isDisplayed();
+                } catch (Exception e) {
 
-                wait
-                                .until(d -> ECommercePO.valorBilhete1
-                                                .isDisplayed());
-                StringTokenizer resulBilhete1 = new StringTokenizer(ECommercePO.valorBilhete1
-                                .getText());
+                }
+                Double valor1 = 0.0;
+                StringTokenizer resulBilhete1 = null;
+                if (logado) {
+
+                        resulBilhete1 = new StringTokenizer(ECommercePO
+                                        .valorTotalDoBilhete(3, driver));
+                } else {
+                        resulBilhete1 = new StringTokenizer(ECommercePO.valorSomado
+                                        .getText());
+
+                }
                 String valorbilhete1 = resulBilhete1
+                                .nextToken(" ");
+                valorbilhete1 = resulBilhete1
                                 .nextToken(" ");
                 valorbilhete1 = resulBilhete1
                                 .nextToken(" ");
                 valorbilhete1 = valorbilhete1
                                 .replaceAll(",", ".");
-                Double valor1 = Double
+                valor1 = Double
                                 .valueOf(valorbilhete1);
 
                 if (valor1 == 15.00) {
                         logger
                                         .info("Finalizando pedido...");
-                        wait
-                                        .until(d -> ECommercePO.registrarEfinalizarPedido
-                                                        .isDisplayed());
-                        ECommercePO.registrarEfinalizarPedido
-                                        .click();
 
-                        wait
-                                        .until(d -> ECommercePO.Email_ecommerce
-                                                        .isDisplayed());
-                        ECommercePO.Email_ecommerce
-                                        .sendKeys(email_usuario);
-                        ECommercePO.senha_ecommerce
-                                        .sendKeys(senha_usuario);
-                        ECommercePO.Logar
-                                        .click();
-                        logger
-                                        .info("Fazendo Login...");
+                        if (logado) {
 
+                        } else {
+
+                                ECommercePO.registrarEfinalizarPedido
+                                                .click();
+                                wait
+                                                .until(d -> ECommercePO.Email_ecommerce
+                                                                .isDisplayed());
+                                ECommercePO.Email_ecommerce
+                                                .sendKeys(email_usuario);
+                                ECommercePO.senha_ecommerce
+                                                .sendKeys(senha_usuario);
+                                ECommercePO.Logar
+                                                .click();
+                                logger
+                                                .info("Fazendo Login...");
+
+                        }
                         wait
                                         .until(d -> ECommercePO.finalizarPedido
                                                         .isDisplayed());
@@ -392,10 +428,9 @@ public class BioParqueDoRioBuilder {
                                         .sendKeys(Numero_Cartao);
 
                         ECommercePO.Mes_Validade
-                                        .sendKeys(mes_validade);
-
+                                        .sendKeys("122025");
                         ECommercePO.codigo_segurança
-                                        .sendKeys(codigo_segurança);
+                                        .sendKeys("123");
 
                         logger
                                         .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: "
