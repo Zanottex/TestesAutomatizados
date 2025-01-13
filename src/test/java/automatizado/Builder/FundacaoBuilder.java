@@ -22,7 +22,6 @@ public class FundacaoBuilder {
     private String codigo_segurança = "123";
     private String CEP = "85509432";
     private String Numero_Casa = "1050";
-    private String cpf = "09285844960";
 
     public void Builder(WebDriver driver, int tipo) {
         Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
@@ -239,14 +238,14 @@ public class FundacaoBuilder {
 
         try {
             Thread
-                    .sleep(2000);
+                    .sleep(3000);
         } catch (InterruptedException e) {
             e
                     .printStackTrace();
         }
         wait
                 .until(d -> ECommercePO.proximo
-                        .isDisplayed());
+                        .isEnabled());
         ECommercePO.proximo
                 .click();
 
@@ -262,23 +261,6 @@ public class FundacaoBuilder {
         ECommercePO
                 .Pais(14, driver);
 
-        Double valorsomado = 0.0;
-        if (tipo == 4) {
-            wait
-                    .until(d -> ECommercePO.valorSomado
-                            .isDisplayed());
-            StringTokenizer Result = new StringTokenizer(ECommercePO.valorSomado
-                    .getText());
-            String valortotal = Result
-                    .nextToken(" ");
-            valortotal = Result
-                    .nextToken(" ");
-            valortotal = valortotal
-                    .replaceAll(",", ".");
-            valorsomado = Double
-                    .valueOf(valortotal);
-        }
-
         ECommercePO.adicionarAoCarrinho
                 .click();
 
@@ -291,7 +273,7 @@ public class FundacaoBuilder {
         }
         String erro = ECommercePO.pegarMensagemErro
                 .getText();
-
+        double valorsomado = 0.0;
         if (erro != null) {
             ECommercePO.selecionarPaisOrigem
                     .click();
@@ -311,9 +293,9 @@ public class FundacaoBuilder {
 
             if (tipo == 5) {
                 wait
-                        .until(d -> ECommercePO.valorSomado
+                        .until(d -> ECommercePO.valorTotal_nasCategorias
                                 .isDisplayed());
-                StringTokenizer Result = new StringTokenizer(ECommercePO.valorSomado
+                StringTokenizer Result = new StringTokenizer(ECommercePO.valorTotal_nasCategorias
                         .getText());
                 String valortotal = Result
                         .nextToken(" ");
@@ -476,13 +458,36 @@ public class FundacaoBuilder {
                 .click();
 
         Double valor1 = 0.0;
+        boolean logado = false;
+        try {
+            Thread
+                    .sleep(3000);
+            logado = ECommercePO.finalizarPedido
+                    .isDisplayed();
+        } catch (Exception e) {
 
+        }
+        StringTokenizer resulBilhete1 = null;
+        StringTokenizer resulBilhete2 = null;
         if (tipo == 4) {
-            wait
-                    .until(d -> ECommercePO.valorBilhete1
-                            .isDisplayed());
-            StringTokenizer resulBilhete1 = new StringTokenizer(ECommercePO.valorBilhete1
-                    .getText());
+            if (logado) {
+                wait
+                        .until(d -> ECommercePO.finalizarPedido
+                                .isDisplayed());
+                resulBilhete1 = new StringTokenizer(ECommercePO
+                        .ValorBilhete_1(2, driver));
+                resulBilhete2 = new StringTokenizer(ECommercePO
+                        .ValorBilhete_2_vinculado(2, driver));
+            } else {
+                wait
+                        .until(d -> ECommercePO.registrarEfinalizarPedido
+                                .isDisplayed());
+                resulBilhete1 = new StringTokenizer(ECommercePO
+                        .ValorBilhete_1(1, driver));
+                resulBilhete2 = new StringTokenizer(ECommercePO
+                        .ValorBilhete_2_vinculado(1, driver));
+            }
+
             String valorbilhete1 = resulBilhete1
                     .nextToken(" ");
             valorbilhete1 = resulBilhete1
@@ -492,8 +497,6 @@ public class FundacaoBuilder {
             valor1 = Double
                     .valueOf(valorbilhete1);
 
-            StringTokenizer resulBilhete2 = new StringTokenizer(ECommercePO.valorBilhete2_vinculado
-                    .getText());
             String valorbilhete2_vinculado = resulBilhete2
                     .nextToken(" ");
             valorbilhete2_vinculado = resulBilhete2
@@ -504,23 +507,13 @@ public class FundacaoBuilder {
                     .valueOf(valorbilhete2_vinculado);
             valorsomado = valor2 + valor1;
         } else {
-            boolean logado = false;
-            try {
-                logado = ECommercePO.finalizarPedido
-                        .isDisplayed();
-            } catch (Exception e) {
 
-            }
-            StringTokenizer resulBilhete1 = null;
             if (logado) {
-                try {
-                    Thread
-                            .sleep(2000);
-                } catch (InterruptedException e) {
-                    e
-                            .printStackTrace();
-                }
-                resulBilhete1 = new StringTokenizer(ECommercePO.valorBilhete(1, driver));
+                wait
+                        .until(d -> ECommercePO.finalizarPedido
+                                .isDisplayed());
+                resulBilhete1 = new StringTokenizer(ECommercePO
+                        .valorTotalDoBilhete(3, driver));
             } else {
                 wait
                         .until(d -> ECommercePO.valorSomado
@@ -541,9 +534,10 @@ public class FundacaoBuilder {
                     .valueOf(valorbilhete1);
         }
 
-        if (valor1 == 10.00 || valor1 == 70.00 || valorsomado != 20.00) {
-            if (ECommercePO.registrarEfinalizarPedido
-                    .isDisplayed()) {
+        if (valor1 == 10.00 || valor1 == 70.00 || valor1 == 20.00 || valorsomado == 7.50 || valorsomado == 20.00) {
+            if (logado) {
+
+            } else {
                 ECommercePO.registrarEfinalizarPedido
                         .click();
                 wait
@@ -555,9 +549,6 @@ public class FundacaoBuilder {
                         .sendKeys(senha_usuario);
                 ECommercePO.Logar
                         .click();
-
-            } else {
-
             }
 
             wait

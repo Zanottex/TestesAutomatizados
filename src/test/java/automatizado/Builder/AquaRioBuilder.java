@@ -22,15 +22,14 @@ public class AquaRioBuilder {
                         .getLogger(AquaRioBuilder.class
                                         .getName());
 
-                                        /*Dados dos usuarios */
+        /* Dados dos usuarios */
         private EcommercePO ECommercePO;
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";
         private String Nome_Cartao = geradores
                         .geradorNome();
         private String Numero_Cartao = "4000000000000010";
-        private String mes_validade = geradores
-                        .geradorValidadeCartao();
+        private String mes_validade = "12/2050";
         private String codigo_segurança = geradores
                         .geradorCodigoSeguranca();
         private String CEP = geradores
@@ -57,8 +56,12 @@ public class AquaRioBuilder {
                 wait
                                 .until(d -> ECommercePO.barraDePesquisa
                                                 .isDisplayed());
-                ECommercePO.aceitarcookies
-                                .click();
+                try {
+                        ECommercePO.aceitarcookies
+                                        .click();
+                } catch (Exception e) {
+                        // TODO: handle exception
+                }
                 logger
                                 .info("Aceitando cookies...");
 
@@ -325,21 +328,21 @@ public class AquaRioBuilder {
                         wait
                                         .until(d -> ECommercePO.adicionarCategoria_2Rec
                                                         .isDisplayed());
-                        ECommercePO.adicionarCategoria_2Rec
-                                        .click();
+                        ECommercePO
+                                        .categorias(3, 1, driver);
                 } else if (tipo == 2) {
                         wait
                                         .until(d -> ECommercePO.adicionarCategoria_3Rec
                                                         .isDisplayed());
-                        ECommercePO.adicionarCategoria_3Rec
-                                        .click();
+                        ECommercePO
+                                        .categorias(4, 1, driver);
 
                 } else {
                         wait
                                         .until(d -> ECommercePO.adicionarCategoria
                                                         .isDisplayed());
-                        ECommercePO.adicionarCategoria
-                                        .click();
+                        ECommercePO
+                                        .categorias(2, 1, driver);
                 }
 
                 if (tipo != 6 && tipo != 7) {
@@ -348,25 +351,24 @@ public class AquaRioBuilder {
 
                         ECommercePO.selecionarPaisOrigem
                                         .click();
-                        ECommercePO.confirmaPaisOrigem
-                                        .click();
+                        ECommercePO
+                                        .Pais(24, driver);
                 }
                 if (tipo == 2) {
-                        ECommercePO.estado_3Rec
-                                        .click();
+                        ECommercePO
+                                        .estado(4, driver);
                         ECommercePO.acre
                                         .click();
                 } else if (tipo == 3 || tipo == 4) {
-                        ECommercePO.estado_2Rec
-                                        .click();
+                        ECommercePO
+                                        .estado(3, driver);
                         ECommercePO.acre
                                         .click();
                 } else if (tipo == 5) {
                         boolean cep = false;
                         try {
-                                ECommercePO.CEP_Nas_categorias
+                                cep = ECommercePO.CEP_Nas_categorias
                                                 .isDisplayed();
-                                cep = true;
                         } catch (Exception e) {
                                 cep = false;
                         }
@@ -377,20 +379,13 @@ public class AquaRioBuilder {
                 } else if (tipo == 7 || tipo == 6) {
 
                 } else {
-                        boolean cep = false;
-                        try {
-                                ECommercePO.estado
-                                                .isDisplayed();
-                                cep = true;
-                        } catch (Exception e) {
-                                cep = false;
-                        }
-                        if (cep) {
-                                ECommercePO.estado
-                                                .click();
-                                ECommercePO.acre
-                                                .click();
-                        }
+                        wait
+                                        .until(d -> ECommercePO.estado
+                                                        .isDisplayed());
+                        ECommercePO.estado
+                                        .click();
+                        ECommercePO.acre
+                                        .click();
 
                 }
 
@@ -510,40 +505,65 @@ public class AquaRioBuilder {
                         ECommercePO.confirmardadosusuario
                                         .click();
                 }
-                wait
-                                .until(d -> ECommercePO.valorBilhete1
-                                                .isDisplayed());
-                StringTokenizer resulBilhete1 = new StringTokenizer(ECommercePO.valorBilhete1
-                                .getText());
+                Double valor1 = 0.0;
+                boolean logado = false;
+                try {
+                        Thread
+                                        .sleep(3000);
+                        logado = ECommercePO.finalizarPedido
+                                        .isDisplayed();
+                } catch (Exception e) {
+
+                }
+                StringTokenizer resulBilhete1 = null;
+
+                if (logado) {
+                        wait
+                                        .until(d -> ECommercePO.finalizarPedido
+                                                        .isDisplayed());
+                        resulBilhete1 = new StringTokenizer(ECommercePO
+                                        .ValorBilhete_1(2, driver));
+                } else {
+                        wait
+                                        .until(d -> ECommercePO.registrarEfinalizarPedido
+                                                        .isDisplayed());
+                        resulBilhete1 = new StringTokenizer(ECommercePO
+                                        .ValorBilhete_1(1, driver));
+                }
+
                 String valorbilhete1 = resulBilhete1
                                 .nextToken(" ");
                 valorbilhete1 = resulBilhete1
                                 .nextToken(" ");
                 valorbilhete1 = valorbilhete1
                                 .replaceAll(",", ".");
-                Double valor1 = Double
+                valor1 = Double
                                 .valueOf(valorbilhete1);
 
                 if (valor1 == 15.00) {
                         logger
                                         .info("Finalizando pedido...");
-                        wait
-                                        .until(d -> ECommercePO.registrarEfinalizarPedido
-                                                        .isDisplayed());
-                        ECommercePO.registrarEfinalizarPedido
-                                        .click();
+                        if (logado) {
 
-                        wait
-                                        .until(d -> ECommercePO.Email_ecommerce
-                                                        .isDisplayed());
-                        ECommercePO.Email_ecommerce
-                                        .sendKeys(email_usuario);
-                        ECommercePO.senha_ecommerce
-                                        .sendKeys(senha_usuario);
-                        ECommercePO.Logar
-                                        .click();
-                        logger
-                                        .info("Fazendo Login...");
+                        } else {
+                                wait
+                                                .until(d -> ECommercePO.registrarEfinalizarPedido
+                                                                .isDisplayed());
+                                ECommercePO.registrarEfinalizarPedido
+                                                .click();
+
+                                wait
+                                                .until(d -> ECommercePO.Email_ecommerce
+                                                                .isDisplayed());
+                                ECommercePO.Email_ecommerce
+                                                .sendKeys(email_usuario);
+                                ECommercePO.senha_ecommerce
+                                                .sendKeys(senha_usuario);
+                                ECommercePO.Logar
+                                                .click();
+                                logger
+                                                .info("Fazendo Login...");
+                        }
 
                         wait
                                         .until(d -> ECommercePO.finalizarPedido
