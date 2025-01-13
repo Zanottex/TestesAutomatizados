@@ -294,6 +294,7 @@ public class AquaRioBuilder {
                                                                         .printStackTrace();
                                                 }
                                         }
+
                                         wait
                                                         .until(d -> ECommercePO.proximo2Receitas
                                                                         .isEnabled());
@@ -344,10 +345,9 @@ public class AquaRioBuilder {
                         ECommercePO
                                         .categorias(2, 1, driver);
                 }
-
+                logger
+                                .info("Selecionando país de origem...");
                 if (tipo != 6 && tipo != 7) {
-                        logger
-                                        .info("Selecionando país de origem...");
 
                         ECommercePO.selecionarPaisOrigem
                                         .click();
@@ -380,18 +380,18 @@ public class AquaRioBuilder {
 
                 } else {
                         try {
-                
-                        ECommercePO.estado
-                                        .click();
-                        ECommercePO.acre
-                                        .click();   
+
+                                ECommercePO.estado
+                                                .click();
+                                ECommercePO.acre
+                                                .click();
                         } catch (Exception e) {
-                                
+
                         }
-                        
 
                 }
-
+                logger
+                                .info("Adicionando as outras categorias...");
                 if (tipo == 3 || tipo == 4) {
                         ECommercePO.adicionarCategoria2_2Rec
                                         .click();
@@ -419,6 +419,8 @@ public class AquaRioBuilder {
                         e
                                         .printStackTrace();
                 }
+                logger
+                                        .info("Adicionando ao carrinho...");
                 if (tipo == 3 || tipo == 4) {
                         ECommercePO.adicionarAoCarrinho_2Rec
                                         .click();
@@ -437,6 +439,8 @@ public class AquaRioBuilder {
                         e
                                         .printStackTrace();
                 }
+                logger
+                                        .info("Preenchendo os dados dos visitantes...");
                 if (tipo != 6 && tipo != 7) {
                         wait
                                         .until(d -> ECommercePO.nomeUsuario
@@ -508,6 +512,8 @@ public class AquaRioBuilder {
                         ECommercePO.confirmardadosusuario
                                         .click();
                 }
+                logger
+                                        .info("Verificando se o usuario está logado...");
                 Double valor1 = 0.0;
                 boolean logado = false;
                 try {
@@ -533,7 +539,8 @@ public class AquaRioBuilder {
                         resulBilhete1 = new StringTokenizer(ECommercePO
                                         .ValorBilhete_1(1, driver));
                 }
-
+                logger
+                                        .info("Verificando valor do bilhete...");
                 String valorbilhete1 = resulBilhete1
                                 .nextToken(" ");
                 valorbilhete1 = resulBilhete1

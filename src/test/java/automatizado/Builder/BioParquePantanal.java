@@ -147,8 +147,7 @@ public class BioParquePantanal {
 
                 logger
                                 .info("Adicionando categoria ao carrinho...");
-                logger
-                                .info("Selecionando país de origem...");
+                
 
                 ECommercePO.adicionarCategoria
                                 .click();
@@ -192,7 +191,8 @@ public class BioParquePantanal {
                                                 .isEnabled());
                 ECommercePO.adicionarAoCarrinho
                                 .click();
-
+                                logger
+                                .info("Adicionando ao carrinho...");
                 wait
                                 .until(d -> ECommercePO.nomeUsuario
                                                 .isDisplayed());
@@ -275,7 +275,8 @@ public class BioParquePantanal {
                                                                         .geradorNome(),
                                                         geradores.geradorDataNascimento(3,12,driver), 510, "85502060", driver);
                 }
-
+                logger
+                .info("Preeenchendo os dados dos visitantes...");
                 ECommercePO.confirmardadosusuario
                                 .click();
 
@@ -288,7 +289,8 @@ public class BioParquePantanal {
                 } catch (Exception e) {
 
                 }
-
+                logger
+                .info("Verificando se o usuario está logado...");
                 if (logado) {
 
                 } else {

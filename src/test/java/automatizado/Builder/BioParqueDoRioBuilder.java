@@ -348,6 +348,8 @@ public class BioParqueDoRioBuilder {
                         ECommercePO.confirmardadosusuario
                                         .click();
                 }
+                logger
+                                        .info("Verificar se o usuario ja estálogado...");
                 boolean logado = false;
                 try {
                         Thread
@@ -378,7 +380,8 @@ public class BioParqueDoRioBuilder {
                                 .replaceAll(",", ".");
                 valor1 = Double
                                 .valueOf(valorbilhete1);
-
+                                logger
+                                .info("Verificando o valor do bilhete..");
                 if (valor1 == 15.00) {
                         logger
                                         .info("Finalizando pedido...");

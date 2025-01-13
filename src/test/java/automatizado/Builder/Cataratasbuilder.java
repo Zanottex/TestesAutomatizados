@@ -532,6 +532,8 @@ public class Cataratasbuilder {
                                                 .replaceAll(",", ".");
                                 Double valor1 = Double
                                                 .valueOf(valorbilhete1);
+                                logger
+                                                .info("Verificando o valor dos bilhetes...");
 
                                 if (valor1 == 10.00) {
                                         logger
