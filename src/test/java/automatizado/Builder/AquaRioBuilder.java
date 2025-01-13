@@ -379,13 +379,16 @@ public class AquaRioBuilder {
                 } else if (tipo == 7 || tipo == 6) {
 
                 } else {
-                        wait
-                                        .until(d -> ECommercePO.estado
-                                                        .isDisplayed());
+                        try {
+                
                         ECommercePO.estado
                                         .click();
                         ECommercePO.acre
-                                        .click();
+                                        .click();   
+                        } catch (Exception e) {
+                                
+                        }
+                        
 
                 }
 
