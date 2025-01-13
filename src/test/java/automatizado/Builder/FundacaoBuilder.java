@@ -273,7 +273,7 @@ public class FundacaoBuilder {
                                         .click();
                         ECommercePO.confirmarHorario4opcoes
                                         .click();
-                                        logger
+                        logger
                                         .info("Escolhendo sessao...");
                         ECommercePO.sessao
                                         .click();
@@ -296,21 +296,21 @@ public class FundacaoBuilder {
                                                 .isEnabled());
                 ECommercePO.proximo
                                 .click();
-                                logger
+                logger
                                 .info("Adicionando categoria...");
                 wait
                                 .until(d -> ECommercePO.adicionarCategoria
                                                 .isDisplayed());
                 ECommercePO.adicionarCategoria
                                 .click();
-                                logger
-                                .info("Escolhendo pais de origem...");
+                logger
+                                .info("Escolhendo pais de origem incorreto...");
                 ECommercePO.selecionarPaisOrigem
                                 .click();
 
                 ECommercePO
                                 .Pais(14, driver);
-                                logger
+                logger
                                 .info("Adicionando no carrinho...");
                 ECommercePO.adicionarAoCarrinho
                                 .click();
@@ -325,7 +325,11 @@ public class FundacaoBuilder {
                 String erro = ECommercePO.pegarMensagemErro
                                 .getText();
                 double valorsomado = 0.0;
+                logger
+                                .info("Verificando se o pais incorreto gera o alerta em tela...");
                 if (erro != null) {
+                        logger
+                                        .info("Selecioanndo pais correto...");
                         ECommercePO.selecionarPaisOrigem
                                         .click();
                         try {
@@ -337,12 +341,16 @@ public class FundacaoBuilder {
                         }
                         ECommercePO
                                         .Pais(11, driver);
+                        logger
+                                        .info("Adicionando estado...");
                         ECommercePO.estado
                                         .click();
                         ECommercePO.acre
                                         .click();
 
                         if (tipo == 5) {
+                                logger
+                                                .info("Verificando valor do bilhete com desconto...");
                                 wait
                                                 .until(d -> ECommercePO.valorTotal_nasCategorias
                                                                 .isDisplayed());
@@ -438,6 +446,8 @@ public class FundacaoBuilder {
                                         }
                                 }
                         } else if (tipo == 6) {
+                                logger
+                                                .info("Verifica se é possivel adicionar ao carrinho sem ter uma categoria pagante..");
                                 ECommercePO.tirarcategoria1
                                                 .click();
 
@@ -460,10 +470,13 @@ public class FundacaoBuilder {
                                                 .click();
                         }
                 }
-
+                logger
+                                .info("Adicionando no carrinho...");
                 wait
                                 .until(d -> ECommercePO.nomeUsuario
                                                 .isDisplayed());
+                logger
+                                .info("Informando os dados dos visitantes...");
                 ECommercePO
                                 .Nomeusuario(1, 1, "Gustavo Zanotto", driver);
                 ECommercePO.tipodocumento
@@ -510,6 +523,8 @@ public class FundacaoBuilder {
 
                 Double valor1 = 0.0;
                 boolean logado = false;
+                logger
+                                .info("Verificando se o usuario está logado...");
                 try {
                         Thread
                                         .sleep(3000);
@@ -584,12 +599,15 @@ public class FundacaoBuilder {
                         valor1 = Double
                                         .valueOf(valorbilhete1);
                 }
-
+                logger
+                                .info("Verifica o valor do bilhete...");
                 if (valor1 == 10.00 || valor1 == 70.00 || valor1 == 20.00 || valorsomado == 7.50
                                 || valorsomado == 20.00) {
                         if (logado) {
 
                         } else {
+                                logger
+                                                .info("Logando na conta do usuario...");
                                 ECommercePO.registrarEfinalizarPedido
                                                 .click();
                                 wait
@@ -602,7 +620,8 @@ public class FundacaoBuilder {
                                 ECommercePO.Logar
                                                 .click();
                         }
-
+                        logger
+                                        .info("Finalizar pedido...");
                         wait
                                         .until(d -> ECommercePO.finalizarPedido
                                                         .isDisplayed());
@@ -747,9 +766,12 @@ public class FundacaoBuilder {
                                         MESTERMINO = 12;
                                 }
                         }
-
+                        logger
+                                        .info("Verificando data de inicio e de termino da visita...");
                         if (DIAINICIO == DIA1 && DIATERMINO == DIA2 && MESINICIO == MES1 && MESTERMINO == MES2
                                         && ANOINICIO == ANO1 && ANOTERMINO == ANO2 || tipo != 2) {
+                                logger
+                                                .info("Colocando dados para realizar o pagamento...");
                                 wait
                                                 .until(d -> ECommercePO.Nome_Do_Cartao
                                                                 .isDisplayed());
@@ -778,7 +800,8 @@ public class FundacaoBuilder {
                                         e
                                                         .printStackTrace();
                                 }
-
+                                logger
+                                                .info("Finalizar compra...");
                                 ECommercePO.finalizarCompra
                                                 .click();
 
@@ -789,6 +812,8 @@ public class FundacaoBuilder {
                                                 .getText();
                                 assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
                                                 mensagem);
+                                logger
+                                                .info("Compra fializada...");
 
                         } else {
                                 JavascriptExecutor js = (JavascriptExecutor) driver;

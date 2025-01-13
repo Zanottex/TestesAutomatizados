@@ -146,6 +146,21 @@ public class geradores {
 
         static boolean datainvalida = true;
 
+        public static int getAno(int ano, int mes, int dia) {
+                LocalDate datagerada = LocalDate
+                                .of(ano, mes, dia);
+                LocalDate datahoje = LocalDate
+                                .now();
+
+                // Calcular a diferença entre as duas datas
+
+                Period periodo = Period
+                                .between(datagerada, datahoje);
+
+                return periodo
+                                .getYears();
+        }
+        
         // Gerador de Data de Nascimento
         public static String geradorDataNascimento(int idademinima, int idademaxima, WebDriver driver) {
                 String datanascimento = null;
@@ -158,18 +173,8 @@ public class geradores {
                                         .nextInt(12) + 1;
                         int ano = random
                                         .nextInt(2023 - 1900 + 1) + 1900; // Entre 1900 e 2023
-                        LocalDate datagerada = LocalDate
-                                        .of(ano, mes, dia);
-                        LocalDate datahoje = LocalDate
-                                        .now();
-
-                        // Calcular a diferença entre as duas datas
-
-                        Period periodo = Period
-                                        .between(datagerada, datahoje);
-
-                        int diferencaAnos = periodo
-                                        .getYears();
+                        
+                        int diferencaAnos = getAno(ano, mes, dia);
                         if (datainvalida) {
                                 if (idademinima > 0) {
 
@@ -205,12 +210,7 @@ public class geradores {
                                                                 .nextInt(12) + 1;
                                                 ano = random
                                                                 .nextInt(2023 - 1900 + 1) + 1900; // Entre 1900 e 2023
-                                                periodo = Period
-                                                                .between(datagerada, datahoje);
-
-                                                // Obter a diferença em anos
-                                                diferencaAnos = periodo
-                                                                .getYears();
+                                                                diferencaAnos = getAno(ano, mes, dia);
                                         }
                                 } else {
                                         datainvalida = false;
@@ -262,10 +262,11 @@ public class geradores {
 
         // Gerador de Validade do Cartão
         public static String geradorValidadeCartao() {
+                int anovalidade = getAno(0, 1, 1) + 1;
                 int mes = random
                                 .nextInt(12) + 1; // Mês de 1 a 12
                 int ano = random
-                                .nextInt(10) + 2024; // Ano atual até 10 anos no futuro
+                                .nextInt(10) + anovalidade; // Ano atual até 10 anos no futuro
                 return String
                                 .format("%02d/%d", mes, ano);
         }
@@ -292,4 +293,5 @@ public class geradores {
                 return complementos[random
                                 .nextInt(complementos.length)];
         }
+        
 }

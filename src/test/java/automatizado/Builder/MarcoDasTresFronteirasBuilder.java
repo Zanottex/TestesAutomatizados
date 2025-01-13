@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import automatizado.Generators.geradores;
 import automatizado.Page.EcommercePO;
 
 public class MarcoDasTresFronteirasBuilder {
@@ -20,7 +21,7 @@ public class MarcoDasTresFronteirasBuilder {
     private String senha_usuario = "1";
     private String Nome_Cartao = "Gustavin Zanottin";
     private String Numero_Cartao = "4000000000000010";
-    private String mes_validade = "122500";
+    private String mes_validade = geradores.geradorValidadeCartao().toString();
     private String codigo_segurança = "123";
     private String CEP = "85509432";
     private String Numero_Casa = "1050"; 
@@ -135,7 +136,7 @@ public class MarcoDasTresFronteirasBuilder {
         ECommercePO.Numero_Casa
                 .sendKeys(Numero_Casa);
                 logger
-                .info("Inserindo os dados para finalizar a compra. (CEP, cartão de crédito, CEP)");
+                .info("Inserindo os dados para finalizar a compra. (CEP, cartão de crédito)");
         try {
             Thread.sleep(1000);
             } catch (InterruptedException e) {
