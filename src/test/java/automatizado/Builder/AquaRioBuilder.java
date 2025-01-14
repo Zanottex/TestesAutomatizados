@@ -16,7 +16,7 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AquaRioBuilder {
+public class AquaRioBuilder{
 
         private static final Logger logger = Logger
                         .getLogger(AquaRioBuilder.class
@@ -28,14 +28,6 @@ public class AquaRioBuilder {
         private String senha_usuario = "1";
         private String Nome_Cartao = geradores
                         .geradorNome();
-        private String Numero_Cartao = "4000000000000010";
-        private String mes_validade = "12/2050";
-        private String codigo_segurança = geradores
-                        .geradorCodigoSeguranca();
-        private String CEP = geradores
-                        .geradorCEP();
-        private String Numero_Casa = geradores
-                        .geradorNumeroCasa();
         private String cpf = geradores
                         .geradorCPF();
 
@@ -50,6 +42,7 @@ public class AquaRioBuilder {
 
         public void Ingresso(WebDriver driver, int tipo) {
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
+                BaseBuilder base = new BaseBuilder(ECommercePO);
                 logger
                                 .info("Aguardando a barra de pesquisa ser exibida...");
 
@@ -360,10 +353,15 @@ public class AquaRioBuilder {
                         ECommercePO.acre
                                         .click();
                 } else if (tipo == 3 || tipo == 4) {
-                        ECommercePO
-                                        .estado(3, driver);
-                        ECommercePO.acre
-                                        .click();
+                        try {
+                                ECommercePO
+                                                .estado(3, driver);
+                                ECommercePO.acre
+                                                .click();
+                        } catch (Exception e) {
+                                // TODO: handle exception
+                        }
+
                 } else if (tipo == 5) {
                         boolean cep = false;
                         try {
@@ -420,7 +418,7 @@ public class AquaRioBuilder {
                                         .printStackTrace();
                 }
                 logger
-                                        .info("Adicionando ao carrinho...");
+                                .info("Adicionando ao carrinho...");
                 if (tipo == 3 || tipo == 4) {
                         ECommercePO.adicionarAoCarrinho_2Rec
                                         .click();
@@ -440,7 +438,7 @@ public class AquaRioBuilder {
                                         .printStackTrace();
                 }
                 logger
-                                        .info("Preenchendo os dados dos visitantes...");
+                                .info("Preenchendo os dados dos visitantes...");
                 if (tipo != 6 && tipo != 7) {
                         wait
                                         .until(d -> ECommercePO.nomeUsuario
@@ -513,7 +511,7 @@ public class AquaRioBuilder {
                                         .click();
                 }
                 logger
-                                        .info("Verificando se o usuario está logado...");
+                                .info("Verificando se o usuario está logado...");
                 Double valor1 = 0.0;
                 boolean logado = false;
                 try {
@@ -540,7 +538,7 @@ public class AquaRioBuilder {
                                         .ValorBilhete_1(1, driver));
                 }
                 logger
-                                        .info("Verificando valor do bilhete...");
+                                .info("Verificando valor do bilhete...");
                 String valorbilhete1 = resulBilhete1
                                 .nextToken(" ");
                 valorbilhete1 = resulBilhete1
@@ -590,58 +588,7 @@ public class AquaRioBuilder {
                         // ECommercePO.botaoConfirmarSenha
                         // .click();
 
-                        wait
-                                        .until(d -> ECommercePO.Nome_Do_Cartao
-                                                        .isDisplayed());
-
-                        ECommercePO.Nome_Do_Cartao
-                                        .sendKeys(Nome_Cartao);
-
-                        ECommercePO.Numero_Cartao
-                                        .sendKeys(Numero_Cartao);
-
-                        ECommercePO.Mes_Validade
-                                        .sendKeys(mes_validade);
-
-                        ECommercePO.codigo_segurança
-                                        .sendKeys(codigo_segurança);
-
-                        logger
-                                        .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: "
-                                                        + Nome_Cartao + ", Numero do cartão: " + Numero_Cartao
-                                                        + ", Mes de validade: " + mes_validade
-                                                        + ", Codifo de Segurança " + codigo_segurança + "...");
-
-                        ECommercePO.CEP
-                                        .sendKeys(CEP);
-
-                        ECommercePO.Numero_Casa
-                                        .sendKeys(Numero_Casa);
-
-                        ECommercePO.bandeiracartao
-                                        .click();
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
-                        ECommercePO.visa
-                                        .click();
-                        logger
-                                        .info("Preenchendo endereço: CEP: " + CEP + ", Numero da Casa: " + Numero_Casa
-                                                        + "...");
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
-
-                        ECommercePO.finalizarCompra
-                                        .click();
+                        base.realizarpagamento(driver);
 
                         wait
                                         .until(d -> ECommercePO.confirmarCompra

@@ -27,15 +27,6 @@ public class Cataratasbuilder {
         private String senha_usuario = "1";
         private String Nome_Cartao = geradores
                         .geradorNome();
-        private String Numero_Cartao = "4000000000000010";
-        private String mes_validade = geradores
-                        .geradorValidadeCartao();
-        private String codigo_segurança = geradores
-                        .geradorCodigoSeguranca();
-        private String CEP = geradores
-                        .geradorCEP();
-        private String Numero_Casa = geradores
-                        .geradorNumeroCasa();
         private String cpf = geradores
                         .geradorCPF();
 
@@ -50,16 +41,21 @@ public class Cataratasbuilder {
 
         public void Ingresso(WebDriver driver, int tipo) {
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
+                BaseBuilder base = new BaseBuilder(ECommercePO);
                 logger
                                 .info("Aguardando a barra de pesquisa ser exibida...");
 
                 wait
                                 .until(d -> ECommercePO.barraDePesquisa
                                                 .isDisplayed());
-                ECommercePO.aceitarcookies
-                                .click();
-                logger
-                                .info("Aceitando cookies...");
+                try {
+                        ECommercePO.aceitarcookies
+                                        .click();
+                        logger
+                                        .info("Aceitando cookies...");
+                } catch (Exception e) {
+                        // TODO: handle exception
+                }
 
                 if (tipo == 1) {
                         logger
@@ -142,7 +138,7 @@ public class Cataratasbuilder {
 
                                 try {
                                         Thread
-                                                        .sleep(1000);
+                                                        .sleep(1500);
                                 } catch (InterruptedException e) {
                                         e
                                                         .printStackTrace();
@@ -172,9 +168,7 @@ public class Cataratasbuilder {
                                                                 .isDisplayed());
                                 ECommercePO.ProximoMes3Receitas
                                                 .click();
-                                wait
-                                                .until(d -> ECommercePO.dia3Receitas
-                                                                .isEnabled());
+
                                 try {
                                         Thread
                                                         .sleep(1000);
@@ -221,6 +215,13 @@ public class Cataratasbuilder {
                                                                         .isDisplayed());
                                         ECommercePO.horario
                                                         .click();
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
                                         ECommercePO.confirmarHorario4opcoes
                                                         .click();
                                         try {
@@ -232,7 +233,7 @@ public class Cataratasbuilder {
                                         }
                                         wait
                                                         .until(d -> ECommercePO.proximo
-                                                                        .isDisplayed());
+                                                                        .isEnabled());
                                         ECommercePO.proximo
                                                         .click();
                                 } else if (i == 1) {
@@ -248,6 +249,13 @@ public class Cataratasbuilder {
                                         }
                                         ECommercePO.horario2Receitas
                                                         .click();
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
                                         ECommercePO.confirmarHorario4opcoes
                                                         .click();
                                         try {
@@ -305,20 +313,23 @@ public class Cataratasbuilder {
                                         .click();
                 }
 
-                if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6) {
+                if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6 || tipo == 3) {
                         logger
                                         .info("Selecionando país de origem...");
 
                         if (tipo == 1) {
+                                wait
+                                                .until(d -> ECommercePO.selecionarPaisOrigem
+                                                                .isDisplayed());
                                 ECommercePO.selecionarPaisOrigem
                                                 .click();
-                                ECommercePO.paiserrado
-                                                .click();
+                                ECommercePO
+                                                .Pais(27, driver);
                         } else if (tipo == 2) {
                                 ECommercePO.selecionarPaisOrigem
                                                 .click();
-                                ECommercePO.confirmaPaisOrigem
-                                                .click();
+                                ECommercePO
+                                                .Pais(24, driver);
                                 ECommercePO.estado
                                                 .click();
                                 ECommercePO.acre
@@ -326,55 +337,90 @@ public class Cataratasbuilder {
                         } else if (tipo == 5) {
                                 ECommercePO.selecionarPaisOrigem_2Rec
                                                 .click();
-                                ECommercePO.confirmaPaisOrigem
-                                                .click();
-                                ECommercePO.estado_2Rec
-                                                .click();
+                                ECommercePO
+                                                .Pais(24, driver);
+                                try {
+                                        Thread
+                                                        .sleep(1000);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
+                                ECommercePO
+                                                .estado(3, driver);
                                 ECommercePO.acre
                                                 .click();
                         } else if (tipo == 6) {
                                 ECommercePO.selecionarPaisOrigem_3Rec
                                                 .click();
-                                ECommercePO.confirmaPaisOrigem
+
+                                ECommercePO
+                                                .Pais(24, driver);
+                                try {
+                                        Thread
+                                                        .sleep(1000);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
+                                try {
+                                        ECommercePO
+                                                        .estado(4, driver);
+                                        ;
+                                        ECommercePO.acre
+                                                        .click();
+                                } catch (Exception e) {
+                                        // TODO: handle exception
+                                }
+
+                        } else if (tipo == 3) {
+                                ECommercePO.selecionarPaisOrigem
                                                 .click();
-                                ECommercePO.estado_3Rec
-                                                .click();
-                                ECommercePO.acre
-                                                .click();
+                                ECommercePO
+                                                .Pais(24, driver);
+                                try {
+                                        ECommercePO.estado
+                                                        .click();
+                                        ECommercePO.acre
+                                                        .click();
+                                } catch (Exception e) {
+                                        // TODO: handle exception
+                                }
+
                         }
                 }
-
-                int verdadeiro = 0;
-                if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR 1,2 OU 3 ELE ENTRA
+                String erro = null;
+                if (tipo != 3 && tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR 1 ou 2 ELE ENTRA
                         if (tipo == 5) {
                                 ECommercePO.adicionarAoCarrinho_2Rec
                                                 .click();
+                                erro = "notnull";
                         } else if (tipo == 6) {
                                 ECommercePO.adicionarAoCarrinho_3Rec
                                                 .click();
+                                erro = "notnull";
                         } else {
                                 ECommercePO.adicionarAoCarrinho
                                                 .click();
                         }
-                        verdadeiro = 1;
+
                         wait
                                         .until(d -> ECommercePO.pegarMensagemErro
                                                         .isDisplayed());
-                        String erro = null;
+
                         try {
                                 erro = ECommercePO.pegarMensagemErro
                                                 .getText();
                         } catch (Exception e) {
                         }
-                        verdadeiro = erro
-                                        .compareTo("Selecione ao menos uma categoria pagante");
+
                         logger
                                         .info("Trocando Selecionando um pais válido");
+                } else {
+                        erro = "notnull";
                 }
-
-                if (verdadeiro == 0) {
-                        int verdadeiro2 = 0;
-                        // Adicionar segunda categoria caso tenha
+                String erro2 = null;
+                if (erro != null) {
 
                         if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR DIFERENTE DE 4 ENTRAR
 
@@ -399,7 +445,7 @@ public class Cataratasbuilder {
                                 }
 
                                 if (tipo == 1 || tipo == 2) {
-                                        String erro2 = null;
+
                                         ECommercePO.adicionarAoCarrinho
                                                         .click();
                                         try {
@@ -416,25 +462,13 @@ public class Cataratasbuilder {
 
                                         }
 
-                                        verdadeiro2 = 1;
-                                        if (tipo == 1) {
-                                                wait
-                                                                .until(d -> ECommercePO.pegarMensagemErro
-                                                                                .isDisplayed());
-                                                verdadeiro2 = erro2
-                                                                .compareTo("País: Estados Unidos não é válido");
-                                        } else if (tipo == 2) {
-                                                wait
-                                                                .until(d -> ECommercePO.pegarMensagemErro
-                                                                                .isDisplayed());
-                                                verdadeiro2 = erro2
-                                                                .compareTo("País: Brasil não é válido");
-                                        } else {
-                                                verdadeiro2 = 0;
-                                        }
+                                } else {
+                                        erro2 = "notnull";
                                 }
+                        } else {
+                                erro2 = "notnull";
                         }
-                        if (verdadeiro2 == 0) {
+                        if (erro2 != null) {
                                 try {
                                         Thread
                                                         .sleep(5000);
@@ -453,18 +487,26 @@ public class Cataratasbuilder {
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        if (tipo == 1 || tipo == 8) {
+                                        if (tipo == 1) {
 
-                                                ECommercePO.confirmaPaisOrigem
-                                                                .click();
-                                                ECommercePO.estado
-                                                                .click();
-                                                ECommercePO.acre
-                                                                .click();
+                                                ECommercePO
+                                                                .Pais(24, driver);
+                                                try {
+                                                        ECommercePO.estado
+                                                                        .click();
+                                                        ECommercePO.acre
+                                                                        .click();
+                                                } catch (Exception e) {
 
+                                                }
+
+                                        } else if (tipo == 8) {
+                                                ECommercePO
+                                                                .Pais(47, driver);
                                         } else {
-                                                ECommercePO.paiserrado
-                                                                .click();
+                                                ECommercePO
+                                                                .Pais(27, driver);
+                                                ;
                                         }
                                 }
 
@@ -519,42 +561,62 @@ public class Cataratasbuilder {
                                         ECommercePO.confirmardadosusuario
                                                         .click();
                                 }
-                                wait
-                                                .until(d -> ECommercePO.valorBilhete1
-                                                                .isDisplayed());
-                                StringTokenizer resulBilhete1 = new StringTokenizer(ECommercePO.valorBilhete1
-                                                .getText());
+                                Double valor1 = 0.0;
+                                boolean logado = false;
+                                try {
+                                        Thread
+                                                        .sleep(3000);
+                                        logado = ECommercePO.finalizarPedido
+                                                        .isDisplayed();
+                                } catch (Exception e) {
+
+                                }
+                                StringTokenizer resulBilhete1 = null;
+                                if (logado) {
+                                        resulBilhete1 = new StringTokenizer(ECommercePO
+                                                        .valorTotalDoBilhete(3, driver));
+                                } else {
+                                        resulBilhete1 = new StringTokenizer(ECommercePO
+                                                        .valorTotalDoBilhete(2, driver));
+                                }
+
                                 String valorbilhete1 = resulBilhete1
+                                                .nextToken(" ");
+                                valorbilhete1 = resulBilhete1
                                                 .nextToken(" ");
                                 valorbilhete1 = resulBilhete1
                                                 .nextToken(" ");
                                 valorbilhete1 = valorbilhete1
                                                 .replaceAll(",", ".");
-                                Double valor1 = Double
+                                valor1 = Double
                                                 .valueOf(valorbilhete1);
                                 logger
                                                 .info("Verificando o valor dos bilhetes...");
 
                                 if (valor1 == 10.00) {
-                                        logger
-                                                        .info("Finalizando pedido...");
-                                        wait
-                                                        .until(d -> ECommercePO.registrarEfinalizarPedido
-                                                                        .isDisplayed());
-                                        ECommercePO.registrarEfinalizarPedido
-                                                        .click();
+                                        if (logado) {
 
-                                        wait
-                                                        .until(d -> ECommercePO.Email_ecommerce
-                                                                        .isDisplayed());
-                                        ECommercePO.Email_ecommerce
-                                                        .sendKeys(email_usuario);
-                                        ECommercePO.senha_ecommerce
-                                                        .sendKeys(senha_usuario);
-                                        ECommercePO.Logar
-                                                        .click();
-                                        logger
-                                                        .info("Fazendo Login...");
+                                        } else {
+                                                logger
+                                                                .info("Finalizando pedido...");
+                                                wait
+                                                                .until(d -> ECommercePO.registrarEfinalizarPedido
+                                                                                .isDisplayed());
+                                                ECommercePO.registrarEfinalizarPedido
+                                                                .click();
+
+                                                wait
+                                                                .until(d -> ECommercePO.Email_ecommerce
+                                                                                .isDisplayed());
+                                                ECommercePO.Email_ecommerce
+                                                                .sendKeys(email_usuario);
+                                                ECommercePO.senha_ecommerce
+                                                                .sendKeys(senha_usuario);
+                                                ECommercePO.Logar
+                                                                .click();
+                                                logger
+                                                                .info("Fazendo Login...");
+                                        }
 
                                         wait
                                                         .until(d -> ECommercePO.finalizarPedido
@@ -581,60 +643,8 @@ public class Cataratasbuilder {
                                         // ECommercePO.botaoConfirmarSenha
                                         // .click();
 
-                                        wait
-                                                        .until(d -> ECommercePO.Nome_Do_Cartao
-                                                                        .isDisplayed());
-
-                                        ECommercePO.Nome_Do_Cartao
-                                                        .sendKeys(Nome_Cartao);
-
-                                        ECommercePO.Numero_Cartao
-                                                        .sendKeys(Numero_Cartao);
-
-                                        ECommercePO.Mes_Validade
-                                                        .sendKeys(mes_validade);
-
-                                        ECommercePO.codigo_segurança
-                                                        .sendKeys(codigo_segurança);
-
-                                        logger
-                                                        .info("Preenchendo informações de pagamento: "
-                                                                        + " Nome Impresso no Cartão: " + Nome_Cartao
-                                                                        + ", Numero do cartão: " + Numero_Cartao
-                                                                        + ", Mes de validade: " + mes_validade
-                                                                        + ", Codifo de Segurança " + codigo_segurança
-                                                                        + "...");
-
-                                        ECommercePO.CEP
-                                                        .sendKeys(CEP);
-
-                                        ECommercePO.Numero_Casa
-                                                        .sendKeys(Numero_Casa);
-
-                                        ECommercePO.bandeiracartao
-                                                        .click();
-                                        try {
-                                                Thread
-                                                                .sleep(1000);
-                                        } catch (InterruptedException e) {
-                                                e
-                                                                .printStackTrace();
-                                        }
-                                        ECommercePO.visa
-                                                        .click();
-                                        logger
-                                                        .info("Preenchendo endereço: CEP: " + CEP + ", Numero da Casa: "
-                                                                        + Numero_Casa + "...");
-                                        try {
-                                                Thread
-                                                                .sleep(1000);
-                                        } catch (InterruptedException e) {
-                                                e
-                                                                .printStackTrace();
-                                        }
-
-                                        ECommercePO.finalizarCompra
-                                                        .click();
+                                        base
+                                                        .realizarpagamento(driver);
 
                                         wait
                                                         .until(d -> ECommercePO.confirmarCompra
@@ -659,7 +669,9 @@ public class Cataratasbuilder {
                                 logger
                                                 .severe("ERRO: PAÍS INVALIDO.");
                         }
-                } else {
+                } else
+
+                {
                         JavascriptExecutor js = (JavascriptExecutor) driver;
                         js
                                         .executeScript("alert('ERRO: CATEGORIA PAGANTE NÃO SELECIONADA');");

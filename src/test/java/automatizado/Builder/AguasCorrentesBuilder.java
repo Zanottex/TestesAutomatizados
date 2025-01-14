@@ -21,17 +21,7 @@ public class AguasCorrentesBuilder {
         private EcommercePO ECommercePO;
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";
-        private String Nome_Cartao = geradores
-                        .geradorNome();
-        private String Numero_Cartao = "4000000000000010";
-        private String mes_validade = geradores
-                        .geradorValidadeCartao();
-        private String codigo_segurança = geradores
-                        .geradorCodigoSeguranca();
-        private String CEP = geradores
-                        .geradorCEP();
-        private String Numero_Casa = geradores
-                        .geradorNumeroCasa();
+        
 
         private static final Logger logger = Logger
                         .getLogger(AquaRioBuilder.class
@@ -49,7 +39,7 @@ public class AguasCorrentesBuilder {
         public void avulsso(WebDriver driver, int tipo) {
 
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-
+                BaseBuilder base = new BaseBuilder(ECommercePO);
                 try {
                         Thread
                                         .sleep(2000);
@@ -249,7 +239,7 @@ public class AguasCorrentesBuilder {
 
                 logger
                                 .info("Verificando os preços dos bilhetes.");
-
+                
                 if (valor1 == 17.0 || valor1 == 120.0) {
                         if (logado) {
 
@@ -267,13 +257,13 @@ public class AguasCorrentesBuilder {
                                                 .info("Logando na conta do usuario.");
                                 ECommercePO.Logar
                                                 .click();
-
+                                
                         }
-                        wait
-                                        .until(d -> ECommercePO.aceitar_termos_finalizar_pedido
-                                                        .isDisplayed());
-                        ECommercePO.aceitar_termos_finalizar_pedido
-                                        .click();
+wait
+                                                .until(d -> ECommercePO.aceitar_termos_finalizar_pedido
+                                                                .isDisplayed());
+                                ECommercePO.aceitar_termos_finalizar_pedido
+                                                .click();
                         logger
                                         .info("Aceitando termos e condições.");
 
@@ -285,42 +275,8 @@ public class AguasCorrentesBuilder {
                         logger
                                         .info("Finalizando pedido.");
 
-                        wait
-                                        .until(d -> ECommercePO.Nome_Do_Cartao
-                                                        .isDisplayed());
-
-                        ECommercePO.Nome_Do_Cartao
-                                        .sendKeys(Nome_Cartao);
-
-                        ECommercePO.Numero_Cartao
-                                        .sendKeys(Numero_Cartao);
-
-                        ECommercePO.Mes_Validade
-                                        .sendKeys(mes_validade);
-
-                        ECommercePO.codigo_segurança
-                                        .sendKeys(codigo_segurança);
-
-                        ECommercePO.CEP
-                                        .sendKeys(CEP);
-
-                        ECommercePO.Numero_Casa
-                                        .sendKeys(Numero_Casa);
-
-                        logger
-                                        .info("Dados do usuario para pagamento preenchidos.");
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
-
-                        ECommercePO.finalizarCompra
-                                        .click();
-                        logger
-                                        .info("Compra Finalizada");
+                        base
+                                        .realizarpagamento(driver);
 
                         wait
                                         .until(d -> ECommercePO.confirmarCompra

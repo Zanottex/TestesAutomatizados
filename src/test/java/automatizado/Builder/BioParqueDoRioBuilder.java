@@ -27,15 +27,6 @@ public class BioParqueDoRioBuilder {
         private String senha_usuario = "1";
         private String Nome_Cartao = geradores
                         .geradorNome();
-        private String Numero_Cartao = "4000000000000010";
-        private String mes_validade = geradores
-                        .geradorValidadeCartao();
-        private String codigo_segurança = geradores
-                        .geradorCodigoSeguranca();
-        private String CEP = geradores
-                        .geradorCEP();
-        private String Numero_Casa = geradores
-                        .geradorNumeroCasa();
         private String cpf = geradores
                         .geradorCPF();
 
@@ -50,6 +41,7 @@ public class BioParqueDoRioBuilder {
 
         public void Ingresso(WebDriver driver, int tipo) {
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
+                BaseBuilder base = new BaseBuilder(ECommercePO);
                 logger
                                 .info("Aguardando a barra de pesquisa ser exibida...");
 
@@ -189,7 +181,7 @@ public class BioParqueDoRioBuilder {
                                                         .click();
                                         try {
                                                 Thread
-                                                                .sleep(1500);
+                                                                .sleep(2000);
                                         } catch (InterruptedException e) {
                                                 e
                                                                 .printStackTrace();
@@ -420,57 +412,8 @@ public class BioParqueDoRioBuilder {
                         // ECommercePO.botaoConfirmarSenha
                         // .click();
 
-                        wait
-                                        .until(d -> ECommercePO.Nome_Do_Cartao
-                                                        .isDisplayed());
-
-                        ECommercePO.Nome_Do_Cartao
-                                        .sendKeys(Nome_Cartao);
-
-                        ECommercePO.Numero_Cartao
-                                        .sendKeys(Numero_Cartao);
-
-                        ECommercePO.Mes_Validade
-                                        .sendKeys("122025");
-                        ECommercePO.codigo_segurança
-                                        .sendKeys("123");
-
-                        logger
-                                        .info("Preenchendo informações de pagamento: " + " Nome Impresso no Cartão: "
-                                                        + Nome_Cartao + ", Numero do cartão: " + Numero_Cartao
-                                                        + ", Mes de validade: " + mes_validade
-                                                        + ", Codifo de Segurança " + codigo_segurança + "...");
-
-                        ECommercePO.CEP
-                                        .sendKeys(CEP);
-
-                        ECommercePO.Numero_Casa
-                                        .sendKeys(Numero_Casa);
-
-                        ECommercePO.bandeiracartao
-                                        .click();
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
-                        ECommercePO.visa
-                                        .click();
-                        logger
-                                        .info("Preenchendo endereço: CEP: " + CEP + ", Numero da Casa: " + Numero_Casa
-                                                        + "...");
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
-
-                        ECommercePO.finalizarCompra
-                                        .click();
+                        base
+                                        .realizarpagamento(driver);
 
                         wait
                                         .until(d -> ECommercePO.confirmarCompra
