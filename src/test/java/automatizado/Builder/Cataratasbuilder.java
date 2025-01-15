@@ -48,15 +48,15 @@ public class Cataratasbuilder {
                 wait
                                 .until(d -> ECommercePO.barraDePesquisa
                                                 .isDisplayed());
+
                 try {
-                        ECommercePO.aceitarcookies
+                        ECommercePO.aceitarcookies_2
                                         .click();
                         logger
                                         .info("Aceitando cookies...");
                 } catch (Exception e) {
-                        // TODO: handle exception
-                }
 
+                }
                 if (tipo == 1) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Brasileiro/Mercosul");
@@ -370,7 +370,7 @@ public class Cataratasbuilder {
                                         ECommercePO.acre
                                                         .click();
                                 } catch (Exception e) {
-                                        // TODO: handle exception
+
                                 }
 
                         } else if (tipo == 3) {
@@ -384,7 +384,7 @@ public class Cataratasbuilder {
                                         ECommercePO.acre
                                                         .click();
                                 } catch (Exception e) {
-                                        // TODO: handle exception
+
                                 }
 
                         }

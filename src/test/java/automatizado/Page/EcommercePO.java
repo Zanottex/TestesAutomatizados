@@ -221,7 +221,6 @@ public class EcommercePO extends BasePO {
         public WebElement data_de_nascimento_ColetaDeDados_TerceiroUsuario;
 
         /*
-         * TODO: Arrumar uma forma de essa opção sempre clicar no brasil quando
          * selecionar um pais. O brasil aparece em posições diferentes dependendo do
          * bilhete exemplo o bilhete do aquas correntes é de numero 22 ou 23, já o do
          * fundação é 10 ou 11 ele pode alternar nesses valores
@@ -244,10 +243,6 @@ public class EcommercePO extends BasePO {
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/div/div[2]/div[1]/span[1]/b")
         public WebElement Nomecategoria;
 
-        /*
-         * TODO: Arrumar uma forma de essa opção sempre clicar no estado unidos quando
-         * selecionar um pais.
-         */
         @FindBy(id = "mat-option-14")
         public WebElement paiserrado;
 
@@ -355,6 +350,9 @@ public class EcommercePO extends BasePO {
 
         @FindBy(xpath = "/html/body/e-commerce/pages/app-footer-cookies-policy/div/section/button[2]")
         public WebElement aceitarcookies;
+
+        @FindBy(xpath = "/html/body/app-root/app-home/app-footer-cookies-policy/div/section/button[2]")
+        public WebElement aceitarcookies_2;
 
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[2]/div[2]/button")
         public WebElement registrarEfinalizarPedido;

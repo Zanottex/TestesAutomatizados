@@ -53,7 +53,7 @@ public class AquaRioBuilder{
                         ECommercePO.aceitarcookies
                                         .click();
                 } catch (Exception e) {
-                        // TODO: handle exception
+                        
                 }
                 logger
                                 .info("Aceitando cookies...");
@@ -359,7 +359,7 @@ public class AquaRioBuilder{
                                 ECommercePO.acre
                                                 .click();
                         } catch (Exception e) {
-                                // TODO: handle exception
+                                
                         }
 
                 } else if (tipo == 5) {

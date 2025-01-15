@@ -8,10 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import automatizado.Page.EcommercePO;
-import automatizado.Generators.geradores;
-
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,7 +50,7 @@ public class AguasCorrentesBuilder {
                         logger
                                         .info("Aceitando os cookies.");
                 } catch (Exception e) {
-                        // TODO: handle exception
+                        
                 }
 
                 wait
