@@ -1,4 +1,4 @@
-package automatizado.Builder.Antigo;
+package automatizado.Builder.Novo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,20 +9,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import automatizado.Page.EcommercePOAntigo;
+import automatizado.Page.EcommercePONovo;
 import automatizado.Generators.geradores;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Cataratasbuilder {
+public class CataratasbuilderNovo {
 
         private static final Logger logger = Logger
-                        .getLogger(Cataratasbuilder.class
+                        .getLogger(CataratasbuilderNovo.class
                                         .getName());
 
-        private EcommercePOAntigo EcommercePOAntigo;
+        private EcommercePONovo EcommercePONovo;
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";
         private String Nome_Cartao = geradores
@@ -41,16 +41,16 @@ public class Cataratasbuilder {
 
         public void Ingresso(WebDriver driver, int tipo) {
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-                BaseBuilder base = new BaseBuilder(EcommercePOAntigo);
+                BaseBuilder base = new BaseBuilder(EcommercePONovo);
                 logger
                                 .info("Aguardando a barra de pesquisa ser exibida...");
 
                 wait
-                                .until(d -> EcommercePOAntigo.barraDePesquisa
+                                .until(d -> EcommercePONovo.barraDePesquisa
                                                 .isDisplayed());
 
                 try {
-                        EcommercePOAntigo.aceitarcookies_2
+                        EcommercePONovo.aceitarcookies
                                         .click();
                         logger
                                         .info("Aceitando cookies...");
@@ -60,42 +60,42 @@ public class Cataratasbuilder {
                 if (tipo == 1) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Brasileiro/Mercosul");
-                        EcommercePOAntigo.barraDePesquisa
+                        EcommercePONovo.barraDePesquisa
                                         .sendKeys("Ingresso Brasileiro/Mercosul");
                 } else if (tipo == 2) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Estrangeiro");
-                        EcommercePOAntigo.barraDePesquisa
+                        EcommercePONovo.barraDePesquisa
                                         .sendKeys("Ingresso Estrangeiro");
                 } else if (tipo == 3) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Experiências");
-                        EcommercePOAntigo.barraDePesquisa
+                        EcommercePONovo.barraDePesquisa
                                         .sendKeys("Ingresso Experiências");
                 } else if (tipo == 4) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bike poço preto");
-                        EcommercePOAntigo.barraDePesquisa
+                        EcommercePONovo.barraDePesquisa
                                         .sendKeys("Ingresso Bike poço preto");
                 } else if (tipo == 5) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso 2 dias");
-                        EcommercePOAntigo.barraDePesquisa
+                        EcommercePONovo.barraDePesquisa
                                         .sendKeys("Ingresso 2 dias");
                 } else if (tipo == 6) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso 3 dias");
-                        EcommercePOAntigo.barraDePesquisa
+                        EcommercePONovo.barraDePesquisa
                                         .sendKeys("Ingresso 3 dias");
                 } else if (tipo == 7) {
                         logger
                                         .info("Iniciando pesquisa: Guarda Volumes");
-                        EcommercePOAntigo.barraDePesquisa
+                        EcommercePONovo.barraDePesquisa
                                         .sendKeys("Guarda Volumes");
                 } else if (tipo == 8) {
                         logger
                                         .info("Iniciando pesquisa: Bilhete VIP");
-                        EcommercePOAntigo.barraDePesquisa
+                        EcommercePONovo.barraDePesquisa
                                         .sendKeys("Bilhete VIP");
                 } else {
                         logger
@@ -109,7 +109,7 @@ public class Cataratasbuilder {
                         e
                                         .printStackTrace();
                 }
-                EcommercePOAntigo.bilhete_a_venda_grupo1
+                EcommercePONovo.bilhete_a_venda_grupo1
                                 .click();
                 logger
                                 .info("Selecionando bilhete...");
@@ -130,10 +130,17 @@ public class Cataratasbuilder {
                         logger
                                         .info("Selecionando data para o dia " + (i + 1));
                         if (i == 0) {
+                                try {
+                                        Thread
+                                                        .sleep(2000);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
                                 wait
-                                                .until(d -> EcommercePOAntigo.ProximoMes
-                                                                .isDisplayed());
-                                EcommercePOAntigo.ProximoMes
+                                                .until(d -> EcommercePONovo.ProximoMes
+                                                                .isEnabled());
+                                EcommercePONovo.ProximoMes
                                                 .click();
 
                                 try {
@@ -144,14 +151,14 @@ public class Cataratasbuilder {
                                                         .printStackTrace();
                                 }
 
-                                EcommercePOAntigo.dia
+                                EcommercePONovo.dia
                                                 .click();
 
                         } else if (i == 1) {
                                 wait
-                                                .until(d -> EcommercePOAntigo.ProximoMes2Receitas
+                                                .until(d -> EcommercePONovo.ProximoMes2Receitas
                                                                 .isDisplayed());
-                                EcommercePOAntigo.ProximoMes2Receitas
+                                EcommercePONovo.ProximoMes2Receitas
                                                 .click();
                                 try {
                                         Thread
@@ -160,13 +167,13 @@ public class Cataratasbuilder {
                                         e
                                                         .printStackTrace();
                                 }
-                                EcommercePOAntigo.dia2Receitas
+                                EcommercePONovo.dia2Receitas
                                                 .click();
                         } else if (i == 2) {
                                 wait
-                                                .until(d -> EcommercePOAntigo.ProximoMes3Receitas
+                                                .until(d -> EcommercePONovo.ProximoMes3Receitas
                                                                 .isDisplayed());
-                                EcommercePOAntigo.ProximoMes3Receitas
+                                EcommercePONovo.ProximoMes3Receitas
                                                 .click();
 
                                 try {
@@ -176,7 +183,7 @@ public class Cataratasbuilder {
                                         e
                                                         .printStackTrace();
                                 }
-                                EcommercePOAntigo.dia3Receitas
+                                EcommercePONovo.dia3Receitas
                                                 .click();
                         }
                         try {
@@ -191,12 +198,12 @@ public class Cataratasbuilder {
                                 logger
                                                 .info("Selecionando local de embarque...");
                                 wait
-                                                .until(d -> EcommercePOAntigo.localEmbarque
+                                                .until(d -> EcommercePONovo.localEmbarque
                                                                 .isDisplayed());
-                                EcommercePOAntigo.localEmbarque
+                                EcommercePONovo.localEmbarque
                                                 .click();
-                                EcommercePOAntigo.localEmbarqueConfirmar
-                                                .click();
+                                // EcommercePONovo.localEmbarqueConfirmar
+                                // .click();
                         }
 
                         try {
@@ -210,11 +217,11 @@ public class Cataratasbuilder {
                                 logger
                                                 .info("Selecionando Horario...");
                                 if (i == 0) {
-                                        wait
-                                                        .until(d -> EcommercePOAntigo.horario
-                                                                        .isDisplayed());
-                                        EcommercePOAntigo.horario
-                                                        .click();
+                                        // wait
+                                        // .until(d -> EcommercePONovo.horario
+                                        // .isDisplayed());
+                                        // EcommercePONovo.horario
+                                        // .click();
                                         try {
                                                 Thread
                                                                 .sleep(1000);
@@ -222,23 +229,12 @@ public class Cataratasbuilder {
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        EcommercePOAntigo.confirmarHorario4opcoes
+                                        EcommercePONovo.confirmarHorario
                                                         .click();
-                                        try {
-                                                Thread
-                                                                .sleep(2000);
-                                        } catch (InterruptedException e) {
-                                                e
-                                                                .printStackTrace();
-                                        }
-                                        wait
-                                                        .until(d -> EcommercePOAntigo.proximo
-                                                                        .isEnabled());
-                                        EcommercePOAntigo.proximo
-                                                        .click();
+
                                 } else if (i == 1) {
                                         wait
-                                                        .until(d -> EcommercePOAntigo.horario2Receitas
+                                                        .until(d -> EcommercePONovo.horario2Receitas
                                                                         .isDisplayed());
                                         try {
                                                 Thread
@@ -247,7 +243,7 @@ public class Cataratasbuilder {
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        EcommercePOAntigo.horario2Receitas
+                                        EcommercePONovo.horario2Receitas
                                                         .click();
                                         try {
                                                 Thread
@@ -256,7 +252,7 @@ public class Cataratasbuilder {
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        EcommercePOAntigo.confirmarHorario4opcoes
+                                        EcommercePONovo.confirmarHorario4opcoes
                                                         .click();
                                         try {
                                                 Thread
@@ -265,15 +261,15 @@ public class Cataratasbuilder {
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        EcommercePOAntigo.proximo2Receitas
+                                        EcommercePONovo.proximo2Receitas
                                                         .click();
                                 } else if (i == 2) {
                                         wait
-                                                        .until(d -> EcommercePOAntigo.horario3Receitas
+                                                        .until(d -> EcommercePONovo.horario3Receitas
                                                                         .isDisplayed());
-                                        EcommercePOAntigo.horario3Receitas
+                                        EcommercePONovo.horario3Receitas
                                                         .click();
-                                        EcommercePOAntigo.confirmarHorario4opcoes
+                                        EcommercePONovo.confirmarHorario4opcoes
                                                         .click();
                                         try {
                                                 Thread
@@ -282,7 +278,7 @@ public class Cataratasbuilder {
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        EcommercePOAntigo.proximo3Receitas
+                                        EcommercePONovo.proximo3Receitas
                                                         .click();
                                 }
 
@@ -290,27 +286,6 @@ public class Cataratasbuilder {
                         } else {
                                 i++;
                         }
-                }
-                logger
-                                .info("Adicionando categoria ao carrinho...");
-                if (tipo == 5) {
-                        wait
-                                        .until(d -> EcommercePOAntigo.adicionarCategoria_2Rec
-                                                        .isDisplayed());
-                        EcommercePOAntigo.adicionarCategoria_2Rec
-                                        .click();
-                } else if (tipo == 6) {
-                        wait
-                                        .until(d -> EcommercePOAntigo.adicionarCategoria_3Rec
-                                                        .isDisplayed());
-                        EcommercePOAntigo.adicionarCategoria_3Rec
-                                        .click();
-                } else {
-                        wait
-                                        .until(d -> EcommercePOAntigo.adicionarCategoria
-                                                        .isDisplayed());
-                        EcommercePOAntigo.adicionarCategoria
-                                        .click();
                 }
 
                 if (tipo == 1 || tipo == 2 || tipo == 5 || tipo == 6 || tipo == 3) {
@@ -319,26 +294,14 @@ public class Cataratasbuilder {
 
                         if (tipo == 1) {
                                 wait
-                                                .until(d -> EcommercePOAntigo.selecionarPaisOrigem
+                                                .until(d -> EcommercePONovo.selecionarPaisOrigem
                                                                 .isDisplayed());
-                                EcommercePOAntigo.selecionarPaisOrigem
+                                EcommercePONovo.selecionarPaisOrigem
                                                 .click();
-                                EcommercePOAntigo
-                                                .Pais(27, driver);
-                        } else if (tipo == 2) {
-                                EcommercePOAntigo.selecionarPaisOrigem
+                                EcommercePONovo.confirmaPaisOrigem
                                                 .click();
-                                EcommercePOAntigo
-                                                .Pais(24, driver);
-                                EcommercePOAntigo.estado
+                                EcommercePONovo.estado
                                                 .click();
-                                EcommercePOAntigo.acre
-                                                .click();
-                        } else if (tipo == 5) {
-                                EcommercePOAntigo.selecionarPaisOrigem_2Rec
-                                                .click();
-                                EcommercePOAntigo
-                                                .Pais(24, driver);
                                 try {
                                         Thread
                                                         .sleep(1000);
@@ -346,15 +309,39 @@ public class Cataratasbuilder {
                                         e
                                                         .printStackTrace();
                                 }
-                                EcommercePOAntigo
-                                                .estado(3, driver);
-                                EcommercePOAntigo.acre
-                                                .click();
-                        } else if (tipo == 6) {
-                                EcommercePOAntigo.selecionarPaisOrigem_3Rec
+                                EcommercePONovo.acre
                                                 .click();
 
-                                EcommercePOAntigo
+                        } else if (tipo == 2) {
+                                EcommercePONovo.selecionarPaisOrigem
+                                                .click();
+                                EcommercePONovo
+                                                .Pais(24, driver);
+                                EcommercePONovo.estado
+                                                .click();
+                                EcommercePONovo.acre
+                                                .click();
+                        } else if (tipo == 5) {
+                                EcommercePONovo.selecionarPaisOrigem_2Rec
+                                                .click();
+                                EcommercePONovo
+                                                .Pais(24, driver);
+                                try {
+                                        Thread
+                                                        .sleep(1000);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
+                                EcommercePONovo
+                                                .estado(3, driver);
+                                EcommercePONovo.acre
+                                                .click();
+                        } else if (tipo == 6) {
+                                EcommercePONovo.selecionarPaisOrigem_3Rec
+                                                .click();
+
+                                EcommercePONovo
                                                 .Pais(24, driver);
                                 try {
                                         Thread
@@ -364,24 +351,24 @@ public class Cataratasbuilder {
                                                         .printStackTrace();
                                 }
                                 try {
-                                        EcommercePOAntigo
+                                        EcommercePONovo
                                                         .estado(4, driver);
                                         ;
-                                        EcommercePOAntigo.acre
+                                        EcommercePONovo.acre
                                                         .click();
                                 } catch (Exception e) {
 
                                 }
 
                         } else if (tipo == 3) {
-                                EcommercePOAntigo.selecionarPaisOrigem
+                                EcommercePONovo.selecionarPaisOrigem
                                                 .click();
-                                EcommercePOAntigo
+                                EcommercePONovo
                                                 .Pais(24, driver);
                                 try {
-                                        EcommercePOAntigo.estado
+                                        EcommercePONovo.estado
                                                         .click();
-                                        EcommercePOAntigo.acre
+                                        EcommercePONovo.acre
                                                         .click();
                                 } catch (Exception e) {
 
@@ -389,27 +376,46 @@ public class Cataratasbuilder {
 
                         }
                 }
+
+                logger
+                                .info("Adicionando categoria ao carrinho...");
+                if (tipo == 5) {
+                        wait
+                                        .until(d -> EcommercePONovo.adicionarCategoria_2Rec
+                                                        .isDisplayed());
+                        EcommercePONovo.adicionarCategoria_2Rec
+                                        .click();
+                } else if (tipo == 6) {
+                        wait
+                                        .until(d -> EcommercePONovo.adicionarCategoria_3Rec
+                                                        .isDisplayed());
+                        EcommercePONovo.adicionarCategoria_3Rec
+                                        .click();
+                } else {
+                        wait
+                                        .until(d -> EcommercePONovo.adicionarCategoria
+                                                        .isDisplayed());
+                        EcommercePONovo.adicionarCategoria
+                                        .click();
+                }
+
                 String erro = null;
                 if (tipo != 3 && tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR 1 ou 2 ELE ENTRA
                         if (tipo == 5) {
-                                EcommercePOAntigo.adicionarAoCarrinho_2Rec
+                                EcommercePONovo.adicionarAoCarrinho_2Rec
                                                 .click();
                                 erro = "notnull";
                         } else if (tipo == 6) {
-                                EcommercePOAntigo.adicionarAoCarrinho_3Rec
+                                EcommercePONovo.adicionarAoCarrinho_3Rec
                                                 .click();
                                 erro = "notnull";
                         } else {
-                                EcommercePOAntigo.adicionarAoCarrinho
+                                EcommercePONovo.comprarIngressos
                                                 .click();
                         }
 
-                        wait
-                                        .until(d -> EcommercePOAntigo.pegarMensagemErro
-                                                        .isDisplayed());
-
                         try {
-                                erro = EcommercePOAntigo.pegarMensagemErro
+                                erro = EcommercePONovo.pegarMensagemErro
                                                 .getText();
                         } catch (Exception e) {
                         }
@@ -425,15 +431,15 @@ public class Cataratasbuilder {
                         if (tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR DIFERENTE DE 4 ENTRAR
 
                                 if (tipo == 5) {
-                                        EcommercePOAntigo.adicionarCategoria2_2Rec
+                                        EcommercePONovo.adicionarCategoria2_2Rec
                                                         .click();
                                 } else if (tipo == 6) {
-                                        EcommercePOAntigo.adicionarCategoria2_3Rec
+                                        EcommercePONovo.adicionarCategoria2_3Rec
                                                         .click();
                                 } else if (tipo == 8) {
 
                                 } else {
-                                        EcommercePOAntigo.adicionarCategoria2
+                                        EcommercePONovo.adicionarCategoria2
                                                         .click();
                                 }
                                 try {
@@ -444,9 +450,9 @@ public class Cataratasbuilder {
                                                         .printStackTrace();
                                 }
 
-                                if (tipo == 1 || tipo == 2) {
+                                if (/* tipo == 1 || */ tipo == 2) {
 
-                                        EcommercePOAntigo.adicionarAoCarrinho
+                                        EcommercePONovo.comprarIngressos
                                                         .click();
                                         try {
                                                 Thread
@@ -456,7 +462,7 @@ public class Cataratasbuilder {
                                                                 .printStackTrace();
                                         }
                                         try {
-                                                erro2 = EcommercePOAntigo.pegarMensagemErro
+                                                erro2 = EcommercePONovo.pegarMensagemErro
                                                                 .getText();
                                         } catch (Exception e) {
 
@@ -476,8 +482,8 @@ public class Cataratasbuilder {
                                         e
                                                         .printStackTrace();
                                 }
-                                if (tipo == 1 || tipo == 2 || tipo == 8) {
-                                        EcommercePOAntigo.selecionarPaisOrigem
+                                if (/* tipo == 1 || */ tipo == 2 || tipo == 8) {
+                                        EcommercePONovo.selecionarPaisOrigem
                                                         .click();
 
                                         try {
@@ -489,52 +495,52 @@ public class Cataratasbuilder {
                                         }
                                         if (tipo == 1) {
 
-                                                EcommercePOAntigo
+                                                EcommercePONovo
                                                                 .Pais(24, driver);
                                                 try {
-                                                        EcommercePOAntigo.estado
+                                                        EcommercePONovo.estado
                                                                         .click();
-                                                        EcommercePOAntigo.acre
+                                                        EcommercePONovo.acre
                                                                         .click();
                                                 } catch (Exception e) {
 
                                                 }
 
                                         } else if (tipo == 8) {
-                                                EcommercePOAntigo
+                                                EcommercePONovo
                                                                 .Pais(47, driver);
                                         } else {
-                                                EcommercePOAntigo
+                                                EcommercePONovo
                                                                 .Pais(27, driver);
                                                 ;
                                         }
                                 }
 
                                 if (tipo == 5) {
-                                        EcommercePOAntigo.adicionarAoCarrinho_2Rec
+                                        EcommercePONovo.adicionarAoCarrinho_2Rec
                                                         .click();
                                 } else if (tipo == 6) {
-                                        EcommercePOAntigo.adicionarAoCarrinho_3Rec
+                                        EcommercePONovo.adicionarAoCarrinho_3Rec
                                                         .click();
                                 } else {
-                                        EcommercePOAntigo.adicionarAoCarrinho
+                                        EcommercePONovo.comprarIngressos
                                                         .click();
                                 }
 
                                 if (tipo == 5 || tipo == 6 || tipo == 8) {
                                         wait
-                                                        .until(d -> EcommercePOAntigo.nomeUsuario
+                                                        .until(d -> EcommercePONovo.nomeUsuario
                                                                         .isDisplayed());
-                                        EcommercePOAntigo.nomeUsuario
+                                        EcommercePONovo.nomeUsuario
                                                         .sendKeys(Nome_Cartao);
-                                        EcommercePOAntigo.tipodocumento
+                                        EcommercePONovo.tipodocumento
                                                         .click();
                                         wait
-                                                        .until(d -> EcommercePOAntigo.outros
+                                                        .until(d -> EcommercePONovo.outros
                                                                         .isDisplayed());
-                                        EcommercePOAntigo.outros
+                                        EcommercePONovo.outros
                                                         .click();
-                                        EcommercePOAntigo.documento
+                                        EcommercePONovo.documento
                                                         .sendKeys(cpf);
 
                                         try {
@@ -545,20 +551,20 @@ public class Cataratasbuilder {
                                                                 .printStackTrace();
                                         }
                                         if (tipo != 8) {
-                                                EcommercePOAntigo.nomeUsuario2
+                                                EcommercePONovo.nomeUsuario2
                                                                 .sendKeys("Cleitin do grau");
-                                                EcommercePOAntigo.tipodocumento2
+                                                EcommercePONovo.tipodocumento2
                                                                 .click();
                                                 wait
-                                                                .until(d -> EcommercePOAntigo.outros
+                                                                .until(d -> EcommercePONovo.outros
                                                                                 .isDisplayed());
-                                                EcommercePOAntigo.outros
+                                                EcommercePONovo.outros
                                                                 .click();
-                                                EcommercePOAntigo.documento2
+                                                EcommercePONovo.documento2
                                                                 .sendKeys("123456789");
 
                                         }
-                                        EcommercePOAntigo.confirmardadosusuario
+                                        EcommercePONovo.confirmardadosusuario
                                                         .click();
                                 }
                                 Double valor1 = 0.0;
@@ -566,23 +572,21 @@ public class Cataratasbuilder {
                                 try {
                                         Thread
                                                         .sleep(3000);
-                                        logado = EcommercePOAntigo.finalizarPedido
+                                        logado = EcommercePONovo.finalizarPedido
                                                         .isDisplayed();
                                 } catch (Exception e) {
 
                                 }
                                 StringTokenizer resulBilhete1 = null;
                                 if (logado) {
-                                        resulBilhete1 = new StringTokenizer(EcommercePOAntigo
-                                                        .valorTotalDoBilhete(3, driver));
+                                        resulBilhete1 = new StringTokenizer(EcommercePONovo.valorBilhete1
+                                                        .getText());
                                 } else {
-                                        resulBilhete1 = new StringTokenizer(EcommercePOAntigo
-                                                        .valorTotalDoBilhete(2, driver));
+                                        resulBilhete1 = new StringTokenizer(EcommercePONovo.valorBilhete1
+                                                        .getText());
                                 }
 
                                 String valorbilhete1 = resulBilhete1
-                                                .nextToken(" ");
-                                valorbilhete1 = resulBilhete1
                                                 .nextToken(" ");
                                 valorbilhete1 = resulBilhete1
                                                 .nextToken(" ");
@@ -600,56 +604,56 @@ public class Cataratasbuilder {
                                                 logger
                                                                 .info("Finalizando pedido...");
                                                 wait
-                                                                .until(d -> EcommercePOAntigo.registrarEfinalizarPedido
+                                                                .until(d -> EcommercePONovo.registrarEfinalizarPedido
                                                                                 .isDisplayed());
-                                                EcommercePOAntigo.registrarEfinalizarPedido
+                                                EcommercePONovo.registrarEfinalizarPedido
                                                                 .click();
 
                                                 wait
-                                                                .until(d -> EcommercePOAntigo.Email_ecommerce
+                                                                .until(d -> EcommercePONovo.Email_ecommerce
                                                                                 .isDisplayed());
-                                                EcommercePOAntigo.Email_ecommerce
+                                                EcommercePONovo.Email_ecommerce
                                                                 .sendKeys(email_usuario);
-                                                EcommercePOAntigo.senha_ecommerce
+                                                EcommercePONovo.senha_ecommerce
                                                                 .sendKeys(senha_usuario);
-                                                EcommercePOAntigo.Logar
+                                                EcommercePONovo.Logar
                                                                 .click();
                                                 logger
                                                                 .info("Fazendo Login...");
                                         }
 
                                         wait
-                                                        .until(d -> EcommercePOAntigo.finalizarPedido
+                                                        .until(d -> EcommercePONovo.finalizarPedido
                                                                         .isDisplayed());
-                                        EcommercePOAntigo.finalizarPedido
+                                        EcommercePONovo.finalizarPedido
                                                         .click();
                                         logger
                                                         .info("Finalizando pedido...");
 
                                         if (tipo == 4) {
                                                 wait
-                                                                .until(d -> EcommercePOAntigo.aceitar_termos
+                                                                .until(d -> EcommercePONovo.aceitar_termos
                                                                                 .isDisplayed());
-                                                EcommercePOAntigo.aceitar_termos
+                                                EcommercePONovo.aceitar_termos
                                                                 .click();
-                                                EcommercePOAntigo.continuar_termos
+                                                EcommercePONovo.continuar_termos
                                                                 .click();
                                         }
                                         // wait
-                                        // .until(d -> EcommercePOAntigo.EscreverConfirmarSenha
+                                        // .until(d -> EcommercePONovo.EscreverConfirmarSenha
                                         // .isDisplayed());
-                                        // EcommercePOAntigo.EscreverConfirmarSenha
+                                        // EcommercePONovo.EscreverConfirmarSenha
                                         // .sendKeys("1");
-                                        // EcommercePOAntigo.botaoConfirmarSenha
+                                        // EcommercePONovo.botaoConfirmarSenha
                                         // .click();
 
                                         base
                                                         .realizarpagamento(driver);
 
                                         wait
-                                                        .until(d -> EcommercePOAntigo.confirmarCompra
+                                                        .until(d -> EcommercePONovo.confirmarCompra
                                                                         .isDisplayed());
-                                        String mensagem = EcommercePOAntigo.confirmarCompra
+                                        String mensagem = EcommercePONovo.confirmarCompra
                                                         .getText();
                                         assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
                                                         mensagem);
@@ -681,7 +685,7 @@ public class Cataratasbuilder {
 
         }
 
-        public Cataratasbuilder(EcommercePOAntigo e) {
-                this.EcommercePOAntigo = e;
+        public CataratasbuilderNovo(EcommercePONovo e) {
+                this.EcommercePONovo = e;
         }
 }

@@ -7,8 +7,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class EcommercePO extends BasePO {
+public class EcommercePOAntigo extends BasePO {
 
+        public EcommercePOAntigo(WebDriver driver) {
+                super(driver);
+        }
+                
         /* Dentro do E-Commerce */
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-auth/div[1]/div/login-cliente-final/mat-card/mat-card-content/mat-form-field[1]/div[1]/div/div[2]/input")
         public WebElement Email_ecommerce;
@@ -493,9 +497,6 @@ public class EcommercePO extends BasePO {
         @FindBy(xpath = "/html/body/div[2]/div[2]/div/div/mat-option[1]")
         public WebElement visa;
 
-        public EcommercePO(WebDriver driver) {
-                super(driver);
-        }
 
         public void Nomeusuario(int grupo, int numero, String nome, WebDriver driver) {
                 driver

@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.Antigo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,10 +11,10 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import automatizado.Generators.geradores;
-import automatizado.Page.EcommercePO;
+import automatizado.Page.EcommercePOAntigo;
 
 public class BioParquePantanal {
-        private EcommercePO ECommercePO;
+        private EcommercePOAntigo EcommercePOAntigo;
 
         private static final Logger logger = Logger
                         .getLogger(BioParqueDoRioBuilder.class
@@ -40,7 +40,7 @@ public class BioParquePantanal {
                                 .info("Aguardando a barra de pesquisa ser exibida...");
 
                 wait
-                                .until(d -> ECommercePO.barraDePesquisa
+                                .until(d -> EcommercePOAntigo.barraDePesquisa
                                                 .isDisplayed());
                 try {
                         try {
@@ -51,7 +51,7 @@ public class BioParquePantanal {
                                                 .printStackTrace();
                         }
 
-                        ECommercePO.aceitarcookies
+                        EcommercePOAntigo.aceitarcookies
                                         .click();
                 } catch (Exception e) {
                 }
@@ -61,12 +61,12 @@ public class BioParquePantanal {
                 if (tipo == 1 || tipo == 3) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bioparque Pantanal");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Bioparque pantanal Acesso - Testes automatizados");
                 } else if (tipo == 2) {
                         logger
                                         .info("Iniciando pesquisa: Biopaque pantanal Acesso Prioritário e Preferencial");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Biopaque pantanal Acesso Prioritário e Preferencial - Teste automatizado");
                 } else {
                         logger
@@ -81,9 +81,9 @@ public class BioParquePantanal {
                                         .printStackTrace();
                 }
                 wait
-                                .until(d -> ECommercePO.bilhete_a_venda_grupo1
+                                .until(d -> EcommercePOAntigo.bilhete_a_venda_grupo1
                                                 .isDisplayed());
-                ECommercePO.bilhete_a_venda_grupo1
+                EcommercePOAntigo.bilhete_a_venda_grupo1
                                 .click();
                 logger
                                 .info("Selecionando bilhete...");
@@ -92,9 +92,9 @@ public class BioParquePantanal {
                                 .info("Selecionando data para o dia 1");
 
                 wait
-                                .until(d -> ECommercePO.ProximoMes
+                                .until(d -> EcommercePOAntigo.ProximoMes
                                                 .isDisplayed());
-                ECommercePO.ProximoMes
+                EcommercePOAntigo.ProximoMes
                                 .click();
 
                 try {
@@ -104,7 +104,7 @@ public class BioParquePantanal {
                         e
                                         .printStackTrace();
                 }
-                ECommercePO.dia
+                EcommercePOAntigo.dia
                                 .click();
 
                 try {
@@ -119,9 +119,9 @@ public class BioParquePantanal {
                                 .info("Selecionando Horario...");
 
                 wait
-                                .until(d -> ECommercePO.horario
+                                .until(d -> EcommercePOAntigo.horario
                                                 .isEnabled());
-                ECommercePO.horario
+                EcommercePOAntigo.horario
                                 .click();
                 try {
                         Thread
@@ -130,7 +130,7 @@ public class BioParquePantanal {
                         e
                                         .printStackTrace();
                 }
-                ECommercePO.confirmarHorario4opcoes
+                EcommercePOAntigo.confirmarHorario4opcoes
                                 .click();
                 try {
                         Thread
@@ -140,61 +140,61 @@ public class BioParquePantanal {
                                         .printStackTrace();
                 }
                 wait
-                                .until(d -> ECommercePO.proximo
+                                .until(d -> EcommercePOAntigo.proximo
                                                 .isDisplayed());
-                ECommercePO.proximo
+                EcommercePOAntigo.proximo
                                 .click();
 
                 logger
                                 .info("Adicionando categoria ao carrinho...");
                 
 
-                ECommercePO.adicionarCategoria
+                EcommercePOAntigo.adicionarCategoria
                                 .click();
                 if (tipo == 3) {
                         int i = 0;
                         while (i != 7) {
-                                ECommercePO.adicionarCategoria
+                                EcommercePOAntigo.adicionarCategoria
                                                 .click();
                                 i++;
                         }
-                        ECommercePO.adicionarCategoria2
+                        EcommercePOAntigo.adicionarCategoria2
                                         .click();
                 }
 
                 if (tipo == 2) {
-                        ECommercePO.adicionarCategoria3
+                        EcommercePOAntigo.adicionarCategoria3
                                         .click();
                 }
 
-                ECommercePO.adicionarCategoria2
+                EcommercePOAntigo.adicionarCategoria2
                                 .click();
-                ECommercePO.selecionarPaisOrigem
+                EcommercePOAntigo.selecionarPaisOrigem
                                 .click();
-                ECommercePO.confirmaPaisOrigem.click();
+                EcommercePOAntigo.confirmaPaisOrigem.click();
 
                 boolean cep = false;
                 try {
-                        ECommercePO.CEP_Nas_categorias
+                        EcommercePOAntigo.CEP_Nas_categorias
                                         .isDisplayed();
                         cep = true;
                 } catch (Exception e) {
                         cep = false;
                 }
                 if (cep) {
-                        ECommercePO.CEP_Nas_categorias
+                        EcommercePOAntigo.CEP_Nas_categorias
                                         .sendKeys("85509432");
                 }
 
                 wait
-                                .until(d -> ECommercePO.adicionarAoCarrinho
+                                .until(d -> EcommercePOAntigo.adicionarAoCarrinho
                                                 .isEnabled());
-                ECommercePO.adicionarAoCarrinho
+                EcommercePOAntigo.adicionarAoCarrinho
                                 .click();
                                 logger
                                 .info("Adicionando ao carrinho...");
                 wait
-                                .until(d -> ECommercePO.nomeUsuario
+                                .until(d -> EcommercePOAntigo.nomeUsuario
                                                 .isDisplayed());
                 /* nome usuario 1 */
                 
@@ -211,19 +211,19 @@ public class BioParquePantanal {
 
                 if (tipo == 2) {
                         /* primeiro usuario segunda categoria */
-                        ECommercePO
+                        EcommercePOAntigo
                                         .dadosUsuarios(1, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
                                                         "03/04/2020", 261, "85502060", driver);
-                        ECommercePO
+                        EcommercePOAntigo
                                         .dadosUsuarios(2, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
                                                         "03/04/2020", 510, "85502060", driver);
-                        ECommercePO
+                        EcommercePOAntigo
                                         .dadosUsuarios(3, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
@@ -234,12 +234,12 @@ public class BioParquePantanal {
                         int id = 261;
 
                         while (i != 9) {
-                                ECommercePO
+                                EcommercePOAntigo
                                                 .dadosUsuarios(1, i, geradores
                                                                 .geradorCPF(),
                                                                 geradores
                                                                                 .geradorNome(),
-                                                                geradores.geradorDataNascimento(12,18, driver), id, "85502060", driver);
+                                                                geradores.geradorDataNascimento_AntigoEcommerce(12,18, driver), id, "85502060", driver);
                                 i++;
                                 /*
                                  * o numero de id do brasil na hora de selecionar o pais começa em 261 e aumenta
@@ -247,13 +247,13 @@ public class BioParquePantanal {
                                  */
                                 id += 249;
                         }
-                        ECommercePO
+                        EcommercePOAntigo
                                         .dadosUsuarios(2, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
                                                         "03/04/2020", 2253, "85502060", driver);
-                        ECommercePO
+                        EcommercePOAntigo
                                         .dadosUsuarios(2, 2, geradores
                                                         .geradorCPF(),
                                                         geradores
@@ -262,29 +262,29 @@ public class BioParquePantanal {
 
                 } else {
                         
-                        ECommercePO
+                        EcommercePOAntigo
                                         .dadosUsuarios(1, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
-                                                                        geradores.geradorDataNascimento(18,99,driver), 261, "85502060", driver);
-                        ECommercePO
+                                                                        geradores.geradorDataNascimento_AntigoEcommerce(18,99,driver), 261, "85502060", driver);
+                        EcommercePOAntigo
                                         .dadosUsuarios(2, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
-                                                        geradores.geradorDataNascimento(3,12,driver), 510, "85502060", driver);
+                                                        geradores.geradorDataNascimento_AntigoEcommerce(3,12,driver), 510, "85502060", driver);
                 }
                 logger
                 .info("Preeenchendo os dados dos visitantes...");
-                ECommercePO.confirmardadosusuario
+                EcommercePOAntigo.confirmardadosusuario
                                 .click();
 
                 boolean logado = false;
                 try {
                         Thread
                                         .sleep(3000);
-                        logado = ECommercePO.finalizarPedido
+                        logado = EcommercePOAntigo.finalizarPedido
                                         .isDisplayed();
                 } catch (Exception e) {
 
@@ -297,36 +297,36 @@ public class BioParquePantanal {
                         logger
                                         .info("Finalizando pedido...");
                         wait
-                                        .until(d -> ECommercePO.registrarEfinalizarPedido
+                                        .until(d -> EcommercePOAntigo.registrarEfinalizarPedido
                                                         .isDisplayed());
-                        ECommercePO.registrarEfinalizarPedido
+                        EcommercePOAntigo.registrarEfinalizarPedido
                                         .click();
 
                         wait
-                                        .until(d -> ECommercePO.Email_ecommerce
+                                        .until(d -> EcommercePOAntigo.Email_ecommerce
                                                         .isDisplayed());
-                        ECommercePO.Email_ecommerce
+                        EcommercePOAntigo.Email_ecommerce
                                         .sendKeys(email_usuario);
-                        ECommercePO.senha_ecommerce
+                        EcommercePOAntigo.senha_ecommerce
                                         .sendKeys(senha_usuario);
-                        ECommercePO.Logar
+                        EcommercePOAntigo.Logar
                                         .click();
                         logger
                                         .info("Fazendo Login...");
                 }
 
                 wait
-                                .until(d -> ECommercePO.finalizarPedido
+                                .until(d -> EcommercePOAntigo.finalizarPedido
                                                 .isDisplayed());
-                ECommercePO.finalizarPedido
+                EcommercePOAntigo.finalizarPedido
                                 .click();
                 logger
                                 .info("Finalizando pedido...");
 
                 wait
-                                .until(d -> ECommercePO.confirmarCompra
+                                .until(d -> EcommercePOAntigo.confirmarCompra
                                                 .isDisplayed());
-                String mensagem = ECommercePO.confirmarCompra
+                String mensagem = EcommercePOAntigo.confirmarCompra
                                 .getText();
                 assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
                                 mensagem);
@@ -335,7 +335,7 @@ public class BioParquePantanal {
 
         }
 
-        public BioParquePantanal(EcommercePO e) {
-                this.ECommercePO = e;
+        public BioParquePantanal(EcommercePOAntigo e) {
+                this.EcommercePOAntigo = e;
         }
 }

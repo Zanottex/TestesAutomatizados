@@ -1,4 +1,4 @@
-package automatizado.Builder.Antigo;
+package automatizado.Builder.Novo;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
@@ -9,15 +9,15 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import automatizado.Generators.geradores;
-import automatizado.Page.EcommercePOAntigo;
+import automatizado.Page.EcommercePONovo;
 
 public class BaseBuilder {
 
     private static final Logger logger = Logger
-            .getLogger(AquaRioBuilder.class
+            .getLogger(BaseBuilder.class
                     .getName());
 
-    private EcommercePOAntigo EcommercePOAntigo;
+    private EcommercePONovo EcommercePONovo;
     private String Nome_Cartao = geradores
             .geradorNome();
     private String Numero_Cartao = "4000000000000010";
@@ -38,26 +38,26 @@ public class BaseBuilder {
                 .addHandler(consoleHandler);
     }
 
-    public BaseBuilder(EcommercePOAntigo e) {
-        this.EcommercePOAntigo = e;
+    public BaseBuilder(EcommercePONovo e) {
+        this.EcommercePONovo = e;
 }
 
     public void realizarpagamento(WebDriver driver) {
         Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
         wait
-                .until(d -> EcommercePOAntigo.Nome_Do_Cartao
+                .until(d -> EcommercePONovo.Nome_Do_Cartao
                         .isDisplayed());
 
-        EcommercePOAntigo.Nome_Do_Cartao
+        EcommercePONovo.Nome_Do_Cartao
                 .sendKeys(Nome_Cartao);
 
-        EcommercePOAntigo.Numero_Cartao
+        EcommercePONovo.Numero_Cartao
                 .sendKeys(Numero_Cartao);
 
-        EcommercePOAntigo.Mes_Validade
+        EcommercePONovo.Mes_Validade
                 .sendKeys(mes_validade);
 
-        EcommercePOAntigo.codigo_segurança
+        EcommercePONovo.codigo_segurança
                 .sendKeys(codigo_segurança);
 
         logger
@@ -65,13 +65,13 @@ public class BaseBuilder {
                         + ", Numero do cartão: " + Numero_Cartao + ", Mes de validade: " + mes_validade
                         + ", Codifo de Segurança " + codigo_segurança + "...");
 
-        EcommercePOAntigo.CEP
+        EcommercePONovo.CEP
                 .sendKeys(CEP);
 
-        EcommercePOAntigo.Numero_Casa
+        EcommercePONovo.Numero_Casa
                 .sendKeys(Numero_Casa);
 
-        EcommercePOAntigo.bandeiracartao
+        EcommercePONovo.bandeiracartao
                 .click();
         try {
             Thread
@@ -80,7 +80,7 @@ public class BaseBuilder {
             e
                     .printStackTrace();
         }
-        EcommercePOAntigo.visa
+        EcommercePONovo.visa
                 .click();
         logger
                 .info("Preenchendo endereço: CEP: " + CEP + ", Numero da Casa: " + Numero_Casa + "...");
@@ -92,7 +92,7 @@ public class BaseBuilder {
                     .printStackTrace();
         }
 
-        EcommercePOAntigo.finalizarCompra
+        EcommercePONovo.finalizarCompra
                 .click();
     }
 }

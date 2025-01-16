@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.Antigo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,14 +8,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import automatizado.Page.EcommercePO;
+import automatizado.Page.EcommercePOAntigo;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class AguasCorrentesBuilder {
 
-        private EcommercePO ECommercePO;
+        private EcommercePOAntigo EcommercePOAntigo;
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";
         
@@ -36,7 +36,7 @@ public class AguasCorrentesBuilder {
         public void avulsso(WebDriver driver, int tipo) {
 
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-                BaseBuilder base = new BaseBuilder(ECommercePO);
+                BaseBuilder base = new BaseBuilder(EcommercePOAntigo);
                 try {
                         Thread
                                         .sleep(2000);
@@ -45,7 +45,7 @@ public class AguasCorrentesBuilder {
                                         .printStackTrace();
                 }
                 try {
-                        ECommercePO.aceitarcookies
+                        EcommercePOAntigo.aceitarcookies
                                         .click();
                         logger
                                         .info("Aceitando os cookies.");
@@ -54,71 +54,71 @@ public class AguasCorrentesBuilder {
                 }
 
                 wait
-                                .until(d -> ECommercePO.proximoMesHome
+                                .until(d -> EcommercePOAntigo.proximoMesHome
                                                 .isEnabled());
-                ECommercePO.proximoMesHome
+                EcommercePOAntigo.proximoMesHome
                                 .click();
                 logger
                                 .info("Selecionando o mes.");
 
                 wait
-                                .until(d -> ECommercePO.diaHome
+                                .until(d -> EcommercePOAntigo.diaHome
                                                 .isDisplayed());
-                ECommercePO.diaHome
+                EcommercePOAntigo.diaHome
                                 .click();
                 logger
                                 .info("Selecionando o dia.");
 
                 if (tipo == 1) {
                         wait
-                                        .until(d -> ECommercePO.continuarHome_primeiroBilhete_grupo1
+                                        .until(d -> EcommercePOAntigo.continuarHome_primeiroBilhete_grupo1
                                                         .isEnabled());
-                        ECommercePO.continuarHome_primeiroBilhete_grupo1
+                        EcommercePOAntigo.continuarHome_primeiroBilhete_grupo1
                                         .click();
                         logger
                                         .info("Selecionando o bilhete avulsso.");
                 } else if (tipo == 2) {
                         wait
-                                        .until(d -> ECommercePO.continuarHome_segundoBilhete_grupo1
+                                        .until(d -> EcommercePOAntigo.continuarHome_segundoBilhete_grupo1
                                                         .isEnabled());
-                        ECommercePO.continuarHome_segundoBilhete_grupo1
+                        EcommercePOAntigo.continuarHome_segundoBilhete_grupo1
                                         .click();
                         logger
                                         .info("Selecionando o bilhete combo 5 ingressos.");
                 }
 
                 wait
-                                .until(d -> ECommercePO.horarioPopUp
+                                .until(d -> EcommercePOAntigo.horarioPopUp
                                                 .isDisplayed());
-                ECommercePO.horarioPopUp
+                EcommercePOAntigo.horarioPopUp
                                 .click();
                 logger
                                 .info("Seleconando o horario.");
 
                 /* confirma o horario */
                 wait
-                                .until(d -> ECommercePO.horarioPopUp
+                                .until(d -> EcommercePOAntigo.horarioPopUp
                                                 .isDisplayed());
-                ECommercePO.horarioPopUp
+                EcommercePOAntigo.horarioPopUp
                                 .click();
 
                 wait
-                                .until(d -> ECommercePO.categoria1_PopUp
+                                .until(d -> EcommercePOAntigo.categoria1_PopUp
                                                 .isDisplayed());
-                ECommercePO.categoria1_PopUp
+                EcommercePOAntigo.categoria1_PopUp
                                 .click();
                 if (tipo == 1) {
                         wait
-                                        .until(d -> ECommercePO.categoria2_PopUp
+                                        .until(d -> EcommercePOAntigo.categoria2_PopUp
                                                         .isDisplayed());
-                        ECommercePO.categoria2_PopUp
+                        EcommercePOAntigo.categoria2_PopUp
                                         .click();
                 }
                 logger
                                 .info("Seleconando o as categorias");
-                ECommercePO.PaisDeOrigemPopUP
+                EcommercePOAntigo.PaisDeOrigemPopUP
                                 .click();
-                ECommercePO.BrasilPopUp
+                EcommercePOAntigo.BrasilPopUp
                                 .click();
                 try {
                         Thread
@@ -128,13 +128,13 @@ public class AguasCorrentesBuilder {
                                         .printStackTrace();
                 }
 
-                ECommercePO.CEPPopUp
+                EcommercePOAntigo.CEPPopUp
                                 .sendKeys("85509432");
                 logger
                                 .info("Colocando pais e estado.");
 
                 wait
-                                .until(d -> ECommercePO.adicionarAoCarrinhoPopUP
+                                .until(d -> EcommercePOAntigo.adicionarAoCarrinhoPopUP
                                                 .isDisplayed());
                 try {
                         Thread
@@ -143,45 +143,45 @@ public class AguasCorrentesBuilder {
                         e
                                         .printStackTrace();
                 }
-                ECommercePO.adicionarAoCarrinhoPopUP
+                EcommercePOAntigo.adicionarAoCarrinhoPopUP
                                 .click();
 
                 if (tipo == 1) {
-                        ECommercePO.bilhete_extra_popUP_2
+                        EcommercePOAntigo.bilhete_extra_popUP_2
                                         .click();
                 } else if (tipo == 2) {
-                        ECommercePO.bilhete_extra_popUP_1
+                        EcommercePOAntigo.bilhete_extra_popUP_1
                                         .click();
                 }
                 logger
                                 .info("Adicionando o bilhete extra do POPUP.");
 
                 wait
-                                .until(d -> ECommercePO.horarioPopUp
+                                .until(d -> EcommercePOAntigo.horarioPopUp
                                                 .isDisplayed());
-                ECommercePO.horarioPopUp
+                EcommercePOAntigo.horarioPopUp
                                 .click();
 
                 wait
-                                .until(d -> ECommercePO.horarioPopUp
+                                .until(d -> EcommercePOAntigo.horarioPopUp
                                                 .isDisplayed());
-                ECommercePO.horarioPopUp
+                EcommercePOAntigo.horarioPopUp
                                 .click();
 
                 logger
                                 .info("Seleconando o horario.");
 
                 wait
-                                .until(d -> ECommercePO.categoria1_PopUp
+                                .until(d -> EcommercePOAntigo.categoria1_PopUp
                                                 .isDisplayed());
-                ECommercePO.categoria1_PopUp
+                EcommercePOAntigo.categoria1_PopUp
                                 .click();
                 logger
                                 .info("Seleconando o categoria.");
 
-                ECommercePO.PaisDeOrigemPopUP
+                EcommercePOAntigo.PaisDeOrigemPopUP
                                 .click();
-                ECommercePO.BrasilPopUp
+                EcommercePOAntigo.BrasilPopUp
                                 .click();
                 logger
                                 .info("Seleconando o pais");
@@ -193,14 +193,14 @@ public class AguasCorrentesBuilder {
                                         .printStackTrace();
                 }
 
-                ECommercePO.CEPPopUp
+                EcommercePOAntigo.CEPPopUp
                                 .sendKeys("85509432");
                 logger
                                 .info("Colocando o CEP.");
                 wait
-                                .until(d -> ECommercePO.adicionarAoCarrinhoPopUP
+                                .until(d -> EcommercePOAntigo.adicionarAoCarrinhoPopUP
                                                 .isDisplayed());
-                ECommercePO.adicionarAoCarrinhoPopUP
+                EcommercePOAntigo.adicionarAoCarrinhoPopUP
                                 .click();
                 logger
                                 .info("Bilhete extra adicionado ao carrinho.");
@@ -210,17 +210,17 @@ public class AguasCorrentesBuilder {
                 try {
                         Thread
                                         .sleep(3000);
-                        logado = ECommercePO.finalizarPedido
+                        logado = EcommercePOAntigo.finalizarPedido
                                         .isDisplayed();
                 } catch (Exception e) {
 
                 }
                 StringTokenizer resulBilhete1 = null;
                 if (logado) {
-                        resulBilhete1 = new StringTokenizer(ECommercePO
+                        resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                         .valorTotalDoBilhete(3, driver));
                 } else {
-                        resulBilhete1 = new StringTokenizer(ECommercePO
+                        resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                         .valorTotalDoBilhete(2, driver));
                 }
                 String valorbilhete1 = resulBilhete1
@@ -241,33 +241,33 @@ public class AguasCorrentesBuilder {
                         if (logado) {
 
                         } else {
-                                ECommercePO.registrarEfinalizarPedido
+                                EcommercePOAntigo.registrarEfinalizarPedido
                                                 .click();
                                 wait
-                                                .until(d -> ECommercePO.Email_ecommerce
+                                                .until(d -> EcommercePOAntigo.Email_ecommerce
                                                                 .isDisplayed());
-                                ECommercePO.Email_ecommerce
+                                EcommercePOAntigo.Email_ecommerce
                                                 .sendKeys(email_usuario);
-                                ECommercePO.senha_ecommerce
+                                EcommercePOAntigo.senha_ecommerce
                                                 .sendKeys(senha_usuario);
                                 logger
                                                 .info("Logando na conta do usuario.");
-                                ECommercePO.Logar
+                                EcommercePOAntigo.Logar
                                                 .click();
                                 
                         }
 wait
-                                                .until(d -> ECommercePO.aceitar_termos_finalizar_pedido
+                                                .until(d -> EcommercePOAntigo.aceitar_termos_finalizar_pedido
                                                                 .isDisplayed());
-                                ECommercePO.aceitar_termos_finalizar_pedido
+                                EcommercePOAntigo.aceitar_termos_finalizar_pedido
                                                 .click();
                         logger
                                         .info("Aceitando termos e condições.");
 
                         wait
-                                        .until(d -> ECommercePO.finalizarPedido
+                                        .until(d -> EcommercePOAntigo.finalizarPedido
                                                         .isDisplayed());
-                        ECommercePO.finalizarPedido
+                        EcommercePOAntigo.finalizarPedido
                                         .click();
                         logger
                                         .info("Finalizando pedido.");
@@ -276,9 +276,9 @@ wait
                                         .realizarpagamento(driver);
 
                         wait
-                                        .until(d -> ECommercePO.confirmarCompra
+                                        .until(d -> EcommercePOAntigo.confirmarCompra
                                                         .isDisplayed());
-                        String mensagem = ECommercePO.confirmarCompra
+                        String mensagem = EcommercePOAntigo.confirmarCompra
                                         .getText();
                         assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
                                         mensagem);
@@ -293,7 +293,7 @@ wait
                 }
         }
 
-        public AguasCorrentesBuilder(EcommercePO e) {
-                this.ECommercePO = e;
+        public AguasCorrentesBuilder(EcommercePOAntigo e) {
+                this.EcommercePOAntigo = e;
         }
 }

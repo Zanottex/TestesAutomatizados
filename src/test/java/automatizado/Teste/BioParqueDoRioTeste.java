@@ -2,13 +2,13 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.BioParqueDoRioBuilder;
-import automatizado.Page.EcommercePO;
+import automatizado.Builder.Antigo.BioParqueDoRioBuilder;
+import automatizado.Page.EcommercePOAntigo;
 
 public class BioParqueDoRioTeste extends BaseTeste{
     
     private static final String URL_Ecommerce = "https://testeauto_integrada.testescard.limber.net.br/?divisao=0";
-    private static EcommercePO EcommercePO;
+    private static EcommercePOAntigo EcommercePOAntigo;
 
      @Test
     public void TC001_Bilhete_BioParqueDoRio() {
@@ -28,8 +28,8 @@ public class BioParqueDoRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        BioParqueDoRioBuilder Bioparque = new BioParqueDoRioBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        BioParqueDoRioBuilder Bioparque = new BioParqueDoRioBuilder(EcommercePOAntigo);
 
         Bioparque
                 .Ingresso(driver, 1 /* TIPO 1 = BioParqueDoRio */);
@@ -53,8 +53,8 @@ public class BioParqueDoRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        BioParqueDoRioBuilder Bioparque = new BioParqueDoRioBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        BioParqueDoRioBuilder Bioparque = new BioParqueDoRioBuilder(EcommercePOAntigo);
 
         Bioparque
                 .Ingresso(driver, 2 /* TIPO 2 = Passaporte Anual */);
@@ -78,8 +78,8 @@ public class BioParqueDoRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        BioParqueDoRioBuilder Bioparque = new BioParqueDoRioBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        BioParqueDoRioBuilder Bioparque = new BioParqueDoRioBuilder(EcommercePOAntigo);
 
         Bioparque
                 .Ingresso(driver, 3 /* TIPO 3 = Aquario + Bioparque do Rio */);
@@ -103,8 +103,8 @@ public class BioParqueDoRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        BioParqueDoRioBuilder Bioparque = new BioParqueDoRioBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        BioParqueDoRioBuilder Bioparque = new BioParqueDoRioBuilder(EcommercePOAntigo);
 
         Bioparque
                 .Ingresso(driver, 4 /* TIPO 4 = Cristo + Bioparque do Rio */);

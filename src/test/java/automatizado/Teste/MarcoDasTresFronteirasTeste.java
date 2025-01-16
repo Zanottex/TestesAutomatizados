@@ -2,12 +2,12 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.MarcoDasTresFronteirasBuilder;
-import automatizado.Page.EcommercePO;
+import automatizado.Builder.Antigo.MarcoDasTresFronteirasBuilder;
+import automatizado.Page.EcommercePOAntigo;
 
 public class MarcoDasTresFronteirasTeste extends BaseTeste{
     
-    private static EcommercePO EcommercePO;
+    private static EcommercePOAntigo EcommercePOAntigo;
     private static final String ULR_Ecommerce = "https://zanottincalendario.testescard.limber.net.br/";
 
     @Test
@@ -25,8 +25,8 @@ public class MarcoDasTresFronteirasTeste extends BaseTeste{
         RedirecionarPag(ULR_Ecommerce);
         }
         
-        EcommercePO = new EcommercePO(driver);
-        MarcoDasTresFronteirasBuilder ecommerce = new MarcoDasTresFronteirasBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        MarcoDasTresFronteirasBuilder ecommerce = new MarcoDasTresFronteirasBuilder(EcommercePOAntigo);
 
         ecommerce.venda_padrao(driver);
     }

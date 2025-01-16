@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.Antigo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import automatizado.Page.EcommercePO;
+import automatizado.Page.EcommercePOAntigo;
 import automatizado.Generators.geradores;
 
 import java.util.logging.ConsoleHandler;
@@ -23,7 +23,7 @@ public class AquaRioBuilder{
                                         .getName());
 
         /* Dados dos usuarios */
-        private EcommercePO ECommercePO;
+        private EcommercePOAntigo EcommercePOAntigo;
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";
         private String Nome_Cartao = geradores
@@ -42,15 +42,15 @@ public class AquaRioBuilder{
 
         public void Ingresso(WebDriver driver, int tipo) {
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-                BaseBuilder base = new BaseBuilder(ECommercePO);
+                BaseBuilder base = new BaseBuilder(EcommercePOAntigo);
                 logger
                                 .info("Aguardando a barra de pesquisa ser exibida...");
 
                 wait
-                                .until(d -> ECommercePO.barraDePesquisa
+                                .until(d -> EcommercePOAntigo.barraDePesquisa
                                                 .isDisplayed());
                 try {
-                        ECommercePO.aceitarcookies
+                        EcommercePOAntigo.aceitarcookies
                                         .click();
                 } catch (Exception e) {
                         
@@ -61,37 +61,37 @@ public class AquaRioBuilder{
                 if (tipo == 1) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Aquario");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Ingresso Aquario - Teste Automatizado");
                 } else if (tipo == 2) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Aquario + mar de espelho + museu de cera");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Ingresso Aquario + mar de espelho + museu de cera");
                 } else if (tipo == 3) {
                         logger
                                         .info("Iniciando pesquisa: Combo AquaRio + BioParque - Teste Automatizado");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Combo AquaRio + BioParque - Teste Automatizado");
                 } else if (tipo == 4) {
                         logger
                                         .info("Iniciando pesquisa: Combo AquaRio + Corcovado - Teste Automatizado");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Combo AquaRio + Corcovado - Teste Automatizado");
                 } else if (tipo == 5) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso passaporte anual");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Ingresso passaporte anual - testes automatizados");
                 } else if (tipo == 6) {
                         logger
                                         .info("Iniciando pesquisa: Mar de Espelhos");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("mar de espelhos - teste automatizados");
                 } else if (tipo == 7) {
                         logger
                                         .info("Iniciando pesquisa: Museu de cera");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Museu de cera - testes automatizados");
                 } else {
                         logger
@@ -105,7 +105,7 @@ public class AquaRioBuilder{
                         e
                                         .printStackTrace();
                 }
-                ECommercePO.bilhete_a_venda_grupo1
+                EcommercePOAntigo.bilhete_a_venda_grupo1
                                 .click();
                 logger
                                 .info("Selecionando bilhete...");
@@ -127,9 +127,9 @@ public class AquaRioBuilder{
                                         .info("Selecionando data para o dia " + (i + 1));
                         if (i == 0) {
                                 wait
-                                                .until(d -> ECommercePO.ProximoMes
+                                                .until(d -> EcommercePOAntigo.ProximoMes
                                                                 .isDisplayed());
-                                ECommercePO.ProximoMes
+                                EcommercePOAntigo.ProximoMes
                                                 .click();
 
                                 try {
@@ -140,14 +140,14 @@ public class AquaRioBuilder{
                                                         .printStackTrace();
                                 }
 
-                                ECommercePO.dia
+                                EcommercePOAntigo.dia
                                                 .click();
 
                         } else if (i == 1) {
                                 wait
-                                                .until(d -> ECommercePO.ProximoMes2Receitas
+                                                .until(d -> EcommercePOAntigo.ProximoMes2Receitas
                                                                 .isDisplayed());
-                                ECommercePO.ProximoMes2Receitas
+                                EcommercePOAntigo.ProximoMes2Receitas
                                                 .click();
                                 try {
                                         Thread
@@ -156,14 +156,14 @@ public class AquaRioBuilder{
                                         e
                                                         .printStackTrace();
                                 }
-                                ECommercePO.dia2Receitas
+                                EcommercePOAntigo.dia2Receitas
                                                 .click();
 
                         } else if (i == 2) {
                                 wait
-                                                .until(d -> ECommercePO.ProximoMes3Receitas
+                                                .until(d -> EcommercePOAntigo.ProximoMes3Receitas
                                                                 .isDisplayed());
-                                ECommercePO.ProximoMes3Receitas
+                                EcommercePOAntigo.ProximoMes3Receitas
                                                 .click();
 
                                 try {
@@ -174,9 +174,9 @@ public class AquaRioBuilder{
                                                         .printStackTrace();
                                 }
                                 wait
-                                                .until(d -> ECommercePO.dia3Receitas
+                                                .until(d -> EcommercePOAntigo.dia3Receitas
                                                                 .isEnabled());
-                                ECommercePO.dia3Receitas
+                                EcommercePOAntigo.dia3Receitas
                                                 .click();
                         }
                         try {
@@ -192,9 +192,9 @@ public class AquaRioBuilder{
                                                 .info("Selecionando Horario...");
                                 if (i == 0) {
                                         wait
-                                                        .until(d -> ECommercePO.horario
+                                                        .until(d -> EcommercePOAntigo.horario
                                                                         .isDisplayed());
-                                        ECommercePO.horario
+                                        EcommercePOAntigo.horario
                                                         .click();
                                         try {
                                                 Thread
@@ -203,7 +203,7 @@ public class AquaRioBuilder{
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        ECommercePO.confirmarHorario4opcoes
+                                        EcommercePOAntigo.confirmarHorario4opcoes
                                                         .click();
                                         try {
                                                 Thread
@@ -213,9 +213,9 @@ public class AquaRioBuilder{
                                                                 .printStackTrace();
                                         }
                                         wait
-                                                        .until(d -> ECommercePO.proximo
+                                                        .until(d -> EcommercePOAntigo.proximo
                                                                         .isDisplayed());
-                                        ECommercePO.proximo
+                                        EcommercePOAntigo.proximo
                                                         .click();
                                 } else if (i == 1) {
 
@@ -223,14 +223,14 @@ public class AquaRioBuilder{
                                                 logger
                                                                 .info("Selecionando local de embarque...");
                                                 wait
-                                                                .until(d -> ECommercePO.localEmbarque2Receitas
+                                                                .until(d -> EcommercePOAntigo.localEmbarque2Receitas
                                                                                 .isDisplayed());
-                                                ECommercePO.localEmbarque2Receitas
+                                                EcommercePOAntigo.localEmbarque2Receitas
                                                                 .click();
-                                                ECommercePO.localEmbarqueConfirmar
+                                                EcommercePOAntigo.localEmbarqueConfirmar
                                                                 .click();
                                                 wait
-                                                                .until(d -> ECommercePO.horario2Receitas_comLocalDeEmbarque
+                                                                .until(d -> EcommercePOAntigo.horario2Receitas_comLocalDeEmbarque
                                                                                 .isDisplayed());
                                                 try {
                                                         Thread
@@ -239,7 +239,7 @@ public class AquaRioBuilder{
                                                         e
                                                                         .printStackTrace();
                                                 }
-                                                ECommercePO.horario2Receitas_comLocalDeEmbarque
+                                                EcommercePOAntigo.horario2Receitas_comLocalDeEmbarque
                                                                 .click();
                                                 try {
                                                         Thread
@@ -248,7 +248,7 @@ public class AquaRioBuilder{
                                                         e
                                                                         .printStackTrace();
                                                 }
-                                                ECommercePO.confirmarHorario4opcoes
+                                                EcommercePOAntigo.confirmarHorario4opcoes
                                                                 .click();
                                                 try {
                                                         Thread
@@ -259,7 +259,7 @@ public class AquaRioBuilder{
                                                 }
                                         } else {
                                                 wait
-                                                                .until(d -> ECommercePO.horario2Receitas
+                                                                .until(d -> EcommercePOAntigo.horario2Receitas
                                                                                 .isDisplayed());
                                                 try {
                                                         Thread
@@ -268,7 +268,7 @@ public class AquaRioBuilder{
                                                         e
                                                                         .printStackTrace();
                                                 }
-                                                ECommercePO.horario2Receitas
+                                                EcommercePOAntigo.horario2Receitas
                                                                 .click();
                                                 try {
                                                         Thread
@@ -277,7 +277,7 @@ public class AquaRioBuilder{
                                                         e
                                                                         .printStackTrace();
                                                 }
-                                                ECommercePO.confirmarHorario4opcoes
+                                                EcommercePOAntigo.confirmarHorario4opcoes
                                                                 .click();
                                                 try {
                                                         Thread
@@ -289,17 +289,17 @@ public class AquaRioBuilder{
                                         }
 
                                         wait
-                                                        .until(d -> ECommercePO.proximo2Receitas
+                                                        .until(d -> EcommercePOAntigo.proximo2Receitas
                                                                         .isEnabled());
-                                        ECommercePO.proximo2Receitas
+                                        EcommercePOAntigo.proximo2Receitas
                                                         .click();
                                 } else if (i == 2) {
                                         wait
-                                                        .until(d -> ECommercePO.horario3Receitas
+                                                        .until(d -> EcommercePOAntigo.horario3Receitas
                                                                         .isDisplayed());
-                                        ECommercePO.horario3Receitas
+                                        EcommercePOAntigo.horario3Receitas
                                                         .click();
-                                        ECommercePO.confirmarHorario4opcoes
+                                        EcommercePOAntigo.confirmarHorario4opcoes
                                                         .click();
                                         try {
                                                 Thread
@@ -308,7 +308,7 @@ public class AquaRioBuilder{
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        ECommercePO.proximo3Receitas
+                                        EcommercePOAntigo.proximo3Receitas
                                                         .click();
                                 }
                         }
@@ -320,43 +320,43 @@ public class AquaRioBuilder{
                                 .info("Adicionando categoria ao carrinho...");
                 if (tipo == 3 || tipo == 4) {
                         wait
-                                        .until(d -> ECommercePO.adicionarCategoria_2Rec
+                                        .until(d -> EcommercePOAntigo.adicionarCategoria_2Rec
                                                         .isDisplayed());
-                        ECommercePO
+                        EcommercePOAntigo
                                         .categorias(3, 1, driver);
                 } else if (tipo == 2) {
                         wait
-                                        .until(d -> ECommercePO.adicionarCategoria_3Rec
+                                        .until(d -> EcommercePOAntigo.adicionarCategoria_3Rec
                                                         .isDisplayed());
-                        ECommercePO
+                        EcommercePOAntigo
                                         .categorias(4, 1, driver);
 
                 } else {
                         wait
-                                        .until(d -> ECommercePO.adicionarCategoria
+                                        .until(d -> EcommercePOAntigo.adicionarCategoria
                                                         .isDisplayed());
-                        ECommercePO
+                        EcommercePOAntigo
                                         .categorias(2, 1, driver);
                 }
                 logger
                                 .info("Selecionando país de origem...");
                 if (tipo != 6 && tipo != 7) {
 
-                        ECommercePO.selecionarPaisOrigem
+                        EcommercePOAntigo.selecionarPaisOrigem
                                         .click();
-                        ECommercePO
+                        EcommercePOAntigo
                                         .Pais(24, driver);
                 }
                 if (tipo == 2) {
-                        ECommercePO
+                        EcommercePOAntigo
                                         .estado(4, driver);
-                        ECommercePO.acre
+                        EcommercePOAntigo.acre
                                         .click();
                 } else if (tipo == 3 || tipo == 4) {
                         try {
-                                ECommercePO
+                                EcommercePOAntigo
                                                 .estado(3, driver);
-                                ECommercePO.acre
+                                EcommercePOAntigo.acre
                                                 .click();
                         } catch (Exception e) {
                                 
@@ -365,13 +365,13 @@ public class AquaRioBuilder{
                 } else if (tipo == 5) {
                         boolean cep = false;
                         try {
-                                cep = ECommercePO.CEP_Nas_categorias
+                                cep = EcommercePOAntigo.CEP_Nas_categorias
                                                 .isDisplayed();
                         } catch (Exception e) {
                                 cep = false;
                         }
                         if (cep) {
-                                ECommercePO.CEP_Nas_categorias
+                                EcommercePOAntigo.CEP_Nas_categorias
                                                 .sendKeys("85509432");
                         }
                 } else if (tipo == 7 || tipo == 6) {
@@ -379,9 +379,9 @@ public class AquaRioBuilder{
                 } else {
                         try {
 
-                                ECommercePO.estado
+                                EcommercePOAntigo.estado
                                                 .click();
-                                ECommercePO.acre
+                                EcommercePOAntigo.acre
                                                 .click();
                         } catch (Exception e) {
 
@@ -391,23 +391,23 @@ public class AquaRioBuilder{
                 logger
                                 .info("Adicionando as outras categorias...");
                 if (tipo == 3 || tipo == 4) {
-                        ECommercePO.adicionarCategoria2_2Rec
+                        EcommercePOAntigo.adicionarCategoria2_2Rec
                                         .click();
-                        ECommercePO.adicionarCategoria3_2Rec
+                        EcommercePOAntigo.adicionarCategoria3_2Rec
                                         .click();
                 } else if (tipo == 2) {
-                        ECommercePO.adicionarCategoria2_3Rec
+                        EcommercePOAntigo.adicionarCategoria2_3Rec
                                         .click();
-                        ECommercePO.adicionarCategoria3_3Rec
+                        EcommercePOAntigo.adicionarCategoria3_3Rec
                                         .click();
                 } else if (tipo == 5 || tipo == 6 || tipo == 7) {
-                        ECommercePO.adicionarCategoria2
+                        EcommercePOAntigo.adicionarCategoria2
                                         .click();
 
                 } else {
-                        ECommercePO.adicionarCategoria2
+                        EcommercePOAntigo.adicionarCategoria2
                                         .click();
-                        ECommercePO.adicionarCategoria2Desconto
+                        EcommercePOAntigo.adicionarCategoria2Desconto
                                         .click();
                 }
                 try {
@@ -420,13 +420,13 @@ public class AquaRioBuilder{
                 logger
                                 .info("Adicionando ao carrinho...");
                 if (tipo == 3 || tipo == 4) {
-                        ECommercePO.adicionarAoCarrinho_2Rec
+                        EcommercePOAntigo.adicionarAoCarrinho_2Rec
                                         .click();
                 } else if (tipo == 2) {
-                        ECommercePO.adicionarAoCarrinho_3Rec
+                        EcommercePOAntigo.adicionarAoCarrinho_3Rec
                                         .click();
                 } else {
-                        ECommercePO.adicionarAoCarrinho
+                        EcommercePOAntigo.adicionarAoCarrinho
                                         .click();
                 }
 
@@ -441,47 +441,47 @@ public class AquaRioBuilder{
                                 .info("Preenchendo os dados dos visitantes...");
                 if (tipo != 6 && tipo != 7) {
                         wait
-                                        .until(d -> ECommercePO.nomeUsuario
+                                        .until(d -> EcommercePOAntigo.nomeUsuario
                                                         .isDisplayed());
-                        ECommercePO.nomeUsuario
+                        EcommercePOAntigo.nomeUsuario
                                         .sendKeys(Nome_Cartao);
                         wait
-                                        .until(d -> ECommercePO.nomeUsuario2
+                                        .until(d -> EcommercePOAntigo.nomeUsuario2
                                                         .isDisplayed());
-                        ECommercePO.nomeUsuario2
+                        EcommercePOAntigo.nomeUsuario2
                                         .sendKeys(Nome_Cartao);
                         if (tipo != 5) {
 
-                                ECommercePO.nomeUsuario3
+                                EcommercePOAntigo.nomeUsuario3
                                                 .sendKeys(Nome_Cartao);
-                                ECommercePO.selecionarConvenio_coletaDeDados_usuario3
+                                EcommercePOAntigo.selecionarConvenio_coletaDeDados_usuario3
                                                 .click();
                                 wait
-                                                .until(d -> ECommercePO.primeiro_convenio
+                                                .until(d -> EcommercePOAntigo.primeiro_convenio
                                                                 .isDisplayed());
-                                ECommercePO.primeiro_convenio
+                                EcommercePOAntigo.primeiro_convenio
                                                 .click();
 
-                                ECommercePO.selecionarConvenio_coletaDeDados_usuario2
+                                EcommercePOAntigo.selecionarConvenio_coletaDeDados_usuario2
                                                 .click();
                                 wait
-                                                .until(d -> ECommercePO.primeiro_convenio
+                                                .until(d -> EcommercePOAntigo.primeiro_convenio
                                                                 .isDisplayed());
 
-                                ECommercePO.primeiro_convenio
+                                EcommercePOAntigo.primeiro_convenio
                                                 .click();
 
                         } else {
-                                ECommercePO.tipodocumento
+                                EcommercePOAntigo.tipodocumento
                                                 .click();
                                 wait
-                                                .until(d -> ECommercePO.outros
+                                                .until(d -> EcommercePOAntigo.outros
                                                                 .isDisplayed());
-                                ECommercePO.outros
+                                EcommercePOAntigo.outros
                                                 .click();
-                                ECommercePO.documento
+                                EcommercePOAntigo.documento
                                                 .sendKeys(cpf);
-                                ECommercePO.data_de_nascimento_ColetaDeDados_PrimeiroUsuario
+                                EcommercePOAntigo.data_de_nascimento_ColetaDeDados_PrimeiroUsuario
                                                 .sendKeys("01/01/2000");
 
                                 try {
@@ -492,22 +492,22 @@ public class AquaRioBuilder{
                                                         .printStackTrace();
                                 }
 
-                                ECommercePO.nomeUsuario2
+                                EcommercePOAntigo.nomeUsuario2
                                                 .sendKeys("Cleitin do grau");
-                                ECommercePO.tipodocumento2
+                                EcommercePOAntigo.tipodocumento2
                                                 .click();
                                 wait
-                                                .until(d -> ECommercePO.outros
+                                                .until(d -> EcommercePOAntigo.outros
                                                                 .isDisplayed());
-                                ECommercePO.outros
+                                EcommercePOAntigo.outros
                                                 .click();
-                                ECommercePO.documento2
+                                EcommercePOAntigo.documento2
                                                 .sendKeys("123456789");
-                                ECommercePO.data_de_nascimento_ColetaDeDados_SegundoUsuario
+                                EcommercePOAntigo.data_de_nascimento_ColetaDeDados_SegundoUsuario
                                                 .sendKeys("01/01/2020");
                         }
 
-                        ECommercePO.confirmardadosusuario
+                        EcommercePOAntigo.confirmardadosusuario
                                         .click();
                 }
                 logger
@@ -517,7 +517,7 @@ public class AquaRioBuilder{
                 try {
                         Thread
                                         .sleep(3000);
-                        logado = ECommercePO.finalizarPedido
+                        logado = EcommercePOAntigo.finalizarPedido
                                         .isDisplayed();
                 } catch (Exception e) {
 
@@ -526,15 +526,15 @@ public class AquaRioBuilder{
 
                 if (logado) {
                         wait
-                                        .until(d -> ECommercePO.finalizarPedido
+                                        .until(d -> EcommercePOAntigo.finalizarPedido
                                                         .isDisplayed());
-                        resulBilhete1 = new StringTokenizer(ECommercePO
+                        resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                         .ValorBilhete_1(2, driver));
                 } else {
                         wait
-                                        .until(d -> ECommercePO.registrarEfinalizarPedido
+                                        .until(d -> EcommercePOAntigo.registrarEfinalizarPedido
                                                         .isDisplayed());
-                        resulBilhete1 = new StringTokenizer(ECommercePO
+                        resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                         .ValorBilhete_1(1, driver));
                 }
                 logger
@@ -555,45 +555,45 @@ public class AquaRioBuilder{
 
                         } else {
                                 wait
-                                                .until(d -> ECommercePO.registrarEfinalizarPedido
+                                                .until(d -> EcommercePOAntigo.registrarEfinalizarPedido
                                                                 .isDisplayed());
-                                ECommercePO.registrarEfinalizarPedido
+                                EcommercePOAntigo.registrarEfinalizarPedido
                                                 .click();
 
                                 wait
-                                                .until(d -> ECommercePO.Email_ecommerce
+                                                .until(d -> EcommercePOAntigo.Email_ecommerce
                                                                 .isDisplayed());
-                                ECommercePO.Email_ecommerce
+                                EcommercePOAntigo.Email_ecommerce
                                                 .sendKeys(email_usuario);
-                                ECommercePO.senha_ecommerce
+                                EcommercePOAntigo.senha_ecommerce
                                                 .sendKeys(senha_usuario);
-                                ECommercePO.Logar
+                                EcommercePOAntigo.Logar
                                                 .click();
                                 logger
                                                 .info("Fazendo Login...");
                         }
 
                         wait
-                                        .until(d -> ECommercePO.finalizarPedido
+                                        .until(d -> EcommercePOAntigo.finalizarPedido
                                                         .isDisplayed());
-                        ECommercePO.finalizarPedido
+                        EcommercePOAntigo.finalizarPedido
                                         .click();
                         logger
                                         .info("Finalizando pedido...");
                         // wait
-                        // .until(d -> ECommercePO.EscreverConfirmarSenha
+                        // .until(d -> EcommercePOAntigo.EscreverConfirmarSenha
                         // .isDisplayed());
-                        // ECommercePO.EscreverConfirmarSenha
+                        // EcommercePOAntigo.EscreverConfirmarSenha
                         // .sendKeys("1");
-                        // ECommercePO.botaoConfirmarSenha
+                        // EcommercePOAntigo.botaoConfirmarSenha
                         // .click();
 
                         base.realizarpagamento(driver);
 
                         wait
-                                        .until(d -> ECommercePO.confirmarCompra
+                                        .until(d -> EcommercePOAntigo.confirmarCompra
                                                         .isDisplayed());
-                        String mensagem = ECommercePO.confirmarCompra
+                        String mensagem = EcommercePOAntigo.confirmarCompra
                                         .getText();
                         assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
                                         mensagem);
@@ -609,7 +609,7 @@ public class AquaRioBuilder{
 
         }
 
-        public AquaRioBuilder(EcommercePO e) {
-                this.ECommercePO = e;
+        public AquaRioBuilder(EcommercePOAntigo e) {
+                this.EcommercePOAntigo = e;
         }
 }

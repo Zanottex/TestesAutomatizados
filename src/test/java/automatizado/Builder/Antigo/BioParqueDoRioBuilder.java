@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.Antigo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import automatizado.Page.EcommercePO;
+import automatizado.Page.EcommercePOAntigo;
 import automatizado.Generators.geradores;
 
 import java.util.logging.ConsoleHandler;
@@ -22,7 +22,7 @@ public class BioParqueDoRioBuilder {
                         .getLogger(BioParqueDoRioBuilder.class
                                         .getName());
 
-        private EcommercePO ECommercePO;
+        private EcommercePOAntigo EcommercePOAntigo;
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";
         private String Nome_Cartao = geradores
@@ -41,12 +41,12 @@ public class BioParqueDoRioBuilder {
 
         public void Ingresso(WebDriver driver, int tipo) {
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-                BaseBuilder base = new BaseBuilder(ECommercePO);
+                BaseBuilder base = new BaseBuilder(EcommercePOAntigo);
                 logger
                                 .info("Aguardando a barra de pesquisa ser exibida...");
 
                 wait
-                                .until(d -> ECommercePO.barraDePesquisa
+                                .until(d -> EcommercePOAntigo.barraDePesquisa
                                                 .isDisplayed());
                 try {
                         try {
@@ -57,7 +57,7 @@ public class BioParqueDoRioBuilder {
                                                 .printStackTrace();
                         }
 
-                        ECommercePO.aceitarcookies
+                        EcommercePOAntigo.aceitarcookies
                                         .click();
                 } catch (Exception e) {
                 }
@@ -67,22 +67,22 @@ public class BioParqueDoRioBuilder {
                 if (tipo == 1) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bioparque do Rio");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("ingresso Biopaque do Rio - Teste automatizado");
                 } else if (tipo == 2) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bioparque do Rio Anual");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Passaporte anual Bioparque do Rio - Testes Automatizados");
                 } else if (tipo == 3) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bioparque do Rio + AquaRio");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Combo BioParque do Rio + AquaRio - Testes Automatizados");
                 } else if (tipo == 4) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bioparque do Rio + Cristo Redentor");
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Combo BioParque do Rio + Paineiras Corcovado - Testes Automatizados");
                 } else {
                         logger
@@ -97,9 +97,9 @@ public class BioParqueDoRioBuilder {
                                         .printStackTrace();
                 }
                 wait
-                                .until(d -> ECommercePO.bilhete_a_venda_grupo1
+                                .until(d -> EcommercePOAntigo.bilhete_a_venda_grupo1
                                                 .isDisplayed());
-                ECommercePO.bilhete_a_venda_grupo1
+                EcommercePOAntigo.bilhete_a_venda_grupo1
                                 .click();
                 logger
                                 .info("Selecionando bilhete...");
@@ -119,9 +119,9 @@ public class BioParqueDoRioBuilder {
                                         .info("Selecionando data para o dia " + (i + 1));
                         if (i == 0) {
                                 wait
-                                                .until(d -> ECommercePO.ProximoMes
+                                                .until(d -> EcommercePOAntigo.ProximoMes
                                                                 .isDisplayed());
-                                ECommercePO.ProximoMes
+                                EcommercePOAntigo.ProximoMes
                                                 .click();
 
                                 try {
@@ -132,14 +132,14 @@ public class BioParqueDoRioBuilder {
                                                         .printStackTrace();
                                 }
 
-                                ECommercePO.dia
+                                EcommercePOAntigo.dia
                                                 .click();
 
                         } else if (i == 1) {
                                 wait
-                                                .until(d -> ECommercePO.ProximoMes2Receitas
+                                                .until(d -> EcommercePOAntigo.ProximoMes2Receitas
                                                                 .isDisplayed());
-                                ECommercePO.ProximoMes2Receitas
+                                EcommercePOAntigo.ProximoMes2Receitas
                                                 .click();
                                 try {
                                         Thread
@@ -148,16 +148,16 @@ public class BioParqueDoRioBuilder {
                                         e
                                                         .printStackTrace();
                                 }
-                                ECommercePO.dia2Receitas
+                                EcommercePOAntigo.dia2Receitas
                                                 .click();
 
                                 if (tipo == 4) {
                                         wait
-                                                        .until(d -> ECommercePO.localEmbarque2Receitas
+                                                        .until(d -> EcommercePOAntigo.localEmbarque2Receitas
                                                                         .isDisplayed());
-                                        ECommercePO.localEmbarque2Receitas
+                                        EcommercePOAntigo.localEmbarque2Receitas
                                                         .click();
-                                        ECommercePO.localEmbarqueConfirmar
+                                        EcommercePOAntigo.localEmbarqueConfirmar
                                                         .click();
                                 }
                         }
@@ -175,9 +175,9 @@ public class BioParqueDoRioBuilder {
                         if (i == 0) {
                                 if (tipo != 2) {
                                         wait
-                                                        .until(d -> ECommercePO.horario
+                                                        .until(d -> EcommercePOAntigo.horario
                                                                         .isDisplayed());
-                                        ECommercePO.horario
+                                        EcommercePOAntigo.horario
                                                         .click();
                                         try {
                                                 Thread
@@ -186,7 +186,7 @@ public class BioParqueDoRioBuilder {
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        ECommercePO.confirmarHorario4opcoes
+                                        EcommercePOAntigo.confirmarHorario4opcoes
                                                         .click();
                                         try {
                                                 Thread
@@ -196,14 +196,14 @@ public class BioParqueDoRioBuilder {
                                                                 .printStackTrace();
                                         }
                                         wait
-                                                        .until(d -> ECommercePO.proximo
+                                                        .until(d -> EcommercePOAntigo.proximo
                                                                         .isDisplayed());
-                                        ECommercePO.proximo
+                                        EcommercePOAntigo.proximo
                                                         .click();
                                 }
                         } else if (i == 1) {
                                 wait
-                                                .until(d -> ECommercePO.horario2Receitas
+                                                .until(d -> EcommercePOAntigo.horario2Receitas
                                                                 .isDisplayed());
                                 try {
                                         Thread
@@ -212,9 +212,9 @@ public class BioParqueDoRioBuilder {
                                         e
                                                         .printStackTrace();
                                 }
-                                ECommercePO.horario2Receitas
+                                EcommercePOAntigo.horario2Receitas
                                                 .click();
-                                ECommercePO.confirmarHorario4opcoes
+                                EcommercePOAntigo.confirmarHorario4opcoes
                                                 .click();
                                 try {
                                         Thread
@@ -223,7 +223,7 @@ public class BioParqueDoRioBuilder {
                                         e
                                                         .printStackTrace();
                                 }
-                                ECommercePO.proximo2Receitas
+                                EcommercePOAntigo.proximo2Receitas
                                                 .click();
                         }
                         i++;
@@ -233,15 +233,15 @@ public class BioParqueDoRioBuilder {
                                 .info("Adicionando categoria ao carrinho...");
                 if (tipo == 3 || tipo == 4) {
                         wait
-                                        .until(d -> ECommercePO.adicionarCategoria_2Rec
+                                        .until(d -> EcommercePOAntigo.adicionarCategoria_2Rec
                                                         .isDisplayed());
-                        ECommercePO.adicionarCategoria_2Rec
+                        EcommercePOAntigo.adicionarCategoria_2Rec
                                         .click();
                 } else {
                         wait
-                                        .until(d -> ECommercePO.adicionarCategoria
+                                        .until(d -> EcommercePOAntigo.adicionarCategoria
                                                         .isDisplayed());
-                        ECommercePO.adicionarCategoria
+                        EcommercePOAntigo.adicionarCategoria
                                         .click();
                 }
 
@@ -249,7 +249,7 @@ public class BioParqueDoRioBuilder {
                                 .info("Selecionando país de origem...");
 
                 if (tipo == 4 || tipo == 3) {
-                        ECommercePO.selecionarPaisOrigem_2Rec
+                        EcommercePOAntigo.selecionarPaisOrigem_2Rec
                                         .click();
                         try {
                                 Thread
@@ -258,35 +258,35 @@ public class BioParqueDoRioBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        ECommercePO
+                        EcommercePOAntigo
                                         .Pais(24, driver);
                         try {
-                                ECommercePO.estado_2Rec
+                                EcommercePOAntigo.estado_2Rec
                                                 .click();
-                                ECommercePO.acre
+                                EcommercePOAntigo.acre
                                                 .click();
                         } catch (Exception e) {
 
                         }
 
-                        ECommercePO.adicionarCategoria2_2Rec
+                        EcommercePOAntigo.adicionarCategoria2_2Rec
                                         .click();
-                        ECommercePO.adicionarCategoria3_2Rec
+                        EcommercePOAntigo.adicionarCategoria3_2Rec
                                         .click();
-                        ECommercePO.adicionarAoCarrinho_2Rec
+                        EcommercePOAntigo.adicionarAoCarrinho_2Rec
                                         .click();
 
                 } else {
-                        ECommercePO.adicionarCategoria2
+                        EcommercePOAntigo.adicionarCategoria2
                                         .click();
 
-                        ECommercePO.selecionarPaisOrigem
+                        EcommercePOAntigo.selecionarPaisOrigem
                                         .click();
-                        ECommercePO
+                        EcommercePOAntigo
                                         .Pais(24, driver);
 
                         try {
-                                ECommercePO.CEP_Nas_categorias
+                                EcommercePOAntigo.CEP_Nas_categorias
                                                 .sendKeys("85509432");
 
                         } catch (Exception e) {
@@ -294,27 +294,27 @@ public class BioParqueDoRioBuilder {
                         }
 
                         wait
-                                        .until(d -> ECommercePO.adicionarAoCarrinho
+                                        .until(d -> EcommercePOAntigo.adicionarAoCarrinho
                                                         .isEnabled());
-                        ECommercePO.adicionarAoCarrinho
+                        EcommercePOAntigo.adicionarAoCarrinho
                                         .click();
 
                 }
 
                 if (tipo == 2) {
                         wait
-                                        .until(d -> ECommercePO.nomeUsuario
+                                        .until(d -> EcommercePOAntigo.nomeUsuario
                                                         .isDisplayed());
-                        ECommercePO.nomeUsuario
+                        EcommercePOAntigo.nomeUsuario
                                         .sendKeys(Nome_Cartao);
-                        ECommercePO.tipodocumento
+                        EcommercePOAntigo.tipodocumento
                                         .click();
                         wait
-                                        .until(d -> ECommercePO.outros
+                                        .until(d -> EcommercePOAntigo.outros
                                                         .isDisplayed());
-                        ECommercePO.outros
+                        EcommercePOAntigo.outros
                                         .click();
-                        ECommercePO.documento
+                        EcommercePOAntigo.documento
                                         .sendKeys(cpf);
 
                         try {
@@ -325,19 +325,19 @@ public class BioParqueDoRioBuilder {
                                                 .printStackTrace();
                         }
 
-                        ECommercePO.nomeUsuario2
+                        EcommercePOAntigo.nomeUsuario2
                                         .sendKeys("Cleitin do grau");
-                        ECommercePO.tipodocumento2
+                        EcommercePOAntigo.tipodocumento2
                                         .click();
                         wait
-                                        .until(d -> ECommercePO.outros
+                                        .until(d -> EcommercePOAntigo.outros
                                                         .isDisplayed());
-                        ECommercePO.outros
+                        EcommercePOAntigo.outros
                                         .click();
-                        ECommercePO.documento2
+                        EcommercePOAntigo.documento2
                                         .sendKeys("123456789");
 
-                        ECommercePO.confirmardadosusuario
+                        EcommercePOAntigo.confirmardadosusuario
                                         .click();
                 }
                 logger
@@ -346,7 +346,7 @@ public class BioParqueDoRioBuilder {
                 try {
                         Thread
                                         .sleep(3000);
-                        logado = ECommercePO.finalizarPedido
+                        logado = EcommercePOAntigo.finalizarPedido
                                         .isDisplayed();
                 } catch (Exception e) {
 
@@ -355,10 +355,10 @@ public class BioParqueDoRioBuilder {
                 StringTokenizer resulBilhete1 = null;
                 if (logado) {
 
-                        resulBilhete1 = new StringTokenizer(ECommercePO
+                        resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                         .valorTotalDoBilhete(3, driver));
                 } else {
-                        resulBilhete1 = new StringTokenizer(ECommercePO.valorSomado
+                        resulBilhete1 = new StringTokenizer(EcommercePOAntigo.valorSomado
                                         .getText());
 
                 }
@@ -382,43 +382,43 @@ public class BioParqueDoRioBuilder {
 
                         } else {
 
-                                ECommercePO.registrarEfinalizarPedido
+                                EcommercePOAntigo.registrarEfinalizarPedido
                                                 .click();
                                 wait
-                                                .until(d -> ECommercePO.Email_ecommerce
+                                                .until(d -> EcommercePOAntigo.Email_ecommerce
                                                                 .isDisplayed());
-                                ECommercePO.Email_ecommerce
+                                EcommercePOAntigo.Email_ecommerce
                                                 .sendKeys(email_usuario);
-                                ECommercePO.senha_ecommerce
+                                EcommercePOAntigo.senha_ecommerce
                                                 .sendKeys(senha_usuario);
-                                ECommercePO.Logar
+                                EcommercePOAntigo.Logar
                                                 .click();
                                 logger
                                                 .info("Fazendo Login...");
 
                         }
                         wait
-                                        .until(d -> ECommercePO.finalizarPedido
+                                        .until(d -> EcommercePOAntigo.finalizarPedido
                                                         .isDisplayed());
-                        ECommercePO.finalizarPedido
+                        EcommercePOAntigo.finalizarPedido
                                         .click();
                         logger
                                         .info("Finalizando pedido...");
                         // wait
-                        // .until(d -> ECommercePO.EscreverConfirmarSenha
+                        // .until(d -> EcommercePOAntigo.EscreverConfirmarSenha
                         // .isDisplayed());
-                        // ECommercePO.EscreverConfirmarSenha
+                        // EcommercePOAntigo.EscreverConfirmarSenha
                         // .sendKeys("1");
-                        // ECommercePO.botaoConfirmarSenha
+                        // EcommercePOAntigo.botaoConfirmarSenha
                         // .click();
 
                         base
                                         .realizarpagamento(driver);
 
                         wait
-                                        .until(d -> ECommercePO.confirmarCompra
+                                        .until(d -> EcommercePOAntigo.confirmarCompra
                                                         .isDisplayed());
-                        String mensagem = ECommercePO.confirmarCompra
+                        String mensagem = EcommercePOAntigo.confirmarCompra
                                         .getText();
                         assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
                                         mensagem);
@@ -434,7 +434,7 @@ public class BioParqueDoRioBuilder {
 
         }
 
-        public BioParqueDoRioBuilder(EcommercePO e) {
-                this.ECommercePO = e;
+        public BioParqueDoRioBuilder(EcommercePOAntigo e) {
+                this.EcommercePOAntigo = e;
         }
 }

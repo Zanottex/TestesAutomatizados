@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.Antigo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,11 +12,11 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import automatizado.Generators.geradores;
-import automatizado.Page.EcommercePO;
+import automatizado.Page.EcommercePOAntigo;
 
 public class MarcoDasTresFronteirasBuilder {
 
-    private EcommercePO ECommercePO;
+    private EcommercePOAntigo EcommercePOAntigo;
     private String email_usuario = "gustavozanotto119@gmail.com";
     private String senha_usuario = "1";
     private String Nome_Cartao = "Gustavin Zanottin";
@@ -27,8 +27,8 @@ public class MarcoDasTresFronteirasBuilder {
     private String Numero_Casa = "1050"; 
     private String cpf = "09285844960"; 
     
-    public MarcoDasTresFronteirasBuilder(EcommercePO ecommercePO) {
-        this.ECommercePO = ecommercePO;
+    public MarcoDasTresFronteirasBuilder(EcommercePOAntigo EcommercePOAntigo) {
+        this.EcommercePOAntigo = EcommercePOAntigo;
     }
     
     private static final Logger logger = Logger
@@ -48,60 +48,60 @@ public class MarcoDasTresFronteirasBuilder {
 
          Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
 
-         wait.until(d -> ECommercePO.aceitarcookies.isDisplayed());
-         ECommercePO.aceitarcookies.click();
+         wait.until(d -> EcommercePOAntigo.aceitarcookies.isDisplayed());
+         EcommercePOAntigo.aceitarcookies.click();
 
-         wait.until(d -> ECommercePO.proximoMesHome.isEnabled());
-         ECommercePO.proximoMesHome.click();
+         wait.until(d -> EcommercePOAntigo.proximoMesHome.isEnabled());
+         EcommercePOAntigo.proximoMesHome.click();
 
-         wait.until(d -> ECommercePO.diaHome.isDisplayed());
-         ECommercePO.diaHome
+         wait.until(d -> EcommercePOAntigo.diaHome.isDisplayed());
+         EcommercePOAntigo.diaHome
                  .click();
                  logger
                  .info("Selecionando o dia no calendario.");
 
-         wait.until(d -> ECommercePO.continuarHome_primeiroBilhete_grupo2.isEnabled());
-         ECommercePO.continuarHome_primeiroBilhete_grupo2
+         wait.until(d -> EcommercePOAntigo.continuarHome_primeiroBilhete_grupo2.isEnabled());
+         EcommercePOAntigo.continuarHome_primeiroBilhete_grupo2
                  .click();
                  logger
                  .info("Selecionando o bilhete disponivel para aquela data.");
 
-         wait.until(d -> ECommercePO.horarioPopUp.isDisplayed());
-         ECommercePO.horarioPopUp.click();
+         wait.until(d -> EcommercePOAntigo.horarioPopUp.isDisplayed());
+         EcommercePOAntigo.horarioPopUp.click();
 
-         wait.until(d -> ECommercePO.horarioPopUp.isDisplayed());
-         ECommercePO.horarioPopUp.click();
+         wait.until(d -> EcommercePOAntigo.horarioPopUp.isDisplayed());
+         EcommercePOAntigo.horarioPopUp.click();
 
-         wait.until(d -> ECommercePO.categoria1_PopUp.isDisplayed());
-         ECommercePO.categoria1_PopUp
+         wait.until(d -> EcommercePOAntigo.categoria1_PopUp.isDisplayed());
+         EcommercePOAntigo.categoria1_PopUp
                  .click();
                  logger
                  .info("Selecionando as categorias que serão compradas.");
 
-         ECommercePO.PaisDeOrigemPopUP.click();
-         ECommercePO.BrasilPopUp.click();
+         EcommercePOAntigo.PaisDeOrigemPopUP.click();
+         EcommercePOAntigo.BrasilPopUp.click();
 
-         ECommercePO.EstadoPopUp.click();
-         wait.until(d -> ECommercePO.AcrePopUp.isDisplayed());
-         ECommercePO.AcrePopUp
+         EcommercePOAntigo.EstadoPopUp.click();
+         wait.until(d -> EcommercePOAntigo.AcrePopUp.isDisplayed());
+         EcommercePOAntigo.AcrePopUp
                  .click();
                  logger
                  .info("Colocando pais brasil e o estado.");
 
-         ECommercePO.adicionarAoCarrinhoPopUP.click();
+         EcommercePOAntigo.adicionarAoCarrinhoPopUP.click();
 
-         wait.until(d -> ECommercePO.nomeUsuarioPopUp.isDisplayed());
-        ECommercePO.nomeUsuarioPopUp.sendKeys(Nome_Cartao);
-        ECommercePO.tipoDocumentoPopUp.click();
-        wait.until(d -> ECommercePO.outrosPopUp.isDisplayed());
-        ECommercePO.outrosPopUp.click();
-        ECommercePO.documentoPopUp.sendKeys(cpf);
+         wait.until(d -> EcommercePOAntigo.nomeUsuarioPopUp.isDisplayed());
+        EcommercePOAntigo.nomeUsuarioPopUp.sendKeys(Nome_Cartao);
+        EcommercePOAntigo.tipoDocumentoPopUp.click();
+        wait.until(d -> EcommercePOAntigo.outrosPopUp.isDisplayed());
+        EcommercePOAntigo.outrosPopUp.click();
+        EcommercePOAntigo.documentoPopUp.sendKeys(cpf);
         logger
         .info("Colocando os dados do usuario para a visita");
-        ECommercePO.confirmardadosdoUsuarioPopUp.click();
+        EcommercePOAntigo.confirmardadosdoUsuarioPopUp.click();
 
-        wait.until(d -> ECommercePO.valorBilhete1.isDisplayed());
-        StringTokenizer resulBilhete1 = new StringTokenizer(ECommercePO.valorBilhete1.getText());
+        wait.until(d -> EcommercePOAntigo.valorBilhete1.isDisplayed());
+        StringTokenizer resulBilhete1 = new StringTokenizer(EcommercePOAntigo.valorBilhete1.getText());
         String valorbilhete1 = resulBilhete1.nextToken(" ");
          valorbilhete1 = resulBilhete1.nextToken(" ");
          valorbilhete1 = valorbilhete1.replaceAll(",", ".");
@@ -109,31 +109,31 @@ public class MarcoDasTresFronteirasBuilder {
 
          if(valor1 == 10.0){
 
-            ECommercePO.registrarEfinalizarPedido.click();
-        wait.until(d -> ECommercePO.Email_ecommerce.isDisplayed());
-            ECommercePO.Email_ecommerce.sendKeys(email_usuario);
-            ECommercePO.senha_ecommerce.sendKeys(senha_usuario);
-            ECommercePO.Logar
+            EcommercePOAntigo.registrarEfinalizarPedido.click();
+        wait.until(d -> EcommercePOAntigo.Email_ecommerce.isDisplayed());
+            EcommercePOAntigo.Email_ecommerce.sendKeys(email_usuario);
+            EcommercePOAntigo.senha_ecommerce.sendKeys(senha_usuario);
+            EcommercePOAntigo.Logar
                     .click();
                     logger
                     .info("Logando na conta do usuario.");
 
-        wait.until(d -> ECommercePO.finalizarPedido.isDisplayed());
-        ECommercePO.finalizarPedido.click();
+        wait.until(d -> EcommercePOAntigo.finalizarPedido.isDisplayed());
+        EcommercePOAntigo.finalizarPedido.click();
 
-        wait.until(d -> ECommercePO.Nome_Do_Cartao.isDisplayed());
+        wait.until(d -> EcommercePOAntigo.Nome_Do_Cartao.isDisplayed());
 
-        ECommercePO.Nome_Do_Cartao.sendKeys(Nome_Cartao);
+        EcommercePOAntigo.Nome_Do_Cartao.sendKeys(Nome_Cartao);
 
-        ECommercePO.Numero_Cartao.sendKeys(Numero_Cartao);
+        EcommercePOAntigo.Numero_Cartao.sendKeys(Numero_Cartao);
 
-        ECommercePO.Mes_Validade.sendKeys(mes_validade);
+        EcommercePOAntigo.Mes_Validade.sendKeys(mes_validade);
 
-        ECommercePO.codigo_segurança.sendKeys(codigo_segurança);
+        EcommercePOAntigo.codigo_segurança.sendKeys(codigo_segurança);
 
-        ECommercePO.CEP.sendKeys(CEP);
+        EcommercePOAntigo.CEP.sendKeys(CEP);
 
-        ECommercePO.Numero_Casa
+        EcommercePOAntigo.Numero_Casa
                 .sendKeys(Numero_Casa);
                 logger
                 .info("Inserindo os dados para finalizar a compra. (CEP, cartão de crédito)");
@@ -143,13 +143,13 @@ public class MarcoDasTresFronteirasBuilder {
                 e.printStackTrace();
             }
 
-            ECommercePO.finalizarCompra
+            EcommercePOAntigo.finalizarCompra
                     .click();
                     logger
                     .info("Compra finalizada.");
 
-        wait.until(d -> ECommercePO.confirmarCompra.isDisplayed());
-        String mensagem = ECommercePO.confirmarCompra.getText();
+        wait.until(d -> EcommercePOAntigo.confirmarCompra.isDisplayed());
+        String mensagem = EcommercePOAntigo.confirmarCompra.getText();
         assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.", mensagem);
          }
     }

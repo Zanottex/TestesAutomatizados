@@ -2,14 +2,14 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.AquaRioBuilder;
-import automatizado.Page.EcommercePO;
+import automatizado.Builder.Antigo.AquaRioBuilder;
+import automatizado.Page.EcommercePOAntigo;
 
 public class AquaRioTeste extends BaseTeste{
     
     private static final String URL_Ecommerce = "https://testeauto_integrada.testescard.limber.net.br/";
     /*Page Objects */
-    private static EcommercePO ECommercePO;
+    private static EcommercePOAntigo EcommercePOAntigo;
 
     @Test
     public void TC001_Bilhete_Aquario() {
@@ -29,8 +29,8 @@ public class AquaRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        ECommercePO = new EcommercePO(driver);
-        AquaRioBuilder Aquario = new AquaRioBuilder(ECommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        AquaRioBuilder Aquario = new AquaRioBuilder(EcommercePOAntigo);
 
         Aquario
                 .Ingresso(driver, 1 /* TIPO 1 = Bilhete avulsso acesso Aquario */);
@@ -54,8 +54,8 @@ public class AquaRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        ECommercePO = new EcommercePO(driver);
-        AquaRioBuilder Aquario = new AquaRioBuilder(ECommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        AquaRioBuilder Aquario = new AquaRioBuilder(EcommercePOAntigo);
 
         Aquario
                 .Ingresso(driver, 2 /* TIPO 2 = bilhete COMBO: aquario + museu de cera + mar de espelhos */);
@@ -79,8 +79,8 @@ public class AquaRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        ECommercePO = new EcommercePO(driver);
-        AquaRioBuilder Aquario = new AquaRioBuilder(ECommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        AquaRioBuilder Aquario = new AquaRioBuilder(EcommercePOAntigo);
 
         Aquario
                 .Ingresso(driver, 3 /* TIPO 3 = bilhete COMBO: aquario + bioparque */);
@@ -104,8 +104,8 @@ public class AquaRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        ECommercePO = new EcommercePO(driver);
-        AquaRioBuilder Aquario = new AquaRioBuilder(ECommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        AquaRioBuilder Aquario = new AquaRioBuilder(EcommercePOAntigo);
 
         Aquario
                 .Ingresso(driver, 4/* TIPO 4 = bilhete COMBO: aquario + corcovado */);
@@ -129,8 +129,8 @@ public class AquaRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        ECommercePO = new EcommercePO(driver);
-        AquaRioBuilder Aquario = new AquaRioBuilder(ECommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        AquaRioBuilder Aquario = new AquaRioBuilder(EcommercePOAntigo);
 
         Aquario
                 .Ingresso(driver, 5/* TIPO 5 = bilhete passaporte anual */);
@@ -154,8 +154,8 @@ public class AquaRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        ECommercePO = new EcommercePO(driver);
-        AquaRioBuilder Aquario = new AquaRioBuilder(ECommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        AquaRioBuilder Aquario = new AquaRioBuilder(EcommercePOAntigo);
 
         Aquario
                 .Ingresso(driver, 6/* TIPO 6 = bilhete mar de espelhos */);
@@ -181,8 +181,8 @@ public class AquaRioTeste extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        ECommercePO = new EcommercePO(driver);
-        AquaRioBuilder Aquario = new AquaRioBuilder(ECommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        AquaRioBuilder Aquario = new AquaRioBuilder(EcommercePOAntigo);
 
         Aquario
                 .Ingresso(driver, 7/* TIPO 7 = bilhete museu de cera */);

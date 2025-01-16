@@ -3,13 +3,13 @@ package automatizado.Teste;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import automatizado.Builder.FundacaoBuilder;
-import automatizado.Page.EcommercePO;
+import automatizado.Builder.Antigo.FundacaoBuilder;
+import automatizado.Page.EcommercePOAntigo;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FundaçãoTeste extends BaseTeste{
     
-    private static EcommercePO EcommercePO;
+    private static EcommercePOAntigo EcommercePOAntigo;
     private static final String ULR_Ecommerce = "https://zanottin.testescard.limber.net.br/";
 
     @Test
@@ -27,8 +27,8 @@ public class FundaçãoTeste extends BaseTeste{
         RedirecionarPag(ULR_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePOAntigo);
 
         ecommerce.Builder(driver, 1);
     }
@@ -48,8 +48,8 @@ public class FundaçãoTeste extends BaseTeste{
         RedirecionarPag(ULR_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePOAntigo);
 
         ecommerce.Builder(driver, 2);
     }
@@ -69,8 +69,8 @@ public class FundaçãoTeste extends BaseTeste{
         RedirecionarPag(ULR_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePOAntigo);
 
         ecommerce.Builder(driver, 3);
     }
@@ -90,8 +90,8 @@ public class FundaçãoTeste extends BaseTeste{
         RedirecionarPag(ULR_Ecommerce);
         }
         
-        EcommercePO = new EcommercePO(driver);
-        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePOAntigo);
 
         ecommerce.Builder(driver, 4);
           
@@ -112,8 +112,8 @@ public class FundaçãoTeste extends BaseTeste{
         RedirecionarPag(ULR_Ecommerce);
         }
         
-        EcommercePO = new EcommercePO(driver);
-        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePOAntigo);
 
         ecommerce.Builder(driver, 5);
           
@@ -134,8 +134,8 @@ public class FundaçãoTeste extends BaseTeste{
         RedirecionarPag(ULR_Ecommerce);
         }
         
-        EcommercePO = new EcommercePO(driver);
-        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        FundacaoBuilder ecommerce = new FundacaoBuilder(EcommercePOAntigo);
 
         ecommerce.Builder(driver, 6);
           

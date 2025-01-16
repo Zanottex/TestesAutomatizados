@@ -6,12 +6,14 @@ import java.util.Random;
 
 import org.openqa.selenium.WebDriver;
 
-import automatizado.Page.EcommercePO;
+import automatizado.Page.EcommercePOAntigo;
+import automatizado.Page.EcommercePONovo;
 
 public class geradores {
 
         private static final Random random = new Random();
-        private static EcommercePO ECommercePO;
+        private static EcommercePOAntigo EcommercePOAntigo;
+        private static EcommercePONovo EcommercePONovo;
 
         // Gerador de Nome
         public static String geradorNome() {
@@ -162,7 +164,7 @@ public class geradores {
         }
         
         // Gerador de Data de Nascimento
-        public static String geradorDataNascimento(int idademinima, int idademaxima, WebDriver driver) {
+        public static String geradorDataNascimento_AntigoEcommerce(int idademinima, int idademaxima, WebDriver driver) {
                 String datanascimento = null;
                 boolean dataValida = true;
 
@@ -173,7 +175,7 @@ public class geradores {
                                         .nextInt(12) + 1;
                         int ano = random
                                         .nextInt(2023 - 1900 + 1) + 1900; // Entre 1900 e 2023
-                        
+
                         int diferencaAnos = getAno(ano, mes, dia);
                         if (datainvalida) {
                                 if (idademinima > 0) {
@@ -182,12 +184,12 @@ public class geradores {
                                                 datanascimento = String
                                                                 .format("%02d/%02d/%d", dia, mes, ano);
                                                 String erro = null;
-                                                ECommercePO = new EcommercePO(driver);
-                                                ECommercePO
+                                                EcommercePOAntigo = new EcommercePOAntigo(driver);
+                                                EcommercePOAntigo
                                                                 .dataNascimento(1, 1, datanascimento, driver);
 
                                                 try {
-                                                        ECommercePO.nomeUsuario
+                                                        EcommercePOAntigo.nomeUsuario
                                                                         .click();
                                                         Thread
                                                                         .sleep(1000);
@@ -195,9 +197,9 @@ public class geradores {
                                                         e
                                                                         .printStackTrace();
                                                 }
-                                                erro = ECommercePO
+                                                erro = EcommercePOAntigo
                                                                 .Erro_ColetaDeDados(1, 1, driver);
-                                                ECommercePO
+                                                EcommercePOAntigo
                                                                 .dataNascimento(1, 1, "", driver);
                                                 if (erro != null) {
                                                         datainvalida = false;
@@ -210,7 +212,7 @@ public class geradores {
                                                                 .nextInt(12) + 1;
                                                 ano = random
                                                                 .nextInt(2023 - 1900 + 1) + 1900; // Entre 1900 e 2023
-                                                                diferencaAnos = getAno(ano, mes, dia);
+                                                diferencaAnos = getAno(ano, mes, dia);
                                         }
                                 } else {
                                         datainvalida = false;
@@ -224,6 +226,68 @@ public class geradores {
                 return datanascimento;
         }
 
+        public static String geradorDataNascimento_NovoEcommerce(int idademinima, int idademaxima, WebDriver driver) {
+                String datanascimento = null;
+                boolean dataValida = true;
+
+                while (dataValida) {
+                        int dia = random
+                                        .nextInt(28) + 1; // Evita problemas com fevereiro
+                        int mes = random
+                                        .nextInt(12) + 1;
+                        int ano = random
+                                        .nextInt(2023 - 1900 + 1) + 1900; // Entre 1900 e 2023
+
+                        int diferencaAnos = getAno(ano, mes, dia);
+                        if (datainvalida) {
+                                if (idademinima > 0) {
+
+                                        if (diferencaAnos < idademinima) {
+                                                datanascimento = String
+                                                                .format("%02d/%02d/%d", dia, mes, ano);
+                                                String erro = null;
+                                                EcommercePONovo = new EcommercePONovo(driver);
+                                                EcommercePONovo
+                                                                .dataNascimento(1, 1, datanascimento, driver);
+
+                                                try {
+                                                        EcommercePONovo.nomeUsuario
+                                                                        .click();
+                                                        Thread
+                                                                        .sleep(1000);
+                                                } catch (InterruptedException e) {
+                                                        e
+                                                                        .printStackTrace();
+                                                }
+                                                erro = EcommercePONovo
+                                                                .Erro_ColetaDeDados(1, 1, driver);
+                                                                EcommercePONovo
+                                                                .dataNascimento(1, 1, "", driver);
+                                                if (erro != null) {
+                                                        datainvalida = false;
+                                                }
+
+                                        } else {
+                                                dia = random
+                                                                .nextInt(28) + 1; // Evita problemas com fevereiro
+                                                mes = random
+                                                                .nextInt(12) + 1;
+                                                ano = random
+                                                                .nextInt(2023 - 1900 + 1) + 1900; // Entre 1900 e 2023
+                                                diferencaAnos = getAno(ano, mes, dia);
+                                        }
+                                } else {
+                                        datainvalida = false;
+                                }
+                        } else if (diferencaAnos > idademinima && diferencaAnos < idademaxima) {
+                                datanascimento = String
+                                                .format("%02d/%02d/%d", dia, mes, ano);
+                                dataValida = false;
+                        }
+                }
+                return datanascimento;
+        }
+        
         // Gerador de Telefone
         public static String geradorTelefone() {
                 int ddi = random
@@ -293,5 +357,7 @@ public class geradores {
                 return complementos[random
                                 .nextInt(complementos.length)];
         }
+
+
         
 }

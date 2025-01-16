@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.Antigo;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
@@ -9,11 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import automatizado.Page.EcommercePO;
+import automatizado.Page.EcommercePOAntigo;
 
 public class TrocaDeDadosDaVisitaBuilder {
 
-        private EcommercePO ECommercePO;
+        private EcommercePOAntigo EcommercePOAntigo;
 
         private static final Logger logger = Logger
                         .getLogger(AquaRioBuilder.class
@@ -28,8 +28,8 @@ public class TrocaDeDadosDaVisitaBuilder {
                                 .addHandler(consoleHandler);
         }
 
-        public TrocaDeDadosDaVisitaBuilder(EcommercePO ecommercePO) {
-                this.ECommercePO = ecommercePO;
+        public TrocaDeDadosDaVisitaBuilder(EcommercePOAntigo EcommercePOAntigo) {
+                this.EcommercePOAntigo = EcommercePOAntigo;
         }
 
         public void builder(WebDriver driver, int tipo) {
@@ -38,40 +38,40 @@ public class TrocaDeDadosDaVisitaBuilder {
                 logger
                                 .info("Abrindo a tela de Login no E-Commerce.");
                 wait
-                                .until(d -> ECommercePO.olaFaçaSeuLogin
+                                .until(d -> EcommercePOAntigo.olaFaçaSeuLogin
                                                 .isDisplayed());
-                ECommercePO.aceitarcookies
+                EcommercePOAntigo.aceitarcookies
                                 .click();
-                ECommercePO.olaFaçaSeuLogin
+                EcommercePOAntigo.olaFaçaSeuLogin
                                 .click();
-                ECommercePO.Entrar
+                EcommercePOAntigo.Entrar
                                 .click();
 
                 wait
-                                .until(d -> ECommercePO.Email_ecommerce
+                                .until(d -> EcommercePOAntigo.Email_ecommerce
                                                 .isDisplayed());
-                ECommercePO.Email_ecommerce
+                EcommercePOAntigo.Email_ecommerce
                                 .sendKeys("gustavozanotto119@gmail.com");
-                ECommercePO.senha_ecommerce
+                EcommercePOAntigo.senha_ecommerce
                                 .sendKeys("1");
                 logger
                                 .info("Logando na conta como um usuario comum.");
-                ECommercePO.Logar
+                EcommercePOAntigo.Logar
                                 .click();
 
                 wait
-                                .until(d -> ECommercePO.proximoMesHome
+                                .until(d -> EcommercePOAntigo.proximoMesHome
                                                 .isDisplayed());
-                ECommercePO.olaFaçaSeuLogin
+                EcommercePOAntigo.olaFaçaSeuLogin
                                 .click();
-                ECommercePO.meus_pedidos
+                EcommercePOAntigo.meus_pedidos
                                 .click();
                 logger
                                 .info("Abrindo a aba de 'Meus Pedidos'.");
                 wait
-                                .until(d -> ECommercePO.ultima_venda
+                                .until(d -> EcommercePOAntigo.ultima_venda
                                                 .isDisplayed());
-                ECommercePO.ultima_venda
+                EcommercePOAntigo.ultima_venda
                                 .click();
                 try {
                         Thread
@@ -83,17 +83,17 @@ public class TrocaDeDadosDaVisitaBuilder {
                 logger
                                 .info("Arindo a ultima venda.");
                 /* Verifica se o bilhete tem a opção de alterar as informações da visita. */
-                if (ECommercePO.alterar_informações_da_visita
+                if (EcommercePOAntigo.alterar_informações_da_visita
                                 .isEnabled()) {
 
-                        ECommercePO.alterar_informações_da_visita
+                        EcommercePOAntigo.alterar_informações_da_visita
                                         .click();
                         wait
-                                        .until(d -> ECommercePO.alterar_data_de_visita
+                                        .until(d -> EcommercePOAntigo.alterar_data_de_visita
                                                         .isDisplayed());
                         logger
                                         .info("Trocando a data da visita do bilhete.");
-                        ECommercePO.alterar_data_de_visita
+                        EcommercePOAntigo.alterar_data_de_visita
                                         .click();
                         try {
                                 Thread
@@ -102,7 +102,7 @@ public class TrocaDeDadosDaVisitaBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        ECommercePO.proximo_mes_remarcação
+                        EcommercePOAntigo.proximo_mes_remarcação
                                         .click();
                         try {
                                 Thread
@@ -111,9 +111,9 @@ public class TrocaDeDadosDaVisitaBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        ECommercePO.dia_remarcação
+                        EcommercePOAntigo.dia_remarcação
                                         .click();
-                        ECommercePO.salvar_remarcação
+                        EcommercePOAntigo.salvar_remarcação
                                         .click();
                         logger
                                         .info("Data da visita alterada.");

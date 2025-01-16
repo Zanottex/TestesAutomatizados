@@ -2,13 +2,13 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.TrocaDeDadosDaVisitaBuilder;
-import automatizado.Page.EcommercePO;
+import automatizado.Builder.Antigo.TrocaDeDadosDaVisitaBuilder;
+import automatizado.Page.EcommercePOAntigo;
 
 public class TrocaDeDadosDaVisitaTeste extends BaseTeste {
     
     private static final String URL_Ecommerce = "https://testeauto_integrada.testescard.limber.net.br/";
-    private static EcommercePO ecommercePO;
+    private static EcommercePOAntigo EcommercePOAntigo;
 
     @Test
     public void TC001_Remarcar_dia(){
@@ -25,9 +25,9 @@ public class TrocaDeDadosDaVisitaTeste extends BaseTeste {
             driver.get(URL_HOMOLOG);
         }
         RedirecionarPag(URL_Ecommerce);
-        ecommercePO = new EcommercePO(driver);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
 
-        TrocaDeDadosDaVisitaBuilder remarcação = new TrocaDeDadosDaVisitaBuilder(ecommercePO);
+        TrocaDeDadosDaVisitaBuilder remarcação = new TrocaDeDadosDaVisitaBuilder(EcommercePOAntigo);
         
         remarcação.builder(driver, 1);
 

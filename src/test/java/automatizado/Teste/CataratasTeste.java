@@ -2,13 +2,16 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.Cataratasbuilder;
-import automatizado.Page.EcommercePO;
+import automatizado.Builder.Antigo.Cataratasbuilder;
+import automatizado.Builder.Novo.CataratasbuilderNovo;
+import automatizado.Page.EcommercePOAntigo;
+import automatizado.Page.EcommercePONovo;
 
 public class CataratasTeste extends BaseTeste {
 
-    private static EcommercePO EcommercePO;
+    private static EcommercePOAntigo EcommercePOAntigo;
     private static final String URL_Ecommerce = "https://testeauto_integrada.testescard.limber.net.br/";
+    private static EcommercePONovo EcommercePONovo;
 
     @Test
     public void TC001_Bilhete_Brasileiro_Mercosul() {
@@ -28,8 +31,8 @@ public class CataratasTeste extends BaseTeste {
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePOAntigo);
 
         cataratas
                 .Ingresso(driver, 1 /* TIPO 1 = Brasileiro */);
@@ -53,8 +56,8 @@ public class CataratasTeste extends BaseTeste {
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePOAntigo);
 
         cataratas
                 .Ingresso(driver, 2 /* TIPO 2 = Estrangeiro */);
@@ -78,8 +81,8 @@ public class CataratasTeste extends BaseTeste {
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePOAntigo);
 
         cataratas
                 .Ingresso(driver, 3 /* TIPO 3 = Expeiências */);
@@ -103,8 +106,8 @@ public class CataratasTeste extends BaseTeste {
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePOAntigo);
 
         cataratas
                 .Ingresso(driver, 4 /*
@@ -130,8 +133,8 @@ public class CataratasTeste extends BaseTeste {
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePOAntigo);
 
         cataratas
                 .Ingresso(driver, 5 /* TIPO 5 = Ingresso 2 dias */);
@@ -155,8 +158,8 @@ public class CataratasTeste extends BaseTeste {
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePOAntigo);
 
         cataratas
                 .Ingresso(driver, 6 /* TIPO 6 = Ingresso 3 dias */);
@@ -180,31 +183,60 @@ public class CataratasTeste extends BaseTeste {
             RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePOAntigo);
 
         cataratas
                 .Ingresso(driver, 7 /* TIPO 7 = Guarda-Volumes */);
     }
 
     @Test
-    public void TC008_Ingresso_VIP(){
+    public void TC008_Ingresso_VIP() {
         String aberto;
         try {
-            aberto = driver.manage().window().getSize().toString();
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        iniciar(URL_Ecommerce);
-        }
-        else{
-        RedirecionarPag(URL_Ecommerce);
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
         }
 
-        EcommercePO = new EcommercePO(driver);
-        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        Cataratasbuilder cataratas = new Cataratasbuilder(EcommercePOAntigo);
 
-        cataratas.Ingresso(driver, 8 /*TIPO 8 = ingresso VIP*/);
+        cataratas
+                .Ingresso(driver, 8 /*TIPO 8 = ingresso VIP*/);
+    }
+    
+    @Test
+    public void Novo_Ecommerce() {
+        String aberto;
+        try {
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePONovo = new EcommercePONovo(driver);
+        CataratasbuilderNovo cataratas = new CataratasbuilderNovo(EcommercePONovo);
+
+        cataratas
+                .Ingresso(driver, 1 /* TIPO 1 = Brasileiro */);
     }
 }

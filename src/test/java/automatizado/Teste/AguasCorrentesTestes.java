@@ -2,14 +2,14 @@ package automatizado.Teste;
 
 import org.junit.Test;
 
-import automatizado.Builder.AguasCorrentesBuilder;
-import automatizado.Page.EcommercePO;
+import automatizado.Builder.Antigo.AguasCorrentesBuilder;
+import automatizado.Page.EcommercePOAntigo;
 
 public class AguasCorrentesTestes extends BaseTeste{
     
     private static final String URL_Ecommerce = "https://zanottincalendario.testescard.limber.net.br/";
     /*Page Objects */
-    private static EcommercePO ECommercePO;
+    private static EcommercePOAntigo EcommercePOAntigo;
 
     @Test
     public void TC001_Bilhete_AguasCorrentes() {
@@ -29,8 +29,8 @@ public class AguasCorrentesTestes extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        ECommercePO = new EcommercePO(driver);
-        AguasCorrentesBuilder aguas = new AguasCorrentesBuilder(ECommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        AguasCorrentesBuilder aguas = new AguasCorrentesBuilder(EcommercePOAntigo);
 
         aguas
                 .avulsso(driver, 1 /* TIPO 1 = Bilhete avulsso acesso Aquas */);
@@ -54,8 +54,8 @@ public class AguasCorrentesTestes extends BaseTeste{
             RedirecionarPag(URL_Ecommerce);
         }
 
-        ECommercePO = new EcommercePO(driver);
-        AguasCorrentesBuilder aguas = new AguasCorrentesBuilder(ECommercePO);
+        EcommercePOAntigo = new EcommercePOAntigo(driver);
+        AguasCorrentesBuilder aguas = new AguasCorrentesBuilder(EcommercePOAntigo);
 
         aguas
                 .avulsso(driver, 2 /* TIPO 2 = Bilhete 5 pessoas */);

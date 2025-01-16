@@ -1,4 +1,4 @@
-package automatizado.Builder;
+package automatizado.Builder.Antigo;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +11,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import automatizado.Page.EcommercePO;
+import automatizado.Page.EcommercePOAntigo;
 
 public class FundacaoBuilder {
 
@@ -19,7 +19,7 @@ public class FundacaoBuilder {
                         .getLogger(Cataratasbuilder.class
                                         .getName());
 
-        private EcommercePO ECommercePO;
+        private EcommercePOAntigo EcommercePOAntigo;
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";
         private String Nome_Cartao = "Gustavin Zanottin";
@@ -43,11 +43,11 @@ public class FundacaoBuilder {
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
 
                 wait
-                                .until(d -> ECommercePO.barraDePesquisa
+                                .until(d -> EcommercePOAntigo.barraDePesquisa
                                                 .isDisplayed());
-                ECommercePO.barraDePesquisa
+                EcommercePOAntigo.barraDePesquisa
                                 .sendKeys("Bilhete para fundação");
-                ECommercePO.bilhete_a_venda_grupo1
+                EcommercePOAntigo.bilhete_a_venda_grupo1
                                 .click();
                 logger
                                 .info("Redirecionando do ecommerce guarda chuva para o ecommerce dos bilhetes...");
@@ -60,26 +60,26 @@ public class FundacaoBuilder {
                                                 .printStackTrace();
                         }
 
-                        ECommercePO.aceitarcookies
+                        EcommercePOAntigo.aceitarcookies
                                         .click();
                 } catch (Exception e) {
                 }
 
                 wait
-                                .until(d -> ECommercePO.barraDePesquisa
+                                .until(d -> EcommercePOAntigo.barraDePesquisa
                                                 .isDisplayed());
                 logger
                                 .info("Pesquisando o bilhete na barra de pesquisa...");
                 if (tipo == 1) {
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Bilhete Fundação com sessão e embarque");
                         logger
                                         .info("Iniciando pesquisa: Bilhete Fundação com sessão e embarque");
-                        ECommercePO.bilhete_a_venda_grupo1
+                        EcommercePOAntigo.bilhete_a_venda_grupo1
                                         .click();
 
                 } else if (tipo == 2) {
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Bilhete Multiplas Datas de Visita");
                         logger
                                         .info("Iniciando pesquisa: Bilhete Multiplas Datas de Visita");
@@ -90,10 +90,10 @@ public class FundacaoBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        ECommercePO.bilhete_a_venda_grupo1
+                        EcommercePOAntigo.bilhete_a_venda_grupo1
                                         .click();
                 } else if (tipo == 3) {
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Bilhete Credenciado");
                         logger
                                         .info("Iniciando pesquisa: Bilhete Credenciado");
@@ -104,10 +104,10 @@ public class FundacaoBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        ECommercePO.bilhete_a_venda_grupo2
+                        EcommercePOAntigo.bilhete_a_venda_grupo2
                                         .click();
                 } else if (tipo == 4) {
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Bilhete Vinculado 1");
                         logger
                                         .info("Iniciando pesquisa: Bilhete Vinculado 1");
@@ -118,18 +118,18 @@ public class FundacaoBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        ECommercePO.bilhete_a_venda_grupo1
+                        EcommercePOAntigo.bilhete_a_venda_grupo1
                                         .click();
                 } else if (tipo == 5) {
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Bilhete Desconto Progressivo");
                         logger
                                         .info("Iniciando pesquisa: Bilhete Desconto Progressivo");
-                        ECommercePO.bilhete_a_venda_grupo1
+                        EcommercePOAntigo.bilhete_a_venda_grupo1
                                         .click();
                 } else if (tipo == 6) {
 
-                        ECommercePO.barraDePesquisa
+                        EcommercePOAntigo.barraDePesquisa
                                         .sendKeys("Bilhete quantidade mínima");
                         logger
                                         .info("Iniciando pesquisa: Bilhete quantidade mínima");
@@ -140,15 +140,15 @@ public class FundacaoBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        ECommercePO.bilhete_a_venda_grupo1
+                        EcommercePOAntigo.bilhete_a_venda_grupo1
                                         .click();
                 }
                 logger
                                 .info("Selecionando mês...");
                 wait
-                                .until(d -> ECommercePO.ProximoMes
+                                .until(d -> EcommercePOAntigo.ProximoMes
                                                 .isDisplayed());
-                ECommercePO.ProximoMes
+                EcommercePOAntigo.ProximoMes
                                 .click();
 
                 try {
@@ -161,9 +161,9 @@ public class FundacaoBuilder {
                 logger
                                 .info("Selecionando dia...");
                 wait
-                                .until(d -> ECommercePO.dia
+                                .until(d -> EcommercePOAntigo.dia
                                                 .isDisplayed());
-                ECommercePO.dia
+                EcommercePOAntigo.dia
                                 .click();
 
                 String diaInicio = null;
@@ -179,29 +179,29 @@ public class FundacaoBuilder {
                 if (tipo == 2) {
                         logger
                                         .info("Selecionando data fim da visita...");
-                        ECommercePO.diaFim
+                        EcommercePOAntigo.diaFim
                                         .click();
 
                         wait
-                                        .until(d -> ECommercePO.DiaInicio
+                                        .until(d -> EcommercePOAntigo.DiaInicio
                                                         .isDisplayed());
-                        diaInicio = ECommercePO.DiaInicio
+                        diaInicio = EcommercePOAntigo.DiaInicio
                                         .getText();
                         DIAINICIO = Integer
                                         .parseInt(diaInicio);
-                        diaTermino = ECommercePO.DiaTermino
+                        diaTermino = EcommercePOAntigo.DiaTermino
                                         .getText();
                         DIATERMINO = Integer
                                         .parseInt(diaTermino);
-                        MesInicio = ECommercePO.MesInicio
+                        MesInicio = EcommercePOAntigo.MesInicio
                                         .getText();
-                        MesTermino = ECommercePO.MesTermino
+                        MesTermino = EcommercePOAntigo.MesTermino
                                         .getText();
-                        AnoInicio = ECommercePO.AnoInicio
+                        AnoInicio = EcommercePOAntigo.AnoInicio
                                         .getText();
                         ANOINICIO = Integer
                                         .parseInt(AnoInicio);
-                        AnoTermino = ECommercePO.AnoTermino
+                        AnoTermino = EcommercePOAntigo.AnoTermino
                                         .getText();
                         ANOTERMINO = Integer
                                         .parseInt(AnoTermino);
@@ -209,30 +209,30 @@ public class FundacaoBuilder {
                 logger
                                 .info("Selecionando local de embarque...");
                 wait
-                                .until(d -> ECommercePO.localEmbarque
+                                .until(d -> EcommercePOAntigo.localEmbarque
                                                 .isDisplayed());
-                ECommercePO.localEmbarque
+                EcommercePOAntigo.localEmbarque
                                 .click();
-                ECommercePO.localEmbarqueConfirmar
+                EcommercePOAntigo.localEmbarqueConfirmar
                                 .click();
 
                 if (tipo == 3) {
                         logger
                                         .info("Colocando código do credenciado...");
                         wait
-                                        .until(d -> ECommercePO.CódigoCredenciado
+                                        .until(d -> EcommercePOAntigo.CódigoCredenciado
                                                         .isDisplayed());
-                        ECommercePO.CódigoCredenciado
+                        EcommercePOAntigo.CódigoCredenciado
                                         .click();
 
-                        ECommercePO.ColocarCódigoCredenciado
+                        EcommercePOAntigo.ColocarCódigoCredenciado
                                         .sendKeys("121525");
-                        ECommercePO.ConfirmarCredenciado
+                        EcommercePOAntigo.ConfirmarCredenciado
                                         .click();
                         wait
-                                        .until(d -> ECommercePO.ConfirmarCredenciado
+                                        .until(d -> EcommercePOAntigo.ConfirmarCredenciado
                                                         .isDisplayed());
-                        ECommercePO.ConfirmarCredenciado
+                        EcommercePOAntigo.ConfirmarCredenciado
                                         .click();
                         try {
                                 Thread
@@ -244,16 +244,16 @@ public class FundacaoBuilder {
                         logger
                                         .info("Escolhendo horario...");
                         wait
-                                        .until(d -> ECommercePO.horarioCredenciado
+                                        .until(d -> EcommercePOAntigo.horarioCredenciado
                                                         .isEnabled());
-                        ECommercePO.horarioCredenciado
+                        EcommercePOAntigo.horarioCredenciado
                                         .click();
                         logger
                                         .info("Escolhendo sessão");
                         wait
-                                        .until(d -> ECommercePO.sessaoConfirmar
+                                        .until(d -> EcommercePOAntigo.sessaoConfirmar
                                                         .isEnabled());
-                        ECommercePO.sessaoConfirmar
+                        EcommercePOAntigo.sessaoConfirmar
                                         .click();
 
                 } else {
@@ -267,20 +267,20 @@ public class FundacaoBuilder {
                         logger
                                         .info("Escolhendo horario...");
                         wait
-                                        .until(d -> ECommercePO.horario
+                                        .until(d -> EcommercePOAntigo.horario
                                                         .isDisplayed());
-                        ECommercePO.horario
+                        EcommercePOAntigo.horario
                                         .click();
-                        ECommercePO.confirmarHorario4opcoes
+                        EcommercePOAntigo.confirmarHorario4opcoes
                                         .click();
                         logger
                                         .info("Escolhendo sessao...");
-                        ECommercePO.sessao
+                        EcommercePOAntigo.sessao
                                         .click();
                         wait
-                                        .until(d -> ECommercePO.sessaoConfirmar
+                                        .until(d -> EcommercePOAntigo.sessaoConfirmar
                                                         .isEnabled());
-                        ECommercePO.sessaoConfirmar
+                        EcommercePOAntigo.sessaoConfirmar
                                         .click();
                 }
 
@@ -292,27 +292,27 @@ public class FundacaoBuilder {
                                         .printStackTrace();
                 }
                 wait
-                                .until(d -> ECommercePO.proximo
+                                .until(d -> EcommercePOAntigo.proximo
                                                 .isEnabled());
-                ECommercePO.proximo
+                EcommercePOAntigo.proximo
                                 .click();
                 logger
                                 .info("Adicionando categoria...");
                 wait
-                                .until(d -> ECommercePO.adicionarCategoria
+                                .until(d -> EcommercePOAntigo.adicionarCategoria
                                                 .isDisplayed());
-                ECommercePO.adicionarCategoria
+                EcommercePOAntigo.adicionarCategoria
                                 .click();
                 logger
                                 .info("Escolhendo pais de origem incorreto...");
-                ECommercePO.selecionarPaisOrigem
+                EcommercePOAntigo.selecionarPaisOrigem
                                 .click();
 
-                ECommercePO
+                EcommercePOAntigo
                                 .Pais(14, driver);
                 logger
                                 .info("Adicionando no carrinho...");
-                ECommercePO.adicionarAoCarrinho
+                EcommercePOAntigo.adicionarAoCarrinho
                                 .click();
 
                 try {
@@ -322,7 +322,7 @@ public class FundacaoBuilder {
                         e
                                         .printStackTrace();
                 }
-                String erro = ECommercePO.pegarMensagemErro
+                String erro = EcommercePOAntigo.pegarMensagemErro
                                 .getText();
                 double valorsomado = 0.0;
                 logger
@@ -330,7 +330,7 @@ public class FundacaoBuilder {
                 if (erro != null) {
                         logger
                                         .info("Selecioanndo pais correto...");
-                        ECommercePO.selecionarPaisOrigem
+                        EcommercePOAntigo.selecionarPaisOrigem
                                         .click();
                         try {
                                 Thread
@@ -339,22 +339,22 @@ public class FundacaoBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        ECommercePO
+                        EcommercePOAntigo
                                         .Pais(11, driver);
                         logger
                                         .info("Adicionando estado...");
-                        ECommercePO.estado
+                        EcommercePOAntigo.estado
                                         .click();
-                        ECommercePO.acre
+                        EcommercePOAntigo.acre
                                         .click();
 
                         if (tipo == 5) {
                                 logger
                                                 .info("Verificando valor do bilhete com desconto...");
                                 wait
-                                                .until(d -> ECommercePO.valorTotal_nasCategorias
+                                                .until(d -> EcommercePOAntigo.valorTotal_nasCategorias
                                                                 .isDisplayed());
-                                StringTokenizer Result = new StringTokenizer(ECommercePO.valorTotal_nasCategorias
+                                StringTokenizer Result = new StringTokenizer(EcommercePOAntigo.valorTotal_nasCategorias
                                                 .getText());
                                 String valortotal = Result
                                                 .nextToken(" ");
@@ -366,12 +366,12 @@ public class FundacaoBuilder {
                                                 .valueOf(valortotal);
 
                                 if (valorsomado == 10.0) {
-                                        ECommercePO.adicionarCategoria
+                                        EcommercePOAntigo.adicionarCategoria
                                                         .click();
                                         wait
-                                                        .until(d -> ECommercePO.valorDesconto
+                                                        .until(d -> EcommercePOAntigo.valorDesconto
                                                                         .isDisplayed());
-                                        Result = new StringTokenizer(ECommercePO.valorDesconto
+                                        Result = new StringTokenizer(EcommercePOAntigo.valorDesconto
                                                         .getText());
                                         valortotal = Result
                                                         .nextToken(" ");
@@ -383,18 +383,18 @@ public class FundacaoBuilder {
                                                         .valueOf(valortotal);
 
                                         if (valorsomado == 10.0) {
-                                                ECommercePO.tirarcategoria1
+                                                EcommercePOAntigo.tirarcategoria1
                                                                 .click();
-                                                ECommercePO.tirarcategoria1
+                                                EcommercePOAntigo.tirarcategoria1
                                                                 .click();
-                                                ECommercePO.adicionarCategoria2Desconto
+                                                EcommercePOAntigo.adicionarCategoria2Desconto
                                                                 .click();
-                                                ECommercePO.adicionarCategoria2Desconto
+                                                EcommercePOAntigo.adicionarCategoria2Desconto
                                                                 .click();
                                                 wait
-                                                                .until(d -> ECommercePO.valorDesconto
+                                                                .until(d -> EcommercePOAntigo.valorDesconto
                                                                                 .isDisplayed());
-                                                Result = new StringTokenizer(ECommercePO.valorDesconto
+                                                Result = new StringTokenizer(EcommercePOAntigo.valorDesconto
                                                                 .getText());
                                                 valortotal = Result
                                                                 .nextToken(" ");
@@ -406,15 +406,15 @@ public class FundacaoBuilder {
                                                                 .valueOf(valortotal);
 
                                                 if (valorsomado == 5.0) {
-                                                        ECommercePO.tirarcategoria2
+                                                        EcommercePOAntigo.tirarcategoria2
                                                                         .click();
-                                                        ECommercePO.adicionarCategoria
+                                                        EcommercePOAntigo.adicionarCategoria
                                                                         .click();
 
                                                         wait
-                                                                        .until(d -> ECommercePO.valorDesconto
+                                                                        .until(d -> EcommercePOAntigo.valorDesconto
                                                                                         .isDisplayed());
-                                                        Result = new StringTokenizer(ECommercePO.valorDesconto
+                                                        Result = new StringTokenizer(EcommercePOAntigo.valorDesconto
                                                                         .getText());
                                                         valortotal = Result
                                                                         .nextToken(" ");
@@ -426,7 +426,7 @@ public class FundacaoBuilder {
                                                                         .valueOf(valortotal);
 
                                                         if (valorsomado == 7.50) {
-                                                                ECommercePO.adicionarAoCarrinho
+                                                                EcommercePOAntigo.adicionarAoCarrinho
                                                                                 .click();
 
                                                         } else {
@@ -448,77 +448,77 @@ public class FundacaoBuilder {
                         } else if (tipo == 6) {
                                 logger
                                                 .info("Verifica se é possivel adicionar ao carrinho sem ter uma categoria pagante..");
-                                ECommercePO.tirarcategoria1
+                                EcommercePOAntigo.tirarcategoria1
                                                 .click();
 
                                 boolean possivel = true;
                                 try {
-                                        possivel = ECommercePO.adicionarAoCarrinho
+                                        possivel = EcommercePOAntigo.adicionarAoCarrinho
                                                         .isEnabled();
                                 } catch (Exception e) {
                                 }
 
                                 if (possivel == false) {
 
-                                        ECommercePO.adicionarCategoria
+                                        EcommercePOAntigo.adicionarCategoria
                                                         .click();
-                                        ECommercePO.adicionarAoCarrinho
+                                        EcommercePOAntigo.adicionarAoCarrinho
                                                         .click();
                                 }
                         } else {
-                                ECommercePO.adicionarAoCarrinho
+                                EcommercePOAntigo.adicionarAoCarrinho
                                                 .click();
                         }
                 }
                 logger
                                 .info("Adicionando no carrinho...");
                 wait
-                                .until(d -> ECommercePO.nomeUsuario
+                                .until(d -> EcommercePOAntigo.nomeUsuario
                                                 .isDisplayed());
                 logger
                                 .info("Informando os dados dos visitantes...");
-                ECommercePO
+                EcommercePOAntigo
                                 .Nomeusuario(1, 1, "Gustavo Zanotto", driver);
-                ECommercePO.tipodocumento
+                EcommercePOAntigo.tipodocumento
                                 .click();
                 wait
-                                .until(d -> ECommercePO.outros
+                                .until(d -> EcommercePOAntigo.outros
                                                 .isDisplayed());
-                ECommercePO.outros
+                EcommercePOAntigo.outros
                                 .click();
 
-                ECommercePO
+                EcommercePOAntigo
                                 .valorDocumento(1, 1, "123456789", driver);
 
                 if (tipo == 5) {
-                        ECommercePO
+                        EcommercePOAntigo
                                         .Nomeusuario(2, 1, "Marcelo Leopoldo ", driver);
-                        ECommercePO
+                        EcommercePOAntigo
                                         .tipoDocumento(2, 1, driver);
                         wait
-                                        .until(d -> ECommercePO.outros
+                                        .until(d -> EcommercePOAntigo.outros
                                                         .isDisplayed());
-                        ECommercePO.outros
+                        EcommercePOAntigo.outros
                                         .click();
 
-                        ECommercePO
+                        EcommercePOAntigo
                                         .valorDocumento(2, 1, "987654321", driver);
                 } else if (tipo == 6) {
-                        ECommercePO
+                        EcommercePOAntigo
                                         .Nomeusuario(1, 2, "Marcelo Leopoldo ", driver);
-                        ECommercePO
+                        EcommercePOAntigo
                                         .tipoDocumento(1, 2, driver);
                         wait
-                                        .until(d -> ECommercePO.outros
+                                        .until(d -> EcommercePOAntigo.outros
                                                         .isDisplayed());
-                        ECommercePO.outros
+                        EcommercePOAntigo.outros
                                         .click();
 
-                        ECommercePO
+                        EcommercePOAntigo
                                         .valorDocumento(1, 2, "987654321", driver);
                 }
 
-                ECommercePO.confirmardadosusuario
+                EcommercePOAntigo.confirmardadosusuario
                                 .click();
 
                 Double valor1 = 0.0;
@@ -528,7 +528,7 @@ public class FundacaoBuilder {
                 try {
                         Thread
                                         .sleep(3000);
-                        logado = ECommercePO.finalizarPedido
+                        logado = EcommercePOAntigo.finalizarPedido
                                         .isDisplayed();
                 } catch (Exception e) {
 
@@ -538,19 +538,19 @@ public class FundacaoBuilder {
                 if (tipo == 4) {
                         if (logado) {
                                 wait
-                                                .until(d -> ECommercePO.finalizarPedido
+                                                .until(d -> EcommercePOAntigo.finalizarPedido
                                                                 .isDisplayed());
-                                resulBilhete1 = new StringTokenizer(ECommercePO
+                                resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                                 .ValorBilhete_1(2, driver));
-                                resulBilhete2 = new StringTokenizer(ECommercePO
+                                resulBilhete2 = new StringTokenizer(EcommercePOAntigo
                                                 .ValorBilhete_2_vinculado(2, driver));
                         } else {
                                 wait
-                                                .until(d -> ECommercePO.registrarEfinalizarPedido
+                                                .until(d -> EcommercePOAntigo.registrarEfinalizarPedido
                                                                 .isDisplayed());
-                                resulBilhete1 = new StringTokenizer(ECommercePO
+                                resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                                 .ValorBilhete_1(1, driver));
-                                resulBilhete2 = new StringTokenizer(ECommercePO
+                                resulBilhete2 = new StringTokenizer(EcommercePOAntigo
                                                 .ValorBilhete_2_vinculado(1, driver));
                         }
 
@@ -576,15 +576,15 @@ public class FundacaoBuilder {
 
                         if (logado) {
                                 wait
-                                                .until(d -> ECommercePO.finalizarPedido
+                                                .until(d -> EcommercePOAntigo.finalizarPedido
                                                                 .isDisplayed());
-                                resulBilhete1 = new StringTokenizer(ECommercePO
+                                resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                                 .valorTotalDoBilhete(3, driver));
                         } else {
                                 wait
-                                                .until(d -> ECommercePO.valorSomado
+                                                .until(d -> EcommercePOAntigo.valorSomado
                                                                 .isDisplayed());
-                                resulBilhete1 = new StringTokenizer(ECommercePO.valorSomado
+                                resulBilhete1 = new StringTokenizer(EcommercePOAntigo.valorSomado
                                                 .getText());
                         }
 
@@ -608,24 +608,24 @@ public class FundacaoBuilder {
                         } else {
                                 logger
                                                 .info("Logando na conta do usuario...");
-                                ECommercePO.registrarEfinalizarPedido
+                                EcommercePOAntigo.registrarEfinalizarPedido
                                                 .click();
                                 wait
-                                                .until(d -> ECommercePO.Email_ecommerce
+                                                .until(d -> EcommercePOAntigo.Email_ecommerce
                                                                 .isDisplayed());
-                                ECommercePO.Email_ecommerce
+                                EcommercePOAntigo.Email_ecommerce
                                                 .sendKeys(email_usuario);
-                                ECommercePO.senha_ecommerce
+                                EcommercePOAntigo.senha_ecommerce
                                                 .sendKeys(senha_usuario);
-                                ECommercePO.Logar
+                                EcommercePOAntigo.Logar
                                                 .click();
                         }
                         logger
                                         .info("Finalizar pedido...");
                         wait
-                                        .until(d -> ECommercePO.finalizarPedido
+                                        .until(d -> EcommercePOAntigo.finalizarPedido
                                                         .isDisplayed());
-                        ECommercePO.finalizarPedido
+                        EcommercePOAntigo.finalizarPedido
                                         .click();
                         int MESTERMINO = 13;
                         int MESINICIO = 13;
@@ -646,9 +646,9 @@ public class FundacaoBuilder {
                         int ANO2 = 13;
                         if (tipo == 2) {
                                 wait
-                                                .until(d -> ECommercePO.datas
+                                                .until(d -> EcommercePOAntigo.datas
                                                                 .isDisplayed());
-                                StringTokenizer datas = new StringTokenizer(ECommercePO.datas
+                                StringTokenizer datas = new StringTokenizer(EcommercePOAntigo.datas
                                                 .getText());
                                 data1 = datas
                                                 .nextToken("-");
@@ -773,25 +773,25 @@ public class FundacaoBuilder {
                                 logger
                                                 .info("Colocando dados para realizar o pagamento...");
                                 wait
-                                                .until(d -> ECommercePO.Nome_Do_Cartao
+                                                .until(d -> EcommercePOAntigo.Nome_Do_Cartao
                                                                 .isDisplayed());
 
-                                ECommercePO.Nome_Do_Cartao
+                                EcommercePOAntigo.Nome_Do_Cartao
                                                 .sendKeys(Nome_Cartao);
 
-                                ECommercePO.Numero_Cartao
+                                EcommercePOAntigo.Numero_Cartao
                                                 .sendKeys(Numero_Cartao);
 
-                                ECommercePO.Mes_Validade
+                                EcommercePOAntigo.Mes_Validade
                                                 .sendKeys(mes_validade);
 
-                                ECommercePO.codigo_segurança
+                                EcommercePOAntigo.codigo_segurança
                                                 .sendKeys(codigo_segurança);
 
-                                ECommercePO.CEP
+                                EcommercePOAntigo.CEP
                                                 .sendKeys(CEP);
 
-                                ECommercePO.Numero_Casa
+                                EcommercePOAntigo.Numero_Casa
                                                 .sendKeys(Numero_Casa);
                                 try {
                                         Thread
@@ -802,13 +802,13 @@ public class FundacaoBuilder {
                                 }
                                 logger
                                                 .info("Finalizar compra...");
-                                ECommercePO.finalizarCompra
+                                EcommercePOAntigo.finalizarCompra
                                                 .click();
 
                                 wait
-                                                .until(d -> ECommercePO.confirmarCompra
+                                                .until(d -> EcommercePOAntigo.confirmarCompra
                                                                 .isDisplayed());
-                                String mensagem = ECommercePO.confirmarCompra
+                                String mensagem = EcommercePOAntigo.confirmarCompra
                                                 .getText();
                                 assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
                                                 mensagem);
@@ -830,8 +830,8 @@ public class FundacaoBuilder {
                 }
         }
 
-        public FundacaoBuilder(EcommercePO e) {
-                this.ECommercePO = e;
+        public FundacaoBuilder(EcommercePOAntigo e) {
+                this.EcommercePOAntigo = e;
         }
 
         public FundacaoBuilder mudarNome_Cartao(String nome) {
