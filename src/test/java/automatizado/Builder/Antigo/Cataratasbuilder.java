@@ -280,6 +280,13 @@ public class Cataratasbuilder {
 
                                         EcommercePOAntigo
                                                         .Horario(3, 1, driver);
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
                                         EcommercePOAntigo.confirmarHorario4opcoes
                                                         .click();
                                         try {
@@ -410,11 +417,9 @@ public class Cataratasbuilder {
                         if (tipo == 5) {
                                 EcommercePOAntigo.adicionarAoCarrinho_2Rec
                                                 .click();
-                                erro = "notnull";
                         } else if (tipo == 6) {
                                 EcommercePOAntigo.adicionarAoCarrinho_3Rec
                                                 .click();
-                                erro = "notnull";
                         } else {
                                 EcommercePOAntigo.adicionarAoCarrinho
                                                 .click();

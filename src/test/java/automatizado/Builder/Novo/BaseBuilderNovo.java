@@ -11,10 +11,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import automatizado.Generators.geradores;
 import automatizado.Page.EcommercePONovo;
 
-public class BaseBuilder {
+public class BaseBuilderNovo {
 
     private static final Logger logger = Logger
-            .getLogger(BaseBuilder.class
+            .getLogger(BaseBuilderNovo.class
                     .getName());
 
     private EcommercePONovo EcommercePONovo;
@@ -38,7 +38,7 @@ public class BaseBuilder {
                 .addHandler(consoleHandler);
     }
 
-    public BaseBuilder(EcommercePONovo e) {
+    public BaseBuilderNovo(EcommercePONovo e) {
         this.EcommercePONovo = e;
 }
 
@@ -65,32 +65,7 @@ public class BaseBuilder {
                         + ", Numero do cartão: " + Numero_Cartao + ", Mes de validade: " + mes_validade
                         + ", Codifo de Segurança " + codigo_segurança + "...");
 
-        EcommercePONovo.CEP
-                .sendKeys(CEP);
-
-        EcommercePONovo.Numero_Casa
-                .sendKeys(Numero_Casa);
-
-        EcommercePONovo.bandeiracartao
-                .click();
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
-        EcommercePONovo.visa
-                .click();
-        logger
-                .info("Preenchendo endereço: CEP: " + CEP + ", Numero da Casa: " + Numero_Casa + "...");
-        try {
-            Thread
-                    .sleep(1000);
-        } catch (InterruptedException e) {
-            e
-                    .printStackTrace();
-        }
+        
 
         EcommercePONovo.finalizarCompra
                 .click();
