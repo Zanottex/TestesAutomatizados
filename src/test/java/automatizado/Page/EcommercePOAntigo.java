@@ -549,7 +549,18 @@ public class EcommercePOAntigo extends BasePO {
         public void estado(int numero, WebDriver driver) {
                 driver
                                 .findElement(By
-                                                .xpath("/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div["+numero+"]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]"))
+                                                .xpath("/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div["
+                                                                + numero
+                                                                + "]/div/div/div/div[1]/app-coleta-pais-estado/div/div/div[2]/mat-form-field/div[1]"))
+                                .click();
+        }
+
+        public void Horario(int quantidadeDeReceitas, int section, WebDriver driver) {
+                driver
+                                .findElement(By
+                                                .xpath("/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div["
+                                                                + quantidadeDeReceitas + "]/div/div/div/div/div[1]/div["
+                                                                + section + "]/escolha-horario-vaga/div/section"))
                                 .click();
         }
 

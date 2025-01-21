@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -147,7 +149,6 @@ public class BioParquePantanal {
 
                 logger
                                 .info("Adicionando categoria ao carrinho...");
-                
 
                 EcommercePOAntigo.adicionarCategoria
                                 .click();
@@ -171,7 +172,8 @@ public class BioParquePantanal {
                                 .click();
                 EcommercePOAntigo.selecionarPaisOrigem
                                 .click();
-                EcommercePOAntigo.confirmaPaisOrigem.click();
+                EcommercePOAntigo.confirmaPaisOrigem
+                                .click();
 
                 boolean cep = false;
                 try {
@@ -191,13 +193,12 @@ public class BioParquePantanal {
                                                 .isEnabled());
                 EcommercePOAntigo.adicionarAoCarrinho
                                 .click();
-                                logger
+                logger
                                 .info("Adicionando ao carrinho...");
                 wait
                                 .until(d -> EcommercePOAntigo.nomeUsuario
                                                 .isDisplayed());
                 /* nome usuario 1 */
-                
 
                 try {
                         Thread
@@ -239,7 +240,10 @@ public class BioParquePantanal {
                                                                 .geradorCPF(),
                                                                 geradores
                                                                                 .geradorNome(),
-                                                                geradores.geradorDataNascimento_AntigoEcommerce(12,18, driver), id, "85502060", driver);
+                                                                geradores
+                                                                                .geradorDataNascimento_AntigoEcommerce(
+                                                                                                12, 18, driver),
+                                                                id, "85502060", driver);
                                 i++;
                                 /*
                                  * o numero de id do brasil na hora de selecionar o pais começa em 261 e aumenta
@@ -261,22 +265,28 @@ public class BioParquePantanal {
                                                         "23/09/2018", 2502, "85502060", driver);
 
                 } else {
-                        
+
                         EcommercePOAntigo
                                         .dadosUsuarios(1, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
-                                                                        geradores.geradorDataNascimento_AntigoEcommerce(18,99,driver), 261, "85502060", driver);
+                                                        geradores
+                                                                        .geradorDataNascimento_AntigoEcommerce(18, 99,
+                                                                                        driver),
+                                                        261, "85502060", driver);
                         EcommercePOAntigo
                                         .dadosUsuarios(2, 1, geradores
                                                         .geradorCPF(),
                                                         geradores
                                                                         .geradorNome(),
-                                                        geradores.geradorDataNascimento_AntigoEcommerce(3,12,driver), 510, "85502060", driver);
+                                                        geradores
+                                                                        .geradorDataNascimento_AntigoEcommerce(3, 12,
+                                                                                        driver),
+                                                        510, "85502060", driver);
                 }
                 logger
-                .info("Preeenchendo os dados dos visitantes...");
+                                .info("Preeenchendo os dados dos visitantes...");
                 EcommercePOAntigo.confirmardadosusuario
                                 .click();
 
@@ -290,7 +300,8 @@ public class BioParquePantanal {
 
                 }
                 logger
-                .info("Verificando se o usuario está logado...");
+                                .info("Verificando se o usuario está logado...");
+                String Captcha = null;
                 if (logado) {
 
                 } else {
@@ -313,25 +324,41 @@ public class BioParquePantanal {
                                         .click();
                         logger
                                         .info("Fazendo Login...");
+                        try {
+                                Thread
+                                                .sleep(4000);
+                                Captcha = EcommercePOAntigo.pegarMensagemErro
+                                                .getText();
+                        } catch (Exception e) {
+                        }
                 }
+                if (Captcha == null) {
+                        wait
+                                        .until(d -> EcommercePOAntigo.finalizarPedido
+                                                        .isDisplayed());
+                        EcommercePOAntigo.finalizarPedido
+                                        .click();
+                        logger
+                                        .info("Finalizando pedido...");
 
-                wait
-                                .until(d -> EcommercePOAntigo.finalizarPedido
-                                                .isDisplayed());
-                EcommercePOAntigo.finalizarPedido
-                                .click();
-                logger
-                                .info("Finalizando pedido...");
+                        wait
+                                        .until(d -> EcommercePOAntigo.confirmarCompra
+                                                        .isDisplayed());
+                        String mensagem = EcommercePOAntigo.confirmarCompra
+                                        .getText();
+                        assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
+                                        mensagem);
+                        logger
+                                        .info("Pedido finalizado com sucesso!");
+                } else
 
-                wait
-                                .until(d -> EcommercePOAntigo.confirmarCompra
-                                                .isDisplayed());
-                String mensagem = EcommercePOAntigo.confirmarCompra
-                                .getText();
-                assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                                mensagem);
-                logger
-                                .info("Pedido finalizado com sucesso!");
+                {
+                        JavascriptExecutor js = (JavascriptExecutor) driver;
+                        js
+                                        .executeScript("alert('ERRO: Captcha bloqueou o programa');");
+                        logger
+                                        .severe("ERRO: Captcha bloqueou o programa.");
+                }
 
         }
 

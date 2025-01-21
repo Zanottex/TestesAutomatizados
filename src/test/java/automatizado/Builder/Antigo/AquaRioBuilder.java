@@ -16,7 +16,7 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class AquaRioBuilder{
+public class AquaRioBuilder {
 
         private static final Logger logger = Logger
                         .getLogger(AquaRioBuilder.class
@@ -53,7 +53,7 @@ public class AquaRioBuilder{
                         EcommercePOAntigo.aceitarcookies
                                         .click();
                 } catch (Exception e) {
-                        
+
                 }
                 logger
                                 .info("Aceitando cookies...");
@@ -348,6 +348,13 @@ public class AquaRioBuilder{
                                         .Pais(24, driver);
                 }
                 if (tipo == 2) {
+                        try {
+                                Thread
+                                                .sleep(1000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
                         EcommercePOAntigo
                                         .estado(4, driver);
                         EcommercePOAntigo.acre
@@ -359,7 +366,7 @@ public class AquaRioBuilder{
                                 EcommercePOAntigo.acre
                                                 .click();
                         } catch (Exception e) {
-                                
+
                         }
 
                 } else if (tipo == 5) {
@@ -547,7 +554,7 @@ public class AquaRioBuilder{
                                 .replaceAll(",", ".");
                 valor1 = Double
                                 .valueOf(valorbilhete1);
-
+                String Captcha = null;
                 if (valor1 == 15.00) {
                         logger
                                         .info("Finalizando pedido...");
@@ -571,35 +578,52 @@ public class AquaRioBuilder{
                                                 .click();
                                 logger
                                                 .info("Fazendo Login...");
+                                try {
+                                        Thread
+                                                        .sleep(4000);
+                                        Captcha = EcommercePOAntigo.pegarMensagemErro
+                                                        .getText();
+                                } catch (Exception e) {
+                                }
                         }
+                        if (Captcha == null) {
+                                wait
+                                                .until(d -> EcommercePOAntigo.finalizarPedido
+                                                                .isDisplayed());
+                                EcommercePOAntigo.finalizarPedido
+                                                .click();
+                                logger
+                                                .info("Finalizando pedido...");
+                                // wait
+                                // .until(d -> EcommercePOAntigo.EscreverConfirmarSenha
+                                // .isDisplayed());
+                                // EcommercePOAntigo.EscreverConfirmarSenha
+                                // .sendKeys("1");
+                                // EcommercePOAntigo.botaoConfirmarSenha
+                                // .click();
 
-                        wait
-                                        .until(d -> EcommercePOAntigo.finalizarPedido
-                                                        .isDisplayed());
-                        EcommercePOAntigo.finalizarPedido
-                                        .click();
-                        logger
-                                        .info("Finalizando pedido...");
-                        // wait
-                        // .until(d -> EcommercePOAntigo.EscreverConfirmarSenha
-                        // .isDisplayed());
-                        // EcommercePOAntigo.EscreverConfirmarSenha
-                        // .sendKeys("1");
-                        // EcommercePOAntigo.botaoConfirmarSenha
-                        // .click();
+                                base
+                                                .realizarpagamento(driver);
 
-                        base.realizarpagamento(driver);
+                                wait
+                                                .until(d -> EcommercePOAntigo.confirmarCompra
+                                                                .isDisplayed());
+                                String mensagem = EcommercePOAntigo.confirmarCompra
+                                                .getText();
+                                assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
+                                                mensagem);
+                                logger
+                                                .info("Pedido finalizado com sucesso!");
+                        } else {
+                                JavascriptExecutor js = (JavascriptExecutor) driver;
+                                js
+                                                .executeScript("alert('ERRO: Captcha bloqueou o programa');");
+                                logger
+                                                .severe("ERRO: Captcha bloqueou o programa.");
+                        }
+                } else
 
-                        wait
-                                        .until(d -> EcommercePOAntigo.confirmarCompra
-                                                        .isDisplayed());
-                        String mensagem = EcommercePOAntigo.confirmarCompra
-                                        .getText();
-                        assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                                        mensagem);
-                        logger
-                                        .info("Pedido finalizado com sucesso!");
-                } else {
+                {
                         JavascriptExecutor js = (JavascriptExecutor) driver;
                         js
                                         .executeScript("alert('ERRO: VALOR DO BILHETE INVÁLIDO');");

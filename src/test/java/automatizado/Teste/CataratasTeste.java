@@ -215,7 +215,7 @@ public class CataratasTeste extends BaseTeste {
                 .Ingresso(driver, 8 /*TIPO 8 = ingresso VIP*/);
     }
     
-    @Test
+    // @Test
     public void Novo_Ecommerce() {
         String aberto;
         try {

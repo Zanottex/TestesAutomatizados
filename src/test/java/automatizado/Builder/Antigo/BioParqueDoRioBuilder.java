@@ -186,6 +186,9 @@ public class BioParqueDoRioBuilder {
                                                 e
                                                                 .printStackTrace();
                                         }
+                                        wait
+                                                        .until(d -> EcommercePOAntigo.confirmarHorario4opcoes
+                                                                        .isDisplayed());
                                         EcommercePOAntigo.confirmarHorario4opcoes
                                                         .click();
                                         try {
@@ -277,6 +280,9 @@ public class BioParqueDoRioBuilder {
                                         .click();
 
                 } else {
+                        wait
+                                        .until(d -> EcommercePOAntigo.adicionarCategoria2
+                                                        .isEnabled());
                         EcommercePOAntigo.adicionarCategoria2
                                         .click();
 
@@ -341,7 +347,7 @@ public class BioParqueDoRioBuilder {
                                         .click();
                 }
                 logger
-                                        .info("Verificar se o usuario ja estálogado...");
+                                .info("Verificar se o usuario ja estálogado...");
                 boolean logado = false;
                 try {
                         Thread
@@ -372,8 +378,9 @@ public class BioParqueDoRioBuilder {
                                 .replaceAll(",", ".");
                 valor1 = Double
                                 .valueOf(valorbilhete1);
-                                logger
+                logger
                                 .info("Verificando o valor do bilhete..");
+                String Captcha = null;
                 if (valor1 == 15.00) {
                         logger
                                         .info("Finalizando pedido...");
@@ -395,35 +402,49 @@ public class BioParqueDoRioBuilder {
                                                 .click();
                                 logger
                                                 .info("Fazendo Login...");
-
+                                try {
+                                        Thread
+                                                        .sleep(4000);
+                                        Captcha = EcommercePOAntigo.pegarMensagemErro
+                                                        .getText();
+                                } catch (Exception e) {
+                                }
                         }
-                        wait
-                                        .until(d -> EcommercePOAntigo.finalizarPedido
-                                                        .isDisplayed());
-                        EcommercePOAntigo.finalizarPedido
-                                        .click();
-                        logger
-                                        .info("Finalizando pedido...");
-                        // wait
-                        // .until(d -> EcommercePOAntigo.EscreverConfirmarSenha
-                        // .isDisplayed());
-                        // EcommercePOAntigo.EscreverConfirmarSenha
-                        // .sendKeys("1");
-                        // EcommercePOAntigo.botaoConfirmarSenha
-                        // .click();
+                        if (Captcha == null) {
+                                wait
+                                                .until(d -> EcommercePOAntigo.finalizarPedido
+                                                                .isDisplayed());
+                                EcommercePOAntigo.finalizarPedido
+                                                .click();
+                                logger
+                                                .info("Finalizando pedido...");
+                                // wait
+                                // .until(d -> EcommercePOAntigo.EscreverConfirmarSenha
+                                // .isDisplayed());
+                                // EcommercePOAntigo.EscreverConfirmarSenha
+                                // .sendKeys("1");
+                                // EcommercePOAntigo.botaoConfirmarSenha
+                                // .click();
 
-                        base
-                                        .realizarpagamento(driver);
+                                base
+                                                .realizarpagamento(driver);
 
-                        wait
-                                        .until(d -> EcommercePOAntigo.confirmarCompra
-                                                        .isDisplayed());
-                        String mensagem = EcommercePOAntigo.confirmarCompra
-                                        .getText();
-                        assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                                        mensagem);
-                        logger
-                                        .info("Pedido finalizado com sucesso!");
+                                wait
+                                                .until(d -> EcommercePOAntigo.confirmarCompra
+                                                                .isDisplayed());
+                                String mensagem = EcommercePOAntigo.confirmarCompra
+                                                .getText();
+                                assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
+                                                mensagem);
+                                logger
+                                                .info("Pedido finalizado com sucesso!");
+                        } else {
+                                JavascriptExecutor js = (JavascriptExecutor) driver;
+                                js
+                                                .executeScript("alert('ERRO: Captcha bloqueou o programa');");
+                                logger
+                                                .severe("ERRO: Captcha bloqueou o programa.");
+                        }
                 } else {
                         JavascriptExecutor js = (JavascriptExecutor) driver;
                         js

@@ -50,7 +50,7 @@ public class Cataratasbuilder {
                                                 .isDisplayed());
 
                 try {
-                        EcommercePOAntigo.aceitarcookies_2
+                        EcommercePOAntigo.aceitarcookies
                                         .click();
                         logger
                                         .info("Aceitando cookies...");
@@ -138,7 +138,7 @@ public class Cataratasbuilder {
 
                                 try {
                                         Thread
-                                                        .sleep(1500);
+                                                        .sleep(2000);
                                 } catch (InterruptedException e) {
                                         e
                                                         .printStackTrace();
@@ -210,11 +210,20 @@ public class Cataratasbuilder {
                                 logger
                                                 .info("Selecionando Horario...");
                                 if (i == 0) {
-                                        wait
-                                                        .until(d -> EcommercePOAntigo.horario
-                                                                        .isDisplayed());
-                                        EcommercePOAntigo.horario
-                                                        .click();
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
+                                        if (tipo == 5 || tipo == 6 || tipo == 3) {
+                                                EcommercePOAntigo
+                                                                .Horario(1, 1, driver);
+                                        } else {
+                                                EcommercePOAntigo
+                                                                .Horario(1, 2, driver);
+                                        }
                                         try {
                                                 Thread
                                                                 .sleep(1000);
@@ -237,9 +246,7 @@ public class Cataratasbuilder {
                                         EcommercePOAntigo.proximo
                                                         .click();
                                 } else if (i == 1) {
-                                        wait
-                                                        .until(d -> EcommercePOAntigo.horario2Receitas
-                                                                        .isDisplayed());
+
                                         try {
                                                 Thread
                                                                 .sleep(1000);
@@ -247,8 +254,10 @@ public class Cataratasbuilder {
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        EcommercePOAntigo.horario2Receitas
-                                                        .click();
+
+                                        EcommercePOAntigo
+                                                        .Horario(2, 1, driver);
+
                                         try {
                                                 Thread
                                                                 .sleep(1000);
@@ -268,11 +277,9 @@ public class Cataratasbuilder {
                                         EcommercePOAntigo.proximo2Receitas
                                                         .click();
                                 } else if (i == 2) {
-                                        wait
-                                                        .until(d -> EcommercePOAntigo.horario3Receitas
-                                                                        .isDisplayed());
-                                        EcommercePOAntigo.horario3Receitas
-                                                        .click();
+
+                                        EcommercePOAntigo
+                                                        .Horario(3, 1, driver);
                                         EcommercePOAntigo.confirmarHorario4opcoes
                                                         .click();
                                         try {
@@ -330,10 +337,14 @@ public class Cataratasbuilder {
                                                 .click();
                                 EcommercePOAntigo
                                                 .Pais(24, driver);
-                                EcommercePOAntigo.estado
-                                                .click();
-                                EcommercePOAntigo.acre
-                                                .click();
+                                try {
+                                        EcommercePOAntigo.estado
+                                                        .click();
+                                        EcommercePOAntigo.acre
+                                                        .click();
+                                } catch (Exception e) {
+                                }
+
                         } else if (tipo == 5) {
                                 EcommercePOAntigo.selecionarPaisOrigem_2Rec
                                                 .click();
@@ -346,10 +357,15 @@ public class Cataratasbuilder {
                                         e
                                                         .printStackTrace();
                                 }
-                                EcommercePOAntigo
-                                                .estado(3, driver);
-                                EcommercePOAntigo.acre
-                                                .click();
+                                try {
+                                        EcommercePOAntigo
+                                                        .estado(3, driver);
+                                        EcommercePOAntigo.acre
+                                                        .click();
+                                } catch (Exception e) {
+
+                                }
+
                         } else if (tipo == 6) {
                                 EcommercePOAntigo.selecionarPaisOrigem_3Rec
                                                 .click();
@@ -593,6 +609,7 @@ public class Cataratasbuilder {
                                 logger
                                                 .info("Verificando o valor dos bilhetes...");
 
+                                String Captcha = null;
                                 if (valor1 == 10.00) {
                                         if (logado) {
 
@@ -616,45 +633,63 @@ public class Cataratasbuilder {
                                                                 .click();
                                                 logger
                                                                 .info("Fazendo Login...");
+
+                                                try {
+                                                        Thread
+                                                                        .sleep(4000);
+                                                        Captcha = EcommercePOAntigo.pegarMensagemErro
+                                                                        .getText();
+                                                } catch (Exception e) {
+                                                }
+
                                         }
 
-                                        wait
-                                                        .until(d -> EcommercePOAntigo.finalizarPedido
-                                                                        .isDisplayed());
-                                        EcommercePOAntigo.finalizarPedido
-                                                        .click();
-                                        logger
-                                                        .info("Finalizando pedido...");
+                                        if (Captcha == null) {
 
-                                        if (tipo == 4) {
                                                 wait
-                                                                .until(d -> EcommercePOAntigo.aceitar_termos
+                                                                .until(d -> EcommercePOAntigo.finalizarPedido
                                                                                 .isDisplayed());
-                                                EcommercePOAntigo.aceitar_termos
+                                                EcommercePOAntigo.finalizarPedido
                                                                 .click();
-                                                EcommercePOAntigo.continuar_termos
-                                                                .click();
+                                                logger
+                                                                .info("Finalizando pedido...");
+                                                if (tipo == 4) {
+                                                        wait
+                                                                        .until(d -> EcommercePOAntigo.aceitar_termos
+                                                                                        .isDisplayed());
+                                                        EcommercePOAntigo.aceitar_termos
+                                                                        .click();
+                                                        EcommercePOAntigo.continuar_termos
+                                                                        .click();
+                                                }
+
+                                                // wait
+                                                // .until(d -> EcommercePOAntigo.EscreverConfirmarSenha
+                                                // .isDisplayed());
+                                                // EcommercePOAntigo.EscreverConfirmarSenha
+                                                // .sendKeys("1");
+                                                // EcommercePOAntigo.botaoConfirmarSenha
+                                                // .click();
+
+                                                base
+                                                                .realizarpagamento(driver);
+
+                                                wait
+                                                                .until(d -> EcommercePOAntigo.confirmarCompra
+                                                                                .isDisplayed());
+                                                String mensagem = EcommercePOAntigo.confirmarCompra
+                                                                .getText();
+                                                assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
+                                                                mensagem);
+                                                logger
+                                                                .info("Pedido finalizado com sucesso!");
+                                        } else {
+                                                JavascriptExecutor js = (JavascriptExecutor) driver;
+                                                js
+                                                                .executeScript("alert('ERRO: Bloqueio de Captcha');");
+                                                logger
+                                                                .severe("ERRO: Captcha bloqueou o programa.");
                                         }
-                                        // wait
-                                        // .until(d -> EcommercePOAntigo.EscreverConfirmarSenha
-                                        // .isDisplayed());
-                                        // EcommercePOAntigo.EscreverConfirmarSenha
-                                        // .sendKeys("1");
-                                        // EcommercePOAntigo.botaoConfirmarSenha
-                                        // .click();
-
-                                        base
-                                                        .realizarpagamento(driver);
-
-                                        wait
-                                                        .until(d -> EcommercePOAntigo.confirmarCompra
-                                                                        .isDisplayed());
-                                        String mensagem = EcommercePOAntigo.confirmarCompra
-                                                        .getText();
-                                        assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                                                        mensagem);
-                                        logger
-                                                        .info("Pedido finalizado com sucesso!");
                                 } else {
                                         JavascriptExecutor js = (JavascriptExecutor) driver;
                                         js

@@ -236,7 +236,7 @@ public class AguasCorrentesBuilder {
 
                 logger
                                 .info("Verificando os preços dos bilhetes.");
-                
+                String Captcha = null; 
                 if (valor1 == 17.0 || valor1 == 120.0) {
                         if (logado) {
 
@@ -254,37 +254,54 @@ public class AguasCorrentesBuilder {
                                                 .info("Logando na conta do usuario.");
                                 EcommercePOAntigo.Logar
                                                 .click();
-                                
+                                try {
+                                        Thread
+                                                        .sleep(4000);
+                                        Captcha = EcommercePOAntigo.pegarMensagemErro
+                                                        .getText();
+                                } catch (Exception e) {
+                                }
                         }
-wait
+                        if (Captcha == null) {
+
+                                wait
                                                 .until(d -> EcommercePOAntigo.aceitar_termos_finalizar_pedido
                                                                 .isDisplayed());
                                 EcommercePOAntigo.aceitar_termos_finalizar_pedido
                                                 .click();
-                        logger
-                                        .info("Aceitando termos e condições.");
+                                logger
+                                                .info("Aceitando termos e condições.");
 
-                        wait
-                                        .until(d -> EcommercePOAntigo.finalizarPedido
-                                                        .isDisplayed());
-                        EcommercePOAntigo.finalizarPedido
-                                        .click();
-                        logger
-                                        .info("Finalizando pedido.");
+                                wait
+                                                .until(d -> EcommercePOAntigo.finalizarPedido
+                                                                .isDisplayed());
+                                EcommercePOAntigo.finalizarPedido
+                                                .click();
+                                logger
+                                                .info("Finalizando pedido.");
 
-                        base
-                                        .realizarpagamento(driver);
+                                base
+                                                .realizarpagamento(driver);
 
-                        wait
-                                        .until(d -> EcommercePOAntigo.confirmarCompra
-                                                        .isDisplayed());
-                        String mensagem = EcommercePOAntigo.confirmarCompra
-                                        .getText();
-                        assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                                        mensagem);
+                                wait
+                                                .until(d -> EcommercePOAntigo.confirmarCompra
+                                                                .isDisplayed());
+                                String mensagem = EcommercePOAntigo.confirmarCompra
+                                                .getText();
+                                assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
+                                                mensagem);
+                                logger
+                                                .info("Confirmação de bilhete vendido.");
+                        } else {
+                                JavascriptExecutor js = (JavascriptExecutor) driver;
+                        js
+                                        .executeScript("alert('ERRO: Captcha bloqueou o programa');");
                         logger
-                                        .info("Confirmação de bilhete vendido.");
-                } else {
+                                        .severe("ERRO: Captcha bloqueou o programa.");
+                        }
+                }else
+
+        {
                         JavascriptExecutor js = (JavascriptExecutor) driver;
                         js
                                         .executeScript("alert('ERRO: VALOR DO BILHETE INVÁLIDO');");

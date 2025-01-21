@@ -601,6 +601,7 @@ public class FundacaoBuilder {
                 }
                 logger
                                 .info("Verifica o valor do bilhete...");
+                String Captcha = null;
                 if (valor1 == 10.00 || valor1 == 70.00 || valor1 == 20.00 || valorsomado == 7.50
                                 || valorsomado == 20.00) {
                         if (logado) {
@@ -619,202 +620,216 @@ public class FundacaoBuilder {
                                                 .sendKeys(senha_usuario);
                                 EcommercePOAntigo.Logar
                                                 .click();
-                        }
-                        logger
-                                        .info("Finalizar pedido...");
-                        wait
-                                        .until(d -> EcommercePOAntigo.finalizarPedido
-                                                        .isDisplayed());
-                        EcommercePOAntigo.finalizarPedido
-                                        .click();
-                        int MESTERMINO = 13;
-                        int MESINICIO = 13;
-                        String data1 = null;
-                        String resto = null;
-                        String data2 = null;
-                        String dia1 = null;
-                        int DIA1 = 13;
-                        String mes1 = null;
-                        int MES1 = 13;
-                        String ano1 = null;
-                        int ANO1 = 13;
-                        String dia2 = null;
-                        int DIA2 = 13;
-                        String mes2 = null;
-                        int MES2 = 13;
-                        String ano2 = null;
-                        int ANO2 = 13;
-                        if (tipo == 2) {
-                                wait
-                                                .until(d -> EcommercePOAntigo.datas
-                                                                .isDisplayed());
-                                StringTokenizer datas = new StringTokenizer(EcommercePOAntigo.datas
-                                                .getText());
-                                data1 = datas
-                                                .nextToken("-");
-                                resto = datas
-                                                .nextToken("-");
-                                StringTokenizer fds = new StringTokenizer(resto);
-                                data2 = fds
-                                                .nextToken(" ");
-
-                                StringTokenizer Data1 = new StringTokenizer(data1);
-                                dia1 = Data1
-                                                .nextToken("/");
-                                DIA1 = Integer
-                                                .parseInt(dia1);
-                                mes1 = Data1
-                                                .nextToken("/");
-                                MES1 = Integer
-                                                .parseInt(mes1);
-                                ano1 = Data1
-                                                .nextToken("/");
-                                ano1 = ano1
-                                                .replaceAll(" ", "");
-                                ANO1 = Integer
-                                                .parseInt(ano1);
-
-                                StringTokenizer Data2 = new StringTokenizer(data2);
-                                dia2 = Data2
-                                                .nextToken("/");
-                                DIA2 = Integer
-                                                .parseInt(dia2);
-                                mes2 = Data2
-                                                .nextToken("/");
-                                MES2 = Integer
-                                                .parseInt(mes2);
-                                ano2 = Data2
-                                                .nextToken("/");
-                                ano2 = ano2
-                                                .replaceAll(" ", "");
-                                ANO2 = Integer
-                                                .parseInt(ano2);
-
-                                if (MesInicio
-                                                .equals("Jan")) {
-                                        MESINICIO = 1;
-                                } else if (MesInicio
-                                                .equals("Feb")) {
-                                        MESINICIO = 2;
-                                } else if (MesInicio
-                                                .equals("Mar")) {
-                                        MESINICIO = 3;
-                                } else if (MesInicio
-                                                .equals("Apr")) {
-                                        MESINICIO = 4;
-                                } else if (MesInicio
-                                                .equals("May")) {
-                                        MESINICIO = 5;
-                                } else if (MesInicio
-                                                .equals("Jun")) {
-                                        MESINICIO = 6;
-                                } else if (MesInicio
-                                                .equals("Jul")) {
-                                        MESINICIO = 7;
-                                } else if (MesInicio
-                                                .equals("Ago")) {
-                                        MESINICIO = 8;
-                                } else if (MesInicio
-                                                .equals("Sep")) {
-                                        MESINICIO = 9;
-                                } else if (MesInicio
-                                                .equals("Oct")) {
-                                        MESINICIO = 10;
-                                } else if (MesInicio
-                                                .equals("Nov")) {
-                                        MESINICIO = 11;
-                                } else if (MesInicio
-                                                .equals("Dec")) {
-                                        MESINICIO = 12;
-                                }
-
-                                if (MesTermino
-                                                .equals("Jan")) {
-                                        MESTERMINO = 1;
-                                } else if (MesTermino
-                                                .equals("Feb")) {
-                                        MESTERMINO = 2;
-                                } else if (MesTermino
-                                                .equals("Mar")) {
-                                        MESTERMINO = 3;
-                                } else if (MesTermino
-                                                .equals("Apr")) {
-                                        MESTERMINO = 4;
-                                } else if (MesTermino
-                                                .equals("May")) {
-                                        MESTERMINO = 5;
-                                } else if (MesTermino
-                                                .equals("Jun")) {
-                                        MESTERMINO = 6;
-                                } else if (MesTermino
-                                                .equals("Jul")) {
-                                        MESTERMINO = 7;
-                                } else if (MesTermino
-                                                .equals("Ago")) {
-                                        MESTERMINO = 8;
-                                } else if (MesTermino
-                                                .equals("Sep")) {
-                                        MESTERMINO = 9;
-                                } else if (MesTermino
-                                                .equals("Oct")) {
-                                        MESTERMINO = 10;
-                                } else if (MesTermino
-                                                .equals("Nov")) {
-                                        MESTERMINO = 11;
-                                } else if (MesTermino
-                                                .equals("Dec")) {
-                                        MESTERMINO = 12;
-                                }
-                        }
-                        logger
-                                        .info("Verificando data de inicio e de termino da visita...");
-                        if (DIAINICIO == DIA1 && DIATERMINO == DIA2 && MESINICIO == MES1 && MESTERMINO == MES2
-                                        && ANOINICIO == ANO1 && ANOTERMINO == ANO2 || tipo != 2) {
-                                logger
-                                                .info("Colocando dados para realizar o pagamento...");
-                                wait
-                                                .until(d -> EcommercePOAntigo.Nome_Do_Cartao
-                                                                .isDisplayed());
-
-                                EcommercePOAntigo.Nome_Do_Cartao
-                                                .sendKeys(Nome_Cartao);
-
-                                EcommercePOAntigo.Numero_Cartao
-                                                .sendKeys(Numero_Cartao);
-
-                                EcommercePOAntigo.Mes_Validade
-                                                .sendKeys(mes_validade);
-
-                                EcommercePOAntigo.codigo_segurança
-                                                .sendKeys(codigo_segurança);
-
-                                EcommercePOAntigo.CEP
-                                                .sendKeys(CEP);
-
-                                EcommercePOAntigo.Numero_Casa
-                                                .sendKeys(Numero_Casa);
                                 try {
                                         Thread
-                                                        .sleep(1000);
-                                } catch (InterruptedException e) {
-                                        e
-                                                        .printStackTrace();
+                                                        .sleep(4000);
+                                        Captcha = EcommercePOAntigo.pegarMensagemErro
+                                                        .getText();
+                                } catch (Exception e) {
+                                }
+                        }
+                        if (Captcha == null) {
+                                logger
+                                                .info("Finalizar pedido...");
+                                wait
+                                                .until(d -> EcommercePOAntigo.finalizarPedido
+                                                                .isDisplayed());
+                                EcommercePOAntigo.finalizarPedido
+                                                .click();
+                                int MESTERMINO = 13;
+                                int MESINICIO = 13;
+                                String data1 = null;
+                                String resto = null;
+                                String data2 = null;
+                                String dia1 = null;
+                                int DIA1 = 13;
+                                String mes1 = null;
+                                int MES1 = 13;
+                                String ano1 = null;
+                                int ANO1 = 13;
+                                String dia2 = null;
+                                int DIA2 = 13;
+                                String mes2 = null;
+                                int MES2 = 13;
+                                String ano2 = null;
+                                int ANO2 = 13;
+                                if (tipo == 2) {
+                                        wait
+                                                        .until(d -> EcommercePOAntigo.datas
+                                                                        .isDisplayed());
+                                        StringTokenizer datas = new StringTokenizer(EcommercePOAntigo.datas
+                                                        .getText());
+                                        data1 = datas
+                                                        .nextToken("-");
+                                        resto = datas
+                                                        .nextToken("-");
+                                        StringTokenizer fds = new StringTokenizer(resto);
+                                        data2 = fds
+                                                        .nextToken(" ");
+
+                                        StringTokenizer Data1 = new StringTokenizer(data1);
+                                        dia1 = Data1
+                                                        .nextToken("/");
+                                        DIA1 = Integer
+                                                        .parseInt(dia1);
+                                        mes1 = Data1
+                                                        .nextToken("/");
+                                        MES1 = Integer
+                                                        .parseInt(mes1);
+                                        ano1 = Data1
+                                                        .nextToken("/");
+                                        ano1 = ano1
+                                                        .replaceAll(" ", "");
+                                        ANO1 = Integer
+                                                        .parseInt(ano1);
+
+                                        StringTokenizer Data2 = new StringTokenizer(data2);
+                                        dia2 = Data2
+                                                        .nextToken("/");
+                                        DIA2 = Integer
+                                                        .parseInt(dia2);
+                                        mes2 = Data2
+                                                        .nextToken("/");
+                                        MES2 = Integer
+                                                        .parseInt(mes2);
+                                        ano2 = Data2
+                                                        .nextToken("/");
+                                        ano2 = ano2
+                                                        .replaceAll(" ", "");
+                                        ANO2 = Integer
+                                                        .parseInt(ano2);
+
+                                        if (MesInicio
+                                                        .equals("Jan")) {
+                                                MESINICIO = 1;
+                                        } else if (MesInicio
+                                                        .equals("Feb")) {
+                                                MESINICIO = 2;
+                                        } else if (MesInicio
+                                                        .equals("Mar")) {
+                                                MESINICIO = 3;
+                                        } else if (MesInicio
+                                                        .equals("Apr")) {
+                                                MESINICIO = 4;
+                                        } else if (MesInicio
+                                                        .equals("May")) {
+                                                MESINICIO = 5;
+                                        } else if (MesInicio
+                                                        .equals("Jun")) {
+                                                MESINICIO = 6;
+                                        } else if (MesInicio
+                                                        .equals("Jul")) {
+                                                MESINICIO = 7;
+                                        } else if (MesInicio
+                                                        .equals("Ago")) {
+                                                MESINICIO = 8;
+                                        } else if (MesInicio
+                                                        .equals("Sep")) {
+                                                MESINICIO = 9;
+                                        } else if (MesInicio
+                                                        .equals("Oct")) {
+                                                MESINICIO = 10;
+                                        } else if (MesInicio
+                                                        .equals("Nov")) {
+                                                MESINICIO = 11;
+                                        } else if (MesInicio
+                                                        .equals("Dec")) {
+                                                MESINICIO = 12;
+                                        }
+
+                                        if (MesTermino
+                                                        .equals("Jan")) {
+                                                MESTERMINO = 1;
+                                        } else if (MesTermino
+                                                        .equals("Feb")) {
+                                                MESTERMINO = 2;
+                                        } else if (MesTermino
+                                                        .equals("Mar")) {
+                                                MESTERMINO = 3;
+                                        } else if (MesTermino
+                                                        .equals("Apr")) {
+                                                MESTERMINO = 4;
+                                        } else if (MesTermino
+                                                        .equals("May")) {
+                                                MESTERMINO = 5;
+                                        } else if (MesTermino
+                                                        .equals("Jun")) {
+                                                MESTERMINO = 6;
+                                        } else if (MesTermino
+                                                        .equals("Jul")) {
+                                                MESTERMINO = 7;
+                                        } else if (MesTermino
+                                                        .equals("Ago")) {
+                                                MESTERMINO = 8;
+                                        } else if (MesTermino
+                                                        .equals("Sep")) {
+                                                MESTERMINO = 9;
+                                        } else if (MesTermino
+                                                        .equals("Oct")) {
+                                                MESTERMINO = 10;
+                                        } else if (MesTermino
+                                                        .equals("Nov")) {
+                                                MESTERMINO = 11;
+                                        } else if (MesTermino
+                                                        .equals("Dec")) {
+                                                MESTERMINO = 12;
+                                        }
                                 }
                                 logger
-                                                .info("Finalizar compra...");
-                                EcommercePOAntigo.finalizarCompra
-                                                .click();
+                                                .info("Verificando data de inicio e de termino da visita...");
+                                if (DIAINICIO == DIA1 && DIATERMINO == DIA2 && MESINICIO == MES1 && MESTERMINO == MES2
+                                                && ANOINICIO == ANO1 && ANOTERMINO == ANO2 || tipo != 2) {
+                                        logger
+                                                        .info("Colocando dados para realizar o pagamento...");
+                                        wait
+                                                        .until(d -> EcommercePOAntigo.Nome_Do_Cartao
+                                                                        .isDisplayed());
 
-                                wait
-                                                .until(d -> EcommercePOAntigo.confirmarCompra
-                                                                .isDisplayed());
-                                String mensagem = EcommercePOAntigo.confirmarCompra
-                                                .getText();
-                                assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
-                                                mensagem);
-                                logger
-                                                .info("Compra fializada...");
+                                        EcommercePOAntigo.Nome_Do_Cartao
+                                                        .sendKeys(Nome_Cartao);
 
+                                        EcommercePOAntigo.Numero_Cartao
+                                                        .sendKeys(Numero_Cartao);
+
+                                        EcommercePOAntigo.Mes_Validade
+                                                        .sendKeys(mes_validade);
+
+                                        EcommercePOAntigo.codigo_segurança
+                                                        .sendKeys(codigo_segurança);
+
+                                        EcommercePOAntigo.CEP
+                                                        .sendKeys(CEP);
+
+                                        EcommercePOAntigo.Numero_Casa
+                                                        .sendKeys(Numero_Casa);
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
+                                        logger
+                                                        .info("Finalizar compra...");
+                                        EcommercePOAntigo.finalizarCompra
+                                                        .click();
+
+                                        wait
+                                                        .until(d -> EcommercePOAntigo.confirmarCompra
+                                                                        .isDisplayed());
+                                        String mensagem = EcommercePOAntigo.confirmarCompra
+                                                        .getText();
+                                        assertEquals("Em breve você receberá os ingressos em seu e-mail e também poderá realizar a impressão dos mesmos acessando 'Minhas Reservas'.",
+                                                        mensagem);
+                                        logger
+                                                        .info("Compra fializada...");
+                                } else {
+                                        JavascriptExecutor js = (JavascriptExecutor) driver;
+                                        js
+                                                        .executeScript("alert('ERRO: Bloqueio de Captcha');");
+                                        logger
+                                                        .severe("ERRO: Captcha bloqueou o programa.");
+                                }
                         } else {
                                 JavascriptExecutor js = (JavascriptExecutor) driver;
                                 js
