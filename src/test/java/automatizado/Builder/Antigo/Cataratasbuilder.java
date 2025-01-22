@@ -277,7 +277,13 @@ public class Cataratasbuilder {
                                         EcommercePOAntigo.proximo2Receitas
                                                         .click();
                                 } else if (i == 2) {
-
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
                                         EcommercePOAntigo
                                                         .Horario(3, 1, driver);
                                         try {

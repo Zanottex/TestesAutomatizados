@@ -400,16 +400,16 @@ public class EcommercePONovo extends BasePO {
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[2]/div[1]/div/span/span[3]")
         public WebElement valorDesconto;
 
-        @FindBy(xpath = "/html/body/app-root/app-home/main/app-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/form/mat-form-field[1]/div[1]/div/div[2]/input")
+        @FindBy(xpath = "/html/body/app-root/app-home/main/page-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/form/mat-form-field[1]/div[1]/div/div[2]/input")
         public WebElement Nome_Do_Cartao;
 
-        @FindBy(xpath = "/html/body/app-root/app-home/main/app-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/form/mat-form-field[2]/div[1]/div/div[2]/input")
+        @FindBy(xpath = "/html/body/app-root/app-home/main/page-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/form/mat-form-field[2]/div[1]/div/div[2]/input")
         public WebElement Numero_Cartao;
 
-        @FindBy(xpath = "/html/body/app-root/app-home/main/app-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/form/mat-form-field[3]/div[1]/div/div[2]/input")
+        @FindBy(xpath = "/html/body/app-root/app-home/main/page-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/form/mat-form-field[3]/div[1]/div/div[2]/input")
         public WebElement Mes_Validade;
 
-        @FindBy(xpath = "/html/body/app-root/app-home/main/app-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/form/mat-form-field[4]/div[1]/div/div[2]/input")
+        @FindBy(xpath = "/html/body/app-root/app-home/main/page-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/form/mat-form-field[4]/div[1]/div/div[2]/input")
         public WebElement codigo_segurança;
 
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/page-pagamento/div/div[4]/div/div/div[3]/mat-form-field[2]/div[1]/div/div[2]/input")
@@ -418,7 +418,7 @@ public class EcommercePONovo extends BasePO {
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/page-pagamento/div/div[4]/div/div/div[3]/mat-form-field[6]/div[1]/div/div[2]/input")
         public WebElement Numero_Casa;
 
-        @FindBy(xpath = "/html/body/app-root/app-home/main/app-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/button")
+        @FindBy(xpath = "/html/body/app-root/app-home/main/page-payment/ec-wrapper/div/div[2]/app-payment-cartao/div/button")
         public WebElement finalizarCompra;
 
         @FindBy(xpath = "/html/body/app-root/app-home/main/app-approved-purchase/ec-splash-alert/ec-wrapper/div[2]/h1")

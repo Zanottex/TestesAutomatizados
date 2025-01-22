@@ -11,7 +11,7 @@ public class BioParquePantanalTeste extends BaseTeste{
     private static EcommercePOAntigo EcommercePOAntigo;
 
      @Test
-    public void TC001_Colocar_Bilhete_Acesso(){
+    public void TC001_Bilhete_Acesso(){
         String aberto;
         try {
             aberto = driver.manage().window().getSize().toString();
@@ -33,7 +33,7 @@ public class BioParquePantanalTeste extends BaseTeste{
     }
 
     @Test
-    public void TC002_Colocar_Bilhete_Acesso_Pessoa_com_deficiência(){
+    public void TC002_Bilhete_Acesso_Pessoa_com_deficiência(){
         String aberto;
         try {
             aberto = driver.manage().window().getSize().toString();
@@ -55,7 +55,7 @@ public class BioParquePantanalTeste extends BaseTeste{
     }
 
     @Test
-    public void TC003_Colocar_Bilhete_Acesso_grupos(){
+    public void TC003_Bilhete_Acesso_grupos(){
         String aberto;
         try {
             aberto = driver.manage().window().getSize().toString();

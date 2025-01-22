@@ -76,7 +76,7 @@ public class CataratasbuilderNovo {
                         logger
                                         .info("Iniciando pesquisa: Ingresso Bike poço preto");
                         EcommercePONovo.barraDePesquisa
-                                        .sendKeys("Ingresso Bike poço preto");
+                                        .sendKeys("Ingresso bike poço preto");
                 } else if (tipo == 5) {
                         logger
                                         .info("Iniciando pesquisa: Ingresso 2 dias");
@@ -580,7 +580,7 @@ public class CataratasbuilderNovo {
                                                 }
                                                 wait
                                                                 .until(d -> EcommercePONovo.senha_ecommerce
-                                                                                .isDisplayed());
+                                                                                .isEnabled());
                                                 EcommercePONovo.senha_ecommerce
                                                                 .sendKeys(senha_usuario);
                                                 EcommercePONovo.Logar

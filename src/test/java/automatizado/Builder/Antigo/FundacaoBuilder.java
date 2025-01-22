@@ -47,6 +47,13 @@ public class FundacaoBuilder {
                                                 .isDisplayed());
                 EcommercePOAntigo.barraDePesquisa
                                 .sendKeys("Bilhete para fundação");
+                try {
+                        Thread
+                                        .sleep(1000);
+                } catch (InterruptedException e) {
+                        e
+                                        .printStackTrace();
+                }
                 EcommercePOAntigo.bilhete_a_venda_grupo1
                                 .click();
                 logger
