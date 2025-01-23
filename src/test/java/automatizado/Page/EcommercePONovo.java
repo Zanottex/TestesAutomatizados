@@ -164,7 +164,7 @@ public class EcommercePONovo extends BasePO {
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[4]/div/div/div/div[1]/div/div[2]/div[2]/button[2]")
         public WebElement adicionarCategoria2_3Rec;
 
-        @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[2]/div/div/div/div[1]/div/div[3]/div[2]/button[2]")
+        @FindBy(xpath = "/html/body/div[2]/div/div/cdk-dialog-container/app-product/div/div/div/div[2]/div/app-title-with-edit[2]/section/div[3]/div/app-escolha-categoria[3]/div/div[2]/button[2]")
         public WebElement adicionarCategoria3;
 
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[3]/div/div/div/div[1]/div/div[3]/div[2]/button[2]")
@@ -182,7 +182,7 @@ public class EcommercePONovo extends BasePO {
         @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card/div/div/mat-form-field[2]/div[1]/div/div[2]")
         public WebElement selecionarConvenio_coletaDeDados_usuario1;
 
-        @FindBy(xpath = "/html/body/div[2]/div[4]/div/div/mat-option[1]/span")
+        @FindBy(xpath = "/html/body/div[2]/div[5]/div/div/mat-option[1]")
         public WebElement primeiro_convenio;
 
         @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card[2]/div/div/mat-form-field[2]/div[1]/div/div[2]")
@@ -307,7 +307,7 @@ public class EcommercePONovo extends BasePO {
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[4]/div/div/div/div[2]/div[2]/div[2]/div/button")
         public WebElement adicionarAoCarrinho_3Rec;
 
-        @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card/div/div/mat-form-field[1]/div[1]/div/div[2]/input")
+        @FindBy(xpath = "/html/body/div[2]/div[3]/div/mat-bottom-sheet-container/app-visitors-form/div/div/div[2]/form[1]/mat-form-field/div[1]/div/div[2]/input")
         public WebElement nomeUsuario;
 
         @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card[2]/div/div/mat-form-field[1]/div[1]/div/div[2]/input")
@@ -346,7 +346,7 @@ public class EcommercePONovo extends BasePO {
         @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card/div[2]/div/mat-form-field[3]/div[1]/div/div[2]/input")
         public WebElement documento2brasileiro;
 
-        @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-actions/div/button[2]")
+        @FindBy(xpath = "/html/body/div[2]/div[3]/div/mat-bottom-sheet-container/app-visitors-form/div/button")
         public WebElement confirmardadosusuario;
 
         @FindBy(xpath = "/html/body/div[2]/div/div/mat-snack-bar-container/div/div/div/div/my-snackbar/div/div[2]/h4")
@@ -498,14 +498,11 @@ public class EcommercePONovo extends BasePO {
         public WebElement visa;
 
 
-        public void Nomeusuario(int grupo, int numero, String nome, WebDriver driver) {
+        public void Nomeusuario( int numero, String nome, WebDriver driver) {
                 driver
                                 .findElement(By
-                                                .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
-                                                                + grupo + "]/div[" + numero
-                                                                + "]/div/mat-form-field[1]/div[1]/div/div[2]/input"))
+                                                .xpath("/html/body/div[2]/div[3]/div/mat-bottom-sheet-container/app-visitors-form/div/div/div[2]/form["+numero+"]/mat-form-field[1]/div[1]/div/div[2]/input"))
                                 .sendKeys(nome);
-                ;
         }
 
         public String ValorBilhete_1(int numero, WebDriver driver) {
@@ -635,9 +632,19 @@ public class EcommercePONovo extends BasePO {
         public void ComprarIngressos(int Numero, WebDriver driver) {
                 driver
                                 .findElement(By
-                                                .xpath("/html/body/div[2]/div/div/cdk-dialog-container/app-product/div/div/div/div[2]/div/div["+Numero+"]/button"))
+                                                .xpath("/html/body/div[2]/div/div/cdk-dialog-container/app-product/div/div/div/div[2]/div/div["
+                                                                + Numero + "]/button"))
                                 .click();
         }
+
+        public void Convenio(int Numero, WebDriver driver) {
+                driver
+                                .findElement(By
+                                                .xpath("/html/body/div[2]/div[3]/div/mat-bottom-sheet-container/app-visitors-form/div/div/div[2]/form["+Numero+"]/mat-form-field[2]/div[1]/div/div[2]"))
+                                .click();
+        }
+
+        
 
         
 
@@ -665,7 +672,7 @@ public class EcommercePONovo extends BasePO {
                         WebDriver driver) {
                 Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
 
-                Nomeusuario(grupo, numero, nome, driver);
+                Nomeusuario( numero, nome, driver);
                 tipoDocumento(grupo, numero, driver);
 
                 wait

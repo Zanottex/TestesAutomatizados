@@ -3,13 +3,16 @@ package automatizado.Teste;
 import org.junit.Test;
 
 import automatizado.Builder.Antigo.AquaRioBuilder;
+import automatizado.Builder.Novo.AquaRioBuilderNovo;
 import automatizado.Page.EcommercePOAntigo;
+import automatizado.Page.EcommercePONovo;
 
 public class AquaRioTeste extends BaseTeste{
     
     private static final String URL_Ecommerce = "https://testeauto_integrada.testescard.limber.net.br/";
     /*Page Objects */
     private static EcommercePOAntigo EcommercePOAntigo;
+    private static EcommercePONovo EcommercePOnovo;
 
     @Test
     public void TC001_Bilhete_Aquario() {
@@ -186,6 +189,31 @@ public class AquaRioTeste extends BaseTeste{
 
         Aquario
                 .Ingresso(driver, 7/* TIPO 7 = bilhete museu de cera */);
+    }
+
+    @Test
+    public void Novo_Ecommerce() {
+        String aberto;
+        try {
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePOnovo = new EcommercePONovo(driver);
+        AquaRioBuilderNovo aguas = new AquaRioBuilderNovo(EcommercePOnovo);
+
+        aguas
+                .Ingresso(driver, 1 /* TIPO 2 = Bilhete 5 pessoas */);
     }
 
 }

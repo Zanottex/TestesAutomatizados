@@ -237,6 +237,6 @@ public class CataratasTeste extends BaseTeste {
         CataratasbuilderNovo cataratas = new CataratasbuilderNovo(EcommercePONovo);
 
         cataratas
-                .Ingresso(driver, 3 );
+                .Ingresso(driver, 6 );
     }
 }

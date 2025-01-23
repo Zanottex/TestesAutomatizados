@@ -24,10 +24,6 @@ public class BaseBuilderNovo {
     private String mes_validade = "12/2050";
     private String codigo_segurança = geradores
             .geradorCodigoSeguranca();
-    private String CEP = geradores
-            .geradorCEP();
-    private String Numero_Casa = geradores
-            .geradorNumeroCasa();
 
     static {
         // Configuração do handler de log para exibir logs no console
