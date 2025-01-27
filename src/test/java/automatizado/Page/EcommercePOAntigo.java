@@ -625,6 +625,15 @@ public class EcommercePOAntigo extends BasePO {
                                 .sendKeys(cep);
         }
 
+        public void Telefone_coletaDeDados( int numero, String telefone, WebDriver driver) {
+                driver
+                                .findElement(By
+                                                .xpath("/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-coleta-dados-visitante/div/mat-dialog-content/mat-card["
+                                                                + numero
+                                                                + "]/div/div/mat-form-field[5]/div[1]/div/div[2]/cellphone-input/div/input"))
+                                .sendKeys(telefone);
+        }
+
         public String Erro_ColetaDeDados(int grupo, int numero, WebDriver driver) {
                 return driver
                                 .findElement(By

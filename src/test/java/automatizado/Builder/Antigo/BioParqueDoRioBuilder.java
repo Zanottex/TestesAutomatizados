@@ -322,6 +322,12 @@ public class BioParqueDoRioBuilder {
                                         .click();
                         EcommercePOAntigo.documento
                                         .sendKeys(cpf);
+                        EcommercePOAntigo.dataNascimento(1, 1, geradores
+                                        .geradorDataNascimento_AntigoEcommerce(0, 99, driver), driver);
+                        
+
+                        EcommercePOAntigo
+                                        .Telefone_coletaDeDados(1, "46999303994", driver);
 
                         try {
                                 Thread
@@ -342,6 +348,11 @@ public class BioParqueDoRioBuilder {
                                         .click();
                         EcommercePOAntigo.documento2
                                         .sendKeys("123456789");
+                        EcommercePOAntigo
+                                        .dataNascimento(2, 1, geradores
+                                                        .geradorDataNascimento_AntigoEcommerce(0, 99, driver), driver);
+                        EcommercePOAntigo
+                                        .Telefone_coletaDeDados(2, "46999077975", driver);
 
                         EcommercePOAntigo.confirmardadosusuario
                                         .click();

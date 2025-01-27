@@ -213,7 +213,7 @@ public class AquaRioTeste extends BaseTeste{
         AquaRioBuilderNovo aguas = new AquaRioBuilderNovo(EcommercePOnovo);
 
         aguas
-                .Ingresso(driver, 1 /* TIPO 2 = Bilhete 5 pessoas */);
+                .Ingresso(driver, 4 );
     }
 
 }

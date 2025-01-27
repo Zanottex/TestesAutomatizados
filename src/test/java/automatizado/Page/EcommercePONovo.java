@@ -122,7 +122,7 @@ public class EcommercePONovo extends BasePO {
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div[3]/div/div/div/div/div[1]/div[1]/escolha-local-emb/div/section/div[2]")
         public WebElement localEmbarque3Receitas;
 
-        @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-options-list/div/div")
+        @FindBy(xpath = "/html/body/div[2]/div/div/cdk-dialog-container/app-product/div/div/div/div[2]/div/app-product-receita[2]/app-title-with-edit[2]/section/div[3]/div/button[1]")
         public WebElement localEmbarqueConfirmar;
 
         @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-dialog-container/div/div/app-options-list/div/div")
@@ -382,7 +382,7 @@ public class EcommercePONovo extends BasePO {
         @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-bottom-sheet-container/app-minha-conta/div/confirm-password/mat-card/mat-card-actions/button")
         public WebElement botaoConfirmarSenha;
 
-        @FindBy(xpath = "/html/body/app-root/app-home/main/app-my-cart/ec-wrapper/div[1]/div/ec-bilhete-carrinho-card/div/div/div[3]/div[1]/span")
+        @FindBy(xpath = "/html/body/app-root/app-home/main/app-my-cart/ec-wrapper/div[1]/div[2]/section[2]/div[2]")
         public WebElement valorBilhete1;
 
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[1]/app-bilhete-card/div/div[2]/mat-card/div[2]/div/span[2]")
@@ -588,10 +588,10 @@ public class EcommercePONovo extends BasePO {
                                 .click();
         }
 
-        public void categorias(int grupo, int numero, WebDriver driver) {
+        public void categorias(int numero, WebDriver driver) {
                 driver
                                 .findElement(By
-                                                .xpath("/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-info-bilhete/div/div/div/mat-card/mat-vertical-stepper/div["+grupo+"]/div/div/div/div[1]/div/div["+numero+"]/div[2]/button[2]"))
+                                                .xpath("/html/body/div[2]/div/div/cdk-dialog-container/app-product/div/div/div/div[2]/div/app-title-with-edit[2]/section/div[3]/div/app-escolha-categoria["+numero+"]/div/div[2]/button[2]"))
                                 .click();
         }
 

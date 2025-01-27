@@ -128,11 +128,12 @@ public class AquaRioBuilderNovo {
                         if (i == 0) {
                                 try {
                                         Thread
-                                                        .sleep(2000);
+                                                        .sleep(2500);
                                 } catch (InterruptedException e) {
                                         e
                                                         .printStackTrace();
                                 }
+
                                 EcommercePONovo
                                                 .ProximoMes(1, driver);
 
@@ -148,11 +149,6 @@ public class AquaRioBuilderNovo {
                                                 .click();
 
                         } else if (i == 1) {
-                                wait
-                                                .until(d -> EcommercePONovo.ProximoMes2Receitas
-                                                                .isDisplayed());
-                                EcommercePONovo.ProximoMes2Receitas
-                                                .click();
                                 try {
                                         Thread
                                                         .sleep(1000);
@@ -160,15 +156,30 @@ public class AquaRioBuilderNovo {
                                         e
                                                         .printStackTrace();
                                 }
-                                EcommercePONovo.dia2Receitas
-                                                .click();
+
+                                EcommercePONovo
+                                                .ProximoMes(2, driver);
+                                try {
+                                        Thread
+                                                        .sleep(1500);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
+                                EcommercePONovo
+                                                .DiaDoMes(2, driver);
 
                         } else if (i == 2) {
-                                wait
-                                                .until(d -> EcommercePONovo.ProximoMes3Receitas
-                                                                .isDisplayed());
-                                EcommercePONovo.ProximoMes3Receitas
-                                                .click();
+                                try {
+                                        Thread
+                                                        .sleep(1000);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
+
+                                EcommercePONovo
+                                                .ProximoMes(3, driver);
 
                                 try {
                                         Thread
@@ -177,11 +188,8 @@ public class AquaRioBuilderNovo {
                                         e
                                                         .printStackTrace();
                                 }
-                                wait
-                                                .until(d -> EcommercePONovo.dia3Receitas
-                                                                .isEnabled());
-                                EcommercePONovo.dia3Receitas
-                                                .click();
+                                EcommercePONovo
+                                                .DiaDoMes(3, driver);
                         }
                         try {
                                 Thread
@@ -218,16 +226,16 @@ public class AquaRioBuilderNovo {
                                         if (tipo == 4) {
                                                 logger
                                                                 .info("Selecionando local de embarque...");
-                                                wait
-                                                                .until(d -> EcommercePONovo.localEmbarque2Receitas
-                                                                                .isDisplayed());
-                                                EcommercePONovo.localEmbarque2Receitas
-                                                                .click();
+                                                try {
+                                                        Thread
+                                                                        .sleep(1000);
+                                                } catch (InterruptedException e) {
+                                                        e
+                                                                        .printStackTrace();
+                                                }
                                                 EcommercePONovo.localEmbarqueConfirmar
                                                                 .click();
-                                                wait
-                                                                .until(d -> EcommercePONovo.horario2Receitas_comLocalDeEmbarque
-                                                                                .isDisplayed());
+
                                                 try {
                                                         Thread
                                                                         .sleep(1000);
@@ -235,28 +243,20 @@ public class AquaRioBuilderNovo {
                                                         e
                                                                         .printStackTrace();
                                                 }
-                                                EcommercePONovo.horario2Receitas_comLocalDeEmbarque
-                                                                .click();
-                                                try {
-                                                        Thread
-                                                                        .sleep(1000);
-                                                } catch (InterruptedException e) {
-                                                        e
-                                                                        .printStackTrace();
-                                                }
-                                                EcommercePONovo.confirmarHorario4opcoes
-                                                                .click();
-                                                try {
-                                                        Thread
-                                                                        .sleep(1000);
-                                                } catch (InterruptedException e) {
-                                                        e
-                                                                        .printStackTrace();
-                                                }
+
+                                                EcommercePONovo
+                                                                .ConfirmarHorarios(2, 3, driver);
+                                                // EcommercePONovo.confirmarHorario4opcoes
+                                                // .click();
+                                                // try {
+                                                // Thread
+                                                // .sleep(1000);
+                                                // } catch (InterruptedException e) {
+                                                // e
+                                                // .printStackTrace();
+                                                // }
                                         } else {
-                                                wait
-                                                                .until(d -> EcommercePONovo.horario2Receitas
-                                                                                .isDisplayed());
+
                                                 try {
                                                         Thread
                                                                         .sleep(1000);
@@ -264,8 +264,10 @@ public class AquaRioBuilderNovo {
                                                         e
                                                                         .printStackTrace();
                                                 }
-                                                EcommercePONovo.horario2Receitas
-                                                                .click();
+
+                                                EcommercePONovo
+                                                                .ConfirmarHorarios(2, 2, driver);
+
                                                 try {
                                                         Thread
                                                                         .sleep(1000);
@@ -273,30 +275,10 @@ public class AquaRioBuilderNovo {
                                                         e
                                                                         .printStackTrace();
                                                 }
-                                                EcommercePONovo.confirmarHorario4opcoes
-                                                                .click();
-                                                try {
-                                                        Thread
-                                                                        .sleep(1000);
-                                                } catch (InterruptedException e) {
-                                                        e
-                                                                        .printStackTrace();
-                                                }
+
                                         }
 
-                                        wait
-                                                        .until(d -> EcommercePONovo.proximo2Receitas
-                                                                        .isEnabled());
-                                        EcommercePONovo.proximo2Receitas
-                                                        .click();
                                 } else if (i == 2) {
-                                        wait
-                                                        .until(d -> EcommercePONovo.horario3Receitas
-                                                                        .isDisplayed());
-                                        EcommercePONovo.horario3Receitas
-                                                        .click();
-                                        EcommercePONovo.confirmarHorario4opcoes
-                                                        .click();
                                         try {
                                                 Thread
                                                                 .sleep(1000);
@@ -304,8 +286,16 @@ public class AquaRioBuilderNovo {
                                                 e
                                                                 .printStackTrace();
                                         }
-                                        EcommercePONovo.proximo3Receitas
-                                                        .click();
+                                        EcommercePONovo
+                                                        .ConfirmarHorarios(3, 2, driver);
+                                        try {
+                                                Thread
+                                                                .sleep(1000);
+                                        } catch (InterruptedException e) {
+                                                e
+                                                                .printStackTrace();
+                                        }
+
                                 }
                         }
 
@@ -351,48 +341,60 @@ public class AquaRioBuilderNovo {
                 logger
                                 .info("Adicionando categoria ao carrinho...");
                 if (tipo == 3 || tipo == 4) {
-                        wait
-                                        .until(d -> EcommercePONovo.adicionarCategoria_2Rec
-                                                        .isDisplayed());
+                        try {
+                                Thread
+                                                .sleep(1000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
                         EcommercePONovo
-                                        .categorias(3, 1, driver);
+                                        .categorias(1, driver);
                 } else if (tipo == 2) {
-                        wait
-                                        .until(d -> EcommercePONovo.adicionarCategoria_3Rec
-                                                        .isDisplayed());
+                        try {
+                                Thread
+                                                .sleep(1000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
                         EcommercePONovo
-                                        .categorias(4, 1, driver);
+                                        .categorias(1, driver);
 
                 } else {
-                        wait
-                                        .until(d -> EcommercePONovo.adicionarCategoria
-                                                        .isDisplayed());
-                        EcommercePONovo.adicionarCategoria
-                                        .click();
-                        ;
+                        try {
+                                Thread
+                                                .sleep(1000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
+                        EcommercePONovo
+                                        .categorias(1, driver);
+
                 }
 
                 logger
                                 .info("Adicionando as outras categorias...");
                 if (tipo == 3 || tipo == 4) {
-                        EcommercePONovo.adicionarCategoria2_2Rec
-                                        .click();
-                        EcommercePONovo.adicionarCategoria3_2Rec
-                                        .click();
+                        EcommercePONovo
+                                        .categorias(2, driver);
+                        EcommercePONovo
+                                        .categorias(3, driver);
                 } else if (tipo == 2) {
-                        EcommercePONovo.adicionarCategoria2_3Rec
-                                        .click();
-                        EcommercePONovo.adicionarCategoria3_3Rec
-                                        .click();
+                        EcommercePONovo
+                                        .categorias(2, driver);
+                        EcommercePONovo
+                                        .categorias(3, driver);
                 } else if (tipo == 5 || tipo == 6 || tipo == 7) {
-                        EcommercePONovo.adicionarCategoria2
-                                        .click();
+                        EcommercePONovo
+                                        .categorias(2, driver);
 
                 } else {
-                        EcommercePONovo.adicionarCategoria2
-                                        .click();
-                        EcommercePONovo.adicionarCategoria3
-                                        .click();
+                        EcommercePONovo
+                                        .categorias(2, driver);
+                        EcommercePONovo
+                                        .categorias(3, driver);
                 }
                 try {
                         Thread
@@ -404,10 +406,10 @@ public class AquaRioBuilderNovo {
                 logger
                                 .info("Adicionando ao carrinho...");
                 if (tipo == 3 || tipo == 4) {
-                        EcommercePONovo.adicionarAoCarrinho_2Rec
-                                        .click();
+                        EcommercePONovo
+                                        .ComprarIngressos(7, driver);
                 } else if (tipo == 2) {
-                        EcommercePONovo.adicionarAoCarrinho_3Rec
+                        EcommercePONovo.comprarIngressos
                                         .click();
                 } else {
                         try {
@@ -568,7 +570,7 @@ public class AquaRioBuilderNovo {
                                                 .click();
                                 try {
                                         Thread
-                                                        .sleep(1000);
+                                                        .sleep(2000);
                                 } catch (InterruptedException e) {
                                         e
                                                         .printStackTrace();
@@ -576,12 +578,26 @@ public class AquaRioBuilderNovo {
                                 wait
                                                 .until(d -> EcommercePONovo.senha_ecommerce
                                                                 .isEnabled());
+                                try {
+                                        Thread
+                                                        .sleep(1000);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
                                 EcommercePONovo.senha_ecommerce
                                                 .sendKeys(senha_usuario);
                                 EcommercePONovo.Logar
                                                 .click();
                                 logger
                                                 .info("Fazendo Login...");
+                                try {
+                                        Thread
+                                                        .sleep(4000);
+                                        Captcha = EcommercePONovo.pegarMensagemErro
+                                                        .getText();
+                                } catch (Exception e) {
+                                }
                         }
                         if (Captcha == null) {
                                 wait
@@ -627,7 +643,6 @@ public class AquaRioBuilderNovo {
                 }
 
         }
-
 
         public AquaRioBuilderNovo(EcommercePONovo e) {
                 this.EcommercePONovo = e;
