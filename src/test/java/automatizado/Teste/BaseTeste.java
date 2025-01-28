@@ -12,7 +12,7 @@ import automatizado.Page.LoginPO;
 public abstract class BaseTeste {
 
     public static WebDriver driver;
-    public static final String CAMINHO_BASE = "src/test/java/automatizado/resource/chromedriverV130.0.6723.58.exe";
+    public static final String CAMINHO_BASE = "src/test/java/automatizado/resource/chromedriverV132.0.6834.110.exe";
     protected static final String URL_HOMOLOG = "https://testescard.limbersoftware.com.br/#/pages/dashboard";
     protected static final String URL_Produção = "https://card.limbersoftware.com.br/#/pages/dashboard";
 

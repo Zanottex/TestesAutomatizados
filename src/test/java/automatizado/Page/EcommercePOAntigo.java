@@ -521,9 +521,7 @@ public class EcommercePOAntigo extends BasePO {
         public String ValorBilhete_2_vinculado(int numero, WebDriver driver) {
                 return driver
                                 .findElement(By
-                                                .xpath("/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div["
-                                                                + numero
-                                                                + "]/app-bilhete-card/div/div[2]/mat-card/div[2]/div/span[2]"))
+                                                .xpath("/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[1]/app-bilhete-card/div/div[2]/mat-card/div[2]/div/span[2]"))
                                 .getText();
 
         }

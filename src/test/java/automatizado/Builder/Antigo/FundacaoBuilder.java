@@ -282,6 +282,9 @@ public class FundacaoBuilder {
                                         .click();
                         logger
                                         .info("Escolhendo sessao...");
+                        wait
+                                        .until(d -> EcommercePOAntigo.sessao
+                                                        .isEnabled());
                         EcommercePOAntigo.sessao
                                         .click();
                         wait
@@ -324,7 +327,7 @@ public class FundacaoBuilder {
 
                 try {
                         Thread
-                                        .sleep(1000);
+                                        .sleep(1500);
                 } catch (InterruptedException e) {
                         e
                                         .printStackTrace();
@@ -550,7 +553,7 @@ public class FundacaoBuilder {
                                 resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                                 .ValorBilhete_1(2, driver));
                                 resulBilhete2 = new StringTokenizer(EcommercePOAntigo
-                                                .ValorBilhete_2_vinculado(2, driver));
+                                                .ValorBilhete_2_vinculado(1, driver));
                         } else {
                                 wait
                                                 .until(d -> EcommercePOAntigo.registrarEfinalizarPedido

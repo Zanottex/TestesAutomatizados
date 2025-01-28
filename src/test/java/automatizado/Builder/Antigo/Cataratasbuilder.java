@@ -212,7 +212,7 @@ public class Cataratasbuilder {
                                 if (i == 0) {
                                         try {
                                                 Thread
-                                                                .sleep(1000);
+                                                                .sleep(2500);
                                         } catch (InterruptedException e) {
                                                 e
                                                                 .printStackTrace();
@@ -269,11 +269,14 @@ public class Cataratasbuilder {
                                                         .click();
                                         try {
                                                 Thread
-                                                                .sleep(1000);
+                                                                .sleep(2000);
                                         } catch (InterruptedException e) {
                                                 e
                                                                 .printStackTrace();
                                         }
+                                        wait
+                                                        .until(d -> EcommercePOAntigo.proximo2Receitas
+                                                                        .isDisplayed());
                                         EcommercePOAntigo.proximo2Receitas
                                                         .click();
                                 } else if (i == 2) {
@@ -297,11 +300,14 @@ public class Cataratasbuilder {
                                                         .click();
                                         try {
                                                 Thread
-                                                                .sleep(1000);
+                                                                .sleep(1500);
                                         } catch (InterruptedException e) {
                                                 e
                                                                 .printStackTrace();
                                         }
+                                        wait
+                                                        .until(d -> EcommercePOAntigo.proximo3Receitas
+                                                                        .isDisplayed());
                                         EcommercePOAntigo.proximo3Receitas
                                                         .click();
                                 }
