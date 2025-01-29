@@ -18,7 +18,6 @@ public class AguasCorrentesBuilder {
         private EcommercePOAntigo EcommercePOAntigo;
         private String email_usuario = "gustavozanotto119@gmail.com";
         private String senha_usuario = "1";
-        
 
         private static final Logger logger = Logger
                         .getLogger(AquaRioBuilder.class
@@ -50,7 +49,7 @@ public class AguasCorrentesBuilder {
                         logger
                                         .info("Aceitando os cookies.");
                 } catch (Exception e) {
-                        
+
                 }
 
                 wait
@@ -145,6 +144,13 @@ public class AguasCorrentesBuilder {
                 }
                 EcommercePOAntigo.adicionarAoCarrinhoPopUP
                                 .click();
+                try {
+                        Thread
+                                        .sleep(1000);
+                } catch (InterruptedException e) {
+                        e
+                                        .printStackTrace();
+                }
 
                 if (tipo == 1) {
                         EcommercePOAntigo.bilhete_extra_popUP_2
@@ -236,7 +242,7 @@ public class AguasCorrentesBuilder {
 
                 logger
                                 .info("Verificando os preços dos bilhetes.");
-                String Captcha = null; 
+                String Captcha = null;
                 if (valor1 == 17.0 || valor1 == 120.0) {
                         if (logado) {
 
@@ -294,14 +300,14 @@ public class AguasCorrentesBuilder {
                                                 .info("Confirmação de bilhete vendido.");
                         } else {
                                 JavascriptExecutor js = (JavascriptExecutor) driver;
-                        js
-                                        .executeScript("alert('ERRO: Captcha bloqueou o programa');");
-                        logger
-                                        .severe("ERRO: Captcha bloqueou o programa.");
+                                js
+                                                .executeScript("alert('ERRO: Captcha bloqueou o programa');");
+                                logger
+                                                .severe("ERRO: Captcha bloqueou o programa.");
                         }
-                }else
+                } else
 
-        {
+                {
                         JavascriptExecutor js = (JavascriptExecutor) driver;
                         js
                                         .executeScript("alert('ERRO: VALOR DO BILHETE INVÁLIDO');");

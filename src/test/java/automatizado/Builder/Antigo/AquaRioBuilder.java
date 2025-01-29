@@ -198,7 +198,7 @@ public class AquaRioBuilder {
                                                         .click();
                                         try {
                                                 Thread
-                                                                .sleep(1000);
+                                                                .sleep(1500);
                                         } catch (InterruptedException e) {
                                                 e
                                                                 .printStackTrace();
@@ -227,6 +227,13 @@ public class AquaRioBuilder {
                                                                                 .isDisplayed());
                                                 EcommercePOAntigo.localEmbarque2Receitas
                                                                 .click();
+                                                try {
+                                                        Thread
+                                                                        .sleep(1000);
+                                                } catch (InterruptedException e) {
+                                                        e
+                                                                        .printStackTrace();
+                                                }
                                                 EcommercePOAntigo.localEmbarqueConfirmar
                                                                 .click();
                                                 wait
@@ -234,13 +241,13 @@ public class AquaRioBuilder {
                                                                                 .isDisplayed());
                                                 try {
                                                         Thread
-                                                                        .sleep(1500);
+                                                                        .sleep(2000);
                                                 } catch (InterruptedException e) {
                                                         e
                                                                         .printStackTrace();
                                                 }
-                                                EcommercePOAntigo.horario2Receitas_comLocalDeEmbarque
-                                                                .click();
+                                                EcommercePOAntigo
+                                                                .Horario(2, 2, driver);
                                                 try {
                                                         Thread
                                                                         .sleep(1000);
@@ -350,7 +357,7 @@ public class AquaRioBuilder {
                 if (tipo == 2) {
                         try {
                                 Thread
-                                                .sleep(1000);
+                                                .sleep(2000);
                         } catch (InterruptedException e) {
                                 e
                                                 .printStackTrace();
@@ -419,7 +426,7 @@ public class AquaRioBuilder {
                 }
                 try {
                         Thread
-                                        .sleep(1000);
+                                        .sleep(1500);
                 } catch (InterruptedException e) {
                         e
                                         .printStackTrace();

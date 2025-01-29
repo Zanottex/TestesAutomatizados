@@ -170,8 +170,7 @@ public class BioParquePantanal {
 
                 EcommercePOAntigo.adicionarCategoria2
                                 .click();
-                EcommercePOAntigo.selecionarPaisOrigem
-                                .click();
+                EcommercePOAntigo.selecionarPaisOrigem.click();
                 EcommercePOAntigo.confirmaPaisOrigem
                                 .click();
 
