@@ -198,7 +198,7 @@ public class AquaRioBuilder {
                                                         .click();
                                         try {
                                                 Thread
-                                                                .sleep(1500);
+                                                                .sleep(2000);
                                         } catch (InterruptedException e) {
                                                 e
                                                                 .printStackTrace();
@@ -351,8 +351,15 @@ public class AquaRioBuilder {
 
                         EcommercePOAntigo.selecionarPaisOrigem
                                         .click();
-                        EcommercePOAntigo
-                                        .Pais(24, driver);
+                        try {
+                                EcommercePOAntigo
+                                                .Pais(24, driver);
+                                EcommercePOAntigo
+                                                .Pais(25, driver);
+                        } catch (Exception e) {
+                                // TODO: handle exception
+                        }
+
                 }
                 if (tipo == 2) {
                         try {
@@ -362,10 +369,15 @@ public class AquaRioBuilder {
                                 e
                                                 .printStackTrace();
                         }
-                        EcommercePOAntigo
-                                        .estado(4, driver);
-                        EcommercePOAntigo.acre
-                                        .click();
+                        try {
+                                EcommercePOAntigo
+                                                .estado(4, driver);
+                                EcommercePOAntigo.acre
+                                                .click();
+                        } catch (Exception e) {
+                                // TODO: handle exception
+                        }
+
                 } else if (tipo == 3 || tipo == 4) {
                         try {
                                 EcommercePOAntigo

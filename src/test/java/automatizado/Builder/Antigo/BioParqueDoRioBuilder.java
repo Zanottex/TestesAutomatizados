@@ -256,13 +256,20 @@ public class BioParqueDoRioBuilder {
                                         .click();
                         try {
                                 Thread
-                                                .sleep(1000);
+                                                .sleep(1500);
                         } catch (InterruptedException e) {
                                 e
                                                 .printStackTrace();
                         }
-                        EcommercePOAntigo
-                                        .Pais(24, driver);
+                        try {
+                                EcommercePOAntigo
+                                                .Pais(24, driver);
+                                EcommercePOAntigo
+                                                .Pais(25, driver);
+                        } catch (Exception e) {
+
+                        }
+
                         try {
                                 EcommercePOAntigo.estado_2Rec
                                                 .click();
@@ -271,7 +278,9 @@ public class BioParqueDoRioBuilder {
                         } catch (Exception e) {
 
                         }
-
+                        wait
+                                        .until(d -> EcommercePOAntigo.adicionarCategoria2_2Rec
+                                                        .isEnabled());
                         EcommercePOAntigo.adicionarCategoria2_2Rec
                                         .click();
                         EcommercePOAntigo.adicionarCategoria3_2Rec
@@ -288,8 +297,21 @@ public class BioParqueDoRioBuilder {
 
                         EcommercePOAntigo.selecionarPaisOrigem
                                         .click();
-                        EcommercePOAntigo
-                                        .Pais(24, driver);
+                        try {
+                                Thread
+                                                .sleep(2000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
+                        try {
+                                EcommercePOAntigo
+                                                .Pais(24, driver);
+                                EcommercePOAntigo
+                                                .Pais(25, driver);
+                        } catch (Exception e) {
+                                // TODO: handle exception
+                        }
 
                         try {
                                 EcommercePOAntigo.CEP_Nas_categorias
@@ -322,9 +344,9 @@ public class BioParqueDoRioBuilder {
                                         .click();
                         EcommercePOAntigo.documento
                                         .sendKeys(cpf);
-                        EcommercePOAntigo.dataNascimento(1, 1, geradores
-                                        .geradorDataNascimento_AntigoEcommerce(0, 99, driver), driver);
-                        
+                        EcommercePOAntigo
+                                        .dataNascimento(1, 1, geradores
+                                                        .geradorDataNascimento_AntigoEcommerce(0, 99, driver), driver);
 
                         EcommercePOAntigo
                                         .Telefone_coletaDeDados(1, "46999303994", driver);

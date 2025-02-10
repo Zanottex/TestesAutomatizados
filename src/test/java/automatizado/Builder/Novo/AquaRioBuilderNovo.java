@@ -319,6 +319,13 @@ public class AquaRioBuilderNovo {
                                                 .sendKeys("85509432");
                         }
                 } else {
+                        try {
+                                Thread
+                                                .sleep(1000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
                         EcommercePONovo.selecionarPaisOrigem
                                         .click();
                         EcommercePONovo.confirmaPaisOrigem
@@ -580,7 +587,7 @@ public class AquaRioBuilderNovo {
                                                                 .isEnabled());
                                 try {
                                         Thread
-                                                        .sleep(1000);
+                                                        .sleep(1500);
                                 } catch (InterruptedException e) {
                                         e
                                                         .printStackTrace();

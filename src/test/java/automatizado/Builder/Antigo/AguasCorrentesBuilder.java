@@ -38,7 +38,7 @@ public class AguasCorrentesBuilder {
                 BaseBuilder base = new BaseBuilder(EcommercePOAntigo);
                 try {
                         Thread
-                                        .sleep(2000);
+                                        .sleep(3000);
                 } catch (InterruptedException e) {
                         e
                                         .printStackTrace();

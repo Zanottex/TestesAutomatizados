@@ -266,7 +266,7 @@ public class FundacaoBuilder {
                 } else {
                         try {
                                 Thread
-                                                .sleep(6000);
+                                                .sleep(4000);
                         } catch (InterruptedException e) {
                                 e
                                                 .printStackTrace();
@@ -278,6 +278,13 @@ public class FundacaoBuilder {
                                                         .isDisplayed());
                         EcommercePOAntigo.horario
                                         .click();
+                        try {
+                                Thread
+                                                .sleep(1000);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
                         EcommercePOAntigo.confirmarHorario4opcoes
                                         .click();
                         logger
@@ -313,13 +320,30 @@ public class FundacaoBuilder {
                                                 .isDisplayed());
                 EcommercePOAntigo.adicionarCategoria
                                 .click();
-                logger
-                                .info("Escolhendo pais de origem incorreto...");
-                EcommercePOAntigo.selecionarPaisOrigem
-                                .click();
-
-                EcommercePOAntigo
-                                .Pais(14, driver);
+                String erro = null;
+                if (tipo != 3) {
+                        logger
+                                        .info("Escolhendo pais de origem incorreto...");
+                        EcommercePOAntigo.selecionarPaisOrigem
+                                        .click();
+                        EcommercePOAntigo
+                                        .Pais(14, driver);
+                } else {
+                        logger
+                                        .info("Adicionando estado...");
+                        EcommercePOAntigo.estado
+                                        .click();
+                        try {
+                                Thread
+                                                .sleep(1500);
+                        } catch (InterruptedException e) {
+                                e
+                                                .printStackTrace();
+                        }
+                        EcommercePOAntigo.acrexpath
+                                        .click();
+                        erro = "notnull";
+                }
                 logger
                                 .info("Adicionando no carrinho...");
                 EcommercePOAntigo.adicionarAoCarrinho
@@ -332,31 +356,52 @@ public class FundacaoBuilder {
                         e
                                         .printStackTrace();
                 }
-                String erro = EcommercePOAntigo.pegarMensagemErro
-                                .getText();
+                try {
+                        erro = EcommercePOAntigo.pegarMensagemErro
+                                        .getText();
+                } catch (Exception e) {
+
+                }
+
                 double valorsomado = 0.0;
                 logger
                                 .info("Verificando se o pais incorreto gera o alerta em tela...");
                 if (erro != null) {
-                        logger
-                                        .info("Selecioanndo pais correto...");
-                        EcommercePOAntigo.selecionarPaisOrigem
-                                        .click();
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
+                        if (tipo != 3) {
+                                logger
+                                                .info("Selecioanndo pais correto...");
+                                EcommercePOAntigo.selecionarPaisOrigem
+                                                .click();
+                                try {
+                                        Thread
+                                                        .sleep(1000);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
+                                try {
+                                        EcommercePOAntigo
+                                                        .Pais(11, driver);
+                                        EcommercePOAntigo
+                                                        .Pais(12, driver);
+                                } catch (Exception e) {
+
+                                }
+
+                                logger
+                                                .info("Adicionando estado...");
+                                EcommercePOAntigo.estado
+                                                .click();
+                                try {
+                                        Thread
+                                                        .sleep(1000);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
+                                EcommercePOAntigo.acre
+                                                .click();
                         }
-                        EcommercePOAntigo
-                                        .Pais(11, driver);
-                        logger
-                                        .info("Adicionando estado...");
-                        EcommercePOAntigo.estado
-                                        .click();
-                        EcommercePOAntigo.acre
-                                        .click();
 
                         if (tipo == 5) {
                                 logger
@@ -475,6 +520,8 @@ public class FundacaoBuilder {
                                         EcommercePOAntigo.adicionarAoCarrinho
                                                         .click();
                                 }
+                        } else if (tipo == 3) {
+
                         } else {
                                 EcommercePOAntigo.adicionarAoCarrinho
                                                 .click();
@@ -547,13 +594,19 @@ public class FundacaoBuilder {
                 StringTokenizer resulBilhete2 = null;
                 if (tipo == 4) {
                         if (logado) {
+                                try {
+                                        Thread
+                                                        .sleep(1000);
+
+                                } catch (Exception e) {
+                                }
                                 wait
                                                 .until(d -> EcommercePOAntigo.finalizarPedido
                                                                 .isDisplayed());
                                 resulBilhete1 = new StringTokenizer(EcommercePOAntigo
                                                 .ValorBilhete_1(2, driver));
                                 resulBilhete2 = new StringTokenizer(EcommercePOAntigo
-                                                .ValorBilhete_2_vinculado(1, driver));
+                                                .ValorBilhete_2_vinculado(2, driver));
                         } else {
                                 wait
                                                 .until(d -> EcommercePOAntigo.registrarEfinalizarPedido

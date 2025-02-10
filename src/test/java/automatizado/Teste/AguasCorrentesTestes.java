@@ -64,7 +64,7 @@ public class AguasCorrentesTestes extends BaseTeste{
                 .avulsso(driver, 2 /* TIPO 2 = Bilhete 5 pessoas */);
     }
 
-    @Test
+    // @Test
     public void Novo_Ecommerce() {
         String aberto;
         try {

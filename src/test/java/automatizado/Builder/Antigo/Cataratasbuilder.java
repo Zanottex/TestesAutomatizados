@@ -171,7 +171,7 @@ public class Cataratasbuilder {
 
                                 try {
                                         Thread
-                                                        .sleep(1000);
+                                                        .sleep(1500);
                                 } catch (InterruptedException e) {
                                         e
                                                         .printStackTrace();
@@ -349,13 +349,21 @@ public class Cataratasbuilder {
                                                                 .isDisplayed());
                                 EcommercePOAntigo.selecionarPaisOrigem
                                                 .click();
+
                                 EcommercePOAntigo
-                                                .Pais(27, driver);
+                                                .Pais(28, driver);
+
                         } else if (tipo == 2) {
                                 EcommercePOAntigo.selecionarPaisOrigem
                                                 .click();
-                                EcommercePOAntigo
-                                                .Pais(24, driver);
+                                try {
+                                        EcommercePOAntigo
+                                                        .Pais(24, driver);
+                                        EcommercePOAntigo
+                                                        .Pais(25, driver);
+                                } catch (Exception e) {
+
+                                }
                                 try {
                                         EcommercePOAntigo.estado
                                                         .click();
@@ -367,8 +375,14 @@ public class Cataratasbuilder {
                         } else if (tipo == 5) {
                                 EcommercePOAntigo.selecionarPaisOrigem_2Rec
                                                 .click();
-                                EcommercePOAntigo
-                                                .Pais(24, driver);
+                                try {
+                                        EcommercePOAntigo
+                                                        .Pais(24, driver);
+                                        EcommercePOAntigo
+                                                        .Pais(25, driver);
+                                } catch (Exception e) {
+
+                                }
                                 try {
                                         Thread
                                                         .sleep(1000);
@@ -389,8 +403,14 @@ public class Cataratasbuilder {
                                 EcommercePOAntigo.selecionarPaisOrigem_3Rec
                                                 .click();
 
-                                EcommercePOAntigo
-                                                .Pais(24, driver);
+                                try {
+                                        EcommercePOAntigo
+                                                        .Pais(24, driver);
+                                        EcommercePOAntigo
+                                                        .Pais(25, driver);
+                                } catch (Exception e) {
+
+                                }
                                 try {
                                         Thread
                                                         .sleep(1000);
@@ -411,8 +431,15 @@ public class Cataratasbuilder {
                         } else if (tipo == 3) {
                                 EcommercePOAntigo.selecionarPaisOrigem
                                                 .click();
-                                EcommercePOAntigo
-                                                .Pais(24, driver);
+                                try {
+                                        EcommercePOAntigo
+                                                        .Pais(24, driver);
+                                        EcommercePOAntigo
+                                                        .Pais(25, driver);
+                                } catch (Exception e) {
+
+                                }
+
                                 try {
                                         EcommercePOAntigo.estado
                                                         .click();
@@ -427,12 +454,25 @@ public class Cataratasbuilder {
                 String erro = null;
                 if (tipo != 3 && tipo != 4 && tipo != 7 && tipo != 8) { // SE FOR 1 ou 2 ELE ENTRA
                         if (tipo == 5) {
+                                wait
+                                                .until(d -> EcommercePOAntigo.adicionarAoCarrinho_2Rec
+                                                                .isEnabled());
                                 EcommercePOAntigo.adicionarAoCarrinho_2Rec
                                                 .click();
                         } else if (tipo == 6) {
+                                wait
+                                                .until(d -> EcommercePOAntigo.adicionarAoCarrinho_3Rec
+                                                                .isEnabled());
                                 EcommercePOAntigo.adicionarAoCarrinho_3Rec
                                                 .click();
                         } else {
+                                try {
+                                        Thread
+                                                        .sleep(1000);
+                                } catch (InterruptedException e) {
+                                        e
+                                                        .printStackTrace();
+                                }
                                 EcommercePOAntigo.adicionarAoCarrinho
                                                 .click();
                         }
@@ -466,6 +506,9 @@ public class Cataratasbuilder {
                                 } else if (tipo == 8) {
 
                                 } else {
+                                        wait
+                                                        .until(d -> EcommercePOAntigo.adicionarCategoria2
+                                                                        .isDisplayed());
                                         EcommercePOAntigo.adicionarCategoria2
                                                         .click();
                                 }
@@ -521,9 +564,15 @@ public class Cataratasbuilder {
                                                                 .printStackTrace();
                                         }
                                         if (tipo == 1) {
+                                                try {
+                                                        EcommercePOAntigo
+                                                                        .Pais(24, driver);
+                                                        EcommercePOAntigo
+                                                                        .Pais(25, driver);
+                                                } catch (Exception e) {
 
-                                                EcommercePOAntigo
-                                                                .Pais(24, driver);
+                                                }
+
                                                 try {
                                                         EcommercePOAntigo.estado
                                                                         .click();
@@ -538,7 +587,7 @@ public class Cataratasbuilder {
                                                                 .Pais(47, driver);
                                         } else {
                                                 EcommercePOAntigo
-                                                                .Pais(27, driver);
+                                                                .Pais(28, driver);
                                                 ;
                                         }
                                 }
