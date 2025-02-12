@@ -382,7 +382,7 @@ public class EcommercePONovo extends BasePO {
         @FindBy(xpath = "/html/body/div[2]/div[2]/div/mat-bottom-sheet-container/app-minha-conta/div/confirm-password/mat-card/mat-card-actions/button")
         public WebElement botaoConfirmarSenha;
 
-        @FindBy(xpath = "/html/body/app-root/app-home/main/app-my-cart/ec-wrapper/div[1]/div[2]/section[2]/div[2]")
+        @FindBy(xpath = "/html/body/app-root/app-home/main/app-my-cart/ec-wrapper/div[1]/div/ec-bilhete-carrinho-card/div/div[2]/div[3]/div[1]/span")
         public WebElement valorBilhete1;
 
         @FindBy(xpath = "/html/body/e-commerce/pages/toolbar-menu/div/mat-sidenav-container/mat-sidenav-content/main/app-meu-carrinho/div/div/div[2]/mat-card/div/div[1]/app-bilhete-card/div/div[2]/mat-card/div[2]/div/span[2]")
@@ -496,6 +496,9 @@ public class EcommercePONovo extends BasePO {
 
         @FindBy(xpath = "/html/body/div[2]/div[2]/div/div/mat-option[1]")
         public WebElement visa;
+
+        @FindBy(xpath = "/html/body/app-root/app-home/main/app-authentication/app-login-client/ec-wrapper/ec-error/div/section/span")
+        public WebElement captcha;
 
 
         public void Nomeusuario( int numero, String nome, WebDriver driver) {

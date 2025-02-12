@@ -11,7 +11,7 @@ public class CriaçãoDeBilhetesBuilder {
 
     private String nomeBilhete = "Teste";
     private String codigoBilhete = "5208";
-    private String nomeEstabelecimento = "Bilheteria Zanotto";
+    private String nomeEstabelecimento = "Bilheteria Padrão";
     private String descricaoBilhete = "Teste Teste";
     private String nomeReceita = "3483";
     private String valorReceita = "100.00";
@@ -81,7 +81,9 @@ public class CriaçãoDeBilhetesBuilder {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
+        wait
+                .until(d -> bilhetesPO.AbreSelecãoDeCategoria
+                        .isDisplayed());
         bilhetesPO.AdicionaCategoria.click();
 
         wait.until(d -> bilhetesPO.AbreSelecãoDeCategoria.isDisplayed());

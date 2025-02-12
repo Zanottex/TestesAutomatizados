@@ -588,7 +588,21 @@ public class CataratasbuilderNovo {
                                                 logger
                                                                 .info("Fazendo Login...");
                                         }
+                                        try {
+                                                Thread
+                                                                .sleep(2000);
+                                        } catch (Exception e) {
 
+                                        }
+                                         String captcha = null;
+                                        try {
+                                                captcha = EcommercePONovo.captcha
+                                                                .getText();
+                                        } catch (Exception e) {
+
+                                        }
+                                        
+                                        if(captcha == null){
                                         wait
                                                         .until(d -> EcommercePONovo.irParaPagamento
                                                                         .isDisplayed());
@@ -626,6 +640,13 @@ public class CataratasbuilderNovo {
                                                         mensagem);
                                         logger
                                                         .info("Pedido finalizado com sucesso!");
+                                }else{
+                                        JavascriptExecutor js = (JavascriptExecutor) driver;
+                                        js
+                                                        .executeScript("alert('ERRO: Captcha bloqueou o programa.');");
+                                        logger
+                                                        .severe("ERRO: Captcha bloqueou o programa.");
+                                }
                                 } else {
                                         JavascriptExecutor js = (JavascriptExecutor) driver;
                                         js

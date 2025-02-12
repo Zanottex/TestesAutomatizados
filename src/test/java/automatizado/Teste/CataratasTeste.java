@@ -216,7 +216,7 @@ public class CataratasTeste extends BaseTeste {
     }
     
     @Test
-    public void Novo_Ecommerce() {
+    public void NE_TC001_Bilhete_Brasileiro_Mercosul() {
         String aberto;
         try {
             aberto = driver
@@ -237,6 +237,81 @@ public class CataratasTeste extends BaseTeste {
         CataratasbuilderNovo cataratas = new CataratasbuilderNovo(EcommercePONovo);
 
         cataratas
-                .Ingresso(driver, 6 );
+                .Ingresso(driver, 1);
+    }
+
+    @Test
+    public void NE_TC002_Bilhete_Estrangeiro() {
+        String aberto;
+        try {
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePONovo = new EcommercePONovo(driver);
+        CataratasbuilderNovo cataratas = new CataratasbuilderNovo(EcommercePONovo);
+
+        cataratas
+                .Ingresso(driver, 2);
+    }
+
+    @Test
+    public void NE_TC003_Bilhete_Expêriencias() {
+        String aberto;
+        try {
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePONovo = new EcommercePONovo(driver);
+        CataratasbuilderNovo cataratas = new CataratasbuilderNovo(EcommercePONovo);
+
+        cataratas
+                .Ingresso(driver, 3);
+    }
+
+    @Test
+    public void NE_TC004_Bilhete_Bike_poço_preto() {
+        String aberto;
+        try {
+            aberto = driver
+                    .manage()
+                    .window()
+                    .getSize()
+                    .toString();
+        } catch (Exception e) {
+            aberto = null;
+        }
+        if (aberto == null) {
+            iniciar(URL_Ecommerce);
+        } else {
+            RedirecionarPag(URL_Ecommerce);
+        }
+
+        EcommercePONovo = new EcommercePONovo(driver);
+        CataratasbuilderNovo cataratas = new CataratasbuilderNovo(EcommercePONovo);
+
+        cataratas
+                .Ingresso(driver, 4);
     }
 }
