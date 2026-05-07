@@ -9,7 +9,7 @@ import automatizado.Page.EcommercePONovo;
 
 public class AguasCorrentesTestes extends BaseTeste{
     
-    private static final String URL_Ecommerce = "https://zanottincalendario.testescard.limber.net.br/";
+    private static final String URL_Ecommerce = "ENV";
     /*Page Objects */
     private static EcommercePOAntigo EcommercePOAntigo;
     private static EcommercePONovo EcommercePONovo;
