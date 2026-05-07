@@ -16,8 +16,8 @@ import java.util.logging.Logger;
 public class AguasCorrentesBuilder {
 
         private EcommercePOAntigo EcommercePOAntigo;
-        private String email_usuario = "gustavozanotto119@gmail.com";
-        private String senha_usuario = "1";
+        private String email_usuario = "";
+        private String senha_usuario = "";
 
         private static final Logger logger = Logger
                         .getLogger(AquaRioBuilder.class
