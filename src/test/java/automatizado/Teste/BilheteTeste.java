@@ -10,8 +10,8 @@ import automatizado.Page.BilhetesPO;
 
 public class BilheteTeste extends BaseTeste{
 
-    private static final String URL_Novobilhete = "https://testescard.limbersoftware.com.br/#/pages/cadastro/bilhete/novo";
-    private static final String URL_Bilhetes = "https://testescard.limbersoftware.com.br/#/pages/cadastro/bilhete";
+    private static final String URL_Novobilhete = "";
+    private static final String URL_Bilhetes = "";
     /*Page Objects */
     private static BilhetesPO BilhetePO;
 
