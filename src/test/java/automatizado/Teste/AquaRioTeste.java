@@ -9,7 +9,7 @@ import automatizado.Page.EcommercePONovo;
 
 public class AquaRioTeste extends BaseTeste{
     
-    private static final String URL_Ecommerce = "https://testeauto_integrada.testescard.limber.net.br/";
+    private static final String URL_Ecommerce = "";
     /*Page Objects */
     private static EcommercePOAntigo EcommercePOAntigo;
     private static EcommercePONovo EcommercePOnovo;
