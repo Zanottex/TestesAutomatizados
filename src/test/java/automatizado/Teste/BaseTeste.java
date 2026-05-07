@@ -13,8 +13,8 @@ public abstract class BaseTeste {
 
     public static WebDriver driver;
     public static final String CAMINHO_BASE = "src/test/java/automatizado/resource/chromedriverV132.0.6834.110.exe";
-    protected static final String URL_HOMOLOG = "https://testescard.limbersoftware.com.br/#/pages/dashboard";
-    protected static final String URL_Produção = "https://card.limbersoftware.com.br/#/pages/dashboard";
+    protected static final String URL_HOMOLOG = "";
+    protected static final String URL_Produção = "";
 
     private static LoginPO Login;
     /*Garante que seja executada antes que qualquer outra função (Esta em specifico ocorre primeiro que 
@@ -38,7 +38,7 @@ public abstract class BaseTeste {
         /*Abrir página de Login */
         Login = new LoginPO(driver);
         /*Logar */
-        Login.Logar("Gustavo@limbersoftware.com.br", "Gustavo1!");
+        Login.Logar("", "");
 
         /*Esperar a página carregar */
         try {
