@@ -9,7 +9,7 @@ import automatizado.Page.CardEcommercePO;
 public class CardEcommerceTeste extends BaseTeste{
 
     /*Page Objects */
-    private static final String URL_CardEcommerce = "https://testescard.limbersoftware.com.br/#/pages/ecommerce/ec-configs";
+    private static final String URL_CardEcommerce = "";
     private static CardEcommercePO CardPo;
 
     /*@Test para o sistema compreender como um teste*/
