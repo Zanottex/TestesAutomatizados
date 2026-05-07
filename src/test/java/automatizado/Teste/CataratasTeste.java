@@ -10,7 +10,7 @@ import automatizado.Page.EcommercePONovo;
 public class CataratasTeste extends BaseTeste {
 
     private static EcommercePOAntigo EcommercePOAntigo;
-    private static final String URL_Ecommerce = "https://testeauto_integrada.testescard.limber.net.br/";
+    private static final String URL_Ecommerce = "";
     private static EcommercePONovo EcommercePONovo;
 
     @Test
