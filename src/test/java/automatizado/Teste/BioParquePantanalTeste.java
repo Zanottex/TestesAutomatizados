@@ -7,7 +7,7 @@ import automatizado.Page.EcommercePOAntigo;
 
 public class BioParquePantanalTeste extends BaseTeste{
     
-    private static final String URL_Ecommerce = "https://zanottin2.testescard.limber.net.br/";
+    private static final String URL_Ecommerce = "";
     private static EcommercePOAntigo EcommercePOAntigo;
 
      @Test
