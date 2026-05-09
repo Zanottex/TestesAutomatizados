@@ -5,23 +5,22 @@ import org.junit.Test;
 import automatizado.Builder.CARD.GrupoDeBilhetesBuilder;
 import automatizado.Page.GrupoDeBilhetesPO;
 
-public class GrupoDeBilhetesTeste extends BaseTeste{
-    
-    private static final String URL_NovoGrupoBilhetes = "https://testescard.limbersoftware.com.br/#/pages/cadastro/grupo-bilhete/novo-grupo";
+public class GrupoDeBilhetesTeste extends BaseTeste {
+
+    private static final String URL_NovoGrupoBilhetes = "";
     private static GrupoDeBilhetesPO grupoPO;
 
     @Test
-    public void TC001_Criar_Grupo_Bilhetes(){
+    public void TC001_Criar_Grupo_Bilhetes() {
         String aberto;
         try {
             aberto = driver.manage().window().getSize().toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        AbrirCard();
-        }
-        else{
+        if (aberto == null) {
+            AbrirCard();
+        } else {
             driver.get(URL_HOMOLOG);
         }
         RedirecionarPag(URL_NovoGrupoBilhetes);
@@ -34,7 +33,7 @@ public class GrupoDeBilhetesTeste extends BaseTeste{
             e.printStackTrace();
         }
         grupo.
-        builder(driver);
+                builder(driver);
     }
 
 }

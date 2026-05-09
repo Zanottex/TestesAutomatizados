@@ -1,27 +1,26 @@
 package automatizado.Builder.Antigo;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.util.Units;
-import org.apache.poi.xwpf.usermodel.*;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import automatizado.Page.EcommercePOAntigo;
 
 public class FundacaoBuilder {
@@ -31,15 +30,15 @@ public class FundacaoBuilder {
                     .getName());
 
     private EcommercePOAntigo EcommercePOAntigo;
-    private String email_usuario = "gustavozanotto119@gmail.com";
+    private String email_usuario = "";
     private String senha_usuario = "1";
     private String Nome_Cartao = "Gustavin Zanottin";
 
     private String Numero_Cartao = "4000000000000010";
     private String mes_validade = "122500";
     private String codigo_segurança = "123";
-    private String CEP = "85509432";
-    private String Numero_Casa = "1050";
+    private String CEP = "";
+    private String Numero_Casa = "";
     XWPFDocument documento = new XWPFDocument();
 
     static {

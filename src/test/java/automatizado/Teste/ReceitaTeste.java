@@ -5,22 +5,21 @@ import org.junit.Test;
 import automatizado.Builder.CARD.ReceitaBuilder;
 import automatizado.Page.ReceitaPO;
 
-public class ReceitaTeste extends BaseTeste{
-    
-    
-    String URL_Receitas = "https://testescard.limbersoftware.com.br/#/pages/cadastro/receita";
+public class ReceitaTeste extends BaseTeste {
+
+    String URL_Receitas = "";
     private ReceitaPO receitaPO;
 
     @Test
-    public void TC001_Criar_Receita(){
+    public void TC001_Criar_Receita() {
         String aberto;
         try {
             aberto = driver.manage().window().getSize().toString();
         } catch (Exception e) {
             aberto = null;
         }
-        if(aberto == null){
-        AbrirCard();
+        if (aberto == null) {
+            AbrirCard();
         }
         RedirecionarPag(URL_Receitas);
         receitaPO = new ReceitaPO(driver);
@@ -29,8 +28,6 @@ public class ReceitaTeste extends BaseTeste{
         receita.builder(driver);
 
         //Teste Git
-        
     }
-
 
 }

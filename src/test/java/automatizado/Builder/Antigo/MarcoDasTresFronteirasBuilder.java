@@ -1,11 +1,12 @@
 package automatizado.Builder.Antigo;
 
+import static org.junit.Assert.*;
+
 import java.util.StringTokenizer;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static org.junit.Assert.assertEquals;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
@@ -17,16 +18,16 @@ import automatizado.Page.EcommercePOAntigo;
 public class MarcoDasTresFronteirasBuilder {
 
     private final EcommercePOAntigo EcommercePOAntigo;
-    private final String email_usuario = "gustavozanotto119@gmail.com";
+    private final String email_usuario = "";
     private final String senha_usuario = "1";
     private final String Nome_Cartao = "Gustavin Zanottin";
     private final String Numero_Cartao = "4000000000000010";
     private final String mes_validade = geradores
             .geradorValidadeCartao();
     private final String codigo_segurança = "123";
-    private final String CEP = "85509432";
+    private final String CEP = "";
     private final String Numero_Casa = "1050";
-    private final String cpf = "09285844960";
+    private final String cpf = "";
 
     public MarcoDasTresFronteirasBuilder(EcommercePOAntigo EcommercePOAntigo) {
         this.EcommercePOAntigo = EcommercePOAntigo;

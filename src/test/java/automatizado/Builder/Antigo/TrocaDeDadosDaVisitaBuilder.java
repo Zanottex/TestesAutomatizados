@@ -13,120 +13,146 @@ import automatizado.Page.EcommercePOAntigo;
 
 public class TrocaDeDadosDaVisitaBuilder {
 
-        private EcommercePOAntigo EcommercePOAntigo;
+    private EcommercePOAntigo EcommercePOAn tigo;
 
-        private static final Logger logger = Logger
-                        .getLogger(AquaRioBuilder.class
-                                        .getName());
+    private static final Logger logger = Logger
+    .getLogger(Aqu
 
-        static {
-                // Configuração do handler de log para exibir logs no console
-                ConsoleHandler consoleHandler = new ConsoleHandler();
-                consoleHandler
-                                .setLevel(Level.ALL);
-                logger
-                                .addHandler(consoleHandler);
+    aRioB  getName());
+
+        
+    static {
+        // Con and
+        ler consoleHandler = new ConsoleHandler();
+        consoleHandler
+
+        
+                 .setLevel(Level.ALL);
+            logger
+                     .addHa
+            ndler(consoleHandler);
+                
+            
+    }
+ 
+                aVisitaBuilder(Eco m mercePOAn
+                tigo EcommercePOAntigo) {
+        this.EcommercePOAntigo = EcommercePOAntigo 
+                 
+                 ilder(Web
+                Driver  
+                 Dr
+                iver> wait = new 
+                 e Login no E-Commerce.");
+                
+        wait mercePOAntigo
+                .olaFaçaSeuLogi .i
+                sDisplayed()); OAntigo.a
+                ceitarcookies 
+                 
+        EcommercePOAntigo.olaFaçaSeuLogin .c
+                lick();
+                    
+                
+                .click();
+                    
+ 
+                             wait
+                .until(d -> EcommercePOAntigo.Email_ecommerce
+                        .isDisplayed()); mmerce
+                     );{
+                        
+                    
+                    }
+        EcommercePOAntigo.senha_ecommerc 
+                        
+                    
+        logger suario comum.");
+                            
+                        
+        EcommercePOAntigo.Logar ();
+                             
+                            
+        wait
+                            
+                            
+                            -> EcommercePO yed());
+                            go
+
+
+    
+        
+            
+                
+                    
+                         
+                             
+                            .olaFaçaSeuLogin
+
+        .click();
+        EcommercePOAntigo.meus_pedidos
+                .click();
+        logger
+                .info("Abrindo a aba de 'Meus Pedidos'.");
+        wait
+                .until(d -> EcommercePOAntigo.ultima_venda
+                .isDisplayed());
+        EcommercePOAntigo.ultima_venda
+                .click();
+        try {
+            Thread
+                    .sleep(1000);
+        } catch (InterruptedException e) {
+            e
+                    .printStackTrace();
         }
+        logger
+                .info("Arindo a ultima venda.");
+        /* Verifica se o bilhete tem a opção de alterar as informações da visita. */
+        if (EcommercePOAntigo.alterar_informações_da_visita
+                .isEnabled()) {
 
-        public TrocaDeDadosDaVisitaBuilder(EcommercePOAntigo EcommercePOAntigo) {
-                this.EcommercePOAntigo = EcommercePOAntigo;
-        }
-
-        public void builder(WebDriver driver, int tipo) {
-
-                Wait<WebDriver> wait = new WebDriverWait(driver, 5000);
-                logger
-                                .info("Abrindo a tela de Login no E-Commerce.");
-                wait
-                                .until(d -> EcommercePOAntigo.olaFaçaSeuLogin
-                                                .isDisplayed());
-                EcommercePOAntigo.aceitarcookies
-                                .click();
-                EcommercePOAntigo.olaFaçaSeuLogin
-                                .click();
-                EcommercePOAntigo.Entrar
-                                .click();
-
-                wait
-                                .until(d -> EcommercePOAntigo.Email_ecommerce
-                                                .isDisplayed());
-                EcommercePOAntigo.Email_ecommerce
-                                .sendKeys("gustavozanotto119@gmail.com");
-                EcommercePOAntigo.senha_ecommerce
-                                .sendKeys("1");
-                logger
-                                .info("Logando na conta como um usuario comum.");
-                EcommercePOAntigo.Logar
-                                .click();
-
-                wait
-                                .until(d -> EcommercePOAntigo.proximoMesHome
-                                                .isDisplayed());
-                EcommercePOAntigo.olaFaçaSeuLogin
-                                .click();
-                EcommercePOAntigo.meus_pedidos
-                                .click();
-                logger
-                                .info("Abrindo a aba de 'Meus Pedidos'.");
-                wait
-                                .until(d -> EcommercePOAntigo.ultima_venda
-                                                .isDisplayed());
-                EcommercePOAntigo.ultima_venda
-                                .click();
-                try {
-                        Thread
-                                        .sleep(1000);
-                } catch (InterruptedException e) {
-                        e
-                                        .printStackTrace();
-                }
-                logger
-                                .info("Arindo a ultima venda.");
-                /* Verifica se o bilhete tem a opção de alterar as informações da visita. */
-                if (EcommercePOAntigo.alterar_informações_da_visita
-                                .isEnabled()) {
-
-                        EcommercePOAntigo.alterar_informações_da_visita
-                                        .click();
-                        wait
-                                        .until(d -> EcommercePOAntigo.alterar_data_de_visita
-                                                        .isDisplayed());
-                        logger
-                                        .info("Trocando a data da visita do bilhete.");
-                        EcommercePOAntigo.alterar_data_de_visita
-                                        .click();
-                        try {
-                                Thread
-                                                .sleep(1000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
-                        EcommercePOAntigo.proximo_mes_remarcação
-                                        .click();
-                        try {
-                                Thread
-                                                .sleep(2000);
-                        } catch (InterruptedException e) {
-                                e
-                                                .printStackTrace();
-                        }
-                        EcommercePOAntigo.dia_remarcação
-                                        .click();
-                        EcommercePOAntigo.salvar_remarcação
-                                        .click();
-                        logger
-                                        .info("Data da visita alterada.");
-                        /*
+            EcommercePOAntigo.alterar_informações_da_visita
+                    .click();
+            wait
+                    .until(d -> EcommercePOAntigo.alterar_data_de_visita
+                    .isDisplayed());
+            logger
+                    .info("Trocando a data da visita do bilhete.");
+            EcommercePOAntigo.alterar_data_de_visita
+                    .click();
+            try {
+                Thread
+                        .sleep(1000);
+            } catch (InterruptedException e) {
+                e
+                        .printStackTrace();
+            }
+            EcommercePOAntigo.proximo_mes_remarcação
+                    .click();
+            try {
+                Thread
+                        .sleep(2000);
+            } catch (InterruptedException e) {
+                e
+                        .printStackTrace();
+            }
+            EcommercePOAntigo.dia_remarcação
+                    .click();
+            EcommercePOAntigo.salvar_remarcação
+                    .click();
+            logger
+                    .info("Data da visita alterada.");
+            /*
                          * TODO: achar uma forma de confirmar que a dara da visita foi trocada
                          * corretamente
-                         */
-                } else {
-                        JavascriptExecutor js = (JavascriptExecutor) driver;
-                        js
-                                        .executeScript("alert('Bilhete sem remarcação liberado!');");
-                }
-
+             */
+        } else {
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js
+                    .executeScript("alert('Bilhete sem remarcação liberado!');");
         }
+
+    }
 
 }
